@@ -9,6 +9,15 @@ require("dotenv").config()
 var dbconnection = require('../back-end/database/connection')
 
 
+//Category Routes
+const categoryRoutes = require('./Routes/category')
+app.use('/api',categoryRoutes)
+
+//Product Routes
+const productRoutes = require('./Routes/product')
+app.use('/api',productRoutes)
+
+
 const PORT = process.env.PORT || 5000;
 app.listen( PORT,()=>{
     console.log(`Server is working on port ${PORT}`)
