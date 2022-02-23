@@ -103,3 +103,27 @@ exports.getProductDetailsById = (req, res) => {
     return res.status(400).json({ error: "Params required" });
   }
 };
+
+
+//delete api
+
+exports.deleteProducts = async (req,res)=>{
+  const product= await productModel.findById(req.params.id)
+  await product.remove()
+
+  try {
+      res.status (200).json({
+          success:true,
+          message : "deleted successfully"
+      })
+  }
+  catch (err){
+      res.status(202).json({
+          success:false,
+          message: "try again" + err.message
+
+      })
+  }
+
+  
+}

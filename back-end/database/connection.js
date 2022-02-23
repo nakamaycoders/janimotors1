@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // require('../.env')
-var mongoDBURL= "mongodb+srv://janimotors:janimotors@cluster0.ifzrd.mongodb.net/"
+var mongoDBURL= "mongodb+srv://janimotors:janimotors@cluster0.ifzrd.mongodb.net/test"
 mongoose.connect(mongoDBURL , {useUnifiedtopology :true , useNewUrlParser : true})
 
 // .then(()=>{
