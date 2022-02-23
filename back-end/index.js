@@ -17,6 +17,10 @@ app.use('/api',categoryRoutes)
 const productRoutes = require('./Routes/product')
 app.use('/api',productRoutes)
 
+//Admin Routes
+const adminRoutes = require('./Routes/admin')
+app.use('/api',adminRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen( PORT,()=>{
