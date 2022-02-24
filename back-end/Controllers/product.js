@@ -105,25 +105,26 @@ exports.getProductDetailsById = (req, res) => {
 };
 
 
+
+
+
 //delete api
 
-exports.deleteProducts = async (req,res)=>{
-  const product= await productModel.findById(req.params.id)
-  await product.remove()
-
-  try {
-      res.status (200).json({
-          success:true,
-          message : "deleted successfully"
-      })
-  }
-  catch (err){
-      res.status(202).json({
-          success:false,
-          message: "try again" + err.message
-
-      })
-  }
-
-  
-}
+// exports.deleteProducts =  async (req,res)=>{
+//   const {id} = req.params;
+//   if(id){
+//     productModel.findByIdAndDelete({_id: id}).exec((err,data) => {
+//       if(data){
+//         return 
+//         res.status(200).json({success:true,message : "deleted successfully"})
+//       }
+//     });
+//   }
+//       else{
+//         return
+//         res.status(400).json({
+//             success:false,
+//             message: "try again" + err.message
+//         })
+//       }
+// };
