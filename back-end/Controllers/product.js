@@ -128,3 +128,30 @@ exports.getProductDetailsById = (req, res) => {
 //         })
 //       }
 // };
+
+
+// update api
+
+exports.updateUser = async (req,res)=>{
+  const user= await productModel.findByIdAndUpdate(req.params.id,req.body,{
+      new:true,
+      runValidator:true
+  })
+  
+
+  try {
+      res.status (200).json({
+          success:true,
+          user
+      })
+  }
+  catch (err){
+      res.status(202).json({
+          success:false,
+          message: "try again" + err.message
+
+      })
+  }
+
+  
+}
