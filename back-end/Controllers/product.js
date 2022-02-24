@@ -112,14 +112,14 @@ exports.getProductDetailsById = (req, res) => {
 
 exports.deleteProducts =  async (req,res)=>{
   try{
-
-  let productToDel = await productModel.findOne(req.params.id);
-  console.log(productToDel);
+  const { productId } = req.params;
+  let productToDel = await productModel.findOne({ _id: productId });
+  // console.log(productToDel);
   if(!productToDel){
     return res.status(404).send("Not found");
     
   }
-  productToDel = await productModel.findOneAndDelete(req.params.id)
+  productToDel = await productModel.findOneAndDelete({ _id: productId });
   res.json({"Success": "Deleted", productToDel: productToDel});
   }
   catch(error){
