@@ -31,6 +31,6 @@ router.get("/product/:productId", getProductDetailsById);
 router.route('/product/:id').put(updateUser)
 
 //delete id
-// router.route('/product/:productId').delete(deleteProducts);
+router.route('/product/:productId').delete(deleteProducts);
 
 module.exports = router;

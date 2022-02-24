@@ -108,26 +108,26 @@ exports.getProductDetailsById = (req, res) => {
 
 
 
-//delete api
+// delete api
 
-// exports.deleteProducts =  async (req,res)=>{
-//   const {id} = req.params;
-//   if(id){
-//     productModel.findByIdAndDelete({_id: id}).exec((err,data) => {
-//       if(data){
-//         return 
-//         res.status(200).json({success:true,message : "deleted successfully"})
-//       }
-//     });
-//   }
-//       else{
-//         return
-//         res.status(400).json({
-//             success:false,
-//             message: "try again" + err.message
-//         })
-//       }
-// };
+exports.deleteProducts =  async (req,res)=>{
+  try{
+
+  let productToDel = await productModel.findOne(req.params.id);
+  console.log(productToDel);
+  if(!productToDel){
+    return res.status(404).send("Not found");
+    
+  }
+  productToDel = await productModel.findOneAndDelete(req.params.id)
+  res.json({"Success": "Deleted", productToDel: productToDel});
+  }
+  catch(error){
+    console.error(error.message)
+    res.status(500).send("Internal Server error")
+  }
+
+};
 
 
 // update api
