@@ -27,6 +27,24 @@ const _nav = [
   },
   {
     component: CNavGroup,
+    name: 'Categories',
+    to: '/categories',
+    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All Categories',
+        to: '/categories',
+      },
+      {
+        component: CNavItem,
+        name: 'Add New Categories',
+        to: '/categories/add-new-categories',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
     name: 'Products',
     to: '/products',
     icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,

@@ -50,9 +50,9 @@ const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
-const AllProducts = React.lazy(() => import('./views/pages/products/AllProducts'))
+const AllCategories = React.lazy(() => import('./views/pages/Category/AllCategories'))
 // const AddProducts = React.lazy(() => import('./views/pages/products/AddProducts'))
-const AddNewProducts = React.lazy(() => import('./views/pages/products/AddNewProducts'))
+const AddNewCategories = React.lazy(() => import('./views/pages/Category/AddNewCategories'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -100,9 +100,13 @@ const routes = [
   { path: '/notifications/toasts', name: 'Toasts', component: Toasts },
   { path: '/widgets', name: 'Widgets', component: Widgets },
 
-  { path: '/products', name: 'Products', component: AllProducts, exact: true },
-  { path: '/products/all-products', name: 'All Products', component: AllProducts },
-  { path: '/products/add-new-products', name: 'Add New Products', component: AddNewProducts },
+  { path: '/categories', name: 'Categories', component: AllCategories, exact: true },
+  { path: '/categories/all-categories', name: 'All Categories', component: AllCategories },
+  {
+    path: '/categories/add-new-categories',
+    name: 'Add New Categories',
+    component: AddNewCategories,
+  },
 ]
 
 export default routes

@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
+app.use(cors());
 var bodyParser = require('body-parser');
-const dotenv = require('dotenv')
-dotenv.config()
+const env = require("dotenv");
+env.config();
+const path = require('path')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require("dotenv").config()
-var dbconnection = require('../back-end/database/connection')
+require('../back-end/database/connection')
 
 
 //Category Routes
@@ -21,8 +24,9 @@ app.use('/api',productRoutes)
 const adminRoutes = require('./Routes/admin')
 app.use('/api',adminRoutes);
 
+//Picture Route
+app.use("/public", express.static(path.join(__dirname, "uploads")));
 
-const PORT = process.env.PORT || 5000;
-app.listen( PORT,()=>{
-    console.log(`Server is working on port ${PORT}`)
+app.listen(process.env.PORT,()=>{
+    console.log(`Server is working on port ${process.env.PORT}`)
 }); 
