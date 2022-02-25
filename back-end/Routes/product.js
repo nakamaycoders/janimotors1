@@ -4,7 +4,8 @@ const {
   getProductsBySlug,
   getProducts,
   getProductDetailsById,
-  deleteProducts
+  deleteProducts,
+  updateUser
 } = require("../Controllers/product");
 const multer = require("multer");
 const path = require("path");
@@ -26,7 +27,10 @@ router.get("/products/:slug", getProductsBySlug);
 router.route("/getProducts").get(getProducts);
 router.get("/product/:productId", getProductDetailsById);
 
+//updateid api
+router.route('/product/:id').put(updateUser)
+
 //delete id
-// router.route('/product/:productId').delete(deleteProducts);
+router.route('/product/:productId').delete(deleteProducts);
 
 module.exports = router;
