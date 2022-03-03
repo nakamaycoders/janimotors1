@@ -6,6 +6,7 @@ import Preloader from "../components/Preloader";
 import Navbar from "../components/Navbar";
 // import Presentation from './Presentation';
 import DashboardOverview from './dashboard/DashboardOverview';
+import Category from './Category/Category'
 
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
@@ -53,6 +54,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
   export default () => (
     <Switch>
          <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
+         <RouteWithSidebar exact path={Routes.Category.path} component={Category} />
 
     </Switch>
   );

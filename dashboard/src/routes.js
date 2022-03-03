@@ -2,7 +2,9 @@
 export const Routes = {
     // pages
     // Presentation: { path: "/" },
-    DashboardOverview: { path: "/dashboard/overview" },
+    DashboardOverview: { path: "/" },
+    GetCategory: {path:"/category/AllCategories"},
+    Category: {path:"/category/create"},
     Transactions: { path: "/transactions" },
     Settings: { path: "/settings" },
     Upgrade: { path: "/upgrade" },
@@ -27,6 +29,7 @@ export const Routes = {
     DocsChangelog: { path: "/documentation/changelog" },
 
     // components
+
     Accordions: { path: "/components/accordions" },
     Alerts: { path: "/components/alerts" },
     Badges: { path: "/components/badges" },

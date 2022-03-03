@@ -202,11 +202,11 @@ export default (props = {}) => {
               >
                 <NavItem
                   title="All Categories"
-                  link={Routes.BootstrapTables.path}
+                  link={Routes.GetCategory.path}
                 />
                 <NavItem
                   title="Add New Category"
-                  link={Routes.BootstrapTables.path}
+                  link={Routes.AddCategory.path}
                 />
               </CollapsableNavItem>
 
