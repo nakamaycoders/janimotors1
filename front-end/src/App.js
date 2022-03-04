@@ -1,12 +1,11 @@
 import './App.css';
-import './components/Financing'
-import Financing from './components/Financing';
+import HomeScreen from '../src/components/HomeScreen'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <Financing/>
-    </div>
+    <HomeScreen/>
   );
 }
 
