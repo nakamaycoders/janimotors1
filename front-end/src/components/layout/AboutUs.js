@@ -9,7 +9,7 @@ function AboutUs() {
       
         <Row className='rowww'>
           <Col className="bannerImg" sm={4}>
-            <img src="./banner.png" width="100%" alt=""/>
+            <img className="imgpng" src="./banner.png" width="100%" alt=""/>
           </Col>
           <Col sm={8}>
             <div  className="resAbout">

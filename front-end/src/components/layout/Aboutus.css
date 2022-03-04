@@ -11,6 +11,9 @@
     font-size: large;
     margin-top: 40px;
   }
+  .imgpng{
+    background: none;
+  }
   
   .btn-pri:hover {
     

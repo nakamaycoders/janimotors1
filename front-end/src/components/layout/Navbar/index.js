@@ -48,6 +48,7 @@ export const Navbar = (props) => {
       <nav className="navbar">
         <Link to="/" className="navbar-logo">
           Jani Motors
+          
           <i className='fab fa-firstdraft' />
         </Link>
         <div className="menu-icon" onClick={handleClick}>

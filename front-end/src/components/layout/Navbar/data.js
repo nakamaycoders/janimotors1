@@ -168,7 +168,7 @@ export const financingDropdown = [
     {
         id:4,
         title: 'Calculate Payments',
-        path:'/auto-loan-calculator-jani-il',
+        path:'/calculator',
         cName:'submenu-item',
     },
 ]

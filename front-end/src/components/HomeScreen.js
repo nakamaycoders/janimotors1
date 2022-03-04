@@ -15,15 +15,13 @@ function HomeScreen() {
     
     <div>
       
-      <Nav/>
-     <Navbar/>
+      
 
       <Banner/>
       <Search/>
       <Cardss/>
       <Cards2 />
-      <AboutUs/>
-      <Footer/> 
+      
 
     </div>
   );
