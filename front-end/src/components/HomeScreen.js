@@ -14,16 +14,15 @@ function HomeScreen() {
   return (
     
     <div>
-      
-      <Nav/>
-     <Navbar/>
-
-      <Banner/>
-      <Search/>
-      <Cardss/>
+      <h1>hello</h1>
+      {/* <Nav/> */}
+      {/* {/* <Navbar/> */}
+      {/* <Banner/> */}
+      {/* <Search/> */}
+      {/* <Cardss/> */}
       <Cards2 />
-      <AboutUs/>
-      <Footer/> 
+      {/* <AboutUs/> */}
+      {/* <Footer/> */} 
 
     </div>
   );
