@@ -1,13 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { navmenu } from "./Data";
+import { navmenu } from "../Nav/Data";
 import "./style.css";
 
 
 export const Nav = (props) => {
   return (
     <>
-      <div className="container-fluid wrapper">
+    {/* <h1>hellonav</h1> */}
+
+      <div
+       className="container-fluid wrapper">
         <ul className="header-list">
           <li>
             <img

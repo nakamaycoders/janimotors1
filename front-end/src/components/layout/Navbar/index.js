@@ -44,6 +44,7 @@ export const Navbar = (props) => {
 
   return (
     <>
+    {/* <h1>hellonavbar</h1> */}
       <nav className="navbar">
         <Link to="/" className="navbar-logo">
           Jani Motors
