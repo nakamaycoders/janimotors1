@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
-const cors = require('cors')
-app.use(cors());
-var bodyParser = require('body-parser');
 const env = require("dotenv");
 env.config();
-const path = require('path')
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require("dotenv").config()
 require('../back-end/database/connection')
+const path = require("path");
+const cors = require('cors')
+app.use(cors());
+
+
 
 
 //Category Routes
@@ -23,6 +25,9 @@ app.use('/api',productRoutes)
 //Admin Routes
 const adminRoutes = require('./Routes/admin')
 app.use('/api',adminRoutes);
+
+const initialData = require('./Routes/initialData')
+app.use('/api',initialData)
 
 //Picture Route
 app.use("/public", express.static(path.join(__dirname, "uploads")));

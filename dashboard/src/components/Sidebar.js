@@ -165,7 +165,7 @@ export default (props = {}) => {
                     as={Link}
                     variant="secondary"
                     size="xs"
-                    to={Routes.Signin.path}
+                    to={Routes.SignIn.path}
                     className="text-dark"
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
@@ -195,18 +195,18 @@ export default (props = {}) => {
               />
     
               <CollapsableNavItem
-                eventKey="tables/"
+                // eventKey="tables/"
                 title="Category"
                 icon={faTable}
               
               >
-                <NavItem
+                {/* <NavItem
                   title="All Categories"
-                  link={Routes.GetCategory.path}
-                />
+                  link={Routes.GetCategories.path}
+                /> */}
                 <NavItem
                   title="Add New Category"
-                  link={Routes.AddCategory.path}
+                  link={Routes.Category.path}
                 />
               </CollapsableNavItem>
 

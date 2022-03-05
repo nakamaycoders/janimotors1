@@ -9,11 +9,18 @@ const categorySchema = new mongoose.Schema({
     slug:{
         type:String,
         required:true,
-        unique:true,
+        unique:true
+    },
+    categoryImage:{
+        type:String
+    },
+    type:{
+        type:String
     },
     parentId:{
         type:String
     }
+    
 
 },{timestamps:true})
 
