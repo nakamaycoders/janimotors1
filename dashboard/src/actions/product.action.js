@@ -6,7 +6,7 @@ const getProducts = () => {
     return async (dispatch) => {
       try {
         dispatch({ type: productConstants.GET_ALL_PRODUCTS_REQUEST });
-        const res = await axios.post(`product/getProducts`);
+        const res = await axios.post(`/product/getProducts`);
         if (res.status === 200) {
           const { products } = res.data;
           dispatch({
@@ -28,7 +28,7 @@ const getProducts = () => {
     return async (dispatch) => {
       try {
         dispatch({ type: productConstants.CREATE_NEW_PRODUCTS_REQUEST });
-        const res = await axios.post(`product/create`, form);
+        const res = await axios.post(`/product/create`, form);
         if (res.status === 201) {
           dispatch({ type: productConstants.CREATE_NEW_PRODUCTS_SUCCESS });
           dispatch(getProducts());

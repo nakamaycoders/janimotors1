@@ -5,6 +5,7 @@ export const Routes = {
     DashboardOverview: { path: "/" },
     // GetCategories: {path:"/category/AllCategories"},
     Category: {path:"/category/create"},
+    Products:{path: "/product/create"},
     Transactions: { path: "/transactions" },
     Settings: { path: "/settings" },
     Upgrade: { path: "/upgrade" },

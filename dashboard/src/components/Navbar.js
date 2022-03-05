@@ -7,6 +7,7 @@ import { Row, Col, Nav, Form, Image, Navbar, Dropdown, Container, ListGroup, Inp
 
 import NOTIFICATIONS_DATA from "../data/notifications";
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
+import adminpic from "../assets/img/team/admin-pic.png";
 
 
 export default (props) => {
@@ -86,7 +87,7 @@ export default (props) => {
             <Dropdown as={Nav.Item}>
               <Dropdown.Toggle as={Nav.Link} className="pt-1 px-0">
                 <div className="media d-flex align-items-center">
-                  <Image src="" className="user-avatar md-avatar rounded-circle" />
+                  {/* <Image src={adminpic} className="user-avatar md-avatar rounded-circle" /> */}
                   <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                     <span className="mb-0 font-small fw-bold">Admin</span>
                   </div>

@@ -9,6 +9,7 @@ import DashboardOverview from './dashboard/DashboardOverview';
 import Category from './Category/Category'
 import PrivateRoute from '../components/Private/PrivateRoute';
 import SignIn from '../pages/SignIn/SignIn';
+import Products from './Products/Products';
 // import GetCategories from './Category/GetCategories/GetCategories';
 
 
@@ -59,7 +60,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
     <Switch>
          <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
          <RouteWithSidebar exact path={Routes.Category.path} component={Category} />
-         {/* <RouteWithSidebar exact path={Routes.GetCategories.path} component={GetCategories} /> */}
+         <RouteWithSidebar exact path={Routes.Products.path} component={Products} />
 
       <Route path={Routes.SignIn.path} component={SignIn}/>
     </Switch>
