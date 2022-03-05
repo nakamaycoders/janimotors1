@@ -1,0 +1,21 @@
+*{
+    color: white;
+}
+
+
+.forms{
+    
+border-radius: 5px !important;
+color: black !important;
+
+}
+
+option{
+    color: black !important;
+
+}
+
+Form.Control{
+    border: 2px red solid !important;
+
+}
