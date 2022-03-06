@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const categorySchema = new mongoose.Schema({
+const formSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
@@ -9,19 +9,12 @@ const categorySchema = new mongoose.Schema({
     slug:{
         type:String,
         required:true,
-        unique:true
-    },
-    categoryImage:{
-        type:String
-    },
-    type:{
-        type:String
+        unique:true,
     },
     parentId:{
         type:String
     }
-    
 
 },{timestamps:true})
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("form", formSchema);

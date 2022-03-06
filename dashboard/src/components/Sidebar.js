@@ -154,18 +154,18 @@ export default (props = {}) => {
             <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
               <div className="d-flex align-items-center">
                 <div className="user-avatar lg-avatar me-4">
-                  <Image
+                  {/* <Image
                     src={ProfilePicture}
                     className="card-img-top rounded-circle border-white"
-                  />
+                  /> */}
                 </div>
                 <div className="d-block">
-                  <h6>Hi, Jane</h6>
+                  <h6>Hi, Admin</h6>
                   <Button
                     as={Link}
                     variant="secondary"
                     size="xs"
-                    to={Routes.Signin.path}
+                    to={Routes.SignIn.path}
                     className="text-dark"
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
@@ -195,18 +195,33 @@ export default (props = {}) => {
               />
     
               <CollapsableNavItem
-                eventKey="tables/"
+                // eventKey="tables/"
                 title="Category"
                 icon={faTable}
               
               >
-                <NavItem
+                {/* <NavItem
                   title="All Categories"
-                  link={Routes.GetCategory.path}
-                />
+                  link={Routes.GetCategories.path}
+                /> */}
                 <NavItem
                   title="Add New Category"
-                  link={Routes.AddCategory.path}
+                  link={Routes.Category.path}
+                />
+              </CollapsableNavItem>
+
+
+                            {/* ------------PRODUCTS */}
+
+              <CollapsableNavItem
+                // eventKey="tables/"
+                title="Product"
+                icon={faTable}
+              
+              >
+                <NavItem
+                  title="Add Product"
+                  link={Routes.Products.path}
                 />
               </CollapsableNavItem>
 

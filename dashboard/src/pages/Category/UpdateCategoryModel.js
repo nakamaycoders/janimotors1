@@ -84,7 +84,7 @@ const UpdateCategoryModel = (props) => {
               </FormControl>
             </Col>
 
-            <Col>
+            {/* <Col>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">
                   Select Type
@@ -101,7 +101,7 @@ const UpdateCategoryModel = (props) => {
                   <MenuItem value="page">page</MenuItem>
                 </Select>
               </FormControl>
-            </Col>
+            </Col> */}
           </Row>
         ))}
 

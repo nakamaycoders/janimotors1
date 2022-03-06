@@ -1,4 +1,4 @@
-import axios from "../helpers/axios";
+ import axios from "../helpers/axios";
 import { categoryConstants } from "./constants";
 
 export const createCategory = (form) => {
@@ -26,7 +26,7 @@ export const createCategory = (form) => {
 const getCategory = () => {
   return async (dispatch) => {
     dispatch({ type: categoryConstants.GET_ALL_CATEGORIES_REQUEST });
-    const res = await axios.get("/getCategories");
+    const res = await axios.get("/category/getCategories");
 
     if (res.status === 200) {
       const { categoryList } = res.data;

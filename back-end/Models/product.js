@@ -60,7 +60,7 @@ const productSchema = new mongoose.Schema(
     },
     productPictures: [{ img: { type: String } }],
 
-    // category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
     // createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     updatedAt: Date,
   },

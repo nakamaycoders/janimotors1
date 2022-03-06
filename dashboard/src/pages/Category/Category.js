@@ -20,7 +20,7 @@ import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Button from "@mui/material/Button";
-import {Typography} from "@mui/material/Typography";
+import Typography from "@mui/material/Typography";
 
 const Category = (props) => {
   const [categoryName, setCategoryName] = useState("");
@@ -214,7 +214,6 @@ const Category = (props) => {
 
   return (
     <div>
-      <Layout sidebar>
         <Grid container>
           <Grid item xs={12}>
             <Box style={{ display: "flex" }}>
@@ -290,7 +289,6 @@ const Category = (props) => {
         />
 
         {displayDeleteCategoryModal()}
-      </Layout>
     </div>
   );
 };

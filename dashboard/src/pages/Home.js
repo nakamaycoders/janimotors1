@@ -7,6 +7,11 @@ import Navbar from "../components/Navbar";
 // import Presentation from './Presentation';
 import DashboardOverview from './dashboard/DashboardOverview';
 import Category from './Category/Category'
+import PrivateRoute from '../components/Private/PrivateRoute';
+import SignIn from '../pages/SignIn/SignIn';
+import Products from './Products/Products';
+// import GetCategories from './Category/GetCategories/GetCategories';
+
 
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
@@ -42,7 +47,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
   
           <main className="content">
             <Navbar />
-            <Component {...props} />
+              <Component {...props} />
             {/* <Footer toggleSettings={toggleSettings} showSettings={showSettings} /> */}
           </main>
         </>
@@ -55,7 +60,9 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
     <Switch>
          <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
          <RouteWithSidebar exact path={Routes.Category.path} component={Category} />
+         <RouteWithSidebar exact path={Routes.Products.path} component={Products} />
 
+      <Route path={Routes.SignIn.path} component={SignIn}/>
     </Switch>
   );
   
