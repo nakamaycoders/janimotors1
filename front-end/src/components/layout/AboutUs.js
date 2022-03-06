@@ -27,7 +27,7 @@ function AboutUs() {
             purchasing your next sports or exotic automobile. That's who we are
             at Chicago Motor Cars.
             </div>
-            <button type="button" class="btn btn-pri">Read More</button>
+            <button type="button" className="btn btn-pri">Read More</button>
           </Col>
         </Row>
       

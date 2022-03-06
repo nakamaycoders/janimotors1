@@ -1,5 +1,5 @@
 import React from "react";
-import "../layout/cards.css"
+import "./cards.css";
 
 
 function Cards2() {
