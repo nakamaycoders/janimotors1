@@ -12,25 +12,24 @@ const path = require("path");
 const shortid = require("shortid");
 const router = express.Router();
 
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, path.join(path.dirname(__dirname), 'uploads'));
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, shortid.generate() + "-" + file.originalname);
-//     },
-//   });
-// const upload = multer({storage})
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(path.dirname(__dirname), 'uploads'));
+    },
+    filename: function (req, file, cb) {
+      cb(null, shortid.generate() + "-" + file.originalname);
+    },
+  });
+const upload = multer({storage})
 
-router.route("/product/create").post(addProducts);
+router.post("/product/create",upload.array("productPicture"),addProducts);
 router.get("/products/:slug", getProductsBySlug);
-router.route("/getProducts").get(getProducts);
+router.post("/products/getProducts",getProducts);
 router.get("/product/:productId", getProductDetailsById);
 
 //updateid api
-router.route('/product/:id').put(updateUser)
-
-//delete id
-router.route('/product/:productId').delete(deleteProducts);
+// router.route('/product/:id').put(updateUser)
+// //delete id
+// router.route('/product/:productId').delete(deleteProducts);
 
 module.exports = router;

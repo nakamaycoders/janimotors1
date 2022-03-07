@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import "./style.css";
-import { ImLocation } from 'react-icons/im';
+import {ImLocation} from 'react-icons/im';
 
 
 function Footer() {

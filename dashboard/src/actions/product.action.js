@@ -2,11 +2,11 @@ import axios from '../helpers/axios'
 import { productConstants } from './constants';
 
 
-const getProducts = () => {
+export const getProducts = () => {
     return async (dispatch) => {
       try {
         dispatch({ type: productConstants.GET_ALL_PRODUCTS_REQUEST });
-        const res = await axios.post(`/product/getProducts`);
+        const res = await axios.post(`/products/getProducts`);
         if (res.status === 200) {
           const { products } = res.data;
           dispatch({
