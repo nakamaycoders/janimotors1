@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import TextareaAutosize from "@mui/material/TextareaAutosize"
 import ReusableModel from "../../components/layouts/ReusableModel";
 // import { Form } from "react-bootstrap";
 import Grid from "@mui/material/Grid";
@@ -15,9 +16,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
-import { createProduct } from "../../actions";
+import { createProduct,getProducts } from "../../actions";
 // import { makeStyles } from "@material-ui/styles";
-import './Product.css'
+import "./Product.css";
 
 // ---------------------------TABLE-------------------
 // import PropTypes from "prop-types";
@@ -50,29 +51,40 @@ import { publicUrl } from "../../UrlConfig";
 //   p: 4,
 // };
 
-const  Products= (props)=> {
+const Products = (props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
+  const [engine,setEngine] = useState("")
+  const [condition,setCondition] = useState("");
+  const [trim,setTrim] = useState("");
+  const [model,setModel] = useState("");
+  const [vin,setVin] = useState("");
+  const [milage,setMilage] = useState("");
   const [description, setDescription] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [productPictures, setProductPictures] = useState([]);
   const [show, setShow] = useState(false);
-  const category = useSelector(state => state.category);
-  const product = useSelector(state => state.product);
+  const category = useSelector((state) => state.category);
+  const product = useSelector((state) => state.product);
   const [productDetailsModal, setProductDetailsModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
   const dispatch = useDispatch();
 
   const handleClose = () => {
     setShow(false);
-  }
+  };
 
   const submitProductForm = () => {
     const form = new FormData();
     form.append("name", name);
     form.append("stock", stock);
     form.append("price", price);
+    form.append("engine", engine);
+    form.append("trim", trim);
+    form.append("model", model);
+    form.append("condition", condition);
+    form.append("vin", vin);
     form.append("description", description);
     form.append("category", categoryId);
 
@@ -83,6 +95,9 @@ const  Products= (props)=> {
   };
 
   const handleShow = () => setShow(true);
+
+
+  
 
   const createCategoryList = (categories, options = []) => {
     for (let category of categories) {
@@ -100,9 +115,9 @@ const  Products= (props)=> {
   };
 
   // ------TABLE-------------
-     const displayProductsInTable = () =>{
-       return(
-        <TableContainer component={Paper}>
+  const displayProductsInTable = () => {
+    return (
+      <TableContainer component={Paper}>
         <Table
           sx={{ minWidth: 650 }}
           style={{ fontSize: 12 }}
@@ -118,8 +133,8 @@ const  Products= (props)=> {
             </TableRow>
           </TableHead>
           <TableBody>
-            {product.products.length > 0 ? 
-              product.products.map((product) => (
+            {product.products.length > 0
+              ? product.products.map((product) => (
                   <TableRow
                     onClick={() => showProductDetailsModal(product)}
                     sx={{
@@ -133,15 +148,15 @@ const  Products= (props)=> {
                     <TableCell align="right">{product.name}</TableCell>
                     <TableCell align="right">{product.price}</TableCell>
                     <TableCell align="right">{product.stock}</TableCell>
-                    {/* <TableCell align="right">{product.category.name}</TableCell> */}
+                    <TableCell align="right">{product.category.name}</TableCell>
                   </TableRow>
                 ))
               : null}
           </TableBody>
         </Table>
       </TableContainer>
-       );
-     };
+    );
+  };
   // ------TABLE-------------
 
   // --------------------------MODEL---------------------
@@ -187,6 +202,73 @@ const  Products= (props)=> {
         />
         <TextField
           style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Engine"
+          variant="outlined"
+          value={engine}
+          onChange={(e) => setEngine(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Condition"
+          variant="outlined"
+          value={condition}
+          onChange={(e) => setCondition(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Model"
+          variant="outlined"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Trim"
+          variant="outlined"
+          value={trim}
+          onChange={(e) => setTrim(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="number"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Milage"
+          variant="outlined"
+          value={milage}
+          onChange={(e) => setMilage(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="number"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Vin"
+          variant="outlined"
+          value={vin}
+          onChange={(e) => setVin(e.target.value)}
+        />
+        <TextareaAutosize
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          placeholder="Description"
           autoComplete="off"
           required
           id="outlined-required"
@@ -197,7 +279,7 @@ const  Products= (props)=> {
         />
 
         <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
+          <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
           <Select
             required
             labelId="demo-simple-select-label"
@@ -214,9 +296,7 @@ const  Products= (props)=> {
           </Select>
         </FormControl>
         {productPictures.length > 0
-          ? productPictures.map((pic, item) => (
-              <div key={item}>{pic.name}</div>
-            ))
+          ? productPictures.map((pic, item) => <div key={item}>{pic.name}</div>)
           : null}
         <input
           style={{ marginTop: "8px", width: "-webkit-fill-available" }}
@@ -245,18 +325,18 @@ const  Products= (props)=> {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
-
+  
   const renderProductDetailsModal = () => {
     if (!productDetails) {
       return null;
     }
 
-    console.log('Error aya');
+    console.log("error aya",productDetails);
     return (
       <ReusableModel
-        show={productDetailsModal}
-        size="lg"
-        handleClose={closeProductDetailModal}
+      show={productDetailsModal}
+      size="lg"
+      handleClose={closeProductDetailModal}
         modelName={"Product Details"}
       >
         <Box sx={{ flexGrow: 1 }}>
@@ -279,6 +359,60 @@ const  Products= (props)=> {
             </Grid>
           </Grid>
 
+          <Grid container>
+          <Grid item xs={6}>
+              <Item>
+                <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
+                  Vin
+                </label>
+                <p>{productDetails.vin}</p>
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
+                  Condition
+                </label>
+                <p>{productDetails.condition}</p>
+              </Item>
+            </Grid>
+          </Grid>
+          <Grid container>
+          <Grid item xs={6}>
+              <Item>
+                <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
+                  Model
+                </label>
+                <p>{productDetails.model}</p>
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
+                  Engine
+                </label>
+                <p>{productDetails.engine}</p>
+              </Item>
+            </Grid>
+          </Grid>
+          <Grid container>
+          <Grid item xs={6}>
+              <Item>
+                <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
+                  Milage
+                </label>
+                <p>{productDetails.milage}</p>
+              </Item>
+            </Grid>
+            <Grid item xs={6}>
+              <Item>
+                <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
+                  Trim
+                </label>
+                <p>{productDetails.trim}</p>
+              </Item>
+            </Grid>
+          </Grid>
           <Grid container>
             <Grid item xs={6}>
               <Item>
@@ -315,7 +449,7 @@ const  Products= (props)=> {
                 <label style={{ fontWeight: "bolder", paddingTop: 9 }}>
                   Product Picture
                 </label>
-                <Box style={{display:'flex'}}>
+                <Box style={{ display: "flex" }}>
                   {productDetails.productPictures.map((picture) => (
                     <div className="product-image">
                       <img src={publicUrl(picture.img)} alt="" />
@@ -331,36 +465,48 @@ const  Products= (props)=> {
   };
   return (
     <div>
-        <Grid container>
-          <Grid item xs={12}>
-            <Box style={{ display: "flex" }}>
-              <Typography variant="h4" component="h1">
-                product
-              </Typography>
-              <Button
-                style={{
-                  marginLeft: "auto",
-                  backgroundColor: "#323232",
-                  color: "white",
-                  fontSize: "small",
-                }}
-                onClick={handleShow}
-              >
-                Add Product
-              </Button>
-            </Box>
-          </Grid>
-          {/* ------------------------------------TABLE--------------------- */}
-
-              {displayProductsInTable()}
-            
-         {/* {displayProductsInTable()} */}
-          {/* ------------------------------------TABLE--------------------- */}
-          {CreateProductResuableModal()}
-          {renderProductDetailsModal()}
+      <Grid container>
+        <Grid item xs={12}>
+          <Box style={{ display: "flex" }}>
+            <Typography variant="h4" component="h1">
+              product
+            </Typography>
+            <Button
+              style={{
+                marginLeft: "auto",
+                backgroundColor: "#323232",
+                color: "white",
+                fontSize: "small",
+              }}
+              onClick={handleShow}
+            >
+              Add Product
+            </Button>
+          </Box>
         </Grid>
+        {/* ------------------------------------TABLE--------------------- */}
+
+        {displayProductsInTable()}
+
+        {/* {displayProductsInTable()} */}
+        {/* ------------------------------------TABLE--------------------- */}
+        {CreateProductResuableModal()}
+        {renderProductDetailsModal()}
+        <Box>
+          <Button
+          style={{
+            marginLeft: "auto",
+            backgroundColor: "red",
+            color: "white",
+            fontSize: "small",
+          }}
+          >
+            Delete
+          </Button>
+        </Box>
+      </Grid>
     </div>
   );
-}
+};
 
 export default Products;

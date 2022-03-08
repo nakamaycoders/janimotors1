@@ -13,6 +13,7 @@ export const Routes = {
     Billing: { path: "/examples/billing" },
     Invoice: { path: "/examples/invoice" },
     SignIn: { path: "/signin" },
+    SignOut: { path: "/signout" },
     // Signup: { path: "/examples/sign-up" },
     ForgotPassword: { path: "/examples/forgot-password" },
     ResetPassword: { path: "/examples/reset-password" },

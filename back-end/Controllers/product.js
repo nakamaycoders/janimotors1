@@ -19,15 +19,17 @@ exports.addProducts = (req, res) => {
     model,
     year,
     description,
+    category
   } = req.body;
 
-  // let productPictures = [];
+  let productPictures = [];
 
-  // if (req.files.length > 0) {
-  //   productPictures = req.files.map((file) => {
-  //     return { img: file.filename };
-  //   });
-  // }
+  if (req.files.length > 0) {
+    productPictures = req.files.map((file) => {
+      return { img: file.filename };
+    });
+  }
+
   const product = new productModel({
     name: name,
     slug: slugify(name),
@@ -43,8 +45,8 @@ exports.addProducts = (req, res) => {
     stock,
     year,
     description,
-    // productPictures,
-    // category,
+    productPictures,
+    category,
     // createdBy: req.user._id,
   });
   product.save((err, product) => {
@@ -56,7 +58,7 @@ exports.addProducts = (req, res) => {
     if (product) {
       return res.status(201).json({
         product,
-        // file: req.files,
+        file: req.files,
       });
     }
   });
@@ -67,7 +69,7 @@ exports.getProductsBySlug = (req, res) => {
   product
     .findOne({ slug: slug })
     .select(
-      "_id name condition price year stock vin interiorColor exteriorColor"
+      "_id name condition price year stock interiorColor exteriorColor"
     )
     .exec((err, product) => {
       if (err) {
@@ -83,7 +85,7 @@ exports.getProductsBySlug = (req, res) => {
 exports.getProducts = async (req, res) => {
   const products = await productModel
     .find({})
-    // .select("_id name condition price year stock vin interiorColor exteriorColor")
+    // .select("_id name condition price year model trim condition stock vin interiorColor exteriorColor")
     // .populate({ path: "category", select: "_id name" })
     .exec();
 
