@@ -11,6 +11,7 @@ import {Nav} from './components/layout/Nav'
 import Calculator from './Financing/Calculator';
 
 import AboutUs from './components/layout/AboutUs';
+import TradeINCar from './Financing/TradeINCar'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
      <Switch>
        <Route path={"/"}  exact component = {HomeScreen} />
        <Route path={"/calculator"}  component={Calculator} />
+       <Route path={"/tradeincar"}  component={TradeINCar} />
       
 
        
