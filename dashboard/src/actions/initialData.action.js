@@ -3,7 +3,6 @@ import {
   // initialDataConstants,
   categoryConstants,
   productConstants,
-  // orderConstants
 } from "./constants";
 
 export const getInitialData = () => {
@@ -19,10 +18,6 @@ export const getInitialData = () => {
         type: productConstants.GET_ALL_PRODUCTS_SUCCESS,
         payload: { products },
       });
-      // dispatch({
-      //   type: orderConstants.GET_CUSTOMER_ORDER_SUCCESS,
-      //   payload: { orders },
-      // });
     }
     console.log(res);
   };

@@ -2,12 +2,12 @@ import { authConstants } from "../actions/constants";
 
 const initialState ={
     token: null,
-    user:{
-        firstName: '',
-        lastName: '',
-        email: '',
-        picture: ''
-    },
+    // user:{
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     picture: ''
+    // },
     authenticate: false,
     authenticating: false,
     loading: false,
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
             case authConstants.LOGIN_SUCCESS:
             state = {
                 ...state,
-                user: action.payload.user,
+                // user: action.payload.user,
                 token: action.payload.token,
                 authenticate: true,
                 authenticating: false

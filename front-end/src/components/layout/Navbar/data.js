@@ -162,7 +162,7 @@ export const financingDropdown = [
     {
         id:3,
         title:'Calculate Your Trade',
-        path:'/trade-in-car-jani-il',
+        path:'/tradeincar',
         cName:'submenu-item',
     },
     {
