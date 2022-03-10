@@ -23,6 +23,7 @@
     "react-hook-form": "^7.27.1",
     "react-icons": "^4.3.1",
     "react-multi-carousel": "^2.8.0",
+    "react-quill": "github:zenoamaro/react-quill",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^7.2.6",
     "react-responsive-carousel": "^3.2.22",

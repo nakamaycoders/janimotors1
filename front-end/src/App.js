@@ -12,6 +12,7 @@ import Calculator from './Financing/Calculator';
 
 import AboutUs from './components/layout/AboutUs';
 import TradeINCar from './Financing/TradeINCar'
+import Contactus from './aboutUs/Contactus';
 
 
 
@@ -31,7 +32,7 @@ function App() {
        <Route path={"/"}  exact component = {HomeScreen} />
        <Route path={"/calculator"}  component={Calculator} />
        <Route path={"/tradeincar"}  component={TradeINCar} />
-       {/* <Route path={"/text"}  component={Text} /> */}
+       <Route path={"/contactus"}  component={Contactus} />
       
 
        

@@ -211,7 +211,7 @@ export const aboutUsDropdown = [
     {
         id:2,
         title:'Contact Us',
-        path:'/contact-us',
+        path:'/contactus',
         cName:'submenu-item'
     },
     {

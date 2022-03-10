@@ -5,7 +5,7 @@ import {Cardss} from './layout/Cardss';
 
 import {Banner} from './layout/Banner'
 import {Search} from './layout/Search/index'
-import AboutUs from './layout/AboutUs'
+
 
 
 function HomeScreen() {

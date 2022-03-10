@@ -23,18 +23,14 @@ function TradeINCar() {
   
   const [formError, setFormError] = useState(false);
   const [formmakeError, setFormmakeError] = useState(false);
-  const [formmodelError, setFormmodelError] = useState(false);
-  const [FnameError, setFnameError] = useState(false);
-  const [lnameError, setlnameError] = useState(false);
+
+
   // ---------------------------------------------------------------------------
-  const [IsSubmit, setIsSubmit] = useState(false);
+
   const [value, setValue] = useState({ val: "" });
   const [makeValue, setmakeValue] = useState({ val: "" });
-  const [modelInput, setmodelInput] = useState({ val: "" });
-  const [fname, setfname] = useState({ val: "" });
-  const [lname, setlname] = useState({ val: "" });
-  const [zip, setzip] = useState({ val: "" });
- 
+
+
  
   const handleChange = (e) => {
     setValue({ val: e.target.value });
@@ -66,17 +62,7 @@ function TradeINCar() {
 
     
     
-    if(modelInput.val == "")
-    {
-      setFormmodelError(true)
- 
-      
-    }
-    else if(modelInput.val == "" )
-    {
-      setFormmodelError(false)
-      
-    }
+   
    
   };
 
@@ -158,6 +144,7 @@ function TradeINCar() {
     "Volkswagen",
     "Volvo",
   ];
+
   let optionItems = obj.map((item) => (
     <option key={item} value={item}>
       {item}
@@ -195,8 +182,10 @@ function TradeINCar() {
                   className="form-select"
                   value={value.val}
                   onChange={handleChange}
+                  
+                  
                 >
-                  <option>Open this select menu</option>
+                  <option >Open this select menu</option>
                   {optionsForYear}
                 </select>
                 {formError && <small className="text-danger">{message}</small>}
@@ -223,7 +212,7 @@ function TradeINCar() {
               <input
                 type="text"
                 className={`form-control ${errors.model && "invalid"}`}
-                {...register("model", { required: "model is Required" })}
+                {...register("model", { required: "Model is Required" })}
                 onKeyUp={() => {
                   trigger("model");
                 }}
