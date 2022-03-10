@@ -156,7 +156,7 @@ export const financingDropdown = [
     {
         id:2,
         title:'Trucks & Equipment Online Credit Approval',
-        path:'/trucks-and-equipment-online-credit-approval',
+        path:'/text',
         cName:'submenu-item',
     },
     {

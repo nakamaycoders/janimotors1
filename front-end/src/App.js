@@ -14,12 +14,15 @@ import AboutUs from './components/layout/AboutUs';
 import TradeINCar from './Financing/TradeINCar'
 
 
+
+
 function App() {
   
   return (
   
     <BrowserRouter>
     <div >
+  
 
      <Nav/>
      <Navbar/>
@@ -28,6 +31,7 @@ function App() {
        <Route path={"/"}  exact component = {HomeScreen} />
        <Route path={"/calculator"}  component={Calculator} />
        <Route path={"/tradeincar"}  component={TradeINCar} />
+       {/* <Route path={"/text"}  component={Text} /> */}
       
 
        
