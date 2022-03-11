@@ -95,10 +95,7 @@ const Products = (props) => {
   };
 
   const handleShow = () => setShow(true);
-
-
   
-
   const createCategoryList = (categories, options = []) => {
     for (let category of categories) {
       options.push({ value: category._id, name: category.name });

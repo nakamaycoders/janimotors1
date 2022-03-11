@@ -1,44 +1,20 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import HomeScreen from './components/HomeScreen';
-
+import Home from './components/Page/Home/Home';
 import { BrowserRouter ,Route, Switch} from 'react-router-dom';
-
-import Footer from './components/layout/Footer';
-import { Navbar } from './components/layout/Navbar';
-import {Nav} from './components/layout/Nav'
 import Calculator from './Financing/Calculator';
+import Product from './components/Page/ProductPage/Product'
 
-import AboutUs from './components/layout/AboutUs';
 
-
-function App() {
+function App() {  
   
   return (
-  
     <BrowserRouter>
-    <div >
-
-     <Nav/>
-     <Navbar/>
-
      <Switch>
-       <Route path={"/"}  exact component = {HomeScreen} />
-       <Route path={"/calculator"}  component={Calculator} />
-      
-
-       
-    
-
-       
-    
+       <Route path="/"  exact component = {Home} />
+       <Route path="/calculator" component={Calculator} />
+       <Route path="/:slug" component={Product}/>
      </Switch>
-
-    <AboutUs/>
-     <Footer/>
-     
-    </div>
     </BrowserRouter>
     );
 }

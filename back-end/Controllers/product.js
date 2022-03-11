@@ -1,7 +1,7 @@
 const productModel = require("../models/product");
 const shortid = require("shortid");
 const slugify = require("slugify");
-const category = require("../models/category");
+const Category = require("../models/category");
 const product = require("../models/product");
 
 exports.addProducts = (req, res) => {
@@ -66,18 +66,30 @@ exports.addProducts = (req, res) => {
 
 exports.getProductsBySlug = (req, res) => {
   const { slug } = req.params;
-  product
+  Category
     .findOne({ slug: slug })
     .select(
-      "_id name condition price year stock interiorColor exteriorColor"
+      "_id"
     )
-    .exec((err, product) => {
+    .exec((err, category) => {
       if (err) {
         return res.status(400).json({
           err,
         });
-      } else {
-        res.status(200).json({ product });
+      } 
+      if(category){
+        product.find({category: category._id}).exec((error,products)=>{
+          if(error){
+            return res.status(400).json({
+              error
+            })
+          }
+          else{
+            return res.status(201).json({
+              products
+            })
+          }
+        })
       }
     });
 };
