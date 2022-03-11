@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "react-datetime/css/react-datetime.css";
 import "./TradeInCar.css";
 import { useForm } from "react-hook-form";
-import { Form, Button } from "react-bootstrap";
-
-
+import { Form } from "react-bootstrap";
 
 const message = "Please fill out th given field correctly you Dumb fuck";
 function TradeINCar() {
@@ -20,18 +18,15 @@ function TradeINCar() {
     console.log(data);
     reset();
   };
-  
+
   const [formError, setFormError] = useState(false);
   const [formmakeError, setFormmakeError] = useState(false);
-
 
   // ---------------------------------------------------------------------------
 
   const [value, setValue] = useState({ val: "" });
   const [makeValue, setmakeValue] = useState({ val: "" });
 
-
- 
   const handleChange = (e) => {
     setValue({ val: e.target.value });
 
@@ -44,40 +39,32 @@ function TradeINCar() {
     setFormmakeError(false);
   };
 
- 
-
-  
   const handleFormSubmission = () => {
-    if (value.val == "") {
+    if (value.val === "") {
       setFormError(true);
-    } else if (value.val == "") {
+    } else if (value.val === "") {
       setFormError(false);
-    } 
-    
-    if (makeValue.val == "") {
-      setFormmakeError(true);
-    } else if (makeValue.val == "") {
-      setFormmakeError(false);
-    } 
+    }
 
-    
-    
-   
-   
+    if (makeValue.val === "") {
+      setFormmakeError(true);
+    } else if (makeValue.val === "") {
+      setFormmakeError(false);
+    }
   };
 
-       //Gets Years from 1900 to 2022
-       const arrayOfyears = [];
-       const currentDate = new Date();
-       for (let i = 1900; i <= currentDate.getFullYear(); i++) {
-         arrayOfyears.push(i);
-       }
-     
-       let optionsForYear = arrayOfyears.map((item) => (
-         <option key={item} value={item}>
-           {item}
-         </option>
-       ));
+  //Gets Years from 1900 to 2022
+  const arrayOfyears = [];
+  const currentDate = new Date();
+  for (let i = 1900; i <= currentDate.getFullYear(); i++) {
+    arrayOfyears.push(i);
+  }
+
+  let optionsForYear = arrayOfyears.map((item) => (
+    <option key={item} value={item}>
+      {item}
+    </option>
+  ));
   const obj = [
     "Abarth",
     "Alfa Romeo",
@@ -151,9 +138,6 @@ function TradeINCar() {
     </option>
   ));
 
-
-
-
   return (
     <div>
       <div className="container text-center">
@@ -171,7 +155,7 @@ function TradeINCar() {
           to make the right decision without any strings attached.
         </p>
 
-        <div className="row  " style={{margin: "15px 0 15px 0" }}>
+        <div className="row  " style={{ margin: "15px 0 15px 0" }}>
           <div className="   col-md-6">
             <h2 style={{ color: "blue" }}>Vehicle Information</h2>
             {/* ---------------------------------------------------------------------------------------- */}
@@ -182,10 +166,8 @@ function TradeINCar() {
                   className="form-select"
                   value={value.val}
                   onChange={handleChange}
-                  
-                  
                 >
-                  <option >Open this select menu</option>
+                  <option>Open this select menu</option>
                   {optionsForYear}
                 </select>
                 {formError && <small className="text-danger">{message}</small>}
@@ -208,28 +190,23 @@ function TradeINCar() {
               </div>
 
               <div className="form-group text-start">
-              <label >Model</label>
-              <input
-                type="text"
-                className={`form-control ${errors.model && "invalid"}`}
-                {...register("model", { required: "Model is Required" })}
-                onKeyUp={() => {
-                  trigger("model");
-                }}
-              />
-              {errors.model && (
-                <small className="text-danger">{errors.model.message}</small>
-              )}
+                <label>Model</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.model && "invalid"}`}
+                  {...register("model", { required: "Model is Required" })}
+                  onKeyUp={() => {
+                    trigger("model");
+                  }}
+                />
+                {errors.model && (
+                  <small className="text-danger">{errors.model.message}</small>
+                )}
               </div>
-                
 
               <div className="form-group text-start">
                 <label className="">Vin</label>
-                <input
-                  className="form-control"
-                  type="text"
-                />
-                
+                <input className="form-control" type="text" />
               </div>
 
               <div className="text-start">
@@ -246,7 +223,6 @@ function TradeINCar() {
               <div className="form-group text-start">
                 <label className="">Trim</label>
                 <input className="form-control" type="text" />
-               
               </div>
 
               <div className="form-group text-start">
@@ -302,51 +278,54 @@ function TradeINCar() {
           </div>
 
           <div className="col-md-6">
-           
-          <h2 style={{ color: "blue" }}>Vehicle Information</h2>
+            <h2 style={{ color: "blue" }}>Vehicle Information</h2>
 
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-group text-start">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.FirstName && "invalid"}`}
+                  {...register("FirstName", {
+                    required: "First Name is Required",
+                  })}
+                  onKeyUp={() => {
+                    trigger("FirstName");
+                  }}
+                />
+                {errors.FirstName && (
+                  <small className="text-danger">
+                    {errors.FirstName.message}
+                  </small>
+                )}
+              </div>
+              <div className="form-group text-start">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.LastName && "invalid"}`}
+                  {...register("LastName", {
+                    required: "Last Name is Required",
+                  })}
+                  onKeyUp={() => {
+                    trigger("LastName");
+                  }}
+                />
+                {errors.LastName && (
+                  <small className="text-danger">
+                    {errors.LastName.message}
+                  </small>
+                )}
+              </div>
 
-           
-           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group text-start">
-              <label >First Name</label>
-              <input
-                type="text"
-                className={`form-control ${errors.FirstName && "invalid"}`}
-                {...register("FirstName", { required: "First Name is Required" })}
-                onKeyUp={() => {
-                  trigger("FirstName");
-                }}
-              />
-              {errors.FirstName && (
-                <small className="text-danger">{errors.FirstName.message}</small>
-              )}
-            </div>
-            <div className="form-group text-start">
-              <label >Last Name</label>
-              <input
-                type="text"
-                className={`form-control ${errors.LastName && "invalid"}`}
-                {...register("LastName", { required: "Last Name is Required" })}
-                onKeyUp={() => {
-                  trigger("LastName");
-                }}
-              />
-              {errors.LastName && (
-                <small className="text-danger">{errors.LastName.message}</small>
-              )}
-            </div>
-
-            <div className="form-group text-start">
+              <div className="form-group text-start">
                 <label className="">Address</label>
                 <input className="form-control" type="text" />
-                
               </div>
 
               <div className="form-group text-start">
                 <label className="">City</label>
                 <input className="form-control" type="text" />
-                
               </div>
 
               <div className="text-start">
@@ -413,63 +392,65 @@ function TradeINCar() {
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </select>
-               
               </div>
 
               <div className="form-group text-start">
-              <label >Zip</label>
-              <input
-                type="Num"
-                className={`form-control ${errors.Zip && "invalid"}`}
-                {...register("Zip", { required: "Zip is Required" })}
-                onKeyUp={() => {
-                  trigger("Zip");
-                }}
-              />
-              {errors.Zip && (
-                <small className="text-danger">{errors.Zip.message}</small>
-              )}
-            </div>
+                <label>Zip</label>
+                <input
+                  type="Num"
+                  className={`form-control ${errors.Zip && "invalid"}`}
+                  {...register("Zip", { required: "Zip is Required" })}
+                  onKeyUp={() => {
+                    trigger("Zip");
+                  }}
+                />
+                {errors.Zip && (
+                  <small className="text-danger">{errors.Zip.message}</small>
+                )}
+              </div>
 
-            
-            <div  className="form-group text-start">
-              <label  >Email</label>
-              <input
-                type="text"
-                className={`form-control ${errors.email && "invalid"}`}
-                {...register("email", { required: "Email is Required" ,
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address",
-                }})}
-                onKeyUp={() => {
-                  trigger("email");
-                }}
-              />
-              {errors.email && (
-                <small className="text-danger">{errors.email.message}</small>
-              )}
-            </div>
-            <div className="form-group text-start">
-              <label  >Day Phone</label>
-              <input
-                type="text"
-                className={`form-control ${errors.phone && "invalid"}`}
-                {...register("phone", { required: "Phone is Required",
-                pattern: {
-                  value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                  message: "Invalid phone no",
-                },
-               })}
-               onKeyUp={() => {
-                trigger("phone");
-              }}
-              />
-              {errors.phone && (
-                <small className="text-danger">{errors.phone.message}</small>
-              )}
-            </div> 
-            {/* <div className="form-group text-start">
+              <div className="form-group text-start">
+                <label>Email</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.email && "invalid"}`}
+                  {...register("email", {
+                    required: "Email is Required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                  onKeyUp={() => {
+                    trigger("email");
+                  }}
+                />
+                {errors.email && (
+                  <small className="text-danger">{errors.email.message}</small>
+                )}
+              </div>
+              <div className="form-group text-start">
+                <label>Day Phone</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.phone && "invalid"}`}
+                  {...register("phone", {
+                    required: "Phone is Required",
+                    pattern: {
+                      value:
+                        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                      message: "Invalid phone no",
+                    },
+                  })}
+                  onKeyUp={() => {
+                    trigger("phone");
+                  }}
+                />
+                {errors.phone && (
+                  <small className="text-danger">{errors.phone.message}</small>
+                )}
+              </div>
+              {/* <div className="form-group text-start">
               <label  >Message:</label>
               <textarea
                 className={`form-control ${errors.message && "invalid"}`}
@@ -491,13 +472,13 @@ function TradeINCar() {
                 <small className="text-danger">{errors.message.message}</small>
               )}
             </div> */}
-            <input
-              type="submit"
-              className="btn btn-primary my-3"
-              value="Submit"
-              onClick={handleFormSubmission}
-            />
-          </form>
+              <input
+                type="submit"
+                className="btn btn-primary my-3"
+                value="Submit"
+                onClick={handleFormSubmission}
+              />
+            </form>
           </div>
         </div>
       </div>

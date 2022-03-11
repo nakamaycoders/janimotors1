@@ -14,25 +14,31 @@ function Calculator() {
     setVPstyle({});
     setDPstyle({});
     setMonthsStateVal({ val: "" });
-  }
+  };
   const CalculateResult = () => {
-
-    if (isNaN(state.val) || isNaN(DPval.val) || isNaN(monthsStateVal.val)) {   //will check if the entered value is a number or not 
+    if (isNaN(state.val) || isNaN(DPval.val) || isNaN(monthsStateVal.val)) {
+      //will check if the entered value is a number or not
       // alert("enter a number");
       // setVPstyle({ border: "2px solid red" });
       setResult({ val: "Check the entered Values and Try again! " });
-
     } else {
       let calculatedInterest = parseFloat(interest) / 100 / monthsStateVal.val;
       const x = Math.pow(1 + calculatedInterest, monthsStateVal.val);
-      const monthly = ((parseFloat(state.val) - parseFloat(DPval.val)) * x * calculatedInterest) / (x - 1);
+      const monthly =
+        ((parseFloat(state.val) - parseFloat(DPval.val)) *
+          x *
+          calculatedInterest) /
+        (x - 1);
       const finalizedPayment = monthly.toFixed(2);
       // console.log(finalizedPayment);
-      if (finalizedPayment < 0 || finalizedPayment == "Infinity" || finalizedPayment == "NaN") {
+      if (
+        finalizedPayment < 0 ||
+        finalizedPayment === "Infinity" ||
+        finalizedPayment === "NaN"
+      ) {
         setResult({ val: "Check the entered Values and Try again! " });
       } else {
         setResult({ val: finalizedPayment });
-
       }
     }
 
@@ -41,29 +47,24 @@ function Calculator() {
       setVPstyle({ border: "2px solid red" });
     } else if (isNaN(DPval.val)) {
       setDPstyle({ border: "2px solid red" });
-    }else if (isNaN(monthsStateVal.val)) {
+    } else if (isNaN(monthsStateVal.val)) {
       setMonthsStyle({ border: "2px solid red" });
-    }else {
+    } else {
       setVPstyle({});
       setDPstyle({});
       setMonthsStyle({});
     }
-
-  }
+  };
   const [state, setState] = useState({ val: "" });
   const [DPval, setDPval] = useState({ val: "" });
   const [monthsStateVal, setMonthsStateVal] = useState({ val: "" });
-  const [result, setResult] = useState({ val: "" })
+  const [result, setResult] = useState({ val: "" });
   const [VPstyle, setVPstyle] = useState({});
   const [DPstyle, setDPstyle] = useState({});
   const [MonthsStyle, setMonthsStyle] = useState({});
 
-
-
-
   return (
     <Container>
-
       <Row>
         <h1
           style={{ color: "white", textAlign: "center", margin: "7px 0 7px 0" }}
@@ -102,40 +103,94 @@ function Calculator() {
       <Row style={{ margin: "15px 0 15px 0" }}>
         <Col>
           <Form.Label style={{ color: "white" }}>Vehicle Price</Form.Label>
-          <Form.Control value={state.val} onChange={e => setState({ val: e.target.value })} className="classForCleanUp" id="vehiclePrice" type="text" placeholder="Vehicle Price" style={VPstyle} />
+          <Form.Control
+            value={state.val}
+            onChange={(e) => setState({ val: e.target.value })}
+            className="classForCleanUp"
+            id="vehiclePrice"
+            type="text"
+            placeholder="Vehicle Price"
+            style={VPstyle}
+          />
         </Col>
         <Col>
           <Form.Label style={{ color: "white" }}>Down Payment</Form.Label>
-          <Form.Control value={DPval.val} onChange={e => setDPval({ val: e.target.value })} className="classForCleanUp" id="downPay" type="text" placeholder="Down Payment" style={DPstyle} />
+          <Form.Control
+            value={DPval.val}
+            onChange={(e) => setDPval({ val: e.target.value })}
+            className="classForCleanUp"
+            id="downPay"
+            type="text"
+            placeholder="Down Payment"
+            style={DPstyle}
+          />
         </Col>
       </Row>
       <Row style={{ margin: "15px 0 15px 0" }}>
         <Col>
           <Form.Label style={{ color: "white" }}>Amount of Loan</Form.Label>
-          <Form.Control className="classForCleanUp" defaultValue={state.val} id="AofLoan" type="text" placeholder="Amount of Loan" disabled />
+          <Form.Control
+            className="classForCleanUp"
+            defaultValue={state.val}
+            id="AofLoan"
+            type="text"
+            placeholder="Amount of Loan"
+            disabled
+          />
         </Col>
 
         <Col>
-          <Form.Label style={{ color: "white" }}>Interest Rate <b>(ARP)</b></Form.Label>
-          <Form.Control className="classForCleanUp" id="interest" defaultValue={3.9} type="text" placeholder="Interest" disabled />
+          <Form.Label style={{ color: "white" }}>
+            Interest Rate <b>(ARP)</b>
+          </Form.Label>
+          <Form.Control
+            className="classForCleanUp"
+            id="interest"
+            defaultValue={3.9}
+            type="text"
+            placeholder="Interest"
+            disabled
+          />
         </Col>
-
       </Row>
       <Row style={{ margin: "15px 0 15px 0" }}>
         <Col>
-          <Form.Label style={{ color: "white" }}>Loan Term <b>(months)</b></Form.Label>
-          <Form.Control value={monthsStateVal.val} onChange={e => setMonthsStateVal({ val: e.target.value })} className="classForCleanUp" id="loanTerm" type="text" placeholder="Months to Repay" style={MonthsStyle}/>
+          <Form.Label style={{ color: "white" }}>
+            Loan Term <b>(months)</b>
+          </Form.Label>
+          <Form.Control
+            value={monthsStateVal.val}
+            onChange={(e) => setMonthsStateVal({ val: e.target.value })}
+            className="classForCleanUp"
+            id="loanTerm"
+            type="text"
+            placeholder="Months to Repay"
+            style={MonthsStyle}
+          />
         </Col>
         <Col>
           <Form.Label style={{ color: "white" }}>Estimated payment </Form.Label>
-          <Form.Control className="classForCleanUp" id="CalculatedResult" type="text" placeholder="Estimated Payment" value={result.val} disabled />
+          <Form.Control
+            className="classForCleanUp"
+            id="CalculatedResult"
+            type="text"
+            placeholder="Estimated Payment"
+            value={result.val}
+            disabled
+          />
         </Col>
       </Row>
       <div style={{ textAlign: "center", margin: "7px 0 7px 0" }}>
         <Button variant="primary" size="lg" active onClick={CalculateResult}>
           Calculate
         </Button>{" "}
-        <Button style={{ margin: "7px 0 7px 15px" }} variant="secondary" size="lg" active onClick={clearFields}>
+        <Button
+          style={{ margin: "7px 0 7px 15px" }}
+          variant="secondary"
+          size="lg"
+          active
+          onClick={clearFields}
+        >
           Clear
         </Button>
       </div>
