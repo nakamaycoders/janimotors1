@@ -156,13 +156,13 @@ export const financingDropdown = [
     {
         id:2,
         title:'Trucks & Equipment Online Credit Approval',
-        path:'/trucks-and-equipment-online-credit-approval',
+        path:'/text',
         cName:'submenu-item',
     },
     {
         id:3,
         title:'Calculate Your Trade',
-        path:'/trade-in-car-jani-il',
+        path:'/tradeincar',
         cName:'submenu-item',
     },
     {
@@ -211,7 +211,7 @@ export const aboutUsDropdown = [
     {
         id:2,
         title:'Contact Us',
-        path:'/contact-us',
+        path:'/contactus',
         cName:'submenu-item'
     },
     {

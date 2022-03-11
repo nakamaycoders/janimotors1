@@ -42,7 +42,9 @@ const responsive = {
     
     {
         cardsdata.map((cardsdata)=>{
+          
             return(
+              
                 <div className='card container'>
 
                 <img src={cardsdata.image} alt="heello" className='cardok img-fluid' />
@@ -54,7 +56,12 @@ const responsive = {
                             <h5>Milage : 3000km </h5>
                         
                         </td>
-                        <td><h5>Stock : 3000km </h5></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Stock : 3000km </h5>
+                        
+                        </td>
                     </tr>
                     <h5 className='show' >Engine: </h5>
                     <p className='showw'> {cardsdata.description}</p>

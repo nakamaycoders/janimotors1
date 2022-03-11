@@ -1,67 +1,69 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button'
-
-
+import Button from "react-bootstrap/Button";
 
 function Calculator() {
-  
   const interest = 4;
 
-  const clearFields = ()=>{
+  const clearFields = () => {
     // console.log("fields Cleared");
-    setState({val: ""});
-    setDPval({val: ""});
-    setResult({val: ""});
+    setState({ val: "" });
+    setDPval({ val: "" });
+    setResult({ val: "" });
     setVPstyle({});
     setDPstyle({});
+    setMonthsStateVal({ val: "" });
   }
-  const CalculateResult = () =>{
-    
-    if(isNaN(state.val) || isNaN(DPval.val) || isNaN(monthsStateVal.val)){   //will check if the entered value is a number or not 
-      // alert("enter a number");
-      setVPstyle({border: "2px solid red"});
-      setResult({val: "Check the entered Values and Try again! "});
+  const CalculateResult = () => {
 
-    }else{ 
-      let calculatedInterest = parseFloat(interest) /100 /12;
-      const x = Math.pow(1 + calculatedInterest,  12);
-      const monthly = ((parseFloat(state.val) - parseFloat(DPval.val)) * x * calculatedInterest)/(x-1);
+    if (isNaN(state.val) || isNaN(DPval.val) || isNaN(monthsStateVal.val)) {   //will check if the entered value is a number or not 
+      // alert("enter a number");
+      // setVPstyle({ border: "2px solid red" });
+      setResult({ val: "Check the entered Values and Try again! " });
+
+    } else {
+      let calculatedInterest = parseFloat(interest) / 100 / monthsStateVal.val;
+      const x = Math.pow(1 + calculatedInterest, monthsStateVal.val);
+      const monthly = ((parseFloat(state.val) - parseFloat(DPval.val)) * x * calculatedInterest) / (x - 1);
       const finalizedPayment = monthly.toFixed(2);
       // console.log(finalizedPayment);
-      if(finalizedPayment < 0){
-        setResult({val: "Check the entered Values and Try again! "});
-      }else{
-        setResult({val: finalizedPayment});
+      if (finalizedPayment < 0 || finalizedPayment == "Infinity" || finalizedPayment == "NaN") {
+        setResult({ val: "Check the entered Values and Try again! " });
+      } else {
+        setResult({ val: finalizedPayment });
 
       }
     }
 
     //Error Checking
-    if(isNaN(state.val)){
-      setVPstyle({border: "2px solid red"});
-    }else if(isNaN(DPval.val)){
-      setDPstyle({border: "2px solid red"});
+    if (isNaN(state.val)) {
+      setVPstyle({ border: "2px solid red" });
+    } else if (isNaN(DPval.val)) {
+      setDPstyle({ border: "2px solid red" });
+    }else if (isNaN(monthsStateVal.val)) {
+      setMonthsStyle({ border: "2px solid red" });
     }else {
       setVPstyle({});
       setDPstyle({});
-      
+      setMonthsStyle({});
     }
-    
+
   }
-  const [state, setState] = useState({val : ""});
-  const [DPval, setDPval] = useState({val : ""});
-  const [monthsStateVal, setMonthsStateVal] = useState({val : "12"});
-  const [result, setResult] = useState({val: ""})
+  const [state, setState] = useState({ val: "" });
+  const [DPval, setDPval] = useState({ val: "" });
+  const [monthsStateVal, setMonthsStateVal] = useState({ val: "" });
+  const [result, setResult] = useState({ val: "" })
   const [VPstyle, setVPstyle] = useState({});
   const [DPstyle, setDPstyle] = useState({});
+  const [MonthsStyle, setMonthsStyle] = useState({});
 
-  
+
+
 
   return (
     <Container>
-      
+
       <Row>
         <h1
           style={{ color: "white", textAlign: "center", margin: "7px 0 7px 0" }}
@@ -99,42 +101,44 @@ function Calculator() {
       </Row>
       <Row style={{ margin: "15px 0 15px 0" }}>
         <Col>
-        <Form.Label style={{ color: "white" }}>Vehicle Price</Form.Label>
-          <Form.Control value={state.val} onChange={e => setState({ val: e.target.value })} className="classForCleanUp" id="vehiclePrice" type="text" placeholder="Vehicle Price" style={VPstyle}/>
+          <Form.Label style={{ color: "white" }}>Vehicle Price</Form.Label>
+          <Form.Control value={state.val} onChange={e => setState({ val: e.target.value })} className="classForCleanUp" id="vehiclePrice" type="text" placeholder="Vehicle Price" style={VPstyle} />
         </Col>
         <Col>
-        <Form.Label style={{ color: "white" }}>Down Payment</Form.Label>
-          <Form.Control value={DPval.val} onChange={e => setDPval({ val: e.target.value })} className="classForCleanUp" id="downPay" type="text" placeholder="Down Payment" style={DPstyle}/>
+          <Form.Label style={{ color: "white" }}>Down Payment</Form.Label>
+          <Form.Control value={DPval.val} onChange={e => setDPval({ val: e.target.value })} className="classForCleanUp" id="downPay" type="text" placeholder="Down Payment" style={DPstyle} />
         </Col>
       </Row>
       <Row style={{ margin: "15px 0 15px 0" }}>
         <Col>
-        <Form.Label style={{ color: "white" }}>Amount of Loan</Form.Label>
-          <Form.Control className="classForCleanUp" defaultValue={state.val} id="AofLoan" type="text" placeholder="Amount of Loan" />
+          <Form.Label style={{ color: "white" }}>Amount of Loan</Form.Label>
+          <Form.Control className="classForCleanUp" defaultValue={state.val} id="AofLoan" type="text" placeholder="Amount of Loan" disabled />
         </Col>
+
         <Col>
-        <Form.Label style={{ color: "white" }}>Interest Rate <b>(ARP)</b></Form.Label>
+          <Form.Label style={{ color: "white" }}>Interest Rate <b>(ARP)</b></Form.Label>
           <Form.Control className="classForCleanUp" id="interest" defaultValue={3.9} type="text" placeholder="Interest" disabled />
         </Col>
+
       </Row>
       <Row style={{ margin: "15px 0 15px 0" }}>
         <Col>
-        <Form.Label style={{ color: "white" }}>Loan Term <b>(months)</b></Form.Label>
-          <Form.Control className="classForCleanUp" value={monthsStateVal.val} onChange={e => setMonthsStateVal({ val: e.target.value })} id="loanTerm" type="text" placeholder="Months to Repay" disabled/>
+          <Form.Label style={{ color: "white" }}>Loan Term <b>(months)</b></Form.Label>
+          <Form.Control value={monthsStateVal.val} onChange={e => setMonthsStateVal({ val: e.target.value })} className="classForCleanUp" id="loanTerm" type="text" placeholder="Months to Repay" style={MonthsStyle}/>
         </Col>
         <Col>
-        <Form.Label style={{ color: "white" }}>Estimated payment </Form.Label>
-          <Form.Control className="classForCleanUp" id="CalculatedResult" type="text" placeholder="Estimated Payment" value={result.val}  disabled />
+          <Form.Label style={{ color: "white" }}>Estimated payment </Form.Label>
+          <Form.Control className="classForCleanUp" id="CalculatedResult" type="text" placeholder="Estimated Payment" value={result.val} disabled />
         </Col>
       </Row>
-      <div style={{textAlign: "center", margin: "7px 0 7px 0" }}>
+      <div style={{ textAlign: "center", margin: "7px 0 7px 0" }}>
         <Button variant="primary" size="lg" active onClick={CalculateResult}>
-        Calculate
+          Calculate
         </Button>{" "}
-        <Button style={{margin: "7px 0 7px 15px" }} variant="secondary" size="lg" active onClick={clearFields}>
+        <Button style={{ margin: "7px 0 7px 15px" }} variant="secondary" size="lg" active onClick={clearFields}>
           Clear
         </Button>
-        </div>
+      </div>
     </Container>
   );
 }
