@@ -1,7 +1,7 @@
 const productModel = require("../models/product");
 const shortid = require("shortid");
 const slugify = require("slugify");
-const category = require("../models/category");
+const Category = require("../models/category");
 const product = require("../models/product");
 
 exports.addProducts = (req, res) => {
@@ -19,15 +19,17 @@ exports.addProducts = (req, res) => {
     model,
     year,
     description,
+    category
   } = req.body;
 
-  // let productPictures = [];
+  let productPictures = [];
 
-  // if (req.files.length > 0) {
-  //   productPictures = req.files.map((file) => {
-  //     return { img: file.filename };
-  //   });
-  // }
+  if (req.files.length > 0) {
+    productPictures = req.files.map((file) => {
+      return { img: file.filename };
+    });
+  }
+
   const product = new productModel({
     name: name,
     slug: slugify(name),
@@ -43,8 +45,8 @@ exports.addProducts = (req, res) => {
     stock,
     year,
     description,
-    // productPictures,
-    // category,
+    productPictures,
+    category,
     // createdBy: req.user._id,
   });
   product.save((err, product) => {
@@ -56,7 +58,7 @@ exports.addProducts = (req, res) => {
     if (product) {
       return res.status(201).json({
         product,
-        // file: req.files,
+        file: req.files,
       });
     }
   });
@@ -64,18 +66,30 @@ exports.addProducts = (req, res) => {
 
 exports.getProductsBySlug = (req, res) => {
   const { slug } = req.params;
-  product
+  Category
     .findOne({ slug: slug })
     .select(
-      "_id name condition price year stock vin interiorColor exteriorColor"
+      "_id"
     )
-    .exec((err, product) => {
+    .exec((err, category) => {
       if (err) {
         return res.status(400).json({
           err,
         });
-      } else {
-        res.status(200).json({ product });
+      } 
+      if(category){
+        product.find({category: category._id}).exec((error,products)=>{
+          if(error){
+            return res.status(400).json({
+              error
+            })
+          }
+          else{
+            return res.status(201).json({
+              products
+            })
+          }
+        })
       }
     });
 };
@@ -83,7 +97,7 @@ exports.getProductsBySlug = (req, res) => {
 exports.getProducts = async (req, res) => {
   const products = await productModel
     .find({})
-    // .select("_id name condition price year stock vin interiorColor exteriorColor")
+    // .select("_id name condition price year model trim condition stock vin interiorColor exteriorColor")
     // .populate({ path: "category", select: "_id name" })
     .exec();
 

@@ -49,7 +49,7 @@ export default (props = {}) => {
 
     return (
       <Accordion as={Nav.Item} defaultActiveKey={defaultKey}>
-        <Accordion.Item eventKey={eventKey} >
+        <Accordion.Item eventKey={eventKey} style={{border:'none'}} >
           <Accordion.Button
             as={Nav.Link}
             className="d-flex justify-content-between align-items-center"
@@ -92,7 +92,7 @@ export default (props = {}) => {
       <Nav.Item className={navItemClassName} onClick={() => setShow(false)}>
         <Nav.Link {...linkProps} target={target} className={classNames}>
           <span>
-            {icon ? (
+            {/* {icon ? (
               <span className="sidebar-icon">
                 <FontAwesomeIcon icon={icon} />{" "}
               </span>
@@ -104,7 +104,7 @@ export default (props = {}) => {
                 height={20}
                 className="sidebar-icon svg-icon"
               />
-            ) : null}
+            ) : null} */}
 
             <span className="sidebar-text">{title}</span>
           </span>
@@ -136,6 +136,7 @@ export default (props = {}) => {
           as={Link}
           to={Routes.DashboardOverview.path}
         >
+          
           <Image src={ReactHero} className="navbar-brand-light" />
         </Navbar.Brand>
         <Navbar.Toggle
@@ -185,7 +186,16 @@ export default (props = {}) => {
                 title="Admin Dashboard"
                 // link={Routes.Presentation.path}
               />
-          
+           <Button
+                    as={Link}
+                    variant="secondary"
+                    size="xs"
+                    to={Routes.SignOut.path}
+                    className="text-dark"
+                  >
+                    <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
+                    Sign Out
+                  </Button>
           <Dropdown.Divider className="mb-2 border-indigo" /> 
 
               <NavItem
@@ -198,8 +208,8 @@ export default (props = {}) => {
                 // eventKey="tables/"
                 title="Category"
                 icon={faTable}
-              
               >
+              
                 {/* <NavItem
                   title="All Categories"
                   link={Routes.GetCategories.path}

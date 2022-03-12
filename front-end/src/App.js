@@ -14,9 +14,7 @@ import Creditapproval from './Financing/Creditapproval';
 
 
 function App() {
-  
   return (
-  
     <BrowserRouter>
     <div >
 
@@ -41,7 +39,7 @@ function App() {
      
     </div>
     </BrowserRouter>
-    );
+  );
 }
 
 export default App;
