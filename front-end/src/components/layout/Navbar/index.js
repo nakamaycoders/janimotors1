@@ -1,15 +1,15 @@
 import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
-import Box from '@mui/material/Box'
+// import Box from '@mui/material/Box'
 import {useSelector,useDispatch} from 'react-redux'
 import { getAllCategory } from "../../../actions";
 // import "./style.css";
-import { navItems } from "./data";
-import { Inventory } from "../Dropdown/Inventory";
+// import { navItems } from "./data";
+// import { Inventory } from "../Dropdown/Inventory";
 import './Navbar.css'
-import { Financing } from "../Dropdown/Financing";
-import { Services } from "../Dropdown/Service";
-import { About } from "../Dropdown/About";
+// import { Financing } from "../Dropdown/Financing";
+// import { Services } from "../Dropdown/Service";
+// import { About } from "../Dropdown/About";
 import DehazeIcon from '@mui/icons-material/Dehaze';
 
 /**
@@ -21,10 +21,10 @@ export const Navbar = (props) => {
   const category = useSelector((state) => state.category);
 
   const [click,setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-  const [financingDropdown,setFinancingDropdown] = useState(false);
-  const [servicesDropdown,setServicesDropdown] = useState(false);
-  const [aboutUsDropdown,setAboutUsDropdown] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
+  // const [financingDropdown,setFinancingDropdown] = useState(false);
+  // const [servicesDropdown,setServicesDropdown] = useState(false);
+  // const [aboutUsDropdown,setAboutUsDropdown] = useState(false);
   const handleClick = () =>{
     setClick(!click)
   }
@@ -62,7 +62,7 @@ export const Navbar = (props) => {
           {
           category.parentId ? 
             <a 
-              href={`/${category.slug}?cid=${category._id}&type=${category.type}`}
+              href={`/${category.slug}?cid=${category._id}`}
             >
               {category.name}
             </a>
