@@ -2,12 +2,12 @@ import { productConstants } from "../actions/constants";
 
 const initialState = {
   products: [],
-  priceRange: {},
-  productsByPrice: {},
-  pageRequest: false,
-  page: {},
-  error: null,
+  // priceRange: {},
+  // productsByPrice: {},
+  // pageRequest: false,
+  // page: {},
   productDetails: {},
+  error: null,
   loading: false,
 };
 
@@ -16,13 +16,13 @@ export default (state = initialState, action) => {
     case productConstants.GET_PRODUCTS_BY_SLUG:
       state = {
         ...state,
-        products: action.payload.products,
+        products: [...action.payload]
         // priceRange: action.payload.priceRange,
         // productsByPrice: {
-        //   ...action.payload.productsByPrice,
-        // },
-      };
-      break;
+          //   ...action.payload.productsByPrice,
+          // },
+        };
+        break;
     // case productConstants.GET_PRODUCT_PAGE_REQUEST:
     //   state = {
     //     ...state,
@@ -53,7 +53,7 @@ export default (state = initialState, action) => {
       state = {
         ...state,
         loading: false,
-        // productDetails: action.payload.productDetails,
+        productDetails: action.payload.productDetails,
       };
       break;
     case productConstants.GET_PRODUCT_DETAILS_BY_ID_FAILURE:

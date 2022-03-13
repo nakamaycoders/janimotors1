@@ -83,15 +83,12 @@ exports.getProductsBySlug = (req, res) => {
             return res.status(400).json({
               error
             })
+          } else {
+            res.status(200).json({ products });
           }
-          else{
-            return res.status(201).json({
-              products
-            })
-          }
-        })
-      }
-    });
+        });
+    }
+  });
 };
 
 exports.getProducts = async (req, res) => {
