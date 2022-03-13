@@ -120,7 +120,7 @@ export const Navbar = (props) => {
         {/* <li><Link to="/calculator">Calculate Payment</Link></li> */}
       </ul>
     </li>
-    <li><Link href="#">Events</Link></li>
+    <li><Link to="/event">Events</Link></li>
   </ul>
 </nav>
 
