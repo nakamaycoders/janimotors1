@@ -3,6 +3,7 @@ import "react-datetime/css/react-datetime.css";
 import "./TradeInCar.css";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
+import Layout from "../../../layout/layout/layout";
 
 const message = "Please fill out the given field correctly";
 function TradeINCar() {
@@ -139,6 +140,7 @@ function TradeINCar() {
   ));
 
   return (
+    <Layout>
     <div>
       <div className="container text-center">
         <h1 style={{ color: "blue" }}>WHAT IS MY VEHICLE WORTH?</h1>
@@ -483,6 +485,7 @@ function TradeINCar() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
 

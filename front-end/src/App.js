@@ -9,6 +9,7 @@ import AboutUs from "./components/layout/Aboutus/AboutUs";
 import Footer from "./components/layout/Footer/index";
 import TradeInCar from './components/Page/Financing/TradeIn/TradeINCar'
 import Creditapproval from './components/Page/Financing/Creditapproval'
+import Contactus from "./components/Page/Contactus/Contactus";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/calculator" component={Calculator} />
         <Route path="/tradeincar" component={TradeInCar} />
         <Route path="/creditapproval" component={Creditapproval} />
+        <Route path="/contactus" component={Contactus} />
         <Route path="/:slug" component={ProductList} />
 
       </Switch>

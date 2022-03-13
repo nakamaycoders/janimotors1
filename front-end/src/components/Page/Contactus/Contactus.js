@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Layout from "../../layout/layout/layout";
 
 function Contactus() {
   const {
@@ -19,6 +20,7 @@ function Contactus() {
 
   // console.log(errors.name)
   return (
+    <Layout>
     <div>
       <div className="container text-center pt-2">
         <h1 className="pt-2" style={{ color: "blue " }}>
@@ -156,6 +158,7 @@ function Contactus() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
 

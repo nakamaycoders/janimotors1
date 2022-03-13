@@ -88,7 +88,8 @@ export const Navbar = (props) => {
     <>
     {/* <h1>hellonavbar</h1> */}
     <nav className="container">
-  <div id="logo"><img className="img-fluid" style={{width:'285px'}} src="./logo .png" alt="" /></div>
+  <div id="logo"><Link to='/'><img className="img-fluid" style={{width:'168px'}} src="./logo .png" alt="" /></Link>
+  </div>
   <label for="drop" className="toggle">
   <DehazeIcon></DehazeIcon>
     </label>
@@ -111,7 +112,14 @@ export const Navbar = (props) => {
    
     {/* <li><Link href="#">Blog</Link></li>
     <li><Link href="#">Submit</Link></li> */}
-    <li><Link href="/">About Us</Link></li>
+    <li><Link href="/">About Us</Link>
+    <input type="checkbox" id="drop-1"/>
+      <ul>
+        <li><Link to="/creditapproval">Review Us</Link></li>
+        <li><Link to="/contactus">Contact Us</Link></li>
+        {/* <li><Link to="/calculator">Calculate Payment</Link></li> */}
+      </ul>
+    </li>
     <li><Link href="#">Events</Link></li>
   </ul>
 </nav>
