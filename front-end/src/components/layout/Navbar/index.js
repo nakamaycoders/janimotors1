@@ -103,9 +103,9 @@ export const Navbar = (props) => {
       <Link href="#">Financing</Link>
       <input type="checkbox" id="drop-1"/>
       <ul>
-        <li><Link href="#">Service 1</Link></li>
+        <li><Link href="#">S</Link></li>
         <li><Link href="#">Service 2</Link></li>
-        <li><Link href="#">Service 3</Link></li>
+        <li><Link to="/calculator">Calculator</Link></li>
       </ul>
     </li>
    

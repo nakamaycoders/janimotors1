@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Layout from "../../../layout/layout/layout";
 
 function Calculator() {
   const interest = 4;
@@ -64,6 +65,7 @@ function Calculator() {
   const [MonthsStyle, setMonthsStyle] = useState({});
 
   return (
+    <Layout>
     <Container>
       <Row>
         <h1
@@ -195,6 +197,7 @@ function Calculator() {
         </Button>
       </div>
     </Container>
+    </Layout>
   );
 }
 
