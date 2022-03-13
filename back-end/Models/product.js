@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     vin: {
-      type: String,
+      type: Number,
       required: true,
       unique: true,
     },

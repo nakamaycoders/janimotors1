@@ -39,8 +39,10 @@ nav a {
   display: block;
   padding: 0 20px;
   color: #FFF;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 17px;
   line-height: 60px;
+  /* line-height: 55px; */
   text-decoration: none;
 }
  
@@ -57,7 +59,8 @@ nav ul ul {
 nav ul li:hover > ul { display: inherit; }
  
 nav ul ul li {
-  width: 170px;
+  /* width: 170px; */
+  width:214px;
   float: none;
   display: list-item;
   position: relative;
