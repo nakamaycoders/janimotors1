@@ -97,12 +97,13 @@ function Product(props) {
                 <option value="3">Three</option>
               </select>
             </Col>
-         
+
           <div className="search-btn" style={{display:'flex' , justifyContent:'left'}}>
             <input type="search" className="input-1" placeholder="search"  style={{margin: '2px 10px'}}/>
             <Button class='btn btn-lg btn-primary btn-1'   style={{margin: '2px 10px',borderRadius: '40px',
               width: '100px'}}>Search</Button>
           </div>
+          <Col  md={6} sm={12}>
         </div>
 
           {product.products.map((p) => {
