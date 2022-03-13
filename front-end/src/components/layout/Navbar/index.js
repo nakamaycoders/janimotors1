@@ -103,15 +103,15 @@ export const Navbar = (props) => {
       <Link href="#">Financing</Link>
       <input type="checkbox" id="drop-1"/>
       <ul>
-        <li><Link href="#">S</Link></li>
-        <li><Link href="#">Service 2</Link></li>
+        <li><Link to="/creditapproval">Online Credit Approval</Link></li>
+        <li><Link to="/tradeincar">Calculate Your Trade </Link></li>
         <li><Link to="/calculator">Calculate Payment</Link></li>
       </ul>
     </li>
    
     {/* <li><Link href="#">Blog</Link></li>
     <li><Link href="#">Submit</Link></li> */}
-    <li><Link href="#">About Us</Link></li>
+    <li><Link href="/">About Us</Link></li>
     <li><Link href="#">Events</Link></li>
   </ul>
 </nav>

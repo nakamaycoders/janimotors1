@@ -4,7 +4,7 @@ import "./TradeInCar.css";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
 
-const message = "Please fill out th given field correctly you Dumb fuck";
+const message = "Please fill out the given field correctly";
 function TradeINCar() {
   const {
     register,
