@@ -39,22 +39,6 @@ export default function ProductDetail(props) {
         <Layout>
         <div className="productDescriptionContainer" style={{color:'white'}}>
         <div className="flexRow">
-          <div className="verticalImageStack">
-            {/* {
-                product.productDetails.productPictures.map((thumb, index) => 
-              <div className="thumbnail">
-                <img src={ImageUrl(thumb.img)} alt={thumb.img} />
-              </div>
-              )
-            } */}
-           {/* { console.log(ImageUrl(product.productDetails.productPictures[0].img))} */}
-            {/* <div className="thumbnail active">
-              {
-                product.productDetails.productPictures.map((thumb, index) => 
-                <img src={ImageUrl(thumb.img)} alt={thumb.img} />)
-              }
-            </div> */}
-          </div>
           <div className="productDescContainer">
             <div className="productDescImgContainer">
               <img src={ImageUrl(product.productDetails.productPictures[0].img)} alt='picture' />
@@ -63,6 +47,22 @@ export default function ProductDetail(props) {
             {/* action buttons */}
             
           </div>
+          <div className="verticalImageStack">
+            {
+                product.productDetails.productPictures.map((thumb, index) => 
+              <div className="thumbnail">
+                <img className='img-fluid' src={ImageUrl(thumb.img)} alt={thumb.img} />
+              </div>
+              )
+            }
+           {/* { console.log(ImageUrl(product.productDetails.productPictures[0].img))} */}
+            {/* <div className="thumbnail active">
+              {
+                product.productDetails.productPictures.map((thumb, index) => 
+                <img src={ImageUrl(thumb.img)} alt={thumb.img} />)
+              }
+            </div> */}
+          </div>
         </div>
         <div>
 
@@ -70,7 +70,7 @@ export default function ProductDetail(props) {
           <div className="breed">
             <ul>
               <li><Link to="/">Home</Link><IoIosArrowForward /></li>
-              <li><Link to="#">Suv</Link><IoIosArrowForward /></li>
+              <li><Link to="">Suv</Link><IoIosArrowForward /></li>
               <li><Link >{product.productDetails.name}</Link></li>
             </ul>
           </div>

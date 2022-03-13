@@ -137,7 +137,10 @@ function Product(props) {
                     <p>{p.engine}</p>
                   </div>
 
-                  <Button variant="contained">Details</Button>
+
+                  <Button variant="contained">
+                  <Link to={`/${p.slug}/${p._id}/p`} style={{textDecoration:'none',color:'white'}}>Details</Link>
+                  </Button>
                 </div>
               </>
             );
