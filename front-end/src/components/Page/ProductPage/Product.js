@@ -12,9 +12,10 @@ import { getProductsBySlug } from "../../../actions";
 import Card from "../../layout/Card/Card";
 import { MaterialButton } from "../../layout/MaterialUI/MaterialUI";
 import { ImageUrl } from "../../../UrlConfig";
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import "./Product.css";
+import {Search} from '../../layout/Search'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -43,36 +44,77 @@ function Product(props) {
   //   </div>
   //   )
   // })
+  var elements = document.getElementsByClassName("column");
+  var elements1 = document.getElementsByClassName("column2")
+  var i;
+  const listView = () => {
+    for (i = 0; i < elements.length; i++) {
+      elements[i].classList.add('col-md-5 col-sm-12')
+      // elements1[i].classList.add('col-md-4 col-sm-12')
+    }
+  };
+  const gridView = () => {
+    for (i = 0; i < elements.length; i++) {
+      elements[i].classList.add('col-lg-3')
+      elements1[i].classList.add('col-')
+    }
+  };
+
   return (
     <>
-    <div className="container-fluid">
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <Item>Filters</Item>
-        </Grid>
-        {
-          product.products.map((p)=>{
-            console.log(ImageUrl(p.productPictures[0].img))
-            return(
-        <Grid key={p} item xs={9}>
-          <Item>
-            <Link to={`/${p.slug}/${p._id}/p`}>
-            <img src={ImageUrl(p.productPictures[0].img)} alt=""></img>
-            </Link>
-            <Typography variant="h3" component="h1">{p.slug}</Typography>
-            <Typography variant="h5" component="h5">Price</Typography>
-            <Typography>{p.price}</Typography>
-            <Typography variant="h5" component="h5">Milage</Typography>
-            <Typography>{p.milage}</Typography>
-            <Button variant="contained">Detail</Button>
-          </Item>
-        </Grid>
+      <div id="btnContainer" style={{ backgroundColor: "white" }}>
+        <button className="btn active" onClick={listView}>
+          LIST
+        </button>
+        <button className="btn active" onClick={gridView}>
+          Grid
+        </button>
+      </div>
 
-)
-})
-}
-      </Grid>
-    </div>
+      <div className="">
+        <div className="row">
+          <div className="col-md-3 col-lg-3 col-sm-12">
+            <Search />
+          </div>
+
+          <div className=" img-fluid column">
+            <img
+              className="img-fluid"
+              src="https://www.chicagomotorcars.com/imagetag/8861/main/f/Used-2020-Aston-Martin-DB11-AMR-V12-Coupe-Stealth-PPF-B-O-Surround-Sound-Carbon-Fiber-LOADED.jpg"
+              alt="car"
+            />
+          </div>
+
+          <div className=" col-md-4 col-sm-12 column2">
+            <h3>2020 Aston Martin</h3>
+            <div>
+              <span className="fw-bolder">Price:</span>
+              <span>$54000</span>
+            </div>
+
+            <div className="d-flex pt-2">
+              <div>
+                <span className="fw-bolder">milage:</span>
+                <span>$54000</span>
+              </div>
+
+              <div className="">
+                <span className="fw-bolder ms-5">stock:</span>
+                <span>$54000</span>
+              </div>
+            </div>
+            <div className=" pt-2">
+              <span className="fw-bolder ">Engine:</span>
+              <p>5.2L Twin Turbo V12 630hp 516ft. lbs.</p>
+            </div>
+
+            <div className="">
+              <span className="fw-bolder ">Transmission:</span>
+              <p>8-Speed Shiftable Automatic</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
