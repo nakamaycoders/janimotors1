@@ -15,6 +15,8 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import { useForm } from "react-hook-form";
+import Layout from "../../layout/layout/layout";
+
 
 const steps = [
   "Applicant Contact Info",
@@ -122,6 +124,7 @@ export default function Creditapproval() {
   };
   return (
     <div>
+      <Layout>
       <Container>
         <Row className="creditForm">
           <h1>FINANCING</h1>
@@ -206,6 +209,7 @@ export default function Creditapproval() {
           </Box>
         </Row>
       </Container>
+    </Layout>
     </div>
   );
 }

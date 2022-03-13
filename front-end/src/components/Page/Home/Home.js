@@ -14,8 +14,7 @@ function Home() {
       <Search />
       <Cardss />
       <Cards2 />
-      <AboutUs />
-      <Footer />
+    
     </Layout>
   );
 }

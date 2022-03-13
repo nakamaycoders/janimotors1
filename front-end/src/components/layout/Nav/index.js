@@ -12,18 +12,12 @@ export const Nav = (props) => {
       <div
        className="container-fluid wrapper">
         <ul className="header-list">
-          <li>
-            <img
-              style={{ marginTop: "5px", marginRight: "46px" }}
-              src="https://www.chicagomotorcars.com/template/images/icons/karmalogo.svg"
-              alt=""
-            />
-          </li>
+          
           {navmenu.map((item) => {
             return (
               <li key={item.id}>
                 <Link to={item.path} className={item.cName}>
-                  {item.title}
+                  {item.title} 
                 </Link>
               </li>
             );

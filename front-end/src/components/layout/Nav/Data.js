@@ -2,7 +2,7 @@ export const navmenu = [
     {
         id:1,
         title:'Contact Us',
-        path:'/contact-chicgo-motor-cars-in-chicago-li',
+        path:'/contactus',
         icon: '<FontAwesomeIcon icon="fa-solid fa-phone" />',
         cName:'nav-menues',
     },
@@ -12,12 +12,6 @@ export const navmenu = [
         path:'tel:630-221-1800',
         icon: '<FontAwesomeIcon icon="fa-solid fa-phone" />',
         cName:'nav-menues',
-    },
-    {
-        id:3,
-        title:'My Garage',
-        path:'/my-garage',
-        icon: '<FontAwesomeIcon icon="fa-solid fa-phone" />',
-        cName:'nav-menues'
     }
+  
 ]
