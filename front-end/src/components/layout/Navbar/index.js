@@ -105,7 +105,7 @@ export const Navbar = (props) => {
       <ul>
         <li><Link href="#">S</Link></li>
         <li><Link href="#">Service 2</Link></li>
-        <li><Link to="/calculator">Calculator</Link></li>
+        <li><Link to="/calculator">Calculate Payment</Link></li>
       </ul>
     </li>
    
