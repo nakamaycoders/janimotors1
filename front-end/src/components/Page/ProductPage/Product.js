@@ -14,8 +14,10 @@ import { MaterialButton } from "../../layout/MaterialUI/MaterialUI";
 import { ImageUrl } from "../../../UrlConfig";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Row, Col } from "react-bootstrap";
+
 import "./Product.css";
-import {Search} from '../../layout/Search'
+import { Search } from "../../layout/Search";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -44,53 +46,110 @@ function Product(props) {
   //   </div>
   //   )
   // })
- 
 
   return (
     <>
-  
-      <div className="">
+      <div>
         <div className="row">
-          <div className="col-md-3 col-sm-12">
-            <Search />
+          <div className="search">
+            <Col md={3} sm={12} style={{marginTop:"6px"}}>
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  Make
+                </option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </Col>
+            <Col md={3} sm={12} style={{marginTop:"6px"}}>
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  Model
+                </option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </Col>
+            <Col md={3} sm={12} style={{marginTop:"6px"}}>
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  Year
+                </option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </Col>
+            <Col md={3} sm={12} style={{marginTop:"6px"}}>
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  Body
+                </option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </Col>
+
+            <div className="search-btn">
+              <input
+                type="search"
+                className="input-1"
+                placeholder="search"
+                style={{ margin: "2px 10px" }}
+              />
+              <Button
+                class="btn btn-lg btn-primary btn-1"
+                style={{
+                  margin: "2px 10px",
+                  borderRadius: "40px",
+                  width: "100px",
+                }}
+              >
+                Search
+              </Button>
+            </div>
           </div>
 
-          <div className="img-fluid  col-md-5 col-sm-12">
-            <img
-              className="img-fluid"
-              src="https://www.chicagomotorcars.com/imagetag/8861/main/f/Used-2020-Aston-Martin-DB11-AMR-V12-Coupe-Stealth-PPF-B-O-Surround-Sound-Carbon-Fiber-LOADED.jpg"
-              alt="car"
-            />
-          </div>
+          {product.products.map((p) => {
+            console.log(ImageUrl(p.productPictures[0].img));
+            return (
+              <>
+                <div className="col-md-5 col-sm-12">
+                  <Link to={`/${p.slug}/${p._id}/p`}>
+                    <img className="img-fluid" src={ImageUrl(p.productPictures[0].img)} alt=""></img>
+                  </Link>
+                </div>
+                <div className="col-md-4 col-sm-12" style={{ color: "white" }}>
+                  <h3>{p.name}</h3>
+                  <div>
+                    <span className="fw-bolder">Price: </span>
+                    <span>{p.price}</span>
+                  </div>
 
-          <div className="col-md-4 col-sm-12">
-            <h3>2020 Aston Martin</h3>
-            <div>
-              <span className="fw-bolder">Price:</span>
-              <span>$54000</span>
-            </div>
+                  <div className="d-flex pt-2">
+                    <div>
+                      <span className="fw-bolder">milage: </span>
+                      <span>{p.milage}</span>
+                    </div>
 
-            <div className="d-flex pt-2">
-              <div>
-                <span className="fw-bolder">milage:</span>
-                <span>$54000</span>
-              </div>
+                    <div className="">
+                      <span className="fw-bolder ms-5">stock: </span>
+                      <span>{p.stock}</span>
+                    </div>
+                  </div>
+                  <div className=" pt-2">
+                    <span className="fw-bolder ">Engine: </span>
+                    <p>{p.engine}</p>
+                  </div>
 
-              <div className="">
-                <span className="fw-bolder ms-5">stock:</span>
-                <span>$54000</span>
-              </div>
-            </div>
-            <div className=" pt-2">
-              <span className="fw-bolder ">Engine:</span>
-              <p>5.2L Twin Turbo V12 630hp 516ft. lbs.</p>
-            </div>
-
-            <div className="">
-              <span className="fw-bolder ">Transmission:</span>
-              <p>8-Speed Shiftable Automatic</p>
-            </div>
-          </div>
+                  <Button variant="contained">Details</Button>
+                </div>
+              </>
+            );
+          })}
         </div>
       </div>
     </>
