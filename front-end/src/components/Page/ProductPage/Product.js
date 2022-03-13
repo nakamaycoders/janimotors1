@@ -54,7 +54,7 @@ function Product(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3 pt-3">
-            <div>
+            <div className='search-div'>
               <select class="form-select" aria-label="Default select example">
                 <option selected disabled>
                   Make
@@ -64,7 +64,7 @@ function Product(props) {
                 <option value="3">Three</option>
               </select>
             </div>
-            <div>
+            <div className='search-div'>
               <select class="form-select" aria-label="Default select example">
                 <option selected disabled>
                   Model
@@ -74,7 +74,7 @@ function Product(props) {
                 <option value="3">Three</option>
               </select>
             </div>
-            <div>
+            <div className='search-div'>
               <select class="form-select" aria-label="Default select example">
                 <option selected disabled>
                   Year
@@ -84,7 +84,7 @@ function Product(props) {
                 <option value="3">Three</option>
               </select>
             </div>
-            <div>
+            <div className='search-div'>
               <select class="form-select" aria-label="Default select example">
                 <option selected disabled>
                   Body
@@ -119,11 +119,11 @@ function Product(props) {
             </div>
             
 
+            {/* <div className="wrap1"> */}
             {product.products.map((p) => {
               console.log(ImageUrl(p.productPictures[0].img));
               return (
                 <>
-                
                   <div className="col-md-5 col-sm-12 pt-3">
                     <Link to={`/${p.slug}/${p._id}/p`}>
                       <img
@@ -135,7 +135,7 @@ function Product(props) {
                   </div>
                   <div
                     className="col-md-4 col-sm-12 pt-3"
-                    style={{ color: "white" }}
+                    style={{ color: "white",paddingLeft: "18px"}}
                   >
                     <h3>{p.name}</h3>
                     <div>
@@ -171,6 +171,7 @@ function Product(props) {
                 </>
               );
             })}
+            {/* </div> */}
           
         </div>
       </div>
