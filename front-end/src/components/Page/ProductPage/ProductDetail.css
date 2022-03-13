@@ -4,13 +4,15 @@
     padding: 10px;
 }
 .verticalImageStack{
-    width: 67px;
+    /* width: 67px; */
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 .thumbnail{
-    width: 63px;
-    height: 63px;
+    /* width: 63px;
+    height: 63px; */
+    width: 121px;
+    height: 80px;
     border: 1px solid #f0f0f0;
     overflow: hidden;
     text-align: center;
@@ -25,6 +27,7 @@
 }
 .productDescContainer{
     width: 485px;
+    margin-bottom: 8px;
 }
 .productDescImgContainer{
     width: 485px;
