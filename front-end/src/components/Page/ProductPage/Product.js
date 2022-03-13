@@ -27,6 +27,18 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Product(props) {
+  const useViewport = () => {
+    const [width, setWidth] = React.useState(window.innerWidth);
+  
+    React.useEffect(() => {
+      const handleWindowResize = () => setWidth(window.innerWidth);
+      window.addEventListener("resize", handleWindowResize);
+      return () => window.removeEventListener("resize", handleWindowResize);
+    }, []);
+  
+    // Return the width so we can use it in our components
+    return { width };
+  }
   let product = useSelector((state) => state.product);
   console.log(product);
   const dispatch = useDispatch();
@@ -49,68 +61,13 @@ function Product(props) {
 
   return (
     <>
+    {/* ${(useViewport().width>800)?"d-flex flex-column":`d-flex flex-row`}` */}
       <div>
         <div className="row">
-          <div className="search">
-            <Col md={3} sm={12} style={{marginTop:"6px"}}>
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Make
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </Col>
-            <Col md={3} sm={12} style={{marginTop:"6px"}}>
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Model
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </Col>
-            <Col md={3} sm={12} style={{marginTop:"6px"}}>
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Year
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </Col>
-            <Col md={3} sm={12} style={{marginTop:"6px"}}>
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Body
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </Col>
+          <div className= {`container ${(!useViewport().width>800)?"d-flex flex-column":"d-flex flex-row"}`}>
 
-            <div className="search-btn">
-              <input
-                type="search"
-                className="input-1"
-                placeholder="search"
-                style={{ margin: "2px 10px" }}
-              />
-              <Button
-                class="btn btn-lg btn-primary btn-1"
-                style={{
-                  margin: "2px 10px",
-                  borderRadius: "40px",
-                  width: "100px",
-                }}
-              >
-                Search
-              </Button>
-            </div>
+          <div className="col-md-3">
+            <Search/>
           </div>
 
           {product.products.map((p) => {
@@ -150,6 +107,8 @@ function Product(props) {
               </>
             );
           })}
+          </div>
+
         </div>
       </div>
     </>

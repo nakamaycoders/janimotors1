@@ -28,7 +28,8 @@
 }
 .productDescImgContainer{
     width: 485px;
-    height: 440px;
+    /* height: 440px; */
+    height: 323px;
     overflow: hidden;
     text-align: center;
     border: 1px solid #f0f0f0;
@@ -53,17 +54,17 @@
 }
 .breed ul li a{
     text-decoration: none;
-    color: #777;
+    color: white;
     display: inline-block;
     font-size: 12px;
     margin: 0 10px;
 }
 .productDetails{
-    margin: 0 10px;
+    margin: 26px 10px;
 }
 .productDetails .productTitle{
     font-size: 18px;
-    color: #212121;
+    color: white;
     font-weight: 400;
 }
 .ratingCount{
@@ -90,10 +91,12 @@
 }
 .priceContainer{
     align-items: center;
+    display: flex;
 }
 .price{
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 20px;
+    margin-left: 10px;
+    /* font-weight: 600; */
     display: flex;
     align-items: center;
 }
