@@ -44,40 +44,18 @@ function Product(props) {
   //   </div>
   //   )
   // })
-  var elements = document.getElementsByClassName("column");
-  var elements1 = document.getElementsByClassName("column2")
-  var i;
-  const listView = () => {
-    for (i = 0; i < elements.length; i++) {
-      elements[i].classList.add('col-md-5 col-sm-12')
-      // elements1[i].classList.add('col-md-4 col-sm-12')
-    }
-  };
-  const gridView = () => {
-    for (i = 0; i < elements.length; i++) {
-      elements[i].classList.add('col-lg-3')
-      elements1[i].classList.add('col-')
-    }
-  };
+ 
 
   return (
     <>
-      <div id="btnContainer" style={{ backgroundColor: "white" }}>
-        <button className="btn active" onClick={listView}>
-          LIST
-        </button>
-        <button className="btn active" onClick={gridView}>
-          Grid
-        </button>
-      </div>
-
+  
       <div className="">
         <div className="row">
-          <div className="col-md-3 col-lg-3 col-sm-12">
+          <div className="col-md-3 col-sm-12">
             <Search />
           </div>
 
-          <div className=" img-fluid column">
+          <div className="img-fluid  col-md-5 col-sm-12">
             <img
               className="img-fluid"
               src="https://www.chicagomotorcars.com/imagetag/8861/main/f/Used-2020-Aston-Martin-DB11-AMR-V12-Coupe-Stealth-PPF-B-O-Surround-Sound-Carbon-Fiber-LOADED.jpg"
@@ -85,7 +63,7 @@ function Product(props) {
             />
           </div>
 
-          <div className=" col-md-4 col-sm-12 column2">
+          <div className="col-md-4 col-sm-12">
             <h3>2020 Aston Martin</h3>
             <div>
               <span className="fw-bolder">Price:</span>

@@ -20,7 +20,6 @@ function App() {
         <Route path="/:slug" component={ProductList} />
         <Route path="/tradeincar" component={TradeInCar} />
         <Route path="/creditapproval" component={Creditapproval} />
-
       </Switch>
       <AboutUs />
       <Footer />
