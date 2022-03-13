@@ -12,40 +12,40 @@ export const Search = (props) => {
     <>
       <div className="search">
         <Container>
-          <Row>
-            <Col md={3} sm={12}>
+          <Col>
+            <Row md={3} sm={12}>
               <select class="form-select" aria-label="Default select example">
                 <option selected disabled>Make</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
-            </Col>
-            <Col  md={3} sm={12}>
+            </Row>
+            <Row  md={3} sm={12}>
             <select class="form-select" aria-label="Default select example">
                 <option selected disabled>Model</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
-              </Col>
-            <Col  md={3} sm={12}>
+            </Row>
+            <Row  md={3} sm={12}>
             <select class="form-select" aria-label="Default select example">
                 <option selected disabled>Year</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
-            </Col>
-            <Col  md={3} sm={12}>
+            </Row>
+            <Row  md={3} sm={12}>
             <select class="form-select" aria-label="Default select example">
                 <option selected disabled>Body</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
-            </Col>
-          </Row>
+            </Row>
+          </Col>
 
          
           <div className="search-btn">

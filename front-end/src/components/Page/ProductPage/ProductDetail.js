@@ -12,6 +12,7 @@ import {
   import { AiFillThunderbolt } from 'react-icons/ai';
 //   import { MaterialButton } from '../../layouts/MaterialUI/MaterialUI';
 import { ImageUrl } from '../../../UrlConfig';
+import { Link } from 'react-router-dom';
 
 export default function ProductDetail(props) {
     const product = useSelector((state) => state.product);
@@ -32,7 +33,7 @@ export default function ProductDetail(props) {
   return (
     <>
         <Layout>
-        <div className="productDescriptionContainer">
+        <div className="productDescriptionContainer" style={{color:'white'}}>
         <div className="flexRow">
           <div className="verticalImageStack">
             {/* {
@@ -42,7 +43,7 @@ export default function ProductDetail(props) {
               </div>
               )
             } */}
-           { console.log(ImageUrl(product.productDetails.productPictures))}
+           {/* { console.log(ImageUrl(product.productDetails.productPictures[0].img))} */}
             {/* <div className="thumbnail active">
               {
                 product.productDetails.productPictures.map((thumb, index) => 
@@ -52,7 +53,7 @@ export default function ProductDetail(props) {
           </div>
           <div className="productDescContainer">
             <div className="productDescImgContainer">
-              <img src={ImageUrl(product.productDetails.productPictures[0].img)} alt={`${product.productDetails.productPictures[0].img}`} />
+              <img src={ImageUrl(product.productDetails.productPictures[0].img)} alt='picture' />
             </div>
 
             {/* action buttons */}
@@ -64,41 +65,105 @@ export default function ProductDetail(props) {
           {/* home > category > subCategory > productName */}
           <div className="breed">
             <ul>
-              <li><a href="#">Home</a><IoIosArrowForward /></li>
-              <li><a href="#">Suv</a><IoIosArrowForward /></li>
-              <li><a href="#">{product.productDetails.name}</a></li>
+              <li><Link to="/">Home</Link><IoIosArrowForward /></li>
+              <li><Link to="#">Suv</Link><IoIosArrowForward /></li>
+              <li><Link >{product.productDetails.name}</Link></li>
             </ul>
           </div>
           {/* product description */}
           <div className="productDetails">
               <p className="productTitle">{product.productDetails.name}</p>
-            <div>
-              <span className="ratingCount">4.3 <IoIosStar /></span>
-              <span className="ratingNumbersReviews">72,234 Ratings & 8,140 Reviews</span>
-            </div>
-            <div className="extraOffer">Extra <BiDollar />4500 off </div>
+{/*  <BiDollar /> */}
             <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Price: </span>
               <span className="price"><BiDollar />{product.productDetails.price}</span>
-              <span className="discount" style={{ margin: '0 10px' }}>22% off</span>
               {/* <span>i</span> */}
               </div>
             <div>
-              <p style={{ 
-                color: '#212121', 
-                fontSize: '14px',
-                fontWeight: '600' 
-                }}>Available Offers</p>
+
+            <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Type: </span>
+              <span className="price text-capitalize">{product.productDetails.condition}</span>
+              {/* <span>i</span> */}
+              </div>
+
+            <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Make: </span>
+              <span className="price text-capitalize">{product.productDetails.name}</span>
+              {/* <span>i</span> */}
+              </div>
+            <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Model: </span>
+              <span className="price text-capitalize">{product.productDetails.model}</span>
+              {/* <span>i</span> */}
+              </div>
+            <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Trim: </span>
+              <span className="price text-capitalize">{product.productDetails.trim}</span>
+              {/* <span>i</span> */}
+              </div>
+            <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Milage: </span>
+              <span className="price text-capitalize">{product.productDetails.milage}</span>
+              {/* <span>i</span> */}
+              </div>
+            <div className="flexRow priceContainer">
+            <span style={{
+                  width: '100px',
+                  fontSize: '18px',
+                  color: 'white',
+                  fontWeight: '600',
+                  marginRight: '20px'
+              }}>Vin: </span>
+              <span className="price text-capitalize">{product.productDetails.vin}</span>
+              {/* <span>i</span> */}
+              </div>
+ 
               <p style={{ display: 'flex' }}>
                 <span style={{
                   width: '100px',
-                  fontSize: '12px',
-                  color: '#878787',
+                  fontSize: '22px',
+                  color: 'white',
                   fontWeight: '600',
                   marginRight: '20px'
-              }}>Description</span>
-              <span style={{
-                fontSize: '12px',
-                color: '#212121',
+              }}>Description: </span>
+              <span className='price' style={{
               }}>{product.productDetails.description}</span>
               </p>
             </div>
