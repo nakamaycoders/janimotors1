@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 
 export default function ProductDetail(props) {
     const product = useSelector((state) => state.product);
-    console.log(product)
+    // console.log(product)
     const dispatch = useDispatch();
   
     useEffect(() => {
@@ -35,14 +35,15 @@ export default function ProductDetail(props) {
     }
   
   return (
-    <>
-        <Layout>
-        <div className="productDescriptionContainer" style={{color:'white'}}>
+    <Layout>
+    <div className='container-fluid'>
+        <div className="productDescriptionContainer " style={{color:'white'}}>
         <div className="flexRow">
           <div className="productDescContainer">
             <div className="productDescImgContainer">
               <img src={ImageUrl(product.productDetails.productPictures[0].img)} alt='picture' />
             </div>
+     
 
             {/* action buttons */}
             
@@ -176,7 +177,9 @@ export default function ProductDetail(props) {
 
         </div>
       </div>
-        </Layout>
-    </>
+      </div>
+        
+    
+    </Layout>
   )
 }

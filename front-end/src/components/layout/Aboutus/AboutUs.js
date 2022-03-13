@@ -15,13 +15,13 @@ function AboutUs() {
         </Col>
         <Col sm={8}>
           <div className="resAbout">
-            Since 2003, Chicago Motor Cars has grown from our humble beginnings
+            Since 2003, Jani motors has grown from our humble beginnings
             to a respected leader in the luxury and exotic automotive
             marketplace. With over 30,000 vehicles sold and more than $2 billion
-            in worldwide sale, you can count on Chicago Motor Cars to exceed
+            in worldwide sale, you can count on Jani motors to exceed
             your expectations.<br></br>
             <br></br>
-            Chicago Motor Cars has three locations conveniently located in the
+            Jani motors has three locations conveniently located in the
             Chicago suburbs. Browse among hundreds of high-quality pre-owned
             vehicles at ChicagoMotorCars.com and let our professional staff help
             you secure the vehicle of your dreams. We offer competitive
