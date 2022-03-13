@@ -1,16 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomeScreen from './components/HomeScreen';
+import Home from './components/Page/Home/Home';
 import { BrowserRouter ,Route, Switch} from 'react-router-dom';
-import Calculator from './Financing/Calculator';
-import Creditapproval from './Financing/Creditapproval';
+import Calculator from './components/Page/Financing/Calculator/Calculator';
+import Creditapproval from './components/Page/Financing/Creditapproval';
 
 
 function App() {
   return (
     <BrowserRouter>
      <Switch>
-       <Route path={"/"}  exact component = {HomeScreen} />
+       <Route path={"/"}  exact component = {Home} />
        <Route path={"/calculator"}  component={Calculator} />
        <Route path={"/creditapproval"}  component={Creditapproval} />
      </Switch>
