@@ -40,3 +40,25 @@ export const getProducts = () => {
       }
     };
   };
+
+
+  export const deleteProducts  = (productId) =>{
+    return async (dispatch) =>{
+      try {
+        dispatch({ type: productConstants.DELETE_PRODUCT_REQUEST });
+        const res = await axios.post(`/product/delete/${productId}`);
+        console.log(res)
+        if (res.status === 200) {
+          const { productId } = res.data;
+          dispatch({
+            type: productConstants.DELETE_PRODUCT_SUCCESS,
+            payload: { id: productId },
+          });
+        } else {
+          dispatch({ type: productConstants.DELETE_PRODUCT_FAILED});
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }

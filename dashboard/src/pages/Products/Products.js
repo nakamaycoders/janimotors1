@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Layout from "../../components/layouts/Layout";
 // import { Modal } from "react-bootstrap";
 // import Fade from "@mui/material/Fade";
@@ -16,7 +16,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
-import { createProduct,getProducts } from "../../actions";
+import { createProduct,getProducts,deleteProducts } from "../../actions";
 // import { makeStyles } from "@material-ui/styles";
 import "./Product.css";
 
@@ -92,6 +92,7 @@ const Products = (props) => {
       form.append("productPicture", pic);
     }
     dispatch(createProduct(form)).then(() => setShow(false));
+
   };
 
   const handleShow = () => setShow(true);
@@ -127,13 +128,14 @@ const Products = (props) => {
               <TableCell align="right">Price</TableCell>
               <TableCell align="right">Stock</TableCell>
               <TableCell align="right">Category</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {product.products.length > 0
               ? product.products.map((product) => (
                   <TableRow
-                    onClick={() => showProductDetailsModal(product)}
+                    
                     sx={{
                       "&:last-child td, &:last-child th": { border: 0 },
                     }}
@@ -146,6 +148,11 @@ const Products = (props) => {
                     <TableCell align="right">{product.price}</TableCell>
                     <TableCell align="right">{product.stock}</TableCell>
                     <TableCell align="right">{product.category.name}</TableCell>
+                    <TableCell align="right">
+                      <Button variant="contained" color="success" onClick={() => showProductDetailsModal(product)}>View Details</Button>
+                      <Button variant="contained">Edit</Button>
+                      <Button variant="contained" color="error" onClick={()=> dispatch(deleteProducts(product._id))}>Delete</Button>
+                    </TableCell>
                   </TableRow>
                 ))
               : null}
@@ -489,18 +496,6 @@ const Products = (props) => {
         {/* ------------------------------------TABLE--------------------- */}
         {CreateProductResuableModal()}
         {renderProductDetailsModal()}
-        <Box>
-          <Button
-          style={{
-            marginLeft: "auto",
-            backgroundColor: "red",
-            color: "white",
-            fontSize: "small",
-          }}
-          >
-            Delete
-          </Button>
-        </Box>
       </Grid>
     </div>
   );

@@ -130,7 +130,7 @@ exports.deleteProducts =  async (req,res)=>{
     return res.status(404).send("Not found");
     
   }
-  productToDel = await productModel.findOneAndDelete({ _id: productId });
+  productToDel = await productModel.findByIdAndDelete({ _id: productId });
   res.json({"Success": "Deleted", productToDel: productToDel});
   }
   catch(error){

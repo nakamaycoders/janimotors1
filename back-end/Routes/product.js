@@ -26,6 +26,7 @@ router.post("/product/create",upload.array("productPicture"),addProducts);
 router.get("/products/:slug", getProductsBySlug);
 router.post("/products/getProducts",getProducts);
 router.get("/product/:productId", getProductDetailsById);
+router.post("/product/delete/:productId",deleteProducts);
 
 //updateid api
 // router.route('/product/:id').put(updateUser)
