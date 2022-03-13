@@ -1,0 +1,31 @@
+.creditForm{
+    /* border: 2px solid red; */
+    color: black;
+    background-color: white;
+    padding-top: 10px;
+}
+
+.applyHeading{
+    color: white;
+    background-color: rgb(41, 41, 41);
+    padding: 10px;
+}
+
+.steps{  
+    background-color: white;
+    color: gray;
+    padding-top: 20px;
+}
+
+.alert{
+    border: 1px solid grey;
+}
+
+.selectSuffix{
+    padding-top: 5px;
+}
+
+.notice{
+    width: 100%;
+    margin-top: 15px;
+}
