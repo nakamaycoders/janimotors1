@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Page/Home/Home";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {Route, Switch } from "react-router-dom";
 import Calculator from "./components/Page/Financing/Calculator/Calculator";
 import ProductList from "./components/Page/ProductPage/ProductList";
 import ProductDetail from "./components/Page/ProductPage/ProductDetail";
