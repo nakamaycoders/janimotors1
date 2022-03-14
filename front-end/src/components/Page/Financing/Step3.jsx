@@ -3,7 +3,7 @@ import "./Creditapproval.css";
 import { FaInfoCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
-function Step3() {
+function Step3(props) {
   const message1 = "Select Employment Status";
   const [selectValue, setselectValue] = useState({ val: "" });
   const [formError, setFormError] = useState(false);
@@ -108,12 +108,16 @@ function Step3() {
       
     break;
   }
+  Step3.defaultProps = {
+    secondPerson: '',
+
+};
   return (
     <div>
       <div className="row creditForm">
         <div className="col-sm-12 shadow round pb-3">
           <h1 className="text-center pt-3 text-secondary">
-            Applicant Employment
+            {props.secondPerson}Applicant Employment
           </h1>
           <p className="alert">
             <FaInfoCircle /> All fields are required unless indicated as

@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import "./Creditapproval.css";
 import { FaInfoCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+// import PropTypes from 'prop-types'
 
 function Step1(props) {
   const DataArray = [];
@@ -21,7 +22,10 @@ function Step1(props) {
     console.log(DataArray)
     reset();
   };
-  
+  Step1.defaultProps = {
+    secondPerson: '',
+
+};
   // console.log(watch());
 
   // console.log(errors.name)
@@ -30,7 +34,7 @@ function Step1(props) {
       <div className="row creditForm">
         <div className="col-sm-12 shadow round pb-3">
           <h1 className="text-center pt-3 text-secondary">
-            Applicant Contact Info
+            {props.secondPerson} Applicant Contact Info
           </h1>
           <p className="alert">
             <FaInfoCircle /> All fields are required unless indicated as
@@ -218,6 +222,7 @@ function Step1(props) {
       </div>
     </div>
   );
+  
 }
 
 export default Step1;
