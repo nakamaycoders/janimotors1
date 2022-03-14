@@ -38,6 +38,7 @@ import Paper from "@mui/material/Paper";
 // import LastPageIcon from "@mui/icons-material/LastPage";
 import TableHead from "@mui/material/TableHead";
 import { publicUrl } from "../../UrlConfig";
+import EditProductModel from './EditProductModel';
 // ---------------------------TABLE-------------------
 // const style = {
 //   position: "absolute",
@@ -69,6 +70,7 @@ const Products = (props) => {
   const product = useSelector((state) => state.product);
   const [productDetailsModal, setProductDetailsModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
+  const [EditProductModel,setEditProductModel] = useState(false)
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -112,6 +114,16 @@ const Products = (props) => {
     setProductPictures([...productPictures, e.target.files[0]]);
   };
 
+  const closeEditProductModal = () => {
+    setEditProductModel(false);
+  };
+
+  const showEditProductModal = () => {
+    // setEditProductModal();
+    setEditProductModel(true);
+    console.log("show edit model")
+  };
+  
   // ------TABLE-------------
   const displayProductsInTable = () => {
     return (
@@ -150,7 +162,7 @@ const Products = (props) => {
                     <TableCell align="right">{product.category.name}</TableCell>
                     <TableCell align="right">
                       <Button variant="contained" color="success" onClick={() => showProductDetailsModal(product)}>View Details</Button>
-                      <Button variant="contained">Edit</Button>
+                      <Button variant="contained" onClick={()=> showEditProductModal()}>Edit</Button>
                       <Button variant="contained" color="error" onClick={()=> dispatch(deleteProducts(product._id))}>Delete</Button>
                     </TableCell>
                   </TableRow>
@@ -322,6 +334,7 @@ const Products = (props) => {
     setProductDetails(product);
     setProductDetailsModal(true);
   };
+  
 
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
