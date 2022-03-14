@@ -133,12 +133,14 @@ function Calculator() {
           <Form.Label style={{ color: "white" }}>Amount of Loan</Form.Label>
           <Form.Control
             className="classForCleanUp"
-            defaultValue={state.val}
+            value={state.val - DPval.val}
             id="AofLoan"
             type="text"
             placeholder="Amount of Loan"
             disabled
           />
+            {console.log(state.val - DPval.val)
+}
         </Col>
 
         <Col>

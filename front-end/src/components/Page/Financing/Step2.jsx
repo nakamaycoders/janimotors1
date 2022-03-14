@@ -7,7 +7,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 
-function Step2() {
+function Step2(props) {
   const message = "Select Housing Status";
   const arrayOfHouse = [
     "Mortgage",
@@ -69,13 +69,16 @@ function Step2() {
   };
 
   // console.log(watch());
+  Step2.defaultProps = {
+    secondPerson: '',
 
+};
   // console.log(errors.name)
   return (
     <div>
       <div className="row creditForm">
         <div className="col-sm-12 shadow round pb-3">
-          <h1 className="text-center pt-3 text-secondary">Applicant Housing</h1>
+          <h1 className="text-center pt-3 text-secondary">{props.secondPerson} Applicant Housing</h1>
           <p className="alert">
             <FaInfoCircle /> All fields are required unless indicated as
             optional.
@@ -393,7 +396,9 @@ function Step2() {
         </div>
       </div>
     </div>
+    
   );
+  
 }
 
 export default Step2;
