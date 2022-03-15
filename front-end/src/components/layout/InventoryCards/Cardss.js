@@ -35,6 +35,8 @@ export const Cardss = (props) => {
         autoPlay={true}
         infinite={true}
         responsive={responsive}
+        // showDots={true}
+        removeArrowOnDeviceType={["tablet", "mobile"]}
       >
         {cardsdata.map((cardsdata) => {
           return (

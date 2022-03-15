@@ -49,11 +49,11 @@ function Product(props) {
   // })
 
   return (
-    <>
-      {/* ${(useViewport().width>800)?"d-flex flex-column":`d-flex flex-row`}` */}
+    
+      
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-3 pt-3">
+          <div className="col-md-4 col-lg-3 pt-3">
             <div className='search-div'>
               <select class="form-select" aria-label="Default select example">
                 <option selected disabled>
@@ -120,11 +120,14 @@ function Product(props) {
             
 
             {/* <div className="wrap1"> */}
+            <div className="col-md-9" >
             {product.products.map((p) => {
               console.log(ImageUrl(p.productPictures[0].img));
               return (
-                <>
-                  <div className="col-md-5 col-sm-12 pt-3">
+                  <div className="row">
+                  
+                  <div className="col-md-6 col-sm-12 pt-3">
+                    
                     <Link to={`/${p.slug}/${p._id}/p`}>
                       <img
                         className="img-fluid"
@@ -134,7 +137,7 @@ function Product(props) {
                     </Link>
                   </div>
                   <div
-                    className="col-md-4 col-sm-12 pt-3"
+                    className="col-md-3 col-sm-12 pt-3"
                     style={{ color: "white",paddingLeft: "18px"}}
                   >
                     <h3>{p.name}</h3>
@@ -168,14 +171,15 @@ function Product(props) {
                       </Link>
                     </Button>
                   </div>
-                </>
+                  </div>
               );
             })}
+            </div>
             {/* </div> */}
           
         </div>
       </div>
-    </>
+    
   );
 }
 
