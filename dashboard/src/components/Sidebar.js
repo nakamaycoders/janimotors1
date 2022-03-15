@@ -134,7 +134,7 @@ export default (props = {}) => {
         <Navbar.Brand
           className="me-lg-5"
           as={Link}
-          to={Routes.DashboardOverview.path}
+          to='/'
         >
           
           <Image src={ReactHero} className="navbar-brand-light" />
@@ -166,7 +166,8 @@ export default (props = {}) => {
                     as={Link}
                     variant="secondary"
                     size="xs"
-                    to={Routes.SignIn.path}
+                    to='/signin'
+                    // to={Routes.SignIn.path}
                     className="text-dark"
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
@@ -184,13 +185,14 @@ export default (props = {}) => {
             <Nav className="flex-column pt-3 pt-md-0">
               <NavItem
                 title="Admin Dashboard"
+                link='/'
                 // link={Routes.Presentation.path}
               />
            <Button
                     as={Link}
                     variant="secondary"
                     size="xs"
-                    to={Routes.SignOut.path}
+                    // to={Routes.SignOut.path}
                     className="text-dark"
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
@@ -200,7 +202,7 @@ export default (props = {}) => {
 
               <NavItem
                 title="Home"
-                link={Routes.DashboardOverview.path}
+                link={'/'}
                 icon={faHouse}
               />
     
@@ -216,7 +218,7 @@ export default (props = {}) => {
                 /> */}
                 <NavItem
                   title="Add New Category"
-                  link={Routes.Category.path}
+                  link='/category/create'
                 />
               </CollapsableNavItem>
 
@@ -231,7 +233,7 @@ export default (props = {}) => {
               >
                 <NavItem
                   title="Add Product"
-                  link={Routes.Products.path}
+                  link='/product/create'
                 />
               </CollapsableNavItem>
 
