@@ -70,7 +70,7 @@ const Products = (props) => {
   const product = useSelector((state) => state.product);
   const [productDetailsModal, setProductDetailsModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
-  const [EditProductModel,setEditProductModel] = useState(false)
+  const [EditProductModal,setEditProductModal] = useState(false)
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -79,6 +79,62 @@ const Products = (props) => {
 
   const submitProductForm = () => {
     const form = new FormData();
+    if (name === "") {
+      alert("Name is required");
+      // setShow(false);
+      return;
+    }
+    if (price === "") {
+      alert("Price is required");
+      // setShow(false);
+      return;
+    }
+    if (engine === "") {
+      alert("Engine is required");
+      // setShow(false);
+      return;
+    }
+    if (trim === "") {
+      alert("trim is required");
+      // setShow(false);
+      return;
+    }
+    if (stock === "") {
+      alert("Stock is required");
+      // setShow(false);
+      return;
+    }
+    if (model === "") {
+      alert("model is required");
+      // setShow(false);
+      return;
+    }
+    if (condition === "") {
+      alert("Condition is required");
+      // setShow(false);
+      return;
+    }
+    if (vin === "") {
+      alert("Vin is required");
+      // setShow(false);
+      return;
+    }
+    if (description === "") {
+      alert("Description is required");
+      // setShow(false);
+      return;
+    }
+    if (categoryId === "") {
+      alert("categoryId is required");
+      // setShow(false);
+      return;
+    }
+    if (productPictures === "") {
+      alert("productPictures are required");
+      // setShow(false);
+      return;
+    }
+   
     form.append("name", name);
     form.append("stock", stock);
     form.append("price", price);
@@ -110,19 +166,19 @@ const Products = (props) => {
   };
   // const categoryList = createCategoryList(category.categories);
 
+  const closeEditProductModal = () => {
+    setEditProductModal(false);
+  };
+
+  const showEditProductModal = () => {
+    // setProductDetails(product);
+    setEditProductModal(true);
+  };
+
   const handleProductImages = (e) => {
     setProductPictures([...productPictures, e.target.files[0]]);
   };
 
-  const closeEditProductModal = () => {
-    setEditProductModel(false);
-  };
-
-  const showEditProductModal = () => {
-    // setEditProductModal();
-    setEditProductModel(true);
-    console.log("show edit model")
-  };
   
   // ------TABLE-------------
   const displayProductsInTable = () => {
@@ -184,6 +240,170 @@ const Products = (props) => {
         handleClose={handleClose}
         centered
         modelName={"Add New Product"}
+      >
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          typr="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Name"
+          variant="outlined"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Price"
+          variant="outlined"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Stock"
+          variant="outlined"
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Engine"
+          variant="outlined"
+          value={engine}
+          onChange={(e) => setEngine(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Condition"
+          variant="outlined"
+          value={condition}
+          onChange={(e) => setCondition(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Model"
+          variant="outlined"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Trim"
+          variant="outlined"
+          value={trim}
+          onChange={(e) => setTrim(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          type="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Milage"
+          variant="outlined"
+          value={milage}
+          onChange={(e) => setMilage(e.target.value)}
+        />
+        <TextField
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          typr="text"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Vin"
+          variant="outlined"
+          value={vin}
+          onChange={(e) => setVin(e.target.value)}
+        />
+        <TextareaAutosize
+          style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
+          placeholder="Description"
+          autoComplete="off"
+          required
+          id="outlined-required"
+          label="Description"
+          variant="outlined"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
+          <Select
+            required
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={categoryId}
+            label="Select Category"
+            onChange={(e) => setCategoryId(e.target.value)}
+          >
+            {createCategoryList(category.categories).map((item) => (
+              <MenuItem key={item.value} value={item.value}>
+                {item.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {productPictures.length > 0
+          ? productPictures.map((pic, item) => <div key={item}>{pic.name}</div>)
+          : null}
+        <input
+          style={{ marginTop: "8px", width: "-webkit-fill-available" }}
+          required
+          type="file"
+          name="productPictures"
+          onChange={handleProductImages}
+        />
+      </ReusableModel>
+    );
+  };
+  // --------------------------MODEL---------------------
+
+  const closeProductDetailModal = () => {
+    setProductDetailsModal(false);
+  };
+
+  const showProductDetailsModal = (product) => {
+    setProductDetails(product);
+    setProductDetailsModal(true);
+  };
+
+  const renderEditProductModal = () =>{
+    if(!productDetails){
+      return null;
+    }
+    console.log("EDIT WALA HAI",productDetails)
+    return(
+      <ReusableModel
+      show={EditProductModal}
+      size="lg"
+      handleClose={closeEditProductModal}
+        modelName={"Edit Products"}
       >
         <TextField
           style={{ margin: "9px 3px", width: "-webkit-fill-available" }}
@@ -321,19 +541,14 @@ const Products = (props) => {
           name="productPictures"
           onChange={handleProductImages}
         />
+
+
       </ReusableModel>
-    );
-  };
-  // --------------------------MODEL---------------------
+    )
+  }
 
-  const closeProductDetailModal = () => {
-    setProductDetailsModal(false);
-  };
 
-  const showProductDetailsModal = (product) => {
-    setProductDetails(product);
-    setProductDetailsModal(true);
-  };
+  // -------------EditProduct Model
   
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -509,6 +724,8 @@ const Products = (props) => {
         {/* ------------------------------------TABLE--------------------- */}
         {CreateProductResuableModal()}
         {renderProductDetailsModal()}
+        {renderEditProductModal()}
+        
       </Grid>
     </div>
   );

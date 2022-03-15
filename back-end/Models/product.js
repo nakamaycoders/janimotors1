@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     vin: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
@@ -39,26 +39,26 @@ const productSchema = new mongoose.Schema(
       type: String,
     },
     price: {
-      type: Number,
+      type: String,
       required: true,
     },
     stock: {
-      type: Number,
+      type: String,
       required: true,
     },
     milage: {
-      type: Number,
+      type: String,
       default: 0,
     },
     year: {
-      type: Number,
+      type: String,
     },
     description: {
       type: String,
       required: true,
       trim: true,
     },
-    productPictures: [{ img: { type: String } }],
+    productPictures: [{ img: { type: String, required:true} }],
 
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
     // createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
