@@ -11,8 +11,11 @@ nav {
   float: left;
   font-size: 20px;
   line-height: 60px;
+  /* border: 2px red solid; */
+
 }
- 
+
+
 nav:after {
   content: "";
   display: table;
@@ -79,14 +82,15 @@ li > a:after { content: ''; }
 li > a:only-child:after { content: ''; }
 
 /*Responsive Styles*/
+
+
 @media all and (max-width : 768px) {
 #logo {
-  display: block;
-  padding: 0;
-  width: 100%;
-  text-align: center;
-  float: none;
+
 }
+
+
+
 nav ul li:hover > ul {
   display: block;
 }
@@ -155,3 +159,4 @@ nav ul li {
   width: 94%;
 }
 }
+
