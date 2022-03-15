@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "./Aboutus.css";
 import { Link } from "react-router-dom";
+import banner from '../../../assets/banner.png'
 
 
 function AboutUs() {
@@ -10,7 +11,7 @@ function AboutUs() {
       <Row className="rowww">
         <Col className="bannerImg" sm={4}>
           <Link to='/'>
-          <img className="imgpng" src="./banner.png" width="100%" alt="" />
+          <img className="imgpng" src={banner} width="100%" alt="" />
           </Link>
         </Col>
         <Col sm={8}>

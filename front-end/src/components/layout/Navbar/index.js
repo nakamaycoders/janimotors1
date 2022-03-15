@@ -11,6 +11,7 @@ import './Navbar.css'
 // import { Services } from "../Dropdown/Service";
 // import { About } from "../Dropdown/About";
 import DehazeIcon from '@mui/icons-material/Dehaze';
+import logo from '../../../assets/logo .png'
 
 /**
  * @author
@@ -88,7 +89,7 @@ export const Navbar = (props) => {
     <>
     {/* <h1>hellonavbar</h1> */}
     <nav className="container">
-  <div id="logo"><Link to='/'><img className="img-fluid" style={{width:'168px'}} src="./logo .png" alt="" /></Link>
+  <div id="logo"><Link to='/'><img className="img-fluid" style={{width:'168px'}} src={logo} alt="" /></Link>
   </div>
   <label for="drop" className="toggle">
   <DehazeIcon></DehazeIcon>
