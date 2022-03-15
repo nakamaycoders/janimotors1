@@ -4,7 +4,7 @@ const { registerValidation, isValidated, loginValidation } = require('../validat
 // const {requireLogin} = require('../middleware/auth');
 const router = express.Router();
 
-router.post('/admin/register',registerValidation ,isValidated, registerAdmin);
+// router.post('/admin/register',registerValidation ,isValidated, registerAdmin);
 router.post('/admin/login',loginValidation,isValidated,login);
 router.post('/admin/logout',logout);
 

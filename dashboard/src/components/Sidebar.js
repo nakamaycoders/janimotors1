@@ -3,6 +3,12 @@ import SimpleBar from "simplebar-react";
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AppBar, Toolbar, makeStyles, withStyles } from "@material-ui/core";
+import Box from "@mui/material/Box";
+import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { signout } from "../actions";
+
 import {
   faBook,
   faBoxOpen,
@@ -17,7 +23,7 @@ import {
   faMapPin,
   faInbox,
   faRocket,
-  faHouse
+  faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   Nav,
@@ -34,12 +40,74 @@ import { Routes } from "../routes";
 import ThemesbergLogo from "../assets/img/themesberg.svg";
 import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
+const useStyle = makeStyles({
+  header: {
+    background: "#2874f0",
+    height: 55,
+    zIndex: -1,
+  },
+  btn: {
+    color: "#2874f0",
+    background: "#FFFFFF",
+    textTransform: "none",
+    fontWeight: 600,
+    borderRadius: 2,
+    padding: "5px 40px",
+    height: 32,
+    boxShadow: "none",
+  },
+  logoText: {
+    color: "white",
+    fontSize: 19,
+    fontWeight: "bolder",
+    fontFamily: "sans-serif",
+    marginLeft: "10%",
+    // marginBottom: 8,
+    lineHeight: 2,
+    textDecoration: "none",
+    "&:hover": {
+      color: "white",
+    },
+  },
+  box: {
+    margin: "0 7% 0 auto",
+    display: "flex",
+    "& > *": {
+      marginRight: 50,
+      fontSize: 12,
+      textDecoration: "none",
+      alignItems: "center",
+    },
+  },
+});
 
 export default (props = {}) => {
+  const classes = useStyle();
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(signout());
+  };
+
   const location = useLocation();
   const { pathname } = location;
   const [show, setShow] = useState(false);
   const showClass = show ? "show" : "";
+
+  const renderLoggedInLinks = () => {
+    return (
+        <span
+          className={classes.btn}
+          style={{ cursor: "pointer" }}
+          onClick={logout}
+        >
+          Signout
+          </span>
+    );
+  };
+
+  
 
   const onCollapse = () => setShow(!show);
 
@@ -49,11 +117,11 @@ export default (props = {}) => {
 
     return (
       <Accordion as={Nav.Item} defaultActiveKey={defaultKey}>
-        <Accordion.Item eventKey={eventKey} style={{border:'none'}} >
+        <Accordion.Item eventKey={eventKey} style={{ border: "none" }}>
           <Accordion.Button
             as={Nav.Link}
             className="d-flex justify-content-between align-items-center"
-            style={{backgroundColor:"#2e3650"}}
+            style={{ backgroundColor: "#2e3650" }}
           >
             <span>
               <span className="sidebar-icon">
@@ -131,12 +199,7 @@ export default (props = {}) => {
         variant="dark"
         className="navbar-theme-primary px-4 d-md-none"
       >
-        <Navbar.Brand
-          className="me-lg-5"
-          as={Link}
-          to='/'
-        >
-          
+        <Navbar.Brand className="me-lg-5" as={Link} to="/">
           <Image src={ReactHero} className="navbar-brand-light" />
         </Navbar.Brand>
         <Navbar.Toggle
@@ -162,17 +225,19 @@ export default (props = {}) => {
                 </div>
                 <div className="d-block">
                   <h6>Hi, Admin</h6>
-                  <Button
+              {auth.authenticate && renderLoggedInLinks()}
+
+                  {/* <Button
                     as={Link}
                     variant="secondary"
                     size="xs"
-                    to='/signin'
+                    to="/signin"
                     // to={Routes.SignIn.path}
                     className="text-dark"
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
                     Sign Out
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
               <Nav.Link
@@ -185,57 +250,37 @@ export default (props = {}) => {
             <Nav className="flex-column pt-3 pt-md-0">
               <NavItem
                 title="Admin Dashboard"
-                link='/'
+                link="/"
                 // link={Routes.Presentation.path}
               />
-           <Button
-                    as={Link}
-                    variant="secondary"
-                    size="xs"
-                    // to={Routes.SignOut.path}
-                    className="text-dark"
-                  >
-                    <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />{" "}
-                    Sign Out
-                  </Button>
-          <Dropdown.Divider className="mb-2 border-indigo" /> 
+              {auth.authenticate && renderLoggedInLinks()}
+              
+              <Dropdown.Divider className="mb-2 border-indigo" />
 
-              <NavItem
-                title="Home"
-                link={'/'}
-                icon={faHouse}
-              />
-    
+              <NavItem title="Home" link={"/"} icon={faHouse} />
+
               <CollapsableNavItem
                 // eventKey="tables/"
                 title="Category"
                 icon={faTable}
               >
-              
                 {/* <NavItem
                   title="All Categories"
                   link={Routes.GetCategories.path}
                 /> */}
-                <NavItem
-                  title="Add New Category"
-                  link='/category/create'
-                />
+                <NavItem title="Add New Category" link="/category/create" />
               </CollapsableNavItem>
 
-
-                            {/* ------------PRODUCTS */}
+              {/* ------------PRODUCTS */}
 
               <CollapsableNavItem
                 // eventKey="tables/"
                 title="Product"
                 icon={faTable}
-              
               >
-                <NavItem
-                  title="Add Product"
-                  link='/product/create'
-                />
+                <NavItem title="Add Product" link="/product/create" />
               </CollapsableNavItem>
+
 
               {/* <CollapsableNavItem
                 eventKey="examples/"
@@ -259,7 +304,7 @@ export default (props = {}) => {
                   link={Routes.ServerError.path}
                 />
               </CollapsableNavItem> */}
-{/* 
+              {/* 
               <NavItem
                 external
                 title="Plugins"

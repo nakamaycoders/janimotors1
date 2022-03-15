@@ -46,8 +46,8 @@ function App() {
         <PrivateRoute path="/category/create" component={Category} />
         <PrivateRoute path="/product/create" component={Products} />
         
-        {/* <Route path="**" component={PageNotFound}/> */}
         <Route path="/signin" component={SignIn} />
+        {/* <Route path="**" component={PageNotFound}/> */}
         </main>
       </Switch>
     </div>
