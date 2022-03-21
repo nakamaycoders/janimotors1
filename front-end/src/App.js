@@ -11,11 +11,13 @@ import TradeInCar from './components/Page/Financing/TradeIn/TradeINCar'
 import Creditapproval from './components/Page/Financing/Creditapproval'
 import Contactus from "./components/Page/Contactus/Contactus";
 import Event from './components/Page/Event/Event'
+import Loader from "./components/layout/Loader/Loader";
 
 function App() {
   return (
     <>
     
+        {/* <Route path="/loader" component={Loader} /> */}
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/calculator" component={Calculator} />
@@ -23,7 +25,7 @@ function App() {
         <Route path="/creditapproval" component={Creditapproval} />
         <Route path="/contactus" component={Contactus} />
         <Route path="/event" component={Event} />
-        <Route path="/:productSlug/:productId/p" component={ProductDetail} />
+        <Route path="/product/:productId" component={ProductDetail} />
         <Route path="/:slug" component={ProductList} />
 
       </Switch>

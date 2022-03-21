@@ -1,10 +1,14 @@
-const productModel = require("../models/product");
-const shortid = require("shortid");
-const slugify = require("slugify");
-const Category = require("../models/category");
-const product = require("../models/product");
+const Product = require("../models/product");
+const category = require("../models/category")
+const ErrorHander = require("../utils/errorhander");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
+const ApiFeatures = require("../utils/apifeatures");
+const slugify = require('slugify');
+// const cloudinary = require("cloudinary");
 
-exports.addProducts = (req, res) => {
+// Create Product -- Admin
+exports.createProduct = catchAsyncErrors(async(req, res, next) => {
+
   const {
     name,
     price,
@@ -19,18 +23,17 @@ exports.addProducts = (req, res) => {
     model,
     year,
     description,
-    category
+    category,
   } = req.body;
 
-  let productPictures = [];
-
+  let productPictures = []
   if (req.files.length > 0) {
     productPictures = req.files.map((file) => {
       return { img: file.filename };
     });
   }
 
-  const product = new productModel({
+  const product = new Product({
     name: name,
     slug: slugify(name),
     price,
@@ -49,6 +52,8 @@ exports.addProducts = (req, res) => {
     category,
     // createdBy: req.user._id,
   });
+  // const product = await Product.create(req.body);
+
   product.save((err, product) => {
     if (err) {
       return res.status(400).json({
@@ -62,107 +67,156 @@ exports.addProducts = (req, res) => {
       });
     }
   });
-};
+});
 
+//get product by slug
 exports.getProductsBySlug = (req, res) => {
+  // return next(new ErrorHander("this is my temp alert error",500))
+  
+  // const resultPerPage = 8;
+  // const productsCount =  Product.countDocuments();
+  
   const { slug } = req.params;
-  Category
-    .findOne({ slug: slug })
-    .select(
-      "_id"
-    )
-    .exec((err, category) => {
-      if (err) {
-        return res.status(400).json({
-          err,
-        });
-      } 
-      if(category){
-        product.find({category: category._id}).exec((error,products)=>{
-          if(error){
+  category.findOne({ slug: slug })
+  .select("_id")
+  .exec((err, category) => {
+    if (err) {
+      return res.status(400).json({err});
+    }
+    if (category) {
+      Product.find({ category: category._id }).exec((error, product) => {
+          if (error) {
             return res.status(400).json({
-              error
-            })
+              error,
+            });
           } else {
-            res.status(200).json({ products });
+            res.status(200).json({
+              success:true,
+              product,
+              // productsCount,
+            });
           }
         });
-    }
-  });
-};
-
-exports.getProducts = async (req, res) => {
-  const products = await productModel
-    .find({})
-    // .select("_id name condition price year model trim condition stock vin interiorColor exteriorColor")
-    // .populate({ path: "category", select: "_id name" })
-    .exec();
-
-  res.status(200).json({ products });
-};
-
-exports.getProductDetailsById = (req, res) => {
-  const { productId } = req.params;
-  if (productId) {
-    productModel.findOne({ _id: productId }).exec((error, product) => {
-      if (error) return res.status(400).json({ error });
-      if (product) {
-        res.status(200).json({ product });
       }
     });
-  } else {
-    return res.status(400).json({ error: "Params required" });
-  }
 };
 
+// Get All Product
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
+  const resultPerPage = 8;
+  const productsCount = await Product.countDocuments();
 
+  const apiFeature = new ApiFeatures(Product.find(), req.query)
+  .search().pagination(resultPerPage)
+  // const products = await Product.find()
+    // .filter();
 
+  let products = await apiFeature.query;
 
-// delete api
+  // let filteredProductsCount = products.length;
 
-exports.deleteProducts =  async (req,res)=>{
-  try{
+  // apiFeature.pagination(resultPerPage);
+
+  // products = await apiFeature.query;
+
+  res.status(200).json({
+    success: true,
+    products,
+    productsCount,
+    resultPerPage,
+    // filteredProductsCount,
+  });
+});
+
+// Get All Product (Admin)
+exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find();
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
+// Get Product Details
+exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   const { productId } = req.params;
-  let productToDel = await productModel.findOne({ _id: productId });
-  // console.log(productToDel);
-  if(!productToDel){
-    return res.status(404).send("Not found");
+  const product = await Product.findOne({_id: productId});
+  if (!product) {
+    return next(new ErrorHander("Product not found", 404));
+  }
+  res.status(200).json({
+    success: true,
+    product,
+  });
+});
+
+// Update Product -- Admin
+
+exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
+  let product = await Product.findById(req.params.id);
+
+  const {
+    name,
+    price,
+    engine,
+    model,
+    condition,
+    trim,
+    vin,
+    interiorColor,
+    exteriorColor,
+    milage,
+    stock,
+    year,
+    description,
+    category,
+  } = req.body;
+
+  
+
+  if(product){
+    product.name = name;
+    product.slug = slugify(name);
+    product.price = price;
+    product.engine = engine;
+    product.model = model;
+    product.condition = condition;
+    product.trim =  trim;
+    product.vin =   vin;
+    product.interiorColor = interiorColor;
+    product.exteriorColor = exteriorColor;
+    product.milage = milage;
+    product.stock =   stock;
+    product.year =  year;
+    product.description = description;
+    product.category =category;
     
-  }
-  productToDel = await productModel.findByIdAndDelete({ _id: productId });
-  res.json({"Success": "Deleted", productToDel: productToDel});
-  }
-  catch(error){
-    console.error(error.message)
-    res.status(500).send("Internal Server error")
-  }
-
-};
-
-
-// update api
-
-exports.updateUser = async (req,res)=>{
-  const user= await productModel.findByIdAndUpdate(req.params.id,req.body,{
-      new:true,
-      runValidator:true
-  })
+    const updatedProduct = await product.save();
+    res.json(updatedProduct)
+  }else{
+      return next(new ErrorHander("Product not found", 404));
+    }
   
+});
 
-  try {
-      res.status (200).json({
-          success:true,
-          user
-      })
-  }
-  catch (err){
-      res.status(202).json({
-          success:false,
-          message: "try again" + err.message
+// Delete Product
 
-      })
+exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    return next(new ErrorHander("Product not found", 404));
   }
 
-  
-}
+
+  await product.remove();
+
+  res.status(200).json({
+    success: true,
+    message: "Product Delete Successfully",
+  });
+});
+
+

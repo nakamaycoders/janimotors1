@@ -7,25 +7,25 @@ import Navbar from "../components/Navbar";
 // import Presentation from './Presentation';
 import DashboardOverview from './dashboard/DashboardOverview';
 import Category from './Category/Category'
-import PrivateRoute from '../components/Private/PrivateRoute';
+// import PrivateRoute from '../components/Private/PrivateRoute';
 import SignIn from '../pages/SignIn/SignIn';
-import Products from './Products/Products';
+import Products from './Products/AllProducts';
 // import GetCategories from './Category/GetCategories/GetCategories';
 
 
 
-const RouteWithLoader = ({ component: Component, ...rest }) => {
-    const [loaded, setLoaded] = useState(false);
+// const RouteWithLoader = ({ component: Component, ...rest }) => {
+//     const [loaded, setLoaded] = useState(false);
   
-    useEffect(() => {
-      const timer = setTimeout(() => setLoaded(true), 1000);
-      return () => clearTimeout(timer);
-    }, []);
+//     useEffect(() => {
+//       const timer = setTimeout(() => setLoaded(true), 1000);
+//       return () => clearTimeout(timer);
+//     }, []);
   
-    return (
-      <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
-    );
-  };
+//     return (
+//       <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
+//     );
+//   };
   
   const RouteWithSidebar = ({ component: Component, ...rest }) => {
     const [loaded, setLoaded] = useState(false);
@@ -56,7 +56,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
     );
   };
 
-  export default () => (
+  const Home =  () => (
     <Switch>
          <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
          <RouteWithSidebar exact path={Routes.Category.path} component={Category} />
@@ -65,4 +65,5 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
       <Route path={Routes.SignIn.path} component={SignIn}/>
     </Switch>
   );
+  export default Home;
   

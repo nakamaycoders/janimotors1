@@ -3,27 +3,27 @@ import SimpleBar from "simplebar-react";
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AppBar, Toolbar, makeStyles, withStyles } from "@material-ui/core";
-import Box from "@mui/material/Box";
-import { NavLink } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
+// import Box from "@mui/material/Box";
+// import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from "../actions";
 
 import {
-  faBook,
-  faBoxOpen,
-  faChartPie,
-  faCog,
-  faFileAlt,
-  faHandHoldingUsd,
-  faSignOutAlt,
+  // faBook,
+  // faBoxOpen,
+  // faChartPie,
+  // faCog,
+  // faFileAlt,
+  // faHandHoldingUsd,
+  // faSignOutAlt,
   faTable,
   faTimes,
-  faCalendarAlt,
-  faMapPin,
-  faInbox,
-  faRocket,
   faHouse,
+  // faCalendarAlt,
+  // faMapPin,
+  // faInbox,
+  // faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   Nav,
@@ -36,10 +36,10 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import { Routes } from "../routes";
-import ThemesbergLogo from "../assets/img/themesberg.svg";
+// import { Routes } from "../routes";
+// import ThemesbergLogo from "../assets/img/themesberg.svg";
+// import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
 import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
-import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
 const useStyle = makeStyles({
   header: {
     background: "#2874f0",
@@ -81,7 +81,7 @@ const useStyle = makeStyles({
   },
 });
 
-export default (props = {}) => {
+const Sidebar = (props = {}) => {
   const classes = useStyle();
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -144,8 +144,8 @@ export default (props = {}) => {
       link,
       external,
       target,
-      icon,
-      image,
+      // icon,
+      // image,
       badgeText,
       badgeBg = "secondary",
       badgeColor = "primary",
@@ -278,6 +278,7 @@ export default (props = {}) => {
                 title="Product"
                 icon={faTable}
               >
+                <NavItem title="ALL Products" link="/product/all" />
                 <NavItem title="Add Product" link="/product/create" />
               </CollapsableNavItem>
 
@@ -371,3 +372,5 @@ export default (props = {}) => {
     </>
   );
 };
+
+export default Sidebar;
