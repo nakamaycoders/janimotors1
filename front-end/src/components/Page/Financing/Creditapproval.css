@@ -4,11 +4,16 @@
     background-color: white;
     padding-top: 10px;
 }
-
+.col-form-label{
+    color: black !important;
+}
 .applyHeading{
     color: white;
     background-color: rgb(41, 41, 41);
     padding: 10px;
+}
+.step4{
+    color: black !important;
 }
 
 .steps{  
