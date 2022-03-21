@@ -12,17 +12,7 @@ import Loader from "../../layout/Loader/Loader";
 
 
 function Home() {
-<<<<<<< Updated upstream
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     left: 0,
-  //     behavior: "smooth"
-  //   });
-  // }, [])
-=======
   const {loading} = useSelector((state)=> state.product)
->>>>>>> Stashed changes
   return (
     <>
       <MetaData title="JANI MOTORS" />

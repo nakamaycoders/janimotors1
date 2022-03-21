@@ -66,14 +66,14 @@ function Product(props) {
           <div className="row">
 
             
-              {loading ? (
+              {/* {loading ? (
                 <Loader />
               )
               : error ? (
                 "error"
               )
               :
-              (
+              ( */}
                 <>
                 <div className="col-md-4 col-lg-3 pt-3">
               <div className="search-div">
@@ -194,8 +194,8 @@ function Product(props) {
                 })}
             </div>
                 </>
-              )
-            }
+              {/* )
+            } */}
             
 
           </div>
