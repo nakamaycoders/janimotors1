@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+import ScrollToTop from "../src/components/layout/ScrollToTop"
 
 window.store = store;
 
@@ -13,7 +14,9 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
+       <ScrollToTop> 
         <App />
+      </ScrollToTop>
       </React.StrictMode>
     </BrowserRouter>
     ,

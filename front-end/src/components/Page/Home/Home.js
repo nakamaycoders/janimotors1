@@ -8,6 +8,13 @@ import AboutUs from "../../layout//Aboutus/AboutUs";
 import Footer from "../../layout/Footer";
 
 function Home() {
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: "smooth"
+  //   });
+  // }, [])
   return (
     <Layout>
       <Banner />

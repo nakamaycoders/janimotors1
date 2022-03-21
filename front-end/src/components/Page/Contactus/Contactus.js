@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Layout from "../../layout/layout/layout";
-
+import '../Contactus/Contactus.css'
 function Contactus() {
   const {
     register,
@@ -42,7 +42,7 @@ function Contactus() {
             <div className="col-sm-6 shadow round pt-3">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group ">
-                  <label className="col-form-label">First Name:</label>
+                  <label className="col-form-label col-form-labell" style={{ color: "white" }}>First Name:</label>
                   <input
                     type="text"
                     className={`form-control ${errors.FirstName && "invalid"}`}
@@ -60,7 +60,7 @@ function Contactus() {
                   )}
                 </div>
                 <div className="form-group ">
-                  <label className="col-form-label">Last Name:</label>
+                  <label className="col-form-label col-form-labell" style={{ color: "white" }}>Last Name:</label>
                   <input
                     type="text"
                     className={`form-control ${errors.LastName && "invalid"}`}
@@ -78,9 +78,9 @@ function Contactus() {
                   )}
                 </div>
                 <div className="form-group">
-                  <label className="col-form-label">Email:</label>
+                  <label className="col-form-label col-form-labell" style={{ color: "white" }}>Email:</label>
                   <input
-                    type="text"
+                    type="email"
                     className={`form-control ${errors.email && "invalid"}`}
                     {...register("email", {
                       required: "Email is Required",
@@ -100,9 +100,9 @@ function Contactus() {
                   )}
                 </div>
                 <div className="form-group">
-                  <label className="col-form-label">Phone:</label>
+                  <label className="col-form-label col-form-labell" style={{ color: "white" }}>Phone:</label>
                   <input
-                    type="text"
+                    type="number"
                     className={`form-control ${errors.phone && "invalid"}`}
                     {...register("phone", {
                       required: "Phone is Required",
@@ -123,7 +123,7 @@ function Contactus() {
                   )}
                 </div>
                 <div className="form-group">
-                  <label className="col-form-label">Message:</label>
+                  <label className="col-form-label col-form-labell" style={{ color: "white !important" }}>Message:</label>
                   <textarea
                     className={`form-control ${errors.message && "invalid"}`}
                     {...register("message", {
