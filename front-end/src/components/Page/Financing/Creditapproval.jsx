@@ -25,7 +25,7 @@ const steps = [
 ];
 
 export default function Creditapproval() {
-
+ 
   const {
     register,
     handleSubmit,
@@ -43,7 +43,7 @@ export default function Creditapproval() {
   const [StateStep1, setStateStep1] = useState(true);
   const [StateStep2, setStateStep2] = useState(false);
   const [StateStep3, setStateStep3] = useState(false);
-  const [StateStep4, setStateStep4] = useState(false);
+  // const [StateStep4, setStateStep4] = useState(false);
   const [Joint, setJoint] = useState(false);
 
 
@@ -68,7 +68,7 @@ export default function Creditapproval() {
         setStateStep1(false);
         setStateStep2(true);
         setStateStep3(false);
-        setStateStep4(false);
+        // setStateStep4(false);
 
         break;
 
@@ -77,7 +77,7 @@ export default function Creditapproval() {
         setStateStep1(false);
         setStateStep2(false);
         setStateStep3(true);
-        setStateStep4(false);
+        // setStateStep4(false);
 
         break;
 
@@ -86,7 +86,7 @@ export default function Creditapproval() {
         setStateStep1(false);
         setStateStep2(false);
         setStateStep3(false);
-        setStateStep4(true);
+        // setStateStep4(true);
         break;
 
       default:
@@ -229,7 +229,7 @@ export default function Creditapproval() {
                     {StateStep1 && <Step1 />}
                     {StateStep2 && <Step2 />}
                     {StateStep3 && <Step3 />}
-                    {StateStep4 && <Step4 />}
+                    {/* {StateStep4 && <Step4 />} */}
 
                     {StateStep1 && Joint && <Step1 secondPerson="2nd " />}
                     {StateStep2 && Joint && <Step2 secondPerson="2nd " />}

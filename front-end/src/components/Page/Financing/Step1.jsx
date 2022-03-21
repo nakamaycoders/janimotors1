@@ -5,8 +5,10 @@ import { useForm } from "react-hook-form";
 // import PropTypes from 'prop-types'
 
 function Step1(props) {
-  const DataArray = [];
-  const [firstName,setFirstName] = useState({val: ""})
+  // const DataArrayStep1 = [];
+  const [firstName,setFirstName] = useState({val: ""});
+
+  
   const {
     register,
     handleSubmit,
@@ -16,12 +18,13 @@ function Step1(props) {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    // const DataArray = [{FN: data.Firstname}]
-    DataArray.push(data);
-    // console.log(data.firstName)
-    console.log(DataArray)
-    reset();
+   
+    // reset();    //      UNCOMMENT IT AT THE END 
+ 
+    
   };
+  // console.log(DataArrayStep1[0].firstName)
+
   Step1.defaultProps = {
     secondPerson: '',
 

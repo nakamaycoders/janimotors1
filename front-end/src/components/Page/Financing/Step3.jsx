@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Creditapproval.css";
 import { FaInfoCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import "./Creditapproval.css";
 
 function Step3(props) {
   const message1 = "Select Employment Status";
@@ -59,7 +60,7 @@ function Step3(props) {
    
   };
   // document.getElementById("formWrapper").style.display = "block";
-  // console.log(selectedValue.val);
+  console.log(selectedValue.val);
   switch (selectedValue.val) {
 
     case "select" :
@@ -108,10 +109,10 @@ function Step3(props) {
       
     break;
   }
-  Step3.defaultProps = {
-    secondPerson: '',
+//   Step3.defaultProps = {
+//     secondPerson: '',
 
-};
+// };
   return (
     <div>
       <div className="row creditForm">
@@ -134,7 +135,7 @@ function Step3(props) {
             <select
               id="selector"
               value={selectValue.val}
-                    onChange={handleChange1}
+                    onChange={SelectValueChanger}
             >
               <option value="select">Select Employment Status</option>
               <option value="employed">Employed</option>
@@ -153,7 +154,7 @@ function Step3(props) {
             <div id="employed" style={{display: "none"}}>
               <div className="row creditForm">
                 <div className="col-12 col-md-4">
-                  <label for="employed">Employer:</label>
+                  <label className="col-form-label" for="employed">Employer:</label>
                   <input
                     onChange={getInputValue}
                     type="text"
@@ -173,7 +174,7 @@ function Step3(props) {
                   )}
                 </div>
                 <div className="col-12 col-md-4">
-                  <label for="aadhar">Work Title:</label>
+                  <label className="col-form-label" for="aadhar">Work Title:</label>
                   <input
                     onChange={getInputValue}
                     type="text"
@@ -194,7 +195,7 @@ function Step3(props) {
                 </div>
               </div>
               <div className="col-12 col-md-4">
-                <label for="aadhar">Work Phone:</label>
+                <label className="col-form-label" for="aadhar">Work Phone:</label>
                 <input
                   onChange={getInputValue}
                   type="text"
@@ -349,7 +350,7 @@ function Step3(props) {
             <div id="student"  style={{display: "none"}}>
               <div className="row creditForm">
                 <div className="col-12 col-md-4">
-                  <label for="student">School Name:</label>
+                  <label className="col-form-label" for="student">School Name:</label>
                   <input
                     onChange={getInputValue}
                     type="text"
@@ -369,7 +370,7 @@ function Step3(props) {
                   )}
                 </div>
                 <div className="col-12 col-md-4">
-                  <label for="aadhar">School Title:</label>
+                  <label className="col-form-label" for="aadhar">School Title:</label>
                   <input
                     onChange={getInputValue}
                     type="text"
@@ -390,7 +391,7 @@ function Step3(props) {
                 </div>
               </div>
               <div className="col-12 col-md-4">
-                <label for="aadhar">School Phone:</label>
+                <label className="col-form-label" for="aadhar">School Phone:</label>
                 <input
                   onChange={getInputValue}
                   type="text"
@@ -503,6 +504,7 @@ function Step3(props) {
                 <input
                   type="number"
                   placeholder="$ Per Year"
+                  min = "0"
                   className={`form-control ${errors.paymentYear && "invalid"}`}
                   {...register("paymentYear", {
                     required: "$ Per Year is Required",

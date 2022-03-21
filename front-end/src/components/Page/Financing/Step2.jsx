@@ -290,11 +290,12 @@ function Step2(props) {
                 </div>
               </div>
               <div className="col-12 col-md-2">
-                <b>Time at Address</b> <br />
+                <b>Time at Address (Years)</b> <br />
                 {/* <label className="col-form-label">Years</label> */}
                 <input
                   type="number"
                   placeholder="Years"
+                  min = "0"
                   className={`form-control ${errors.years && "invalid"}`}
                   {...register("years", {
                     required: "Years is Required",
@@ -307,9 +308,9 @@ function Step2(props) {
                   <small className="text-danger">{errors.years.message}</small>
                 )}
               </div>
-              <div className="col-12 col-md-2 pt-4">
+              {/* <div className="col-12 col-md-2 pt-4">
                 {/* <label className="col-form-label">Months</label> */}
-                <input
+                {/* <input
                   type="number"
                   placeholder="Months"
                   className={`form-control ${errors.months && "invalid"}`}
@@ -319,17 +320,18 @@ function Step2(props) {
                   onKeyUp={() => {
                     trigger("months");
                   }}
-                />
-                {errors.months && (
+                /> */}
+                {/* {errors.months && (
                   <small className="text-danger">{errors.months.message}</small>
-                )}
-              </div>
+                )} */}
+              {/* </div> */} 
               <div className="col-12 col-md-2">
                 <b>Mortgage Payment/Rent</b> <br />
                 {/* <label className="col-form-label">Years</label> */}
                 <input
                   type="number"
                   placeholder="$ Per Month"
+                  min = "0"
                   className={`form-control ${errors.payment && "invalid"}`}
                   {...register("payment", {
                     required: "Payment is Required",

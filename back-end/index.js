@@ -32,6 +32,9 @@ app.use('/api',initialData)
 //Picture Route
 app.use("/public", express.static(path.join(__dirname, "uploads")));
 
+const step1 = require('./Routes/step1Form')
+app.use('/api',step1)
+
 app.listen(process.env.PORT,()=>{
     console.log(`Server is working on port ${process.env.PORT}`)
 }); 
