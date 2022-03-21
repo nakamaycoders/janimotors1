@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import Layout from '../../layout/layout/layout'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProductDetailsById } from '../../../actions';
+import { getProductDetailsById,getProductsBySlug } from '../../../actions';
 import './ProductDetail.css'
 import { 
     IoIosArrowForward, 
@@ -15,11 +15,17 @@ import { ImageUrl } from '../../../UrlConfig';
 import { Link } from 'react-router-dom';
 
 export default function ProductDetail(props) {
-    const product = useSelector((state) => state.product);
-    // console.log(product)
-    const dispatch = useDispatch();
+const [img,setImg] = useState("")
   
-    useEffect(() => {
+  const product = useSelector((state) => state.product);
+  // console.log(product)
+  const dispatch = useDispatch();
+ 
+  // const [img, setimg] = useState(ImageUrl(product.productDetails.productPictures[0].img))
+  // console.log(ImageUrl(product.productDetails.productPictures[0].img)
+   
+  
+  useEffect(() => {
       const { productId } = props.match.params;
     //   console.log(props);
       const payload = {
@@ -30,6 +36,7 @@ export default function ProductDetail(props) {
       dispatch(getProductDetailsById(payload));
     }, []);
 
+    
     if(Object.keys(product.productDetails).length === 0){
       return null;
     }
@@ -41,7 +48,7 @@ export default function ProductDetail(props) {
         <div className="flexRow">
           <div className="productDescContainer">
             <div className="productDescImgContainer">
-              <img src={ImageUrl(product.productDetails.productPictures[0].img)} alt='picture' />
+              <img alt='picture' />
             </div>
      
 
@@ -52,7 +59,7 @@ export default function ProductDetail(props) {
             {
                 product.productDetails.productPictures.map((thumb, index) => 
               <div className="thumbnail">
-                <img className='img-fluid' src={ImageUrl(thumb.img)} alt={thumb.img} />
+                <img className='img-fluid' alt="car" />
               </div>
               )
             }

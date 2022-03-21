@@ -207,8 +207,18 @@ function TradeINCar() {
               </div>
 
               <div className="form-group text-start">
-                <label className="">Vin</label>
-                <input className="form-control" type="text" />
+                <label>VIN</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.VIN && "invalid"}`}
+                  {...register("VIN", { required: "VIN is Required" })}
+                  onKeyUp={() => {
+                    trigger("VIN");
+                  }}
+                />
+                {errors.VIN && (
+                  <small className="text-danger">{errors.VIN.message}</small>
+                )}
               </div>
 
               <div className="text-start">
@@ -399,7 +409,7 @@ function TradeINCar() {
               <div className="form-group text-start">
                 <label>Zip</label>
                 <input
-                  type="Num"
+                  type="Number"
                   className={`form-control ${errors.Zip && "invalid"}`}
                   {...register("Zip", { required: "Zip is Required" })}
                   onKeyUp={() => {
@@ -414,7 +424,7 @@ function TradeINCar() {
               <div className="form-group text-start">
                 <label>Email</label>
                 <input
-                  type="text"
+                  type="email"
                   className={`form-control ${errors.email && "invalid"}`}
                   {...register("email", {
                     required: "Email is Required",
@@ -434,7 +444,7 @@ function TradeINCar() {
               <div className="form-group text-start">
                 <label>Day Phone</label>
                 <input
-                  type="text"
+                  type="number"
                   className={`form-control ${errors.phone && "invalid"}`}
                   {...register("phone", {
                     required: "Phone is Required",

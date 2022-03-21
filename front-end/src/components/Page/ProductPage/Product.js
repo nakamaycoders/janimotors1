@@ -32,6 +32,7 @@ function Product(props) {
   console.log(product);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     const { match } = props;
     dispatch(getProductsBySlug(match.params.slug));
