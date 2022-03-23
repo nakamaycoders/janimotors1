@@ -4,7 +4,9 @@ import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,
-  GET_PRODUCT_BY_SLUG,
+  GET_PRODUCT_BY_SLUG_SUCCESS,
+  GET_PRODUCT_BY_SLUG_REQUEST,
+  GET_PRODUCT_BY_SLUG_FAIL,
   GET_PRODUCT_DETAILS_REQUEST,
   GET_PRODUCT_DETAILS_SUCCESS,
   GET_PRODUCT_DETAILS_FAIL,
@@ -49,22 +51,23 @@ export const getProduct = () =>
   };
 
 //get Product by Slug
-  export const getProductsBySlug = (slug) => {
-    return async (dispatch) => {
-        const {data} = await axios.get(`/products/${slug}`);
-        console.log(data)
-        dispatch({
-            type: GET_PRODUCT_BY_SLUG,
-            payload: data.product
-        });
-        // if (res.status === 200) {
-        // } else {
-            // dispatch({
-            //     type: 
-            // })
-        // }
+  export const getProductsBySlug = (slug) => async (dispatch) => {
+    try {
+      dispatch({type:GET_PRODUCT_BY_SLUG_REQUEST})
+      const {data} = await axios.get(`/products/${slug}`);
+      console.log(data)
+      dispatch({
+          type: GET_PRODUCT_BY_SLUG_SUCCESS,
+          payload: data.product,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_PRODUCT_BY_SLUG_FAIL,
+        payload: error.response.data.message,
+    });
     }
 }
+
 
 // Get ProductDetails
 export const getProductDetails = (payload) => async (dispatch) => {

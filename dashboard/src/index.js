@@ -6,11 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import store from "./store";
+import { ToastProvider } from 'react-toast-notifications';
 
 ReactDOM.render(
   <Provider store={store}>
   <Router>
+  <ToastProvider>
       <App />
+  </ToastProvider>
   </Router>
 </Provider>,
   document.getElementById('root')

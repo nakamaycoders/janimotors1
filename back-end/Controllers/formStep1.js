@@ -16,7 +16,6 @@ exports.step1Model = (req, res) => {
     mname,
     phone,
     email
-    // createdBy: req.user._id,
   });
   step1.save((err, step1) => {
     if (err) {
