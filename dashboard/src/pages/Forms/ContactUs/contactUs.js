@@ -1,28 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-// import "./AllProduct.css";
-import { useSelector, useDispatch } from "react-redux";
 import {Link} from "react-router-dom"
-// import {useAlert} from 'react-alert';
 import Button from "@mui/material/Button";
 // import MetaData from "../../components/layouts/MetaData";
-// import EditIcon from '@mui/icons-material/Edit';
-// import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
-import { MdModeEditOutline } from "react-icons/md";
+import Axios from 'axios'
 import DeleteIcon from "@mui/icons-material/Delete";
-// import SideBar from "../../components/Sidebar";
-
 
 const AllProducts = ({ history }) => {
-  const dispatch = useDispatch();
+  let [responseData, setResponseData] = useState('')
 
-  const { error, products } = useSelector((state) => state.product);
+  useEffect(() => {
+    getContactInfo()
+  }, [])
+  
+  const url = "http://localhost:5000/api/contact/information"
 
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.products
-  );
-
-
+  const getContactInfo = async ()=>{
+    try{
+      const res  = await Axios.get(url)
+      setResponseData(res.data.contactInfo)
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 200, flex: 0.5 },
@@ -71,20 +71,29 @@ const AllProducts = ({ history }) => {
     },
   ];
 
-  const rows = [{
-    id: "001",
-    email: "asdasd@gmail.com",
-    lname: "Khan",
-    fname: "Zubair",
-  },{
-    id: "002",
-    email: "asdd@gmail.com",
-    lname: "Khan2",
-    fname: "Zubair2",
-  }];
+  // const rows = [{
+  //   id: "001",
+  //   email: "asdasd@gmail.com",
+  //   lname: "Khan",
+  //   fname: "Zubair",
+  // },{
+  //   id: "002",
+  //   email: "asdd@gmail.com",
+  //   lname: "Khan2",
+  //   fname: "Zubair2",
+  // }];
+const rows = []
 
-//   products &&
-//     products.forEach((item) => {
+responseData && responseData.forEach((item) => {
+  rows.push({
+    id: item._id,
+    email: item.email,
+    lname: item.lName,
+    fname: item.fName,
+  });
+});
+
+// responseData && responseData.forEach((item) => {
 //       rows.push({
 //         id: item._id,
 //         email: item.email,
