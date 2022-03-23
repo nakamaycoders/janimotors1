@@ -8,8 +8,11 @@ function AboutUs() {
    
     <div className="container-fluid pt-4   ">
       <div className="row">
+        
         <div className="col-md-4 ">
+        <Link to='/'>
           <img className="img-fluid" src={banner} alt="" />
+        </Link>
         </div>
         <div className="col-md-8 pt-4 " style={{ color: "white" }}>
           <p>

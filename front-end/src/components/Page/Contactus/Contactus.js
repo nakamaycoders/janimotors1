@@ -102,7 +102,7 @@ function Contactus() {
                 <div className="form-group">
                   <label className="col-form-label col-form-labell" style={{ color: "white" }}>Phone:</label>
                   <input
-                    type="number"
+                    type="tel"
                     className={`form-control ${errors.phone && "invalid"}`}
                     {...register("phone", {
                       required: "Phone is Required",
