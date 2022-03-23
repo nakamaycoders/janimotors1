@@ -23,8 +23,8 @@ function Contactus() {
     <Layout>
     <div>
       <div className="container text-center pt-2">
-        <h1 className="pt-2" style={{ color: "blue " }}>
-          Contact Us
+        <h1 className="pt-2" style={{ color: "red " }}>
+          Contact US
         </h1>
         <p style={{ color: "white" }}>
           Don’t let your questions go unanswered. Call on Jani motors. We can

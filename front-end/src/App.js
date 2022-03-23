@@ -11,6 +11,7 @@ import TradeInCar from './components/Page/Financing/TradeIn/TradeINCar'
 import Creditapproval from './components/Page/Financing/Creditapproval'
 import Contactus from "./components/Page/Contactus/Contactus";
 import Event from './components/Page/Event/Event'
+import OurDealership from "./components/Page/OurDealership/OurDealership";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/calculator" component={Calculator} />
         <Route path="/tradeincar" component={TradeInCar} />
         <Route path="/creditapproval" component={Creditapproval} />
+        <Route path="/ourdealership" component={OurDealership} />
         <Route path="/contactus" component={Contactus} />
         <Route path="/event" component={Event} />
         <Route path="/:productSlug/:productId/p" component={ProductDetail} />
