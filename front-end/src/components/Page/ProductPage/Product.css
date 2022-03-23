@@ -48,6 +48,21 @@
     }
 }
 
+.detailsss{
+    width: 500px;
+
+    border: 2px red solid;
+}
+
+
+
+/* @media screen and (max-width:1024px){
+    .detailsss{
+        width: 500px;
+
+    }
+} */
+
 /* .wrap1{
     display: flex;
     justify-content: end;

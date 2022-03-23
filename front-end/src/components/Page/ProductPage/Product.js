@@ -155,10 +155,10 @@ function Product(props) {
                         </Link>
                       </div>
                       <div
-                        className="col-md-3 col-sm-12 pt-3"
-                        style={{ color: "white", paddingLeft: "18px" }}
+                        className="col-md-3 col-sm-12 pt-3 detailsss"
+                        style={{ color: "white" }}
                       >
-                        <h3>{p.name}</h3>
+                        <h4 className=" "  >{p.name}</h4>
                         <div>
                           <span className="fw-bolder">Price: </span>
                           <span>{p.price}</span>
