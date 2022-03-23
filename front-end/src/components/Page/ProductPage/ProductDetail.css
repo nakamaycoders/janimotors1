@@ -6,7 +6,13 @@
 
 } */
 
-
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 9px !important;
+    margin-bottom: -5px;
+    list-style: none;
+}
 
 .react-slideshow-container+ul.indicators .each-slideshow-indicator:before {
 

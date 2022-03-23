@@ -118,7 +118,7 @@ export const Navbar = (props) => {
     <li><Link href="/">About Us</Link>
     <input type="checkbox" id="drop-1"/>
       <ul>
-        <li><Link to="/creditapproval">Review Us</Link></li>
+        <li><Link to="/ourdealership">Our dealership</Link></li>
         <li><Link to="/contactus">Contact Us</Link></li>
         {/* <li><Link to="/calculator">Calculate Payment</Link></li> */}
       </ul>

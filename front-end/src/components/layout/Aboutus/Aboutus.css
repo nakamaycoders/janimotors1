@@ -1,3 +1,7 @@
+body{
+  background-color: black;
+}
+
 .btn-pri {
     font-family: Raleway-SemiBold;
     font-size: 13px;
@@ -37,7 +41,7 @@
     padding: 100px;
   }
 
-  @media only screen and (max-width: 800px) {
+  /* @media only screen and (max-width: 800px) {
     .resAbout {
         padding: 20px;
         width: 144%;
@@ -48,7 +52,7 @@
         margin:auto;
         
     }
-  }
+  } */
 
   .bannerImg{
       padding-top: 20px;
