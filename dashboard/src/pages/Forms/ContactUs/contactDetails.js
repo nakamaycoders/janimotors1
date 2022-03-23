@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {Link} from "react-router-dom";
 import Button from "@mui/material/Button";
+import axios from "axios"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -45,6 +46,7 @@ const rows = [
 ];
 
 export default function CustomizedTables() {
+  axios.get("/")
   return (
     <>
     <TableContainer component={Paper}>
