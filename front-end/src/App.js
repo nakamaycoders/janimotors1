@@ -23,7 +23,7 @@ function App() {
         <Route path="/calculator" component={Calculator} />
         <Route path="/tradeincar" component={TradeInCar} />
         <Route path="/creditapproval" component={Creditapproval} />
-        <Route path="/ourdealership" component={OurDealership} />
+        {/* <Route path="/ourdealership" component={OurDealership} /> */}
         <Route path="/contactus" component={Contactus} />
         <Route path="/event" component={Event} />
         <Route path="/product/:productId" component={ProductDetail} />

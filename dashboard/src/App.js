@@ -16,7 +16,8 @@ import DashboardOverview from './pages/dashboard/DashboardOverview';
 // import {EditProductModel} from './pages/Products/EditProductModel'
 import UpdateProduct from "./pages/Products/UpdateProduct";
 // import Navbar from './components/Navbar';
-
+import contactUs from "./pages/Forms/ContactUs/contactUs"
+import contactDetails from "./pages/Forms/ContactUs/contactDetails"
 
 function App() {
   
@@ -49,6 +50,10 @@ function App() {
         <PrivateRoute path="/product/create" component={CreateProduct} />
         {/* <PrivateRoute path="/product/edit/:productId" component={EditProductModel} /> */}
         <PrivateRoute path="/product/update/:productid" component={UpdateProduct} />
+        <PrivateRoute path="/Forms/ContactUs/contactUs" component={contactUs} />
+        <PrivateRoute path="/Forms/contactUs/contactDetails" component={contactDetails} />
+
+
 
         
         <Route path="/signin" component={SignIn} />

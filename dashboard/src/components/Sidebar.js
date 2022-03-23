@@ -281,7 +281,18 @@ const Sidebar = (props = {}) => {
                 <NavItem title="ALL Products" link="/product/all" />
                 <NavItem title="Add Product" link="/product/create" />
               </CollapsableNavItem>
+              {/*------------------ FORMS */}
+              <CollapsableNavItem
+                // eventKey="tables/"
+                title="Forms"
+                icon={faTable}
+              >
+                <NavItem title="Contact Us " link="/Forms/contactUs/contactUs" />
+                <NavItem title="Trade-In" link="/" />
+                <NavItem title="Credit Approval" link="/" />
 
+              </CollapsableNavItem>
+              
 
               {/* <CollapsableNavItem
                 eventKey="examples/"
