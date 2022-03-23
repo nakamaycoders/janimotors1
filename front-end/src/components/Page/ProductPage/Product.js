@@ -30,7 +30,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Product(props) {
-  const alert = useAlert()
   const dispatch = useDispatch();
   let { products, error, loading } = useSelector(
     (state) => state.product
@@ -41,13 +40,12 @@ function Product(props) {
 
   useEffect(() => {
     if(error){
-    alert.error(error)
     dispatch(clearErrors());
     }
     const { match } = props;
     dispatch(getProductsBySlug(match.params.slug));
     // console.log(match.params.slug);
-  }, [dispatch,error,alert]);
+  }, [dispatch,error,props]);
 
   // console.log(product.products[0].condition)
 
@@ -64,17 +62,6 @@ function Product(props) {
         <MetaData title={`${products.slug} ---JANI MOTORS`}/>
         <div className="container-fluid">
           <div className="row">
-
-            
-              {/* {loading ? (
-                <Loader />
-              )
-              : error ? (
-                "error"
-              )
-              :
-              ( */}
-                <>
                 <div className="col-md-4 col-lg-3 pt-3">
               <div className="search-div">
                 <select class="form-select" aria-label="Default select example">
@@ -140,6 +127,15 @@ function Product(props) {
               </div>
             </div>
             <div className="col-md-9">
+            {loading ? (
+                <Loader />
+              )
+              : error ? (
+                "error"
+              )
+              :
+              (
+                <>
               {products &&
                 products.map((p) => {
                   // console.log(ImageUrl(p.productPictures[0].img));
@@ -158,7 +154,7 @@ function Product(props) {
                         className="col-md-3 col-sm-12 pt-3 detailsss"
                         style={{ color: "white" }}
                       >
-                        <h4 className=" "  >{p.name}</h4>
+                        <span className=" " style={{ border:"2px red solid" , width:"200px"}} >{p.name}</span>
                         <div>
                           <span className="fw-bolder">Price: </span>
                           <span>{p.price}</span>
@@ -192,10 +188,10 @@ function Product(props) {
                     </div>
                   );
                 })}
-            </div>
                 </>
-              {/* )
-            } */}
+              )
+            } 
+            </div>
             
 
           </div>

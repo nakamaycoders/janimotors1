@@ -15,10 +15,12 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 const CreateProduct = ({ history }) => {
   const dispatch = useDispatch();
 //   const alert = useAlert();
+  const { addToast } = useToasts();
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
@@ -54,12 +56,13 @@ const CreateProduct = ({ history }) => {
   
       if (success) {
         // alert.success("Product Created Successfully");
+        addToast("product Created Successfullt",{appearance: 'success'})
         history.push("/product/all");
         dispatch({ type: NEW_PRODUCT_RESET });
       }
     
    
-  }, [dispatch, error, history, success])
+  }, [dispatch, error, history, success,addToast])
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
