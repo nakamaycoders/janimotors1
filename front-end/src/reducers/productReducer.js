@@ -5,10 +5,12 @@ import {
   ADMIN_PRODUCT_REQUEST,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
-  GET_PRODUCT_BY_SLUG,
   GET_PRODUCT_DETAILS_REQUEST,
   GET_PRODUCT_DETAILS_SUCCESS,
   GET_PRODUCT_DETAILS_FAIL,
+  GET_PRODUCT_BY_SLUG_REQUEST,
+  GET_PRODUCT_BY_SLUG_SUCCESS,
+  GET_PRODUCT_BY_SLUG_FAIL,
   // NEW_PRODUCT_REQUEST,
   // NEW_PRODUCT_SUCCESS,
   // NEW_PRODUCT_FAIL,
@@ -51,10 +53,21 @@ export const productReducer = (state = { products: [] }, action) => {
             loading: false,
             error: action.payload,
           };
-        case GET_PRODUCT_BY_SLUG:
+
+        case GET_PRODUCT_BY_SLUG_REQUEST:
+          return{
+            loading:true,
+            products: []
+          }
+        case GET_PRODUCT_BY_SLUG_SUCCESS:
           return{
             loading:false,
             products: [...action.payload]
+          }
+        case GET_PRODUCT_BY_SLUG_FAIL:
+          return{
+            loading:false,
+            error: action.payload,
           }
         case CLEAR_ERRORS:
           return {
