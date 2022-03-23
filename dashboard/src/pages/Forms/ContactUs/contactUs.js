@@ -63,6 +63,7 @@ const AllProducts = ({ history }) => {
               <Button variant="outlined">Details</Button>
 
             </Link>
+            
               <Button><DeleteIcon /></Button>
           </>
         );
