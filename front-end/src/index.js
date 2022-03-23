@@ -6,20 +6,28 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import ScrollToTop from "../src/components/layout/ScrollToTop"
+import { positions, transitions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+import ScrollToTop from './components/layout/ScrollToTop'
+
+
+const options = {
+  timeout: 5000,
+  position: positions.BOTTOM_CENTER,
+  transition: transitions.SCALE,
+};
 
 window.store = store;
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <React.StrictMode>
+    <AlertProvider template={AlertTemplate} {...options}>
        <ScrollToTop> 
         <App />
       </ScrollToTop>
-      </React.StrictMode>
+    </AlertProvider>
     </BrowserRouter>
-    ,
   </Provider>,
   document.getElementById("root")
 );

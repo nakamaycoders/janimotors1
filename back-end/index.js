@@ -11,8 +11,12 @@ const path = require("path");
 const cors = require('cors')
 app.use(cors());
 
-
-
+// Handling Uncaught Exception
+process.on("uncaughtException", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Uncaught Exception`);
+    process.exit(1);
+  });
 
 //Category Routes
 const categoryRoutes = require('./Routes/category')
@@ -38,3 +42,14 @@ app.use('/api',step1)
 app.listen(process.env.PORT,()=>{
     console.log(`Server is working on port ${process.env.PORT}`)
 }); 
+
+// Unhandled Promise Rejection
+process.on("unhandledRejection", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+  
+    server.close(() => {
+      process.exit(1);
+    });
+  });
+  

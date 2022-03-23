@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../../components/layouts/Layout";
+// import Layout from "../../components/layouts/Layout";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
@@ -164,6 +164,7 @@ const Category = (props) => {
     const expandedIdsArray = expandedArray.map((item, index) => ({
       _id: item.value,
     }));
+
     const idsArray = expandedIdsArray.concat(checkedIdsArray);
 
     if (checkedIdsArray.length > 0) {

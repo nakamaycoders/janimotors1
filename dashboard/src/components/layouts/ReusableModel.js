@@ -1,28 +1,28 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import { Modal } from "react-bootstrap";
-import Fade from "@mui/material/Fade";
+// import Box from "@mui/material/Box";
+// import Fade from "@mui/material/Fade";
+// import Typography from "@mui/material/Typography";
+// import { Form } from "react-bootstrap";
 // import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 // import TextField from "@mui/material/TextField";
 import {Button} from 'react-bootstrap'
-import { Form } from "react-bootstrap";
 // import InputLabel from "@mui/material/InputLabel";
 // import MenuItem from "@mui/material/MenuItem";
 // import FormControl from "@mui/material/FormControl";
 // import Select from "@mui/material/Select";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 
 const ReusableModel = (props)=> {

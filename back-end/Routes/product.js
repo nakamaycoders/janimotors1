@@ -1,36 +1,53 @@
 const express = require("express");
 const {
-  addProducts,
+  updateProduct,
+  getAllProducts,
+  getAdminProducts,
   getProductsBySlug,
-  getProducts,
-  getProductDetailsById,
-  deleteProducts,
-  updateUser
+  createProduct,
+  deleteProduct,
+  getProductDetails,
 } = require("../Controllers/product");
+
 const multer = require("multer");
 const path = require("path");
 const shortid = require("shortid");
 const router = express.Router();
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination:  function (req, file, cb) {
       cb(null, path.join(path.dirname(__dirname), 'uploads'));
     },
-    filename: function (req, file, cb) {
+    filename:  function (req, file, cb) {
       cb(null, shortid.generate() + "-" + file.originalname);
     },
   });
 const upload = multer({storage})
 
-router.post("/product/create",upload.array("productPicture"),addProducts);
-router.get("/products/:slug", getProductsBySlug);
-router.post("/products/getProducts",getProducts);
-router.get("/product/:productId", getProductDetailsById);
-router.post("/product/delete/:productId",deleteProducts);
+// router.post("/product/create",upload.array("productPicture"),addProducts);
+// router.get("/products/:slug", getProductsBySlug);
+// router.post("/products/getProducts",getProducts);
+// router.get("/product/:productId", getProductDetailsById);
+// router.post("/product/delete/:productId",deleteProducts);
 
-//updateid api
-// router.route('/product/:id').put(updateUser)
-// //delete id
-// router.route('/product/:productId').delete(deleteProducts);
+
+router.route("/products").get(getAllProducts);
+
+router
+  .route("/admin/products")
+  .get(getAdminProducts);
+
+router
+.post("/admin/product/new",upload.array("productPicture"),createProduct)
+
+router.get("/products/:slug", getProductsBySlug);
+
+router
+  .route("/admin/product/:id")
+  .put(updateProduct)
+  .delete(deleteProduct);
+
+router.route("/product/:productId").get(getProductDetails);
+
 
 module.exports = router;

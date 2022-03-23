@@ -2,7 +2,8 @@ import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 // import Box from '@mui/material/Box'
 import {useSelector,useDispatch} from 'react-redux'
-import { getAllCategory } from "../../../actions";
+import { getAllCategory } from "../../../actions/categoryAction";
+// import { getProduct } from "../../../actions/productAction";
 // import "./style.css";
 // import { navItems } from "./data";
 // import { Inventory } from "../Dropdown/Inventory";
@@ -50,6 +51,7 @@ export const Navbar = (props) => {
   // };
   // const category = useSelector((state) => state.category);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(getAllCategory());
