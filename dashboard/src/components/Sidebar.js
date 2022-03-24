@@ -288,12 +288,10 @@ const Sidebar = (props = {}) => {
                 icon={faTable}
               >
                 <NavItem title="Contact Us " link="/Forms/contactUs/contactUs" />
-                <NavItem title="Trade-In" link="/" />
+                <NavItem title="Trade-In" link="/trade-in-jani-motors" />
                 <NavItem title="Credit Approval" link="/" />
-
               </CollapsableNavItem>
               
-
               {/* <CollapsableNavItem
                 eventKey="examples/"
                 title="Page Examples"
