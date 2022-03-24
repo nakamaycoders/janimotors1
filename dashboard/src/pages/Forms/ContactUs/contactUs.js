@@ -1,42 +1,39 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 // import MetaData from "../../components/layouts/MetaData";
-import Axios from 'axios'
+import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useHistory} from 'react-router'
+import { useHistory } from "react-router";
 
 const AllProducts = () => {
-
-  let [responseData, setResponseData] = useState('')
-  const history = useHistory()
+  let [responseData, setResponseData] = useState("");
+  const history = useHistory();
   useEffect(() => {
-    getContactInfo()
+    getContactInfo();
     // deleteContactHandler()
-  }, [])
-  
-  const url = "http://localhost:5000/api/contact/information"
+  }, []);
 
-  const getContactInfo = async ()=>{
-    try{
-      const res  = await Axios.get(url)
-      setResponseData(res.data.contactInfo)
-    }catch(err){
-      console.log(err)
+  const url = "http://localhost:5000/api/contact/information";
+
+  const getContactInfo = async () => {
+    try {
+      const res = await Axios.get(url);
+      setResponseData(res.data.contactInfo);
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
-  
-  const deleteUrl = `http://localhost:5000/api/contact/delete`
+  const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
-    try{
-      const res  = Axios.delete(`${deleteUrl}/${id}`)
-      console.log('Item successfully deleted.',res)
-      history.go(0)
-    }catch(err){
-      console.log(err)
-      alert(err)
+    try {
+      const res = Axios.delete(`${deleteUrl}/${id}`);
+      // console.log("Item successfully deleted.", res);
+      history.go(0);
+    } catch (err) {
+      alert(err);
     }
   };
 
@@ -52,64 +49,53 @@ const AllProducts = () => {
     {
       field: "lname",
       headerName: "Last Name",
-      // type: "number",
       minWidth: 150,
       flex: 0.3,
-      sortable: false
+      sortable: false,
     },
 
     {
       field: "email",
       headerName: "Email",
-      // type: "number",
       minWidth: 200,
       flex: 0.5,
-      sortable: false
+      sortable: false,
     },
 
     {
-        minWidth: 250,
-      renderCell: (params) => {
-      
+      minWidth: 250,
+      renderCell: (param) => {
         return (
           <>
-            {/* <Link to={`/product/update/${params.getValue(params.id, "id")}`}>
-              <MdModeEditOutline />
-            </Link> */}
-            <Link to={`/Forms/contactUs/contactDetails/${params.getValue(params.id, "id")}`}>
-              <Button variant="outlined">Details</Button>
-
-            </Link>
-            
-              <Button 
-               onClick={() => deleteContactHandler(params.id)}
+            <Link
+              to={{
+                pathname: `/Forms/contactUs/contactDetails/${param.getValue(param.id,"id")}`,
+                params: { id: param.id },
+              }}
               >
-                <DeleteIcon /></Button>
+              <Button variant="outlined">Details</Button>
+            </Link>
+
+            <Button onClick={() => deleteContactHandler(param.id)}>
+              <DeleteIcon />
+            </Button>
           </>
         );
       },
     },
   ];
 
-const rows = []
+  const rows = [];
+  responseData &&
+    responseData.forEach((item) => {
+      rows.push({
+        id: item._id,
+        email: item.email,
+        lname: item.lName,
+        fname: item.fName,
+      });
+    });
 
-responseData && responseData.forEach((item) => {
-  rows.push({
-    id: item._id,
-    email: item.email,
-    lname: item.lName,
-    fname: item.fName,
-  });
-});
-
-// responseData && responseData.forEach((item) => {
-//       rows.push({
-//         id: item._id,
-//         email: item.email,
-//         lname: item.lname,
-//         fname: item.fname,
-//       });
-//     });
 
   return (
     <>
