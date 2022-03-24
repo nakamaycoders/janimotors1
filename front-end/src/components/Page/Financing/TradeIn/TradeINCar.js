@@ -4,30 +4,65 @@ import "./TradeInCar.css";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
 import Layout from "../../../layout/layout/layout";
+import Axios from "axios";
 
 const message = "Please fill out the given field correctly";
 function TradeINCar() {
-  const url = "http://localhost:5000/api/trade-in"
+  const url = "http://localhost:5000/api/trade-in";
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [year, setYear] = useState("");
   const [make, setMake] = useState("");
+  const [vin, setVin] = useState("");
+  const [model, setModel] = useState("");
+  const [bodyStyle, setBodyStyle] = useState("");
+  const [trim, setTrim] = useState("");
+  const [interiorColor, setInteriorColor] = useState("");
+  const [exteriorColor, setExteriorColor] = useState("");
+  const [cylinders, setCylinders] = useState("");
+  const [liters, setLiters] = useState("");
+  const [milage, setMilage] = useState("");
+  const [transmission, setTransmission] = useState("");
+  const [lienHolder, setLienHolder] = useState("");
+  const [estimatedPayoff, setEstimatedPayoff] = useState("");
+  const [additionalOptions, setAdditionalOptions] = useState("");
+  const [state, settate] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [zip, setZip] = useState("");
 
   const createContactSubmitHandler = (e) => {
     e.preventDefault();
 
-    Axios.post(url,{
-        fname: fname,
-        lname: lname,
-        email: email,
-        phone: phone,
-        make: make,
-    }).then(res=>{
-      console.log(res.data)
-    })
-   
-   
+    Axios.post(url, {
+      fname: fname,
+      lname: lname,
+      email: email,
+      phone: phone,
+      make: make,
+      year: year,
+      model: model,
+      vin: vin,
+      bodyStyle: bodyStyle,
+      interiorColor: interiorColor,
+      exteriorColor: exteriorColor,
+      zip: zip,
+      cylinders: cylinders,
+      milage: milage,
+      transmission: transmission,
+      lienHolder: lienHolder,
+      estimatedPayoff:estimatedPayoff,
+      state:state,
+      additionalOptions:additionalOptions,
+      trim: trim,
+      city:city,
+      address:address,
+      liters:liters,
+    }).then((res) => {
+      console.log(res.data);
+    });
   };
 
   const {
@@ -48,31 +83,31 @@ function TradeINCar() {
 
   // ---------------------------------------------------------------------------
 
-  const [value, setValue] = useState({ val: "" });
-  const [makeValue, setmakeValue] = useState({ val: "" });
+  // const [value, setValue] = useState({ val: "" });
+  // const [makeValue, setmakeValue] = useState({ val: "" });
 
   const handleChange = (e) => {
-    setValue({ val: e.target.value });
+    setYear({ val: e.target.value });
 
     setFormError(false);
   };
   // console.log(value.val);
   const handleMakeChange = (e) => {
-    setmakeValue({ val: e.target.value });
+    setMake({ val: e.target.value });
 
     setFormmakeError(false);
   };
 
   const handleFormSubmission = () => {
-    if (value.val === "") {
+    if (year === "") {
       setFormError(true);
-    } else if (value.val === "") {
+    } else if (year === "") {
       setFormError(false);
     }
 
-    if (makeValue.val === "") {
+    if (make === "") {
       setFormmakeError(true);
-    } else if (makeValue.val === "") {
+    } else if (make === "") {
       setFormmakeError(false);
     }
   };
@@ -185,7 +220,7 @@ function TradeINCar() {
             <div className="   col-md-6">
               <h2 style={{ color: "blue" }}>Vehicle Information</h2>
               {/* ---------------------------------------------------------------------------------------- */}
-              <form 
+              <form
                 // handleSubmit={onSubmit}
                 onSubmit={createContactSubmitHandler}
                 encType="multipart/form-data"
@@ -194,7 +229,7 @@ function TradeINCar() {
                   <label>Year</label>
                   <select
                     className="form-select"
-                    value={value.val}
+                    value={year.val}
                     onChange={handleChange}
                   >
                     <option>Open this select menu</option>
@@ -209,7 +244,7 @@ function TradeINCar() {
                   <label className="">Make</label>
                   <select
                     className="form-select "
-                    value={makeValue.val}
+                    value={make.val}
                     onChange={handleMakeChange}
                     aria-label="Default select"
                   >
@@ -226,10 +261,11 @@ function TradeINCar() {
                   <input
                     type="text"
                     className={`form-control ${errors.model && "invalid"}`}
-                    {...register("model", { required: "Model is Required" })}
-                    onKeyUp={() => {
-                      trigger("model");
-                    }}
+                    value={model}
+                    // {...register("model", { required: "Model is Required" })}
+                    // onKeyUp={() => {
+                    //   trigger("model");
+                    // }}
                   />
                   {errors.model && (
                     <small className="text-danger">
@@ -442,7 +478,6 @@ function TradeINCar() {
                   <label>Zip</label>
                   <input
                     type="text"
-                    
                     title="Please enter a Zip Code"
                     pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
                     className={`form-control ${errors.Zip && "invalid"}`}
