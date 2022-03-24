@@ -17,6 +17,7 @@ import UpdateProduct from "./pages/Products/UpdateProduct";
 import contactUs from "./pages/Forms/ContactUs/contactUs"
 import contactDetails from "./pages/Forms/ContactUs/contactDetails"
 import TradeIn from "./pages/Forms/TradeIn/TradeIn"
+import TradeInDetails from "./pages/Forms/TradeIn/TradeInDetails"
 
 function App() {
   
@@ -51,6 +52,7 @@ function App() {
         <PrivateRoute path="/Forms/ContactUs/contactUs" component={contactUs} />
         <PrivateRoute  path="/Forms/contactUs/contactDetails" component={contactDetails} />
         <PrivateRoute  path="/trade-in-jani-motors" component={TradeIn} />
+        <PrivateRoute  path="/Forms/TradeIn/TradeInDetails" component={TradeInDetails} />
 
 
 

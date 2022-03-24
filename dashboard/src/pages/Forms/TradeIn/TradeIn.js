@@ -20,7 +20,8 @@ const TradeIn = () => {
   const getContactInfo = async () => {
     try {
       const res = await Axios.get(url);
-      setResponseData(res.data.contactInfo);
+      setResponseData(res.data.tradeInfo);
+      console.log(res.data.tradeInfo)
     } catch (err) {
       console.log(err);
     }
@@ -47,8 +48,8 @@ const TradeIn = () => {
       flex: 1,
     },
     {
-      field: "lname",
-      headerName: "Last Name",
+      field: "make",
+      headerName: "Make",
       minWidth: 150,
       flex: 0.3,
       sortable: false,
@@ -69,7 +70,7 @@ const TradeIn = () => {
           <>
             <Link
               to={{
-                pathname: `/Forms/contactUs/contactDetails/${param.getValue(param.id,"id")}`,
+                pathname: `/Forms/TradeIn/TradeInDetails/${param.getValue(param.id,"id")}`,
                 params: { id: param.id },
               }}
               >
@@ -91,8 +92,8 @@ const TradeIn = () => {
       rows.push({
         id: item._id,
         email: item.email,
-        lname: item.lName,
-        fname: item.fName,
+        make: item.make,
+        fname: item.fname,
       });
     });
 

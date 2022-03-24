@@ -7,6 +7,29 @@ import Layout from "../../../layout/layout/layout";
 
 const message = "Please fill out the given field correctly";
 function TradeINCar() {
+  const url = "http://localhost:5000/api/trade-in"
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [make, setMake] = useState("");
+
+  const createContactSubmitHandler = (e) => {
+    e.preventDefault();
+
+    Axios.post(url,{
+        fname: fname,
+        lname: lname,
+        email: email,
+        phone: phone,
+        make: make,
+    }).then(res=>{
+      console.log(res.data)
+    })
+   
+   
+  };
+
   const {
     register,
     handleSubmit,
@@ -162,7 +185,11 @@ function TradeINCar() {
             <div className="   col-md-6">
               <h2 style={{ color: "blue" }}>Vehicle Information</h2>
               {/* ---------------------------------------------------------------------------------------- */}
-              <form handleSubmit={onSubmit}>
+              <form 
+                // handleSubmit={onSubmit}
+                onSubmit={createContactSubmitHandler}
+                encType="multipart/form-data"
+              >
                 <div className="form-group text-start">
                   <label>Year</label>
                   <select
