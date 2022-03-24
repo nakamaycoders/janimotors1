@@ -1,15 +1,17 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-
+import Axios from "axios";
+import './contactDetails.css'
+// import { MdWifiProtectedSetup } from "react-icons/md";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -22,17 +24,17 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
 function createData(Field, Data) {
-  return { Field, Data};
+  return { Field, Data };
 }
 
 const rows = [
@@ -41,15 +43,13 @@ const rows = [
   createData('Email', "asdasda@gmail.com"),
   createData('Phone', "0909090909"),
   createData('Message', "Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao "),
+]
 
-  
-];
+export default function CustomizedTables(props) {
 
-export default function CustomizedTables() {
- 
   return (
     <>
-    <TableContainer component={Paper}>
+      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -76,6 +76,6 @@ export default function CustomizedTables() {
     <Button variant="outlined my-3"> &larr; Go Back</Button>
 
   </Link>
-  </>
+    </>
   );
 }

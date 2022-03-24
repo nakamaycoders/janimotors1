@@ -5,12 +5,15 @@ import Button from "@mui/material/Button";
 // import MetaData from "../../components/layouts/MetaData";
 import Axios from 'axios'
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useHistory} from 'react-router'
 
-const AllProducts = ({ history }) => {
+const AllProducts = () => {
+
   let [responseData, setResponseData] = useState('')
-
+  const history = useHistory()
   useEffect(() => {
     getContactInfo()
+    // deleteContactHandler()
   }, [])
   
   const url = "http://localhost:5000/api/contact/information"
@@ -23,6 +26,19 @@ const AllProducts = ({ history }) => {
       console.log(err)
     }
   }
+
+  
+  const deleteUrl = `http://localhost:5000/api/contact/delete`
+  const deleteContactHandler = (id) => {
+    try{
+      const res  = Axios.delete(`${deleteUrl}/${id}`)
+      console.log('Item successfully deleted.',res)
+      history.go(0)
+    }catch(err){
+      console.log(err)
+      alert(err)
+    }
+  };
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 200, flex: 0.5 },
@@ -53,35 +69,28 @@ const AllProducts = ({ history }) => {
 
     {
         minWidth: 250,
-      renderCell: (params) => {
+      renderCell: (param) => {
+      
         return (
           <>
             {/* <Link to={`/product/update/${params.getValue(params.id, "id")}`}>
               <MdModeEditOutline />
             </Link> */}
-            <Link to="/Forms/contactUs/contactDetails">
+            <Link to={{ pathname: `/Forms/contactUs/contactDetails/${param.getValue(param.id, "id")}`, params:{id:param.id}}}>
               <Button variant="outlined">Details</Button>
 
             </Link>
             
-              <Button><DeleteIcon /></Button>
+              <Button 
+               onClick={() => deleteContactHandler(param.id)}
+              >
+                <DeleteIcon /></Button>
           </>
         );
       },
     },
   ];
 
-  // const rows = [{
-  //   id: "001",
-  //   email: "asdasd@gmail.com",
-  //   lname: "Khan",
-  //   fname: "Zubair",
-  // },{
-  //   id: "002",
-  //   email: "asdd@gmail.com",
-  //   lname: "Khan2",
-  //   fname: "Zubair2",
-  // }];
 const rows = []
 
 responseData && responseData.forEach((item) => {
