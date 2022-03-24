@@ -69,20 +69,20 @@ const AllProducts = () => {
 
     {
         minWidth: 250,
-      renderCell: (param) => {
+      renderCell: (params) => {
       
         return (
           <>
             {/* <Link to={`/product/update/${params.getValue(params.id, "id")}`}>
               <MdModeEditOutline />
             </Link> */}
-            <Link to={{ pathname: `/Forms/contactUs/contactDetails/${param.getValue(param.id, "id")}`, params:{id:param.id}}}>
+            <Link to={`/Forms/contactUs/contactDetails/${params.getValue(params.id, "id")}`}>
               <Button variant="outlined">Details</Button>
 
             </Link>
             
               <Button 
-               onClick={() => deleteContactHandler(param.id)}
+               onClick={() => deleteContactHandler(params.id)}
               >
                 <DeleteIcon /></Button>
           </>
