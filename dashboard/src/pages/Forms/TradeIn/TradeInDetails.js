@@ -25,7 +25,7 @@ export default function CustomizedTables(props) {
   }, []);
 
   if(Object.keys(responseData).length === 0){
-    return null;
+    return null
   }
 
   return (

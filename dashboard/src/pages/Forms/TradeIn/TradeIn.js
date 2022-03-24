@@ -27,7 +27,7 @@ const TradeIn = () => {
     }
   };
 
-  const deleteUrl = `http://localhost:5000/api/trade-in/delete/:id`;
+  const deleteUrl = `http://localhost:5000/api/trade-in/delete`;
   const deleteContactHandler = (id) => {
     try {
       const res = Axios.delete(`${deleteUrl}/${id}`);
