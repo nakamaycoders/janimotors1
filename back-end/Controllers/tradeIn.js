@@ -101,3 +101,15 @@ exports.getTradeInDetailsById = catchAsyncErrors(async(req,res,next) =>{
             message: "Deleted Successfully",
           });
         });
+//         {       "year": "3211",
+//         "make": "1231",
+//         "model": "as22",
+//         "vin": "3231231231",
+//         "bodystyle": "321123123asda",
+//         "trim": "asdasd231",
+//         "fname": "asdasdasdasdasdas",
+//         "lname":"zcxzxczxczxczx",
+//         "email": "asdasdasd@gmail.com",
+//         "zip": 321312312,
+//         "phone": 123123123123123
+// }

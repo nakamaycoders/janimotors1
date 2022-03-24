@@ -7,7 +7,7 @@ import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
-const AllProducts = () => {
+const ContactUs = () => {
   let [responseData, setResponseData] = useState("");
   const history = useHistory();
   useEffect(() => {
@@ -118,4 +118,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default ContactUs;
