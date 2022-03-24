@@ -11,10 +11,6 @@ import Layout from "../../layout/layout/layout";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
 
-
-
-
-
 const ProductDetail = (props) => {
   const dispatch = useDispatch();
   const alert = useAlert();

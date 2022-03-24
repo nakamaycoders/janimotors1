@@ -101,12 +101,12 @@ const url = "http://localhost:5000/api/contact"
                     defaultValue={lName}
                     onChange={(e)=>setLname(e.target.value)}
 
-                    {...register("LastName", {
-                      required: "Last Name is Required",
-                    })}
-                    onKeyUp={() => {
-                      trigger("LastName");
-                    }}
+                    // {...register("LastName", {
+                    //   required: "Last Name is Required",
+                    // })}
+                    // onKeyUp={() => {
+                    //   trigger("LastName");
+                    // }}
                   />
                   {errors.LastName && (
                     <small className="text-danger">

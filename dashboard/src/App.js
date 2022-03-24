@@ -51,7 +51,7 @@ function App() {
         {/* <PrivateRoute path="/product/edit/:productId" component={EditProductModel} /> */}
         <PrivateRoute path="/product/update/:productid" component={UpdateProduct} />
         <PrivateRoute path="/Forms/ContactUs/contactUs" component={contactUs} />
-        <PrivateRoute path="/Forms/contactUs/contactDetails" component={contactDetails} />
+        <PrivateRoute  path="/Forms/contactUs/contactDetails" component={contactDetails} />
 
 
 
