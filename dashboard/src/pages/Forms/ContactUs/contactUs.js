@@ -17,7 +17,6 @@ const AllProducts = () => {
   }, [])
   
   const url = "http://localhost:5000/api/contact/information"
-
   const getContactInfo = async ()=>{
     try{
       const res  = await Axios.get(url)

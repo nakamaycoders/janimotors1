@@ -13,6 +13,10 @@ import Axios from "axios";
 import './contactDetails.css'
 // import { MdWifiProtectedSetup } from "react-icons/md";
 
+
+
+
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -34,6 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(Field, Data) {
+
   return { Field, Data };
 }
 
@@ -44,8 +49,20 @@ const rows = [
   createData('Phone', "0909090909"),
   createData('Message', "Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao Gand Marwao "),
 ]
-
+// {------------------------------------------------------------------------------------------------}
 export default function CustomizedTables(props) {
+  const [responseData, setResponseData] = useState('');
+  const url = "http://localhost:5000/api/contact/information/623c26012b12b83bc28a61e6";
+const getContactInfo = async ()=>{
+
+  try{
+    const res  = await Axios.get(url)
+    setResponseData(res.data.result);
+    console.log(responseData);
+  }catch(err){
+    console.log(err)
+  }
+}
 
   return (
     <>
