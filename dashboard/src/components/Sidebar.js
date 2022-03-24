@@ -287,9 +287,9 @@ const Sidebar = (props = {}) => {
                 title="Forms"
                 icon={faTable}
               >
-                <NavItem title="Contact Us " link="/Forms/contactUs/contactUs" />
+                <NavItem title="Contact Us " link="/contactUs/contactUs" />
                 <NavItem title="Trade-In" link="/trade-in-jani-motors" />
-                <NavItem title="Credit Approval" link="/" />
+                <NavItem title="Credit Approval" link="/CREDIT-APPROVAL" />
               </CollapsableNavItem>
               
               {/* <CollapsableNavItem

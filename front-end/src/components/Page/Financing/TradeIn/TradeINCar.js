@@ -66,17 +66,17 @@ function TradeINCar() {
   };
 
   const {
-    register,
-    handleSubmit,
+    // register,
+    // handleSubmit,
     formState: { errors },
-    reset,
-    trigger,
+    // reset,
+    // trigger,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // reset();
-  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   // reset();
+  // };
 
   const [formError, setFormError] = useState(false);
   const [formmakeError, setFormmakeError] = useState(false);

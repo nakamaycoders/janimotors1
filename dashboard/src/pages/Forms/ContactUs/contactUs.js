@@ -29,7 +29,7 @@ const ContactUs = () => {
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
     try {
-      const res = Axios.delete(`${deleteUrl}/${id}`);
+      Axios.delete(`${deleteUrl}/${id}`);
       // console.log("Item successfully deleted.", res);
       history.go(0);
     } catch (err) {
