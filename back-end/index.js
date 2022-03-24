@@ -39,6 +39,9 @@ app.use("/public", express.static(path.join(__dirname, "uploads")));
 const contactRoutes = require('./Routes/contact')
 app.use('/api',contactRoutes)
 
+const tradeIn = require('./Routes/tradeIn')
+app.use('/api',tradeIn)
+
 app.listen(process.env.PORT,()=>{
     console.log(`Server is working on port ${process.env.PORT}`)
 }); 

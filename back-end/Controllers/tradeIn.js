@@ -61,7 +61,7 @@ exports.createTradeInForm = (req,res) =>{
         }
         if (data) {
           return res.status(201).json({
-            contact
+            trade
           });
         }
       });
