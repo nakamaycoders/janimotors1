@@ -58,6 +58,79 @@ export default function CustomizedTables(props) {
             <td>Make</td>
             <td>{responseData.make}</td>
           </tr>
+          <tr>
+            <td>Year</td>
+            <td>{responseData.year}</td>
+          </tr>
+          <tr>
+            <td>Model</td>
+            <td>{responseData.model}</td>
+          </tr>
+          <tr>
+            <td>VIN</td>
+            <td>{responseData.vin}</td>
+          </tr>
+          <tr>
+            <td>Body Style</td>
+            <td>{responseData.bodystyle}</td>
+          </tr>
+          <tr>
+            <td>Trim</td>
+            <td>{responseData.trim}</td>
+          </tr>
+          <tr>
+            <td>Exterior Color</td>
+            <td>{responseData.exteriorColor}</td>
+          </tr>
+          <tr>
+            <td>Interior Color</td>
+            <td>{responseData.interiorColor}</td>
+          </tr>
+          <tr>
+            <td>Cylinders</td>
+            <td>{responseData.Cylinders}</td>
+          </tr>
+          <tr>
+            <td>Mileage</td>
+            <td>{responseData.Mileage}</td>
+          </tr>
+          <tr>
+            <td>Transmission</td>
+            <td>{responseData.Transmission}</td>
+          </tr>
+          <tr>
+            <td>Lien Holder</td>
+            <td>{responseData.LienHolder}</td>
+          </tr>
+          <tr>
+            <td>Estimated Payoff</td>
+            <td>{responseData.EstimatedPayoff}</td>
+          </tr>
+          <tr>
+            <td>Additional Options</td>
+            <td>{responseData.AdditionalOptions}</td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td>{responseData.state}</td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>{responseData.city}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{responseData.address}</td>
+          </tr>
+          <tr>
+            <td>Zip</td>
+            <td>{responseData.zip}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>{responseData.phone}</td>
+          </tr>
+
         </tbody>
       </table>
       <Link to="/trade-in-jani-motors">
