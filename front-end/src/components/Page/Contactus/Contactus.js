@@ -43,6 +43,7 @@ const url = "http://localhost:5000/api/contact"
 
   const onSubmit = (data) => {
     console.log(data);
+    createContactSubmitHandler();
     reset();
   };
 
@@ -68,7 +69,7 @@ const url = "http://localhost:5000/api/contact"
           <div className="row justify-content-sm-center ">
             <div className="col-sm-6 shadow round pt-3">
               <form 
-              onSubmit={createContactSubmitHandler}
+              onSubmit={onSubmit}
               encType="multipart/form-data"
               
               >
@@ -77,14 +78,14 @@ const url = "http://localhost:5000/api/contact"
                   <input
                     type="text"
                     className={`form-control ${errors.FirstName && "invalid"}`}
-                    value={fName}
+                    defaultValue={fName}
                     onChange={(e)=>setFname(e.target.value)}
-                    // {...register("FirstName", {
-                    //   required: "First Name is Required",
-                    // })}
-                    // onKeyUp={() => {
-                    //   trigger("FirstName");
-                    // }}
+                    {...register("FirstName", {
+                      required: "First Name is Required",
+                    })}
+                    onKeyUp={() => {
+                      trigger("FirstName");
+                    }}
                   />
                   {errors.FirstName && (
                     <small className="text-danger">
@@ -97,7 +98,7 @@ const url = "http://localhost:5000/api/contact"
                   <input
                     type="text"
                     className={`form-control ${errors.LastName && "invalid"}`}
-                    value={lName}
+                    defaultValue={lName}
                     onChange={(e)=>setLname(e.target.value)}
 
                     {...register("LastName", {
@@ -118,19 +119,19 @@ const url = "http://localhost:5000/api/contact"
                   <input
                     type="email"
                     className={`form-control ${errors.email && "invalid"}`}
-                    value={email}
+                    defaultValue={email}
                     onChange={(e)=>setEmail(e.target.value)}
 
-                    // {...register("email", {
-                    //   required: "Email is Required",
-                    //   pattern: {
-                    //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    //     message: "Invalid email address",
-                    //   },
-                    // })}
-                    // onKeyUp={() => {
-                    //   trigger("email");
-                    // }}
+                    {...register("email", {
+                      required: "Email is Required",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address",
+                      },
+                    })}
+                    onKeyUp={() => {
+                      trigger("email");
+                    }}
                   />
                   {errors.email && (
                     <small className="text-danger">
@@ -143,20 +144,20 @@ const url = "http://localhost:5000/api/contact"
                   <input
                     type="tel"
                     className={`form-control ${errors.phone && "invalid"}`}
-                    value={phone}
+                    defaultValue={phone}
                     onChange={(e)=>setPhone(e.target.value)}
 
-                    // {...register("phone", {
-                    //   required: "Phone is Required",
-                    //   pattern: {
-                    //     value:
-                    //       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                    //     message: "Invalid phone no",
-                    //   },
-                    // })}
-                    // onKeyUp={() => {
-                    //   trigger("phone");
-                    // }}
+                    {...register("phone", {
+                      required: "Phone is Required",
+                      pattern: {
+                        value:
+                          /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                        message: "Invalid phone no",
+                      },
+                    })}
+                    onKeyUp={() => {
+                      trigger("phone");
+                    }}
                   />
                   {errors.phone && (
                     <small className="text-danger">
@@ -168,23 +169,23 @@ const url = "http://localhost:5000/api/contact"
                   <label className="col-form-label col-form-labell" style={{ color: "white !important" }}>Message:</label>
                   <textarea
                     className={`form-control ${errors.message && "invalid"}`}
-                    value={message}
+                    defaultValue={message}
                     onChange={(e)=>setMessage(e.target.value)}
 
-                    // {...register("message", {
-                    //   required: "Message is Required",
-                    //   minLength: {
-                    //     value: 10,
-                    //     message: "Minimum Required length is 10",
-                    //   },
-                    //   maxLength: {
-                    //     value: 50,
-                    //     message: "Maximum allowed length is 50 ",
-                    //   },
-                    // })}
-                    // onKeyUp={() => {
-                    //   trigger("message");
-                    // }}
+                    {...register("message", {
+                      required: "Message is Required",
+                      minLength: {
+                        value: 10,
+                        message: "Minimum Required length is 10",
+                      },
+                      maxLength: {
+                        value: 50,
+                        message: "Maximum allowed length is 50 ",
+                      },
+                    })}
+                    onKeyUp={() => {
+                      trigger("message");
+                    }}
                   ></textarea>
                   {errors.message && (
                     <small className="text-danger">
