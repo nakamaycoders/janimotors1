@@ -29,9 +29,7 @@ const url = "http://localhost:5000/api/contact"
         message: message,
     }).then(res=>{
       console.log(res.data)
-    })
-   
-   
+    })      
   };
   const {
     // register,
