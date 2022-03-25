@@ -17,7 +17,6 @@ function App() {
   return (
     <>
     
-        <Route path="/loader" component={Loader} />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/calculator" component={Calculator} />
