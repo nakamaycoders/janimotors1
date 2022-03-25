@@ -13,11 +13,12 @@ import AllProducts from './pages/Products/AllProducts';
 import CreateProduct from './pages/Products/CreateProduct.js';
 import SignIn from './pages/SignIn/SignIn';
 import DashboardOverview from './pages/dashboard/DashboardOverview';
-// import {EditProductModel} from './pages/Products/EditProductModel'
 import UpdateProduct from "./pages/Products/UpdateProduct";
-// import Navbar from './components/Navbar';
 import contactUs from "./pages/Forms/ContactUs/contactUs"
 import contactDetails from "./pages/Forms/ContactUs/contactDetails"
+import TradeIn from "./pages/Forms/TradeIn/TradeIn"
+import TradeInDetails from "./pages/Forms/TradeIn/TradeInDetails"
+import CreditApproval from "./pages/Forms/Credit-Approval/CreditApproval"
 
 function App() {
   
@@ -48,12 +49,12 @@ function App() {
         <PrivateRoute path="/category/create" component={Category} />
         <PrivateRoute path="/product/all" component={AllProducts} />
         <PrivateRoute path="/product/create" component={CreateProduct} />
-        {/* <PrivateRoute path="/product/edit/:productId" component={EditProductModel} /> */}
         <PrivateRoute path="/product/update/:productid" component={UpdateProduct} />
-        <PrivateRoute path="/Forms/ContactUs/contactUs" component={contactUs} />
-        <PrivateRoute  path="/Forms/contactUs/contactDetails" component={contactDetails} />
-
-
+        <PrivateRoute path="/ContactUs/contactUs" component={contactUs} />
+        <PrivateRoute  path="/contactUs/contactDetails" component={contactDetails} />
+        <PrivateRoute  path="/trade-in-jani-motors" component={TradeIn} />
+        <PrivateRoute  path="/TradeIn/TradeInDetails" component={TradeInDetails} />
+        <PrivateRoute  path="/Credit-Approval" component={CreditApproval} />
 
         
         <Route path="/signin" component={SignIn} />

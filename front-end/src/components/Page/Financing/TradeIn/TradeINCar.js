@@ -4,52 +4,110 @@ import "./TradeInCar.css";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
 import Layout from "../../../layout/layout/layout";
+import Axios from "axios";
 
 const message = "Please fill out the given field correctly";
 function TradeINCar() {
+  const url = "http://localhost:5000/api/trade-in";
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [year, setYear] = useState("");
+  const [make, setMake] = useState("");
+  const [vin, setVin] = useState("");
+  const [model, setModel] = useState("");
+  const [bodyStyle, setBodyStyle] = useState("");
+  const [trim, setTrim] = useState("");
+  const [interiorColor, setInteriorColor] = useState("");
+  const [exteriorColor, setExteriorColor] = useState("");
+  const [cylinders, setCylinders] = useState("");
+  const [liters, setLiters] = useState("");
+  const [mileage, setMileage] = useState("");
+  const [transmission, setTransmission] = useState("");
+  const [lienHolder, setLienHolder] = useState("");
+  const [estimatedPayoff, setEstimatedPayoff] = useState("");
+  const [additionalOptions, setAdditionalOptions] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [zip, setZip] = useState("");
+
+  const createContactSubmitHandler = (e) => {
+    e.preventDefault();
+
+    Axios.post(url, {
+      fname: fname,
+      lname: lname,
+      email: email,
+      phone: phone,
+      make: make,
+      year: year,
+      model: model,
+      vin: vin,
+      bodystyle: bodyStyle,
+      interiorColor: interiorColor,
+      exteriorColor: exteriorColor,
+      zip: zip,
+      Cylinders: cylinders,
+      Mileage: mileage,
+      Transmission: transmission,
+      LienHolder: lienHolder,
+      EstimatedPayoff:estimatedPayoff,
+      state:state,
+      AdditionalOptions:additionalOptions,
+      trim: trim,
+      city:city,
+      address:address,
+      Liters:liters,
+    }).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   const {
-    register,
-    handleSubmit,
+    // register,
+    // handleSubmit,
     formState: { errors },
-    reset,
-    trigger,
+    // reset,
+    // trigger,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
-  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   // reset();
+  // };
 
   const [formError, setFormError] = useState(false);
   const [formmakeError, setFormmakeError] = useState(false);
 
   // ---------------------------------------------------------------------------
 
-  const [value, setValue] = useState({ val: "" });
-  const [makeValue, setmakeValue] = useState({ val: "" });
+  // const [value, setValue] = useState({ val: "" });
+  // const [makeValue, setmakeValue] = useState({ val: "" });
 
   const handleChange = (e) => {
-    setValue({ val: e.target.value });
+    setYear(e.target.value);
 
     setFormError(false);
   };
   // console.log(value.val);
   const handleMakeChange = (e) => {
-    setmakeValue({ val: e.target.value });
+    setMake(e.target.value);
 
     setFormmakeError(false);
   };
 
   const handleFormSubmission = () => {
-    if (value.val === "") {
+    if (year === "") {
       setFormError(true);
-    } else if (value.val === "") {
+    } else if (year === "") {
       setFormError(false);
     }
 
-    if (makeValue.val === "") {
+    if (make === "") {
       setFormmakeError(true);
-    } else if (makeValue.val === "") {
+    } else if (make === "") {
       setFormmakeError(false);
     }
   };
@@ -162,12 +220,16 @@ function TradeINCar() {
             <div className="   col-md-6">
               <h2 style={{ color: "blue" }}>Vehicle Information</h2>
               {/* ---------------------------------------------------------------------------------------- */}
-              <form handleSubmit={onSubmit}>
+              <form
+                // handleSubmit={onSubmit}
+                onSubmit={createContactSubmitHandler}
+                encType="multipart/form-data"
+              >
                 <div className="form-group text-start">
                   <label>Year</label>
                   <select
                     className="form-select"
-                    value={value.val}
+                    value={year.val}
                     onChange={handleChange}
                   >
                     <option>Open this select menu</option>
@@ -182,7 +244,7 @@ function TradeINCar() {
                   <label className="">Make</label>
                   <select
                     className="form-select "
-                    value={makeValue.val}
+                    value={make.val}
                     onChange={handleMakeChange}
                     aria-label="Default select"
                   >
@@ -199,10 +261,12 @@ function TradeINCar() {
                   <input
                     type="text"
                     className={`form-control ${errors.model && "invalid"}`}
-                    {...register("model", { required: "Model is Required" })}
-                    onKeyUp={() => {
-                      trigger("model");
-                    }}
+                    value={model}
+                    onChange={(e)=>setModel(e.target.value)}
+                    // {...register("model", { required: "Model is Required" })}
+                    // onKeyUp={() => {
+                    //   trigger("model");
+                    // }}
                   />
                   {errors.model && (
                     <small className="text-danger">
@@ -216,10 +280,12 @@ function TradeINCar() {
                   <input
                     type="text"
                     className={`form-control ${errors.VIN && "invalid"}`}
-                    {...register("VIN", { required: "VIN is Required" })}
-                    onKeyUp={() => {
-                      trigger("VIN");
-                    }}
+                    value={vin}
+                    onChange={(e)=>setVin(e.target.value)}
+                    // {...register("VIN", { required: "VIN is Required" })}
+                    // onKeyUp={() => {
+                    //   trigger("VIN");
+                    // }}
                   />
                   {errors.VIN && (
                     <small className="text-danger">{errors.VIN.message}</small>
@@ -228,7 +294,11 @@ function TradeINCar() {
 
                 <div className="text-start">
                   <label> Body Type </label>
-                  <select className="form-select " aria-label="Default select">
+                  <select 
+                  className="form-select "
+                  value={bodyStyle}
+                  onChange={(e)=>setBodyStyle(e.target.value)}
+                  aria-label="Default select">
                     <option selected="">Open this select menu</option>
                     <option value="1">Two Door</option>
                     <option value="2">Four Door</option>
@@ -239,37 +309,57 @@ function TradeINCar() {
 
                 <div className="form-group text-start">
                   <label className="">Trim</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={trim}
+                   onChange={(e)=>setTrim(e.target.value)}
+                  type="text" />
                 </div>
 
                 <div className="form-group text-start">
                   <label className="">Exterior Color</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={exteriorColor}
+                   onChange={(e)=>setExteriorColor(e.target.value)}
+                  type="text" />
                 </div>
 
                 <div className="form-group text-start">
                   <label className="">Interior Color</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control" 
+                   value={interiorColor}
+                   onChange={(e)=>setInteriorColor(e.target.value)}
+                   type="text" />
                 </div>
 
                 <div className="form-group text-start">
                   <label className="">Cylinders</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={cylinders}
+                   onChange={(e)=>setCylinders(e.target.value)}
+                    type="text" />
                 </div>
 
                 <div className="form-group text-start">
                   <label className="">Liters</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={liters}
+                   onChange={(e)=>setLiters(e.target.value)}
+                    type="text" />
                 </div>
 
                 <div className="form-group text-start">
-                  <label className="">Milage</label>
-                  <input className="form-control" type="text" />
+                  <label className="">Mileage</label>
+                  <input className="form-control"
+                   value={mileage}
+                   onChange={(e)=>setMileage(e.target.value)} type="text" />
                 </div>
 
                 <div className="text-start">
                   <label> Transmission </label>
-                  <select className="form-select " aria-label="Default select">
+                  <select className="form-select " 
+                   value={transmission}
+                   onChange={(e)=>setTransmission(e.target.value)}
+                   aria-label="Default select">
                     <option selected="">Open this select menu</option>
                     <option value="1">Manual</option>
                     <option value="2">Automatic</option>
@@ -279,36 +369,46 @@ function TradeINCar() {
 
                 <div className="form-group text-start">
                   <label className="">Lien Holder</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={lienHolder}
+                   onChange={(e)=>setLienHolder(e.target.value)}
+                    type="text" />
                 </div>
 
                 <div className="form-group text-start">
                   <label className="">Estimated Payoff</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={estimatedPayoff}
+                   onChange={(e)=>setEstimatedPayoff(e.target.value)} type="text" />
                 </div>
 
                 <div className="form-group text-start">
                   <label htmlFor="">Addition options</label>
-                  <Form.Control as="textarea" rows={3} />
+                  <Form.Control as="textarea"
+                   value={additionalOptions}
+                   onChange={(e)=>setAdditionalOptions(e.target.value)}
+                    rows={3} />
                 </div>
               </form>
             </div>
 
             <div className="col-md-6">
               <h2 style={{ color: "blue" }}>Vehicle Information</h2>
-
-              <form onSubmit={handleSubmit(onSubmit)}>
+              {/* onSubmit={handleSubmit(onSubmit)} */}
+              <form onSubmit={createContactSubmitHandler}>
                 <div className="form-group text-start">
                   <label>First Name</label>
                   <input
                     type="text"
                     className={`form-control ${errors.FirstName && "invalid"}`}
-                    {...register("FirstName", {
-                      required: "First Name is Required",
-                    })}
-                    onKeyUp={() => {
-                      trigger("FirstName");
-                    }}
+                    value={fname}
+                    onChange={(e)=>setFname(e.target.value)}
+                    // {...register("FirstName", {
+                    //   required: "First Name is Required",
+                    // })}
+                    // onKeyUp={() => {
+                    //   trigger("FirstName");
+                    // }}
                   />
                   {errors.FirstName && (
                     <small className="text-danger">
@@ -321,12 +421,14 @@ function TradeINCar() {
                   <input
                     type="text"
                     className={`form-control ${errors.LastName && "invalid"}`}
-                    {...register("LastName", {
-                      required: "Last Name is Required",
-                    })}
-                    onKeyUp={() => {
-                      trigger("LastName");
-                    }}
+                    value={lname}
+                    onChange={(e)=>setLname(e.target.value)}
+                    // {...register("LastName", {
+                    //   required: "Last Name is Required",
+                    // })}
+                    // onKeyUp={() => {
+                    //   trigger("LastName");
+                    // }}
                   />
                   {errors.LastName && (
                     <small className="text-danger">
@@ -337,17 +439,27 @@ function TradeINCar() {
 
                 <div className="form-group text-start">
                   <label className="">Address</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control" 
+                   value={address}
+                   onChange={(e)=>setAddress(e.target.value)}
+                   type="text" />
+
                 </div>
 
                 <div className="form-group text-start">
                   <label className="">City</label>
-                  <input className="form-control" type="text" />
+                  <input className="form-control"
+                   value={city}
+                   onChange={(e)=>setCity(e.target.value)}
+                  type="text" />
                 </div>
 
                 <div className="text-start">
                   <label> State </label>
-                  <select className="form-select " aria-label="Default select">
+                  <select className="form-select "
+                   value={state}
+                   onChange={(e)=>setState(e.target.value)}
+                    aria-label="Default select">
                     <option selected="">Open this select menu</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -415,14 +527,15 @@ function TradeINCar() {
                   <label>Zip</label>
                   <input
                     type="text"
-                    
                     title="Please enter a Zip Code"
                     pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
                     className={`form-control ${errors.Zip && "invalid"}`}
-                    {...register("Zip", { required: "Zip is Required" })}
-                    onKeyUp={() => {
-                      trigger("Zip");
-                    }}
+                    value={zip}
+                    onChange={(e)=>setZip(e.target.value)}
+                    // {...register("Zip", { required: "Zip is Required" })}
+                    // onKeyUp={() => {
+                    //   trigger("Zip");
+                    // }}
                   />
                   {errors.Zip && (
                     <small className="text-danger">{errors.Zip.message}</small>
@@ -434,16 +547,18 @@ function TradeINCar() {
                   <input
                     type="email"
                     className={`form-control ${errors.email && "invalid"}`}
-                    {...register("email", {
-                      required: "Email is Required",
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Invalid email address",
-                      },
-                    })}
-                    onKeyUp={() => {
-                      trigger("email");
-                    }}
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+                    // {...register("email", {
+                    //   required: "Email is Required",
+                    //   pattern: {
+                    //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    //     message: "Invalid email address",
+                    //   },
+                    // })}
+                    // onKeyUp={() => {
+                    //   trigger("email");
+                    // }}
                   />
                   {errors.email && (
                     <small className="text-danger">
@@ -456,17 +571,19 @@ function TradeINCar() {
                   <input
                     type="number"
                     className={`form-control ${errors.phone && "invalid"}`}
-                    {...register("phone", {
-                      required: "Phone is Required",
-                      pattern: {
-                        value:
-                          /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                        message: "Invalid phone no",
-                      },
-                    })}
-                    onKeyUp={() => {
-                      trigger("phone");
-                    }}
+                    value={phone}
+                    onChange={(e)=>setPhone(e.target.value)}
+                    // {...register("phone", {
+                    //   required: "Phone is Required",
+                    //   pattern: {
+                    //     value:
+                    //       /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                    //     message: "Invalid phone no",
+                    //   },
+                    // })}
+                    // onKeyUp={() => {
+                    //   trigger("phone");
+                    // }}
                   />
                   {errors.phone && (
                     <small className="text-danger">

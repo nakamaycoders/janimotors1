@@ -34,18 +34,17 @@ const url = "http://localhost:5000/api/contact"
    
   };
   const {
-    register,
-    handleSubmit,
+    // register,
+    // handleSubmit,
     formState: { errors },
-    reset,
-    trigger,
+    // reset,
+    // trigger,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    createContactSubmitHandler();
-    reset();
-  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   reset();
+  // };
 
   return (
     <Layout>

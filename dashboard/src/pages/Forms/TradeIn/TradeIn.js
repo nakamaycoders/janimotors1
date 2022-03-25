@@ -7,7 +7,7 @@ import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
-const ContactUs = () => {
+const TradeIn = () => {
   let [responseData, setResponseData] = useState("");
   const history = useHistory();
   useEffect(() => {
@@ -15,18 +15,18 @@ const ContactUs = () => {
     // deleteContactHandler()
   }, []);
 
-  const url = "http://localhost:5000/api/contact/information";
+  const url = "http://localhost:5000/api/trade-in/information";
 
   const getContactInfo = async () => {
     try {
       const res = await Axios.get(url);
-      setResponseData(res.data.contactInfo);
+      setResponseData(res.data.tradeInfo);
+      console.log(res.data.tradeInfo)
     } catch (err) {
       console.log(err);
     }
   };
-
-  const deleteUrl = `http://localhost:5000/api/contact/delete`;
+  const deleteUrl = `http://localhost:5000/api/trade-in/delete`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
@@ -47,8 +47,8 @@ const ContactUs = () => {
       flex: 1,
     },
     {
-      field: "lname",
-      headerName: "Last Name",
+      field: "make",
+      headerName: "Make",
       minWidth: 150,
       flex: 0.3,
       sortable: false,
@@ -69,7 +69,7 @@ const ContactUs = () => {
           <>
             <Link
               to={{
-                pathname: `/Forms/contactUs/contactDetails/${param.getValue(param.id,"id")}`,
+                pathname: `/Forms/TradeIn/TradeInDetails/${param.getValue(param.id,"id")}`,
                 params: { id: param.id },
               }}
               >
@@ -91,8 +91,8 @@ const ContactUs = () => {
       rows.push({
         id: item._id,
         email: item.email,
-        lname: item.lName,
-        fname: item.fName,
+        make: item.make,
+        fname: item.fname,
       });
     });
 
@@ -103,7 +103,7 @@ const ContactUs = () => {
 
       <div className="dashboard">
         <div className="productListContainer">
-          <h1 id="productListHeading">Contact Submissions</h1>
+          <h1 id="productListHeading">Trade In Submissions</h1>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -118,4 +118,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default TradeIn;
