@@ -69,7 +69,7 @@ const TradeIn = () => {
           <>
             <Link
               to={{
-                pathname: `/Forms/TradeIn/TradeInDetails/${param.getValue(param.id,"id")}`,
+                pathname: `/TradeIn/TradeInDetails/${param.getValue(param.id,"id")}`,
                 params: { id: param.id },
               }}
               >

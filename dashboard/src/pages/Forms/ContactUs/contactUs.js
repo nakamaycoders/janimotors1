@@ -69,7 +69,7 @@ const ContactUs = () => {
           <>
             <Link
               to={{
-                pathname: `/Forms/contactUs/contactDetails/${param.getValue(param.id,"id")}`,
+                pathname: `/contactUs/contactDetails/${param.getValue(param.id,"id")}`,
                 params: { id: param.id },
               }}
               >
