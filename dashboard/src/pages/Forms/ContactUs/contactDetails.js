@@ -24,9 +24,9 @@ export default function CustomizedTables(props) {
     getContactInfoById();
   },);
 
-  if(Object.keys(responseData).length === 0){
-    return null;
-  }
+  // if(Object.keys(responseData).length === 0){
+  //   return null;
+  // }
 
   return (
     <>

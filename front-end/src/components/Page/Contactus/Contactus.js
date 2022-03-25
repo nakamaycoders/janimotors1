@@ -1,8 +1,8 @@
 import React,{useState} from "react";
 import { useForm } from "react-hook-form";
 import Layout from "../../layout/layout/layout";
-import '../Contactus/Contactus.css'
-import Axios from 'axios'
+import '../Contactus/Contactus.css';
+import Axios from 'axios';
 function Contactus() {
 const url = "http://localhost:5000/api/contact"
   const [fName, setFname] = useState("");
