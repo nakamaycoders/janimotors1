@@ -88,11 +88,17 @@ const ContactUs = () => {
   const rows = [];
   responseData &&
     responseData.forEach((item) => {
-      rows.push({
+      // rows.push({
+      //   id: item._id,
+      //   email: item.email,
+      //   lname: item.firstName,
+      //   fname: item.lastName,
+      // });
+      rows.splice(0,0,{
         id: item._id,
         email: item.email,
-        lname: item.lName,
-        fname: item.fName,
+        lname: item.firstName,
+        fname: item.lastName,
       });
     });
 

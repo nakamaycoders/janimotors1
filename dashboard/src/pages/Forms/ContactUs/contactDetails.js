@@ -33,18 +33,18 @@ export default function CustomizedTables(props) {
       <table className="table-resptable-dark">
         <thead>
           <tr>
-            <th>Fields</th>
+            <th >Fields</th>
             <th>Data</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>First Name</td>
-            <td>{responseData.fName}</td>
+            <td>{responseData.firstName}</td>
           </tr>
           <tr>
             <td>Last Name</td>
-            <td>{responseData.lName}</td>
+            <td>{responseData.lastName}</td>
           </tr>
           <tr>
             <td>Email</td>
@@ -60,7 +60,7 @@ export default function CustomizedTables(props) {
           </tr>
         </tbody>
       </table>
-      <Link to="/Forms/contactUs/contactUs">
+      <Link to="/contactUs/contactUs">
         <Button variant="outlined my-3"> &larr; Go Back</Button>
       </Link>
     </>

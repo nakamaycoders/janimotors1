@@ -5,16 +5,16 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 exports.createContactForm = (req,res) =>{
 
     const {
-        fName, 
-        lName,
+      firstName, 
+      lastName,
         email,
         phone,
         message,
       } = req.body;
       
       const contact = new Contact({
-        fName, 
-        lName,
+        firstName, 
+        lastName,
         email,
         phone,
         message,

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const contactSchema = new mongoose.Schema({
-    fName:{
+    firstName:{
         type:String,
         required:true,
         trim:true
     },
-    lName:{
+    lastName:{
         type:String,
         required:true,
         trim:true
