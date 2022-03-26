@@ -28,7 +28,8 @@ const url = "http://localhost:5000/api/contact"
         phone: phone,
         message: message,
     }).then(res=>{
-      console.log(res.data)
+      console.log(res.data);
+      
     })      
   };
   const {

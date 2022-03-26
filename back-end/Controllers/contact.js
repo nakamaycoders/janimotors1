@@ -10,6 +10,7 @@ exports.createContactForm = (req,res) =>{
         email,
         phone,
         message,
+        view
       } = req.body;
       
       const contact = new Contact({
@@ -18,6 +19,7 @@ exports.createContactForm = (req,res) =>{
         email,
         phone,
         message,
+        view
       });
       contact.save((err, data) => {
         if (err) {

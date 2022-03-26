@@ -44,4 +44,11 @@
   
   html {
     font: 18px "Iowan Old Style", serif;
-  }
+  };
+  /* .MuiDataGrid-cellContent{
+    color: red  !important;
+  } */
+  
+  .header{
+    background-color: black  }
+ 

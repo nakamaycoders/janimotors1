@@ -26,6 +26,8 @@ const TradeIn = () => {
       console.log(err);
     }
   };
+
+  
   const deleteUrl = `http://localhost:5000/api/trade-in/delete`;
   const deleteContactHandler = (id) => {
     try {
