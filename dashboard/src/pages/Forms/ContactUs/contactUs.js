@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
-import { red } from "@mui/material/colors";
-import Box from '@mui/material/Box';
+// import { red } from "@mui/material/colors";
+// import Box from '@mui/material/Box';
 
 const ContactUs = () => {
   let [responseData, setResponseData] = useState("");
