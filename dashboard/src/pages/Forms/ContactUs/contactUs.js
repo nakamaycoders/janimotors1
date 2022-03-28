@@ -116,7 +116,7 @@ const ContactUs = () => {
   return (
     <>
       {/* <MetaData title={`ALL PRODUCTS - Admin`} /> */}
-
+      <main className="content">
       <div className="dashboard">
         <div className="productListContainer">
           <h1 id="productListHeading">Contact Submissions</h1>
@@ -140,6 +140,7 @@ const ContactUs = () => {
           
         </div>
       </div>
+      </main>
     </>
   );
 };

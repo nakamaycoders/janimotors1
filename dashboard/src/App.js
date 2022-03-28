@@ -45,7 +45,7 @@ function App() {
         </>
       )}
       <Switch>
-        <main className="content">
+        {/* <main className="content"> */}
           <PrivateRoute path="/" exact component={DashboardOverview} />
           <PrivateRoute path="/category/create" component={Category} />
           <PrivateRoute path="/product/all" component={AllProducts} />
@@ -68,7 +68,7 @@ function App() {
 
           <Route path="/signin" component={SignIn} />
           {/* <Route path="**" component={PageNotFound}/> */}
-        </main>
+        {/* </main> */}
       </Switch>
     </div>
   );

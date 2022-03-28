@@ -22,6 +22,7 @@ const AllProducts = ({ history }) => {
   const dispatch = useDispatch();
 
   const { error, products } = useSelector((state) => state.product);
+  console.log('All prodyucts wali productss',products)
 
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.products
@@ -47,7 +48,6 @@ const AllProducts = ({ history }) => {
     }
     dispatch(getAdminProduct());
   }, [dispatch, error, deleteError, history, isDeleted]);
-
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
 
@@ -59,7 +59,7 @@ const AllProducts = ({ history }) => {
     },
     {
       field: "price",
-      headerName: "price",
+      headerName: "Price",
       // type: "number",
       minWidth: 150,
       flex: 0.3,
@@ -67,19 +67,18 @@ const AllProducts = ({ history }) => {
 
     {
       field: "category",
-      headerName: "category",
+      headerName: "Category",
       // type: "number",
       minWidth: 270,
       flex: 0.5,
     },
 
     {
-      field: "actions",
+      field: "action",
       flex: 0.3,
-      headerName: "Actions",
+      headerName: "Action",
       minWidth: 150,
-      type: "number",
-      sortable: false,
+
       renderCell: (params) => {
         return (
           <>
@@ -115,20 +114,21 @@ const AllProducts = ({ history }) => {
   return (
     <>
       <MetaData title={`ALL PRODUCTS - Admin`} />
-
+    <main className="content">
       <div className="dashboard">
         <div className="productListContainer">
           <h1 id="productListHeading">ALL PRODUCTS</h1>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              disableSelectionOnClick
+              className="productListTable"
+              autoHeight
+              />
         </div>
       </div>
+      </main>
     </>
   );
 };

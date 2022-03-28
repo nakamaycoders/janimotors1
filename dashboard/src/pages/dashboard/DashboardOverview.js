@@ -18,6 +18,7 @@ const DashboardOverview = () => {
 
   return (
     <>
+    <main className="content">
       <div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center py-4">
         <h1>Welcome To AdminDashboard</h1>
       </div>
@@ -122,6 +123,7 @@ const DashboardOverview = () => {
           </Row> */}
       {/* </Col>
       </Row> */}
+      </main>
     </>
   );
 };

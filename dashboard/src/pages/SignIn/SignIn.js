@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions";
 // import Header from "../layouts/Header";
+import logo from '../../assets/img/logo .png'
 
 
 const SignIn = (props) => {
@@ -34,11 +35,16 @@ const SignIn = (props) => {
     return <Redirect to={`/`} />
 }
   return (
+    // <img src={logo} alt="Jani Motors" />
+    // md={{ span: 6, offset: 3 }}
     <>
     {/* <Header/> */}
       <Container>
         <Row style={{ marginTop: "100px" }}>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col md={6}>
+            <img src={logo} alt="jani Motors" />
+          </Col>
+          <Col md={6}>
             <Typography variant="h5" style={{ fontWeight: "bold" }}>
               Login to Access Dashboard
             </Typography>
@@ -64,7 +70,7 @@ const SignIn = (props) => {
                 />
               </Form.Group>
               <Button variant="contained" type="submit">
-                Submit
+                Login
               </Button>
             </Form>
           </Col>

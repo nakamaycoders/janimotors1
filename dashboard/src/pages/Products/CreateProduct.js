@@ -17,7 +17,8 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { ToastProvider, useToasts } from 'react-toast-notifications';
 import { useHistory } from "react-router-dom";
-
+import TextField from '@mui/material/TextField';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -156,6 +157,7 @@ const CreateProduct = () => {
   return (
       <>
       <MetaData title="Create Product" />
+    <main className="content">
       <div className="dashboard">
         <div className="newProductContainer">
           <form
@@ -166,36 +168,61 @@ const CreateProduct = () => {
             <h1>Create Product</h1>
 
             <div>
-              <SpellcheckIcon />
-              <input
+            <TextField
+              fullWidth
+              required
+              id="outlined-required"
+              label="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Product Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              />
+              /> */}
             </div>
             <div>
-              <AttachMoneyIcon />
-              <input
+              {/* <AttachMoneyIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Price"
                 required
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div>
-              <DescriptionIcon />
+              {/* <DescriptionIcon /> */}
+              <TextareaAutosize
+               fullWidth
+               required
+              aria-label="minimum height"
+              minRows={3}
+              placeholder="Description"
+  style={{ width: "100%",outline:"none" }}
+/>
 
-              <textarea
+              {/* <textarea
                 placeholder="Product Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
                 rows="1"
-              ></textarea>
+              ></textarea> */}
             </div>
 
             <div>
@@ -222,119 +249,221 @@ const CreateProduct = () => {
             </div>
 
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Stock"
+              value={stock}
+                onChange={(e) => setStock(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Stock"
                 required
                 value={stock}
                 onChange={(e) => setStock(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Milage"
+              value={milage}
+              onChange={(e) => setMilage(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Milage"
                 required
                 value={milage}
                 onChange={(e) => setMilage(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Make"
+              value={make}
+              onChange={(e) => setMake(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Make"
                 required
                 value={make}
                 onChange={(e) => setMake(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              id="outlined-required"
+              label="Year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Year"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              id="outlined-required"
+              label="InteriorColor"
+              value={interiorColor}
+              onChange={(e) => setInteriorColor(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="interiorColor"
                 value={interiorColor}
                 onChange={(e) => setInteriorColor(e.target.value)}
-              />
+              /> */}
             </div>
+
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              // type="number"
+              autoComplete="off"
+              fullWidth
+              id="outlined-required"
+              label="ExteriorColor"
+              value={exteriorColor}
+              onChange={(e) => setExteriorColor(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="exteriorColor"
                 value={exteriorColor}
                 onChange={(e) => setExteriorColor(e.target.value)}
-              />
+              /> */}
             </div>
 
 
-
-            <div>
-              <StorageIcon />
-              <input
+              <div>
+              {/* <StorageIcon /> */}
+              <TextField
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Vin"
+              value={vin}
+              onChange={(e) => setVin(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Vin"
                 required
                 value={vin}
                 onChange={(e) => setVin(e.target.value)}
-              />
+              /> */}
             </div>
 
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Model"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Model"
                 required
                 value={model}
                 onChange={(e) => setModel(e.target.value)}
-              />
+              /> */}
             </div>
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Engine"
+              value={engine}
+              onChange={(e) => setEngine(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Engine"
                 required
                 value={engine}
                 onChange={(e) => setEngine(e.target.value)}
-              />
+              /> */}
             </div>
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Condition"
+              value={condition}
+              onChange={(e) => setCondition(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Condition"
                 required
                 value={condition}
                 onChange={(e) => setCondition(e.target.value)}
-              />
+              /> */}
             </div>
             <div>
-              <StorageIcon />
-              <input
+              {/* <StorageIcon /> */}
+              <TextField
+              autoComplete="off"
+              fullWidth
+              required
+              id="outlined-required"
+              label="Trim"
+              value={trim}
+                onChange={(e) => setTrim(e.target.value)}
+        />
+              {/* <input
                 type="text"
                 placeholder="Trim"
                 required
                 value={trim}
                 onChange={(e) => setTrim(e.target.value)}
-              />
+              /> */}
             </div>
 
 {/* {console.log(productPictures)} */}
@@ -368,6 +497,7 @@ const CreateProduct = () => {
           </form>
         </div>
       </div>
+      </main>
       </>
   )
 };
