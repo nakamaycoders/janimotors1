@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import cardsdata from "./cardsdata";
 import "./Cardcaro.css";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, getProduct } from "../../../actions/productAction";
+import { ImageUrl } from "../../../UrlConfig";
 /**
  * @author
  * @function Cardss
  **/
 
 export const Cardss = (props) => {
+  const dispatch = useDispatch();
+  let { products, error, loading } = useSelector((state) => state.product);
+  console.log("ye hai",products);
+
+  useEffect(() => {
+    if (error) {
+      dispatch(clearErrors());
+    }
+
+    dispatch(getProduct());
+  }, [dispatch]);
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -38,35 +52,35 @@ export const Cardss = (props) => {
         // showDots={true}
         removeArrowOnDeviceType={["tablet", "mobile"]}
       >
-        {cardsdata.map((cardsdata) => {
+        {products && products.map((p) => {
           return (
             <div className="card container">
               <img
-                src={cardsdata.image}
+                src={ImageUrl(p.productPictures[0].img)}
                 alt="heello"
                 className="cardok img-fluid"
               />
               <div className="  okok">
-                <h4>{cardsdata.name}</h4>
-                <p>{cardsdata.description}</p>
+                <h4>{p.name}</h4>
+                <p>{p.description}</p>
                 <tr>
                   <td>
-                    <h5>Milage : 3000km </h5>
+                    <h5>Milage : {p.milage}</h5>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h5>Stock : 3000km </h5>
+                    <h5>Stock : {p.stock}</h5>
                   </td>
                 </tr>
-                <h5 className="show">Engine: </h5>
-                <p className="showw"> {cardsdata.description}</p>
+                <h5 className="show">Engine: {p.engine} </h5>
+                <p className="showw"> {p.description}</p>
               </div>
 
               <div className="hc">
                 <h5>
                   Price : <br />
-                  $4500
+                  ${p.price}
                 </h5>
                 <button className="bte btn btn-primary">Details</button>
               </div>

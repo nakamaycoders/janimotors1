@@ -43,12 +43,23 @@ const ProductDetail = (props) => {
   }
   return (
     <>
-      {
-        loading ? (<Loader />) : (
+      {/* {loading ? ( 
+        <Loader /> 
+        ) : error ? (
+            "error"
+        ) : (
+          
+          )} */}
           <>
           <MetaData title={`${product.name} || JANI MOTORS`}/>
       <Layout>
     <div className=" row container-fluid AAA">
+      {loading? (
+        <Loader />
+      ) : error ? (
+        "error"
+      ) : (
+        <>
       <div className="col-md-6  col-sm-12 pt-3">
         <Fade {...properties}>
           {product.productPictures && product.productPictures.map((product, index) => {
@@ -132,11 +143,12 @@ const ProductDetail = (props) => {
           </tbody>
         </table>
       </div>
+      </>
+        
+      )}
     </div>
     </Layout>
-    </>
-             )
-            }
+            </>
         </>
   );
 };

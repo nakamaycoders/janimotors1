@@ -31,7 +31,7 @@ const upload = multer({storage})
 // router.post("/product/delete/:productId",deleteProducts);
 
 
-router.route("/products").get(getAllProducts);
+router.route("/view-all-inventories").get(getAllProducts);
 
 router
   .route("/admin/products")

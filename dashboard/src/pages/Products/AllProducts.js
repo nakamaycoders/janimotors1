@@ -7,13 +7,13 @@ import {
   getAdminProduct,
   deleteProduct,
 } from "../../actions/productAction";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import {useAlert} from 'react-alert';
 import Button from "@mui/material/Button";
 import MetaData from "../../components/layouts/MetaData";
 // import EditIcon from '@mui/icons-material/Edit';
 // import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
-import { MdModeEditOutline } from "react-icons/md";
+// import { MdModeEditOutline } from "react-icons/md";
 import DeleteIcon from "@mui/icons-material/Delete";
 // import SideBar from "../../components/Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";

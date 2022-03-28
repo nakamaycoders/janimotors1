@@ -53,6 +53,9 @@ const productSchema = new mongoose.Schema(
     year: {
       type: String,
     },
+    make:{
+      type:String
+    },
     description: {
       type: String,
       required: true,

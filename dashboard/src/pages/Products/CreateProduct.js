@@ -16,11 +16,14 @@ import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { useHistory } from "react-router-dom";
 
-const CreateProduct = ({ history }) => {
+
+const CreateProduct = () => {
   const dispatch = useDispatch();
 //   const alert = useAlert();
   const { addToast } = useToasts();
+  let history = useHistory();
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
@@ -33,6 +36,10 @@ const CreateProduct = ({ history }) => {
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
   const [milage, setMilage] = useState("");
+  const [make, setMake] = useState("");
+  const [year, setYear] = useState("");
+  const [interiorColor, setInteriorColor] = useState("");
+  const [exteriorColor, setExteriorColor] = useState("");
   const [description, setDescription] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [productPictures, setProductPictures] = useState([]);
@@ -83,6 +90,14 @@ const CreateProduct = ({ history }) => {
     console.log(model)
     myForm.set("milage", milage);
     console.log(milage)
+    myForm.set("make", make);
+    console.log(make)
+    myForm.set("year", year);
+    console.log(year)
+    myForm.set("interiorColor", interiorColor);
+    console.log(interiorColor)
+    myForm.set("extexteriorColor",exteriorColor);
+    console.log(exteriorColor)
     myForm.set("condition", condition);
     console.log(condition)
     myForm.set("vin", vin);
@@ -163,7 +178,7 @@ const CreateProduct = ({ history }) => {
             <div>
               <AttachMoneyIcon />
               <input
-                type="number"
+                type="text"
                 placeholder="Price"
                 required
                 value={price}
@@ -209,7 +224,7 @@ const CreateProduct = ({ history }) => {
             <div>
               <StorageIcon />
               <input
-                type="number"
+                type="text"
                 placeholder="Stock"
                 required
                 value={stock}
@@ -220,13 +235,55 @@ const CreateProduct = ({ history }) => {
             <div>
               <StorageIcon />
               <input
-                type="number"
+                type="text"
                 placeholder="Milage"
                 required
                 value={milage}
                 onChange={(e) => setMilage(e.target.value)}
               />
             </div>
+
+            <div>
+              <StorageIcon />
+              <input
+                type="text"
+                placeholder="Make"
+                required
+                value={make}
+                onChange={(e) => setMake(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <StorageIcon />
+              <input
+                type="text"
+                placeholder="Year"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <StorageIcon />
+              <input
+                type="text"
+                placeholder="interiorColor"
+                value={interiorColor}
+                onChange={(e) => setInteriorColor(e.target.value)}
+              />
+            </div>
+            <div>
+              <StorageIcon />
+              <input
+                type="text"
+                placeholder="exteriorColor"
+                value={exteriorColor}
+                onChange={(e) => setExteriorColor(e.target.value)}
+              />
+            </div>
+
+
 
             <div>
               <StorageIcon />
