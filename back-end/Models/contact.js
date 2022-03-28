@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const contactSchema = new mongoose.Schema({
-    fName:{
+    firstName:{
         type:String,
         required:true,
         trim:true
     },
-    lName:{
+    lastName:{
         type:String,
         required:true,
         trim:true
@@ -27,6 +27,11 @@ const contactSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    view:{
+        type: String,
+        default: "unread",
+        trim: true
+    }
 
 },{timestamps:true})
 
