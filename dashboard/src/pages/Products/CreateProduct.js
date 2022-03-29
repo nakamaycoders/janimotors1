@@ -10,12 +10,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MetaData from "../../components/layouts/MetaData";
 // import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import DescriptionIcon from "@mui/icons-material/Description";
-import StorageIcon from "@mui/icons-material/Storage";
-import SpellcheckIcon from "@mui/icons-material/Spellcheck";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+// import DescriptionIcon from "@mui/icons-material/Description";
+// import StorageIcon from "@mui/icons-material/Storage";
+// import SpellcheckIcon from "@mui/icons-material/Spellcheck";
+// import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
-import { ToastProvider, useToasts } from "react-toast-notifications";
+// import { ToastProvider, useToasts } from "react-toast-notifications";
 import { useHistory } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
@@ -23,7 +23,7 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 const CreateProduct = () => {
   const dispatch = useDispatch();
   //   const alert = useAlert();
-  const { addToast } = useToasts();
+  // const { addToast } = useToasts();/
   let history = useHistory();
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
