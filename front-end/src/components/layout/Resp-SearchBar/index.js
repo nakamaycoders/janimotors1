@@ -36,7 +36,8 @@ export const RespSearch = () => {
     } else if (year.trim()) {
       history.push(`/view-all-inventories/&year=${year}`);
     } else if (body.trim()) {
-      history.push(`/view-all-inventories/&body=${body}`);
+      history.push(`/${body}`);
+      // history.push(`/view-all-inventories/&body=${body}`);
     } else {
       history.push("/");
     }
@@ -97,7 +98,7 @@ export const RespSearch = () => {
             </option>
             {category.categories.length > 0
               ? category.categories[0].children.map((p) => (
-                  <option>{p.name}</option>
+                  <option>{p.slug}</option>
                 ))
               : null}
           </select>
