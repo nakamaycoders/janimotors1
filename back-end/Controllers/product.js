@@ -5,6 +5,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const ApiFeatures = require("../utils/apifeatures");
 const slugify = require('slugify');
 // const cloudinary = require("cloudinary");
+const fs =  require('fs');
 
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async(req, res, next) => {
@@ -209,7 +210,8 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHander("Product not found", 404));
   }
-
+  // const path = "/uploads/"+files.filename
+  // fs.unlinkSync(path)
   await product.remove();
 
   res.status(200).json({

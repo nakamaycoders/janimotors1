@@ -64,12 +64,13 @@ import {
           case NEW_PRODUCT_SUCCESS:
             return {
               loading: false,
-              success: action.payload.success,
+              success: true,
               product: action.payload.product,
             };
           case NEW_PRODUCT_FAIL:
             return {
               ...state,
+              success: false,
               loading: false,
               error: action.payload,
             };

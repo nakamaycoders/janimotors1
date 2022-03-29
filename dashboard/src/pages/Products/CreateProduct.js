@@ -3,7 +3,7 @@ import "./CreateProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createProduct } from "../../actions/productAction";
 // import { useAlert } from "react-alert";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -15,14 +15,14 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { ToastProvider, useToasts } from "react-toast-notifications";
 import { useHistory } from "react-router-dom";
-import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
+import TextField from "@mui/material/TextField";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
-//   const alert = useAlert();
+  //   const alert = useAlert();
   const { addToast } = useToasts();
   let history = useHistory();
 
@@ -59,18 +59,14 @@ const CreateProduct = () => {
 
   useEffect(() => {
     if (error) {
-        dispatch(clearErrors());
-      }
-  
-      if (success) {
-        // alert.success("Product Created Successfully");
-        addToast("product Created Successfullt",{appearance: 'success'})
-        history.push("/product/all");
-        dispatch({ type: NEW_PRODUCT_RESET });
-      }
-    
-   
-  }, [dispatch, error, history, success,addToast])
+      dispatch(clearErrors());
+    }
+    if(success) {
+      // alert.success("Product Created Successfully");
+      history.push("/product/all");
+      dispatch({ type: NEW_PRODUCT_RESET });
+    }
+  }, [dispatch, error, history, success,]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -78,428 +74,432 @@ const CreateProduct = () => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    console.log(name)
+    console.log(name);
     myForm.set("stock", stock);
-    console.log(stock)
+    console.log(stock);
     myForm.set("price", price);
-    console.log(price)
+    console.log(price);
     myForm.set("engine", engine);
-    console.log(engine)
+    console.log(engine);
     myForm.set("trim", trim);
-    console.log(trim)
+    console.log(trim);
     myForm.set("model", model);
-    console.log(model)
+    console.log(model);
     myForm.set("milage", milage);
-    console.log(milage)
+    console.log(milage);
     myForm.set("make", make);
-    console.log(make)
+    console.log(make);
     myForm.set("year", year);
-    console.log(year)
+    console.log(year);
     myForm.set("interiorColor", interiorColor);
-    console.log(interiorColor)
-    myForm.set("extexteriorColor",exteriorColor);
-    console.log(exteriorColor)
+    console.log(interiorColor);
+    myForm.set("extexteriorColor", exteriorColor);
+    console.log(exteriorColor);
     myForm.set("condition", condition);
-    console.log(condition)
+    console.log(condition);
     myForm.set("vin", vin);
-    console.log(vin)
+    console.log(vin);
     myForm.set("description", description);
-    console.log(description)
+    console.log(description);
     myForm.set("category", categoryId);
-    console.log(categoryId)
+    console.log(categoryId);
 
     for (let pic of productPictures) {
       myForm.append("productPicture", pic);
-      console.log(pic)
+      console.log(pic);
     }
     dispatch(createProduct(myForm));
-    console.log(createProduct(myForm))
+    console.log(createProduct(myForm));
   };
-  
+
   // const createProductImagesChange = (e) => {
-    const createProductImagesChange = (e) => {
-      setProductPictures([...productPictures, e.target.files[0]]);
-    };
-      // const files = Array.from(e.target.files);
-      // setImages([]);
-      // setImagesPreview([]);
+  const createProductImagesChange = (e) => {
+    setProductPictures([...productPictures, e.target.files[0]]);
+  };
+  // const files = Array.from(e.target.files);
+  // setImages([]);
+  // setImagesPreview([]);
 
-      // files.forEach((file) => {
-      //   const reader = new FileReader();
-  
-      //   reader.onload = () => {
-      //     if (reader.readyState === 2) {
-      //       setImagesPreview((old) => [...old, reader.result]);
-      //       setImages((old)=>[...old,reader.result]);
-      //     }
-      //   };
-      //   reader.readAsDataURL(file);
-      // });
+  // files.forEach((file) => {
+  //   const reader = new FileReader();
 
+  //   reader.onload = () => {
+  //     if (reader.readyState === 2) {
+  //       setImagesPreview((old) => [...old, reader.result]);
+  //       setImages((old)=>[...old,reader.result]);
+  //     }
+  //   };
+  //   reader.readAsDataURL(file);
+  // });
 
-    // setProductPictures([]);
-    // setImagesPreview([]);
+  // setProductPictures([]);
+  // setImagesPreview([]);
 
-    // files.forEach((file) => {
-    //   const reader = new FileReader();
+  // files.forEach((file) => {
+  //   const reader = new FileReader();
 
-    //   reader.onload = () => {
-    //     if (reader.readyState === 2) {
-    //       setImagesPreview((old) => [...old, reader.result]);
-    //       setProductPictures((old) => [...old, reader.result]);
-    //     }
-    //   };
+  //   reader.onload = () => {
+  //     if (reader.readyState === 2) {
+  //       setImagesPreview((old) => [...old, reader.result]);
+  //       setProductPictures((old) => [...old, reader.result]);
+  //     }
+  //   };
 
-    //   reader.readAsDataURL(file);
-    // });
+  //   reader.readAsDataURL(file);
+  // });
   // };
 
   return (
-      <>
+    <>
       <MetaData title="Create Product" />
-    <main className="content">
-      <div className="dashboard">
-        <div className="newProductContainer">
-          <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={createProductSubmitHandler}
-          >
-            <h1>Create Product</h1>
+      <main className="content">
+        <div className="dashboard">
+          <div className="newProductContainer">
+            <form
+              className="createProductForm"
+              encType="multipart/form-data"
+              onSubmit={createProductSubmitHandler}
+            >
+              <h1>Create Product</h1>
 
-            <div>
-            <TextField
-              fullWidth
-              required
-              id="outlined-required"
-              label="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-        />
-              {/* <input
+              <div>
+                <TextField
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Product Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               /> */}
-            </div>
-            <div>
-              {/* <AttachMoneyIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-        />
-              {/* <input
+              </div>
+              <div>
+                {/* <AttachMoneyIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Price"
                 required
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <DescriptionIcon /> */}
-              <TextareaAutosize
-               fullWidth
-               required
-              aria-label="minimum height"
-              minRows={3}
-              placeholder="Description"
-  style={{ width: "100%",outline:"none" }}
-/>
+              <div>
+                {/* <DescriptionIcon /> */}
+                <TextareaAutosize
+                  fullWidth
+                  required
+                  aria-label="minimum height"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  minRows={3}
+                  placeholder="Description"
+                  style={{ width: "100%", outline: "none" }}
+                />
 
-              {/* <textarea
+                {/* <textarea
                 placeholder="Product Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
                 rows="1"
               ></textarea> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <AccountTreeIcon /> */}
-        <FormControl fullWidth>
+              <div>
+                {/* <AccountTreeIcon /> */}
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Select Category
+                  </InputLabel>
+                  <Select
+                    required
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={categoryId}
+                    label="Select Category"
+                    onChange={(e) => setCategoryId(e.target.value)}
+                  >
+                    {createCategoryList(category.categories).map(
+                      (item, index) => (
+                        <MenuItem key={index} value={item.value}>
+                          {item.name}
+                        </MenuItem>
+                      )
+                    )}
+                  </Select>
+                </FormControl>
+              </div>
 
-              <InputLabel id="demo-simple-select-label">Select Category</InputLabel>
-          <Select
-            required
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={categoryId}
-            label="Select Category"
-            onChange={(e) => setCategoryId(e.target.value)}
-          >
-            
-            {createCategoryList(category.categories).map((item,index) => (
-              <MenuItem key={index} value={item.value}>
-                {item.name}
-              </MenuItem>
-            ))}
-          </Select>
-          </FormControl>
-            </div>
-
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Stock"
-              value={stock}
-                onChange={(e) => setStock(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Stock"
+                  value={stock}
+                  onChange={(e) => setStock(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Stock"
                 required
                 value={stock}
                 onChange={(e) => setStock(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Milage"
-              value={milage}
-              onChange={(e) => setMilage(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Milage"
+                  value={milage}
+                  onChange={(e) => setMilage(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Milage"
                 required
                 value={milage}
                 onChange={(e) => setMilage(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Make"
-              value={make}
-              onChange={(e) => setMake(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Make"
+                  value={make}
+                  onChange={(e) => setMake(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Make"
                 required
                 value={make}
                 onChange={(e) => setMake(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              id="outlined-required"
-              label="Year"
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  id="outlined-required"
+                  label="Year"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Year"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              id="outlined-required"
-              label="InteriorColor"
-              value={interiorColor}
-              onChange={(e) => setInteriorColor(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  id="outlined-required"
+                  label="InteriorColor"
+                  value={interiorColor}
+                  onChange={(e) => setInteriorColor(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="interiorColor"
                 value={interiorColor}
                 onChange={(e) => setInteriorColor(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              // type="number"
-              autoComplete="off"
-              fullWidth
-              id="outlined-required"
-              label="ExteriorColor"
-              value={exteriorColor}
-              onChange={(e) => setExteriorColor(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  id="outlined-required"
+                  label="ExteriorColor"
+                  value={exteriorColor}
+                  onChange={(e) => setExteriorColor(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="exteriorColor"
                 value={exteriorColor}
                 onChange={(e) => setExteriorColor(e.target.value)}
               /> */}
-            </div>
-
+              </div>
 
               <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Vin"
-              value={vin}
-              onChange={(e) => setVin(e.target.value)}
-        />
-              {/* <input
+                {/* <StorageIcon /> */}
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Vin"
+                  value={vin}
+                  onChange={(e) => setVin(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Vin"
                 required
                 value={vin}
                 onChange={(e) => setVin(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Model"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-        />
-              {/* <input
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Model"
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Model"
                 required
                 value={model}
                 onChange={(e) => setModel(e.target.value)}
               /> */}
-            </div>
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Engine"
-              value={engine}
-              onChange={(e) => setEngine(e.target.value)}
-        />
-              {/* <input
+              </div>
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Engine"
+                  value={engine}
+                  onChange={(e) => setEngine(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Engine"
                 required
                 value={engine}
                 onChange={(e) => setEngine(e.target.value)}
               /> */}
-            </div>
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Condition"
-              value={condition}
-              onChange={(e) => setCondition(e.target.value)}
-        />
-              {/* <input
+              </div>
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Condition"
+                  value={condition}
+                  onChange={(e) => setCondition(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Condition"
                 required
                 value={condition}
                 onChange={(e) => setCondition(e.target.value)}
               /> */}
-            </div>
-            <div>
-              {/* <StorageIcon /> */}
-              <TextField
-              autoComplete="off"
-              fullWidth
-              required
-              id="outlined-required"
-              label="Trim"
-              value={trim}
-                onChange={(e) => setTrim(e.target.value)}
-        />
-              {/* <input
+              </div>
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Trim"
+                  value={trim}
+                  onChange={(e) => setTrim(e.target.value)}
+                />
+                {/* <input
                 type="text"
                 placeholder="Trim"
                 required
                 value={trim}
                 onChange={(e) => setTrim(e.target.value)}
               /> */}
-            </div>
+              </div>
 
-{/* {console.log(productPictures)} */}
-          {productPictures.length > 0
-          ? productPictures.map((pic, item) => <div key={item}>{pic.name}</div>)
-          : null}
+              {/* {console.log(productPictures)} */}
+              {productPictures.length > 0
+                ? productPictures.map((pic, item) => (
+                    <div key={item}>{pic.name}</div>
+                  ))
+                : null}
 
-            <div id="createProductFormFile">
-              <input
-                type="file"
-                name="productPictures"
-                // name="products"
-                // accept="image/*"
-                onChange={createProductImagesChange}
-                multiple
-              />
-            </div>
-            {/* <div id="createProductFormImage">
+              <div id="createProductFormFile">
+                <input
+                  type="file"
+                  name="productPictures"
+                  // name="products"
+                  // accept="image/*"
+                  onChange={createProductImagesChange}
+                  multiple
+                />
+              </div>
+              {/* <div id="createProductFormImage">
               {imagesPreview.map((image, index) => (
                 <img key={index} src={image} alt="Product Preview" />
               ))}
             </div> */}
 
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
-            >
-              Create
-            </Button>
-          </form>
+              <Button
+                id="createProductBtn"
+                type="submit"
+                disabled={loading ? true : false}
+              >
+                Create
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
       </main>
-      </>
-  )
+    </>
+  );
 };
 
 export default CreateProduct;
