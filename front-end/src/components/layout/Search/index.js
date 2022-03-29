@@ -46,7 +46,8 @@ export const Search = () => {
     } else if (year.trim()) {
       history.push(`/view-all-inventories/&year=${year}`);
     } else if (body.trim()) {
-      history.push(`/view-all-inventories/&body=${body}`);
+      history.push(`/${body}`);
+      // /${category.slug}?cid=${category._id}
     } else {
       history.push("/");
     }
@@ -60,7 +61,7 @@ export const Search = () => {
             <Row>
               <Col md={3} sm={12}>
                 <select
-                  class="form-select"
+                  className="form-select"
                   onChange={(e) => setModel(e.target.value)}
                   aria-label="Default select example"
                 >
@@ -75,7 +76,7 @@ export const Search = () => {
               </Col>
               <Col md={3} sm={12}>
                 <select
-                  class="form-select"
+                  className="form-select"
                   onChange={(e) => setMake(e.target.value)}
                   aria-label="Default select example"
                 >
@@ -89,7 +90,7 @@ export const Search = () => {
               </Col>
               <Col md={3} sm={12}>
                 <select
-                  class="form-select"
+                  className="form-select"
                   onChange={(e) => setYear(e.target.value)}
                   aria-label="Default select example"
                 >
@@ -103,7 +104,7 @@ export const Search = () => {
               </Col>
               <Col md={3} sm={12}>
                 <select
-                  class="form-select"
+                  className="form-select"
                   onChange={(e) => setBody(e.target.value)}
                   aria-label="Default select example"
                 >
@@ -112,11 +113,10 @@ export const Search = () => {
                   </option>
                   {category.categories.length > 0
                     ? category.categories[0].children.map((p) => (
-                        <option>{p.name}</option>
+                        <option>{p.slug}</option>
                       ))
                     : null}
                 </select>
-               { console.log(">>>>>>>>>>>>>>>>>>>>>>",category.categories[0])}
               </Col>
             </Row>
 

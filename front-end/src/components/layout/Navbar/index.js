@@ -26,7 +26,7 @@ export const Navbar = (props) => {
       myCategories.push(
         <li key={category.name}>
           {category.parentId ? (
-            <Link to={`/${category.slug}?cid=${category._id}`}>
+            <Link to={`/${category.slug}`}>
               {category.name}
             </Link>
           ) : (
