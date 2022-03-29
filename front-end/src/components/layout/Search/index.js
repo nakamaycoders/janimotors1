@@ -51,6 +51,7 @@ export const Search = () => {
       history.push("/");
     }
   };
+
   return (
     <>
       <div className="search">
@@ -115,6 +116,7 @@ export const Search = () => {
                       ))
                     : null}
                 </select>
+               { console.log(">>>>>>>>>>>>>>>>>>>>>>",category.categories[0])}
               </Col>
             </Row>
 
