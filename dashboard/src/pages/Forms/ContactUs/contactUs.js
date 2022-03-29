@@ -154,7 +154,7 @@ const ContactUs = () => {
             <Button color="primary" >Read</Button>
           </ButtonGroup>
           <DataGrid
-            rows={(unreadMessages)?newRow:rows}
+            rows={unreadMessages?newRow:rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
