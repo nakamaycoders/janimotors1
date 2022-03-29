@@ -4,8 +4,6 @@ const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const ApiFeatures = require("../utils/apifeatures");
 const slugify = require('slugify');
-// const cloudinary = require("cloudinary");
-const fs =  require('fs');
 const path = require("path");
 
 // Create Product -- Admin
@@ -35,6 +33,9 @@ exports.createProduct = catchAsyncErrors(async(req, res, next) => {
       return { img: file.filename };
     });
   }
+
+  // console.log("fileNAME>>>>>>>",req.files[0].path)
+
   const product = new Product({
     name: name,
     slug: slugify(name),
@@ -214,6 +215,9 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHander("Product not found", 404));
   }
+  // console.log("fileNAME>>>>>>>",req.files[0].path)
+  console.log(product)
+  
   // const path = "/uploads/"+files.filename
   // fs.unlinkSync(path)
   await product.remove();
