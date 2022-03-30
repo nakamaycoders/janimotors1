@@ -225,13 +225,18 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   
  
 // MAIN_URL = http://localhost:5000
+// console.log("ppp>>",product.productPictures)
+product.productPictures.forEach(item => {
+  // console.log("item>>>>",item)
 
-const path = `C:/Users/zubai/OneDrive/Documents/GitHub/janimotors1/back-end/uploads/${product.productPictures[0]}`
-    fs.unlinkSync(path,(err)=>{
-      if(err){
-        console.log(err)
-      }
-    })
+  const path = `C:/Users/zubai/OneDrive/Documents/GitHub/janimotors1/back-end/uploads/${item.img}`
+      fs.unlinkSync(path,(err)=>{
+        if(err){
+          console.log(err)
+        }
+      })
+});
+
 
   // ,(err)=>{
   //   if(err){
@@ -259,7 +264,7 @@ const path = `C:/Users/zubai/OneDrive/Documents/GitHub/janimotors1/back-end/uplo
     return next(new ErrorHander("Product not found", 404));
   }
   // console.log("fileNAME>>>>>>>",req.files[0].path)
-  console.log(product)
+  // console.log(product)
   
   // const path = "/uploads/"+files.filename
   // fs.unlinkSync(path)
