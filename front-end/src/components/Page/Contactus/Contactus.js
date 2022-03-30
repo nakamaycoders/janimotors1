@@ -5,10 +5,11 @@ import * as Yup from "yup";
 import axios from "axios";
 import Layout from "../../layout/layout/layout";
 import '../Contactus/Contactus.css';
+import { useHistory } from "react-router-dom";
 
 
 const ContactUs = () => {
- 
+  let history= useHistory();
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const validate = Yup.object({
@@ -56,6 +57,8 @@ const ContactUs = () => {
             //handle error
             // console.log(response);
           });
+          history.go(0);
+
       }}
     >
       {(formik) => (
@@ -85,7 +88,7 @@ const ContactUs = () => {
               type="submit"
               style={{ marginRight: 20 }}
             >
-              Register
+              Submit
             </button>
             <button className="btn btn-warning mt-3 ml-3" type="reset">
               Reset
