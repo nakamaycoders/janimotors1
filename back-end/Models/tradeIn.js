@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const TradeformSchema = new mongoose.Schema({
-    year:{
+    yearOption:{
         type:String,
         required:true,
         trim:true
@@ -65,13 +65,13 @@ const TradeformSchema = new mongoose.Schema({
         type:String,
         trim:true
     },
-    fname:{
+    firstName:{
         type:String,
         required:true,
         trim:true
     },
     
-    lname:{
+    lastName:{
         type:String,
         required:true,
         trim:true

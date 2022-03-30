@@ -40,27 +40,27 @@ export default function CustomizedTables(props) {
         <tbody>
           <tr>
             <td>First Name</td>
-            <td>{responseData.fname}</td>
+            <td>{responseData.firstName}</td>
           </tr>
           <tr>
             <td>Last Name</td>
-            <td>{responseData.lname}</td>
+            <td>{responseData.lastName}</td>
           </tr>
           <tr>
             <td>Email</td>
             <td>{responseData.email}</td>
           </tr>
-          <tr>
+          {/* <tr>
             <td>Phone</td>
             <td>{responseData.phone}</td>
-          </tr>
+          </tr> */}
           <tr>
             <td>Make</td>
             <td>{responseData.make}</td>
           </tr>
           <tr>
             <td>Year</td>
-            <td>{responseData.year}</td>
+            <td>{responseData.yearOption}</td>
           </tr>
           <tr>
             <td>Model</td>

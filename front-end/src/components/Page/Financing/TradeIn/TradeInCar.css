@@ -14,3 +14,13 @@ label , small{
 border-radius: 1px !important;
 }
 
+select {
+  padding-right: 13px;
+  padding: 6px;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+}

@@ -43,18 +43,18 @@ const TradeIn = () => {
     { field: "id", headerName: "User ID", minWidth: 200, flex: 0.5 },
 
     {
-      field: "fname",
+      field: "firstName",
       headerName: "First Name",
       minWidth: 200,
       flex: 1,
     },
-    {
-      field: "make",
-      headerName: "Make",
-      minWidth: 150,
-      flex: 0.3,
-      sortable: false,
-    },
+    // {
+    //   field: "make",
+    //   headerName: "Make",
+    //   minWidth: 150,
+    //   flex: 0.3,
+    //   sortable: false,
+    // },
 
     {
       field: "email",
@@ -93,8 +93,8 @@ const TradeIn = () => {
       rows.push({
         id: item._id,
         email: item.email,
-        make: item.make,
-        fname: item.fname,
+        // make: item.make,
+        firstName: item.firstName,
       });
     });
 

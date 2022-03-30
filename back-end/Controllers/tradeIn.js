@@ -5,7 +5,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 exports.createTradeInForm = (req,res) =>{
 
     const {
-        year, 
+      yearOption, 
         make,
         model,
         vin,
@@ -20,8 +20,8 @@ exports.createTradeInForm = (req,res) =>{
         LienHolder,
         EstimatedPayoff,
         AdditionalOptions,
-        fname,
-        lname,
+        firstName,
+        lastName,
         email,
         state,
         city,
@@ -31,7 +31,7 @@ exports.createTradeInForm = (req,res) =>{
       } = req.body;
       
       const trade = new Trade({
-        year, 
+        yearOption, 
         make,
         model,
         vin,
@@ -46,8 +46,8 @@ exports.createTradeInForm = (req,res) =>{
         LienHolder,
         EstimatedPayoff,
         AdditionalOptions,
-        fname,
-        lname,
+        firstName,
+        lastName,
         email,
         state,
         city,
