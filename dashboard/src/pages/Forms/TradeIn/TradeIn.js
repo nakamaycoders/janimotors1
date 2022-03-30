@@ -102,7 +102,7 @@ const TradeIn = () => {
   return (
     <>
       {/* <MetaData title={`ALL PRODUCTS - Admin`} /> */}
-
+    <main className="content">
       <div className="dashboard">
         <div className="productListContainer">
           <h1 id="productListHeading">Trade In Submissions</h1>
@@ -116,6 +116,7 @@ const TradeIn = () => {
           />
         </div>
       </div>
+      </main>
     </>
   );
 };

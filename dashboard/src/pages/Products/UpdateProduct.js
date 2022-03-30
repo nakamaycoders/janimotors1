@@ -159,6 +159,7 @@ const UpdateProduct = ({ history,match }) => {
   return (
       <>
       <MetaData title="Update Product" />
+    <main className="content">
       <div className="dashboard">
         <div className="newProductContainer">
           <form
@@ -327,6 +328,7 @@ const UpdateProduct = ({ history,match }) => {
           </form>
         </div>
       </div>
+      </main>
       </>
   )
 };

@@ -10,6 +10,7 @@ require('../back-end/database/connection')
 const path = require("path");
 const cors = require('cors')
 app.use(cors());
+// const cloudinary = require('cloudinary')
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {
@@ -18,6 +19,12 @@ process.on("uncaughtException", (err) => {
     process.exit(1);
   });
 
+
+// cloudinary.config({
+//     cloud_name: process.env.CLOUDINARY_NAME,
+//     api_key: process.env.CLOUDINARY_API_KEY,
+//     api_secret: process.env.CLOUDINARY_API_SECRET,
+//   });
 //Category Routes
 const categoryRoutes = require('./Routes/category')
 app.use('/api',categoryRoutes)

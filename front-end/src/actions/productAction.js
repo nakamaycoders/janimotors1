@@ -10,38 +10,36 @@ import {
   GET_PRODUCT_DETAILS_REQUEST,
   GET_PRODUCT_DETAILS_SUCCESS,
   GET_PRODUCT_DETAILS_FAIL,
-  ADMIN_PRODUCT_REQUEST,
-  ADMIN_PRODUCT_SUCCESS,
-  ADMIN_PRODUCT_FAIL,
-  NEW_PRODUCT_REQUEST,
-  NEW_PRODUCT_SUCCESS,
-  NEW_PRODUCT_FAIL,
-  UPDATE_PRODUCT_REQUEST,
-  UPDATE_PRODUCT_SUCCESS,
-  UPDATE_PRODUCT_FAIL,
-  DELETE_PRODUCT_REQUEST,
-  DELETE_PRODUCT_SUCCESS,
-  DELETE_PRODUCT_FAIL,
-
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 
 // Get All Products
-export const getProduct = () =>
-  (keyword = "") =>
+export const getProduct =
+  (keyword = "", model = "", year = "", make = "", body = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
-      let link = `/api/products?keyword=${keyword}`;
-
-
-      const { data } = await axios.get('/products');
+      let link = `/view-all-inventories?keyword=${keyword}`;
+      if (model) {
+        link = `/api/v1/products/model=${model}`;
+      }
+      if (year) {
+        link = `/api/v1/products/year=${year}`;
+      }
+      if (make) {
+        link = `/api/v1/products/make=${make}`;
+      }
+      if (body) {
+        link = `/api/v1/products/body=${body}`;
+      }
+      const { data } = await axios.get(link);
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
         payload: data,
       });
+      console.log(data);
     } catch (error) {
       dispatch({
         type: ALL_PRODUCT_FAIL,
@@ -51,45 +49,42 @@ export const getProduct = () =>
   };
 
 //get Product by Slug
-  export const getProductsBySlug = (slug) => async (dispatch) => {
-    try {
-      dispatch({type:GET_PRODUCT_BY_SLUG_REQUEST})
-      const {data} = await axios.get(`/products/${slug}`);
-      console.log(data)
-      dispatch({
-          type: GET_PRODUCT_BY_SLUG_SUCCESS,
-          payload: data.product,
-      });
-    } catch (error) {
-      dispatch({
-        type: GET_PRODUCT_BY_SLUG_FAIL,
-        payload: error.response.data.message,
+export const getProductsBySlug = (slug) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_PRODUCT_BY_SLUG_REQUEST });
+    const { data } = await axios.get(`/products/${slug}`);
+    console.log(data);
+    dispatch({
+      type: GET_PRODUCT_BY_SLUG_SUCCESS,
+      payload: data.product,
     });
-    }
-}
-
+  } catch (error) {
+    dispatch({
+      type: GET_PRODUCT_BY_SLUG_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Get ProductDetails
 export const getProductDetails = (payload) => async (dispatch) => {
-    try {
-      dispatch({ type: GET_PRODUCT_DETAILS_REQUEST });
-      const { productId } = payload.params;
-      const { data } = await axios.get(`/product/${productId}`);
-      dispatch({
-        type: GET_PRODUCT_DETAILS_SUCCESS,
-        payload: data.product,
-      });
-    } catch (error) {
-      dispatch({
-        type: GET_PRODUCT_DETAILS_FAIL,
-        payload: error.response.data.message,
-      });
-    }
-  };
-
+  try {
+    dispatch({ type: GET_PRODUCT_DETAILS_REQUEST });
+    const { productId } = payload.params;
+    const { data } = await axios.get(`/product/${productId}`);
+    dispatch({
+      type: GET_PRODUCT_DETAILS_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_PRODUCT_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
-    dispatch({ type: CLEAR_ERRORS });
-  };
-  
+  dispatch({ type: CLEAR_ERRORS });
+};

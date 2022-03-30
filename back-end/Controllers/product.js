@@ -4,7 +4,7 @@ const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const ApiFeatures = require("../utils/apifeatures");
 const slugify = require('slugify');
-// const cloudinary = require("cloudinary");
+const path = require("path");
 
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async(req, res, next) => {
@@ -21,6 +21,7 @@ exports.createProduct = catchAsyncErrors(async(req, res, next) => {
     milage,
     stock,
     model,
+    make,
     year,
     description,
     category,
@@ -32,6 +33,8 @@ exports.createProduct = catchAsyncErrors(async(req, res, next) => {
       return { img: file.filename };
     });
   }
+
+  // console.log("fileNAME>>>>>>>",req.files[0].path)
 
   const product = new Product({
     name: name,
@@ -45,6 +48,7 @@ exports.createProduct = catchAsyncErrors(async(req, res, next) => {
     interiorColor,
     exteriorColor,
     milage,
+    make,
     stock,
     year,
     description,
@@ -53,6 +57,7 @@ exports.createProduct = catchAsyncErrors(async(req, res, next) => {
     // createdBy: req.user._id,
   });
   // const product = await Product.create(req.body);
+  // console.warn("ppppp>>>",productPictures) 
 
   product.save((err, product) => {
     if (err) {
@@ -103,28 +108,26 @@ exports.getProductsBySlug = (req, res) => {
 
 // Get All Product
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
-
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
-  .search().pagination(resultPerPage)
-  // const products = await Product.find()
-    // .filter();
-
+  .search()
+  .filter()
+ 
   let products = await apiFeature.query;
 
   // let filteredProductsCount = products.length;
-
+  
   // apiFeature.pagination(resultPerPage);
-
+  
   // products = await apiFeature.query;
 
   res.status(200).json({
     success: true,
     products,
-    productsCount,
-    resultPerPage,
+    // productsCount,
+    // resultPerPage,
     // filteredProductsCount,
   });
 });
@@ -206,10 +209,17 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
+  // let del = fs.unlinkSync(path)
+  // console.log(del)
+
   if (!product) {
     return next(new ErrorHander("Product not found", 404));
   }
-
+  // console.log("fileNAME>>>>>>>",req.files[0].path)
+  console.log(product)
+  
+  // const path = "/uploads/"+files.filename
+  // fs.unlinkSync(path)
   await product.remove();
 
   res.status(200).json({

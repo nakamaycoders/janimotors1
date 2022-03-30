@@ -179,7 +179,7 @@ const Category = (props) => {
   };
 
   const displayDeleteCategoryModal = () => {
-    return (
+    return (      
       <ReusableModel
         modalTitle={"Confirm"}
         show={deleteCategoryModal}
@@ -214,6 +214,7 @@ const Category = (props) => {
   const categoryList = createCategoryList(category.categories);
 
   return (
+    <main className="content">
     <div>
         <Grid container>
           <Grid item xs={12}>
@@ -291,6 +292,7 @@ const Category = (props) => {
 
         {displayDeleteCategoryModal()}
     </div>
+    </main>
   );
 };
 

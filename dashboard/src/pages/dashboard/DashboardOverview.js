@@ -1,5 +1,8 @@
-
 import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import "./DashboardOverview.css";
+// import { getAdminProduct } from "../../actions/productAction";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCashRegister, faChartLine, faCloudUploadAlt, faPlus, faRocket, faTasks, faUserShield } from '@fortawesome/free-solid-svg-icons';
 // import { Col, Row, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
@@ -9,13 +12,30 @@ import React from "react";
 // import { trafficShares, totalOrders } from "../../data/charts";
 
 const DashboardOverview = () => {
+  const { products } = useSelector((state) => state.product);
+  const category = useSelector((state) => state.category);
+  console.log(category);
+
   return (
     <>
+    <main className="content">
       <div className="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center py-4">
-        
-
         <h1>Welcome To AdminDashboard</h1>
+      </div>
 
+      <div className="dashboardSummary">
+        <div className="dashboardSummaryBox2">
+          <Link to="/product/all">
+            <p>Product</p>
+            <p>{products && products.length}</p>
+          </Link>
+          <Link to="/category/create">
+            <p>Category</p>
+            <p>
+              {category.categories[0] && category.categories[0].children.length}
+            </p>
+          </Link>
+        </div>
       </div>
 
       {/* <Row className="justify-content-md-center">
@@ -101,8 +121,9 @@ const DashboardOverview = () => {
               </Row>
             </Col>
           </Row> */}
-        {/* </Col>
+      {/* </Col>
       </Row> */}
+      </main>
     </>
   );
 };

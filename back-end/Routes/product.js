@@ -15,10 +15,11 @@ const shortid = require("shortid");
 const router = express.Router();
 
 const storage = multer.diskStorage({
-    destination:  function (req, file, cb) {
+    destination:  (req, file, cb)=> {
       cb(null, path.join(path.dirname(__dirname), 'uploads'));
+      // cb(null, "../front-end/public/uploads/");
     },
-    filename:  function (req, file, cb) {
+    filename:  (req, file, cb)=> {
       cb(null, shortid.generate() + "-" + file.originalname);
     },
   });
@@ -31,7 +32,7 @@ const upload = multer({storage})
 // router.post("/product/delete/:productId",deleteProducts);
 
 
-router.route("/products").get(getAllProducts);
+router.route("/view-all-inventories").get(getAllProducts);
 
 router
   .route("/admin/products")

@@ -38,7 +38,7 @@ export const productReducer = (state = { products: [] }, action) => {
           return {
             loading: false,
             products: action.payload.products,
-            productsCount: action.payload.productsCount,
+            // productsCount: action.payload.productsCount,
             // resultPerPage: action.payload.resultPerPage,
             // filteredProductsCount: action.payload.filteredProductsCount,
           };
@@ -53,6 +53,9 @@ export const productReducer = (state = { products: [] }, action) => {
             loading: false,
             error: action.payload,
           };
+
+          // --------------------
+          // --------------------
 
         case GET_PRODUCT_BY_SLUG_REQUEST:
           return{

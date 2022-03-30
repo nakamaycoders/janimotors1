@@ -19,7 +19,7 @@ import Loader from "../../layout/Loader/Loader";
 import {useAlert} from 'react-alert'
 
 import "./Product.css";
-import { Search } from "../../layout/Search";
+import { RespSearch } from "../../layout/Resp-SearchBar";
 import MetaData from "../../layout/MetaData";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -34,10 +34,6 @@ function Product(props) {
   let { products, error, loading } = useSelector(
     (state) => state.product
   );
-  // console.log(products);
-
-
-
   useEffect(() => {
     if(error){
     dispatch(clearErrors());
@@ -59,10 +55,11 @@ function Product(props) {
 
   return (
     <>
-        <MetaData title={`${products.slug} ---JANI MOTORS`}/>
+        <MetaData title={`${props.match.params.slug} ---JANI MOTORS`}/>
         <div className="container-fluid">
           <div className="row">
-                <div className="col-md-4 col-lg-3 pt-3">
+            <RespSearch />
+                {/* <div className="col-md-4 col-lg-3 pt-3">
               <div className="search-div">
                 <select class="form-select" aria-label="Default select example">
                   <option selected disabled>
@@ -125,7 +122,7 @@ function Product(props) {
                   Search
                 </Button>
               </div>
-            </div>
+            </div> */}
             <div className="col-md-9">
             {loading ? (
                 <Loader />
@@ -192,8 +189,6 @@ function Product(props) {
               )
             } 
             </div>
-            
-
           </div>
         </div>
     </>

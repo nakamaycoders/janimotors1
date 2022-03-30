@@ -30,6 +30,7 @@ export default function CustomizedTables(props) {
 
   return (
     <>
+    <main className="content">
       <table className="table-resptable-dark">
         <thead>
           <tr>
@@ -63,6 +64,7 @@ export default function CustomizedTables(props) {
       <Link to="/contactUs/contactUs">
         <Button variant="outlined my-3"> &larr; Go Back</Button>
       </Link>
+      </main>
     </>
   );
 }

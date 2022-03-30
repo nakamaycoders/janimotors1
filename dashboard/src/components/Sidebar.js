@@ -259,6 +259,7 @@ const Sidebar = (props = {}) => {
 
               <NavItem title="Home" link={"/"} icon={faHouse} />
 
+
               <CollapsableNavItem
                 // eventKey="tables/"
                 title="Category"

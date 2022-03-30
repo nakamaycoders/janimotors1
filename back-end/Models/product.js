@@ -53,12 +53,21 @@ const productSchema = new mongoose.Schema(
     year: {
       type: String,
     },
+    make:{
+      type:String
+    },
     description: {
       type: String,
       required: true,
       trim: true,
     },
-    productPictures: [{ img: { type: String, required:true} }],
+    productPictures: [
+      { 
+        img: {
+           type: String, required:true
+          }
+      }
+    ],
     // images: [
     //   {
     //     public_id: { 

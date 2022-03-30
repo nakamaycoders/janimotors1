@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { navmenu } from "../Nav/Data";
 import "./style.css";
 
@@ -7,8 +6,6 @@ import "./style.css";
 export const Nav = (props) => {
   return (
     <>
-    {/* <h1>hellonav</h1> */}
-
       <div
        className="container-fluid wrapper">
         <ul className="header-list">
@@ -16,9 +13,9 @@ export const Nav = (props) => {
           {navmenu.map((item) => {
             return (
               <li key={item.id}>
-                <Link to={item.path} className={item.cName}>
+                <a href={item.path} className={item.cName}>
                   {item.title} 
-                </Link>
+                </a>
               </li>
             );
           })}

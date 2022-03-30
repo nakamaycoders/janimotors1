@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import ButtonGroup from '@mui/material/ButtonGroup';
 // import MetaData from "../../components/layouts/MetaData";
 import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
-import { red } from "@mui/material/colors";
-import Box from '@mui/material/Box';
+// import { spacing } from '@mui/system';
+// import { red } from "@mui/material/colors";
+// import Box from '@mui/material/Box';
 
 const ContactUs = () => {
+  const rows = [];
+  let unreadMessages =false;
+  const [newRow, setnewRow] = useState();
   let [responseData, setResponseData] = useState("");
   // const [MessagesNo, setMessagesNo] = useState(responseData.length)
   const history = useHistory();
@@ -19,7 +24,7 @@ const ContactUs = () => {
   }, []);
 
   const url = "http://localhost:5000/api/contact/information";
-  
+
 
   const getContactInfo = async () => {
     try {
@@ -31,7 +36,46 @@ const ContactUs = () => {
       console.log(err);
     }
   };
-
+  responseData &&
+  responseData.forEach((item) => {
+    rows.splice(0,0,{
+      id: item._id,
+      email: item.email,
+      lname: item.firstName,
+      fname: item.lastName,
+      view: item.view
+    });
+  });
+  // console.log(rows);
+  // console.log("rows length: ", rows.length);
+  // console.log(newRow)
+  
+  const showUnRead =()=>{
+    // console.log(responseData)
+    let filteredRow = [];
+    responseData.forEach((item) => {
+      // console.log(item.view);
+      if(item.view == "unread"){
+              // const newRows = [...rows.,
+              // {
+              // id: item._id,
+              // email: item.email,
+              // lname: item.firstName,
+              // fname: item.lastName,
+              // view: item.view
+              // }
+              // ]
+              
+              filteredRow.push(item);
+              
+              setnewRow(filteredRow);
+                       
+      }
+    });
+    unreadMessages = true; 
+    console.log(newRow);
+    
+  }
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
     try {
@@ -91,45 +135,26 @@ const ContactUs = () => {
       },
     },
   ];
-
-  const rows = [];
+// -------------------------------------------
+  // const rows = [];
   
-  responseData &&
-    responseData.forEach((item) => {
-      // rows.push({
-      //   id: item._id,
-      //   email: item.email,
-      //   lname: item.firstName,
-      //   fname: item.lastName,
-      // });
-      rows.splice(0,0,{
-        id: item._id,
-        email: item.email,
-        lname: item.firstName,
-        fname: item.lastName,
-      });
-    });
-    console.log("rows length: ", rows.length);
-
+ 
     
-
   return (
     <>
       {/* <MetaData title={`ALL PRODUCTS - Admin`} /> */}
-
+      <main className="content">
       <div className="dashboard">
+      
         <div className="productListContainer">
+{/* (unreadMessages)?console.log(newRow):console.log(rows) */}
           <h1 id="productListHeading">Contact Submissions</h1>
-         
+         <ButtonGroup  sx={{ mx: "auto"}} variant="contained" aria-label="outlined primary button group">
+            <Button color="error" onClick={showUnRead}>Un-Read</Button>
+            <Button color="primary" >Read</Button>
+          </ButtonGroup>
           <DataGrid
-          md={{
-            // height: 300,
-            // width: 1,
-            '.header': {
-              backgroundColor: 'black',
-            },
-          }}
-            rows={rows}
+            rows={unreadMessages?newRow:rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
@@ -140,6 +165,7 @@ const ContactUs = () => {
           
         </div>
       </div>
+      </main>
     </>
   );
 };

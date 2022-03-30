@@ -49,8 +49,8 @@ nav a {
   text-decoration: none;
 }
  
-nav ul li ul li:hover { background: #000000; }
-nav a:hover { background-color: #000000; }
+nav ul li ul li:hover { background: #000000;}
+nav a:hover { background-color: #000000; color: white; }
  
 nav ul ul {
   display: none;
@@ -59,7 +59,8 @@ nav ul ul {
   z-index: 1;
 }
  
-nav ul li:hover > ul { display: inherit; }
+nav ul li:hover > ul { display: inherit;}
+nav ul li:hover > ul >li>a:hover{color: yellow;transition: 0.3s ease-in;}
  
 nav ul ul li {
   /* width: 170px; */
@@ -100,6 +101,7 @@ nav { margin: 0; }
  .menu { display: none; }
 .toggle {
   display: block;
+  cursor: pointer;
   /* background-color: #254441; */
   /* background-color: #000; */
   padding: 0 20px;
@@ -131,7 +133,7 @@ nav a:hover,
 
 nav ul li ul li .toggle,
 
- nav ul ul a { background-color: #212121; }
+ /* nav ul ul a { background-color: #212121; } */
 
 nav ul ul {
   float: none;

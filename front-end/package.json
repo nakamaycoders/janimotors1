@@ -28,6 +28,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.27.1",
     "react-icons": "^4.3.1",
+    "react-js-pagination": "^3.0.3",
     "react-multi-carousel": "^2.8.0",
     "react-quill": "github:zenoamaro/react-quill",
     "react-recaptcha": "^2.3.10",
