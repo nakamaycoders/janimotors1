@@ -5,6 +5,8 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const ApiFeatures = require("../utils/apifeatures");
 const slugify = require('slugify');
 const path = require("path");
+const fs = require('fs');
+const { dir } = require("console");
 
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async(req, res, next) => {
@@ -56,8 +58,14 @@ exports.createProduct = catchAsyncErrors(async(req, res, next) => {
     category,
     // createdBy: req.user._id,
   });
-  // const product = await Product.create(req.body);
-  // console.warn("ppppp>>>",productPictures) 
+  
+  // console.log(req.files[0].path)
+  // fs.unlink(req.files[0].path, (err)=>{
+  //   if(err){
+  //     console.log(err)
+  //     return
+  //   }
+  // })
 
   product.save((err, product) => {
     if (err) {
@@ -206,11 +214,46 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Delete Product
 
+
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   // let del = fs.unlinkSync(path)
   // console.log(del)
+
+  // let productPictures = []
+  
+ 
+// MAIN_URL = http://localhost:5000
+
+const path = `C:/Users/zubai/OneDrive/Documents/GitHub/janimotors1/back-end/uploads/${product.productPictures[0]}`
+    fs.unlinkSync(path,(err)=>{
+      if(err){
+        console.log(err)
+      }
+    })
+
+  // ,(err)=>{
+  //   if(err){
+  //     console.log(err)
+  //     return
+  //   }
+  // })
+  // console.log("pp>>>",product.productPictures[0].img)
+  // console.log(path.join(app,__dirname,`${product.productPictures[0].img}`))
+  // ,(err)=>{
+  //   if(err){
+  //     console.log(err)
+  //     return
+  //   }
+  // })
+
+  // fs.unlink(req.files[0].path, (err)=>{
+  //   if(err){
+  //     console.log(err)
+  //     return
+  //   }
+  // })
 
   if (!product) {
     return next(new ErrorHander("Product not found", 404));
