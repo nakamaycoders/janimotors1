@@ -194,6 +194,11 @@ const ContactUs = () => {
                 <Button>View</Button>
                 </Link>
                 </td>
+              <td>
+              <Button onClick={() => deleteContactHandler(item.id)}>
+              <DeleteIcon />
+            </Button>
+                </td>
             </tr>
           ))}
           {ReadMessages && ReadRow.map((item) => (
