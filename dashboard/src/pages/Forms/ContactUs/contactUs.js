@@ -185,7 +185,12 @@ const ContactUs = () => {
               <td>{item.lname}</td>
               <td>{item.fname}</td>
               <td>{item.email}</td>
-              <td><Button> View Details</Button></td>
+              <td>
+                <Link
+                to={{
+                pathname: `/contactUs/contactDetails/${item.id}`
+              }}
+              >
                 <Button>View</Button>
                 </Link>
                 </td>
