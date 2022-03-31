@@ -55,7 +55,7 @@ const ContactUs = () => {
     let filteredRow = [];
     responseData.forEach((item) => {
       // console.log(item.view);
-      if(item.view == "unread"){
+      if(item.view == "read"){
               // const newRows = [...rows.,
               // {
               // id: item._id,
@@ -67,15 +67,15 @@ const ContactUs = () => {
               // ]
               
               filteredRow.push(item);
-              
               setnewRow(filteredRow);
                        
       }
     });
     unreadMessages = true; 
     console.log(newRow);
-    
+    console.log(rows);
   }
+  
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
     try {
@@ -153,14 +153,16 @@ const ContactUs = () => {
             <Button color="error" onClick={showUnRead}>Un-Read</Button>
             <Button color="primary" >Read</Button>
           </ButtonGroup>
-          <DataGrid
-            rows={unreadMessages?newRow:rows}
+         <DataGrid
+            rows={(unreadMessages)?newRow:newRow}
+            getRowId={rows => rows._id}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
             className={`productListTable `}
             autoHeight
             />
+            
           {/* {console.log(responseData[0].fName)} */}
           
         </div>
