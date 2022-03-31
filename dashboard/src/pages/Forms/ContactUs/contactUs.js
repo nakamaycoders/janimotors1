@@ -10,6 +10,7 @@ import { useHistory } from "react-router";
 // import { spacing } from '@mui/system';
 // import { red } from "@mui/material/colors";
 // import Box from '@mui/material/Box';
+// import 'bootstrap';
 
 const ContactUs = () => {
   const rows = [];
@@ -55,7 +56,9 @@ const ContactUs = () => {
     let filteredRow = [];
     responseData.forEach((item) => {
       // console.log(item.view);
-      if(item.view == "unread"){
+      if(item.view == "read"){
+        filteredRow.push(item);
+        setnewRow(filteredRow);
               // const newRows = [...rows.,
               // {
               // id: item._id,
@@ -66,16 +69,14 @@ const ContactUs = () => {
               // }
               // ]
               
-              filteredRow.push(item);
-              
-              setnewRow(filteredRow);
                        
       }
     });
     unreadMessages = true; 
     console.log(newRow);
-    
+    console.log(rows);
   }
+  
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
     try {
@@ -153,16 +154,38 @@ const ContactUs = () => {
             <Button color="error" onClick={showUnRead}>Un-Read</Button>
             <Button color="primary" >Read</Button>
           </ButtonGroup>
-          <DataGrid
-            rows={unreadMessages?newRow:rows}
+         {/* <DataGrid
+            rows={(unreadMessages)?newRow:newRow}
+            getRowId={rows => rows._id}
             columns={columns}
-            pageSize={10}
+            pageSize={100}
             disableSelectionOnClick
             className={`productListTable `}
             autoHeight
-            />
+            /> */}
+             <table className="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.fname}</td>
+              <td>{item.lname}</td>
+              <td>{item.email}</td>
+              <td><Button> View Details</Button></td>
+            </tr>
+          ))}
+        </tbody>
           {/* {console.log(responseData[0].fName)} */}
-          
+          </table>
         </div>
       </div>
       </main>

@@ -10,7 +10,8 @@ import "./DashboardOverview.css";
 // import { CounterWidget, CircleChartWidget, BarChartWidget, TeamMembersWidget, ProgressTrackWidget, RankingWidget, SalesValueWidget, SalesValueWidgetPhone, AcquisitionWidget } from "../../components/Widgets";
 // import { PageVisitsTable } from "../../components/Tables";
 // import { trafficShares, totalOrders } from "../../data/charts";
-
+import CategoryIcon from '@mui/icons-material/Category';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 const DashboardOverview = () => {
   const { products } = useSelector((state) => state.product);
   const category = useSelector((state) => state.category);
@@ -26,11 +27,13 @@ const DashboardOverview = () => {
       <div className="dashboardSummary">
         <div className="dashboardSummaryBox2">
           <Link to="/product/all">
-            <p>Product</p>
+          <StorefrontIcon/>
+            <p className="para">Product</p>
             <p>{products && products.length}</p>
           </Link>
           <Link to="/category/create">
-            <p>Category</p>
+          <CategoryIcon />
+            <p className="para">Category</p>
             <p>
               {category.categories[0] && category.categories[0].children.length}
             </p>
