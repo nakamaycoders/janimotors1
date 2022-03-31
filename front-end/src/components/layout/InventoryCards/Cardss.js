@@ -58,23 +58,23 @@ export const Cardss = (props) => {
               <img
                 src={ImageUrl(p.productPictures[0].img)}
                 alt="heello"
-                className="cardok img-fluid"
+                className="img-fluid"
+                style={{minHeight:"268px"}}
               />
-              <div className="  okok">
-                <h4>{p.name}</h4>
-                <p>{p.description}</p>
+              <div className="okok ">
+                <h4 className="title">{p.name}</h4>
                 <tr>
                   <td>
-                    <h5>Milage : {p.milage}</h5>
+                    <h5 style={{marginRight: "52px"}}>
+                    <span style={{fontWeight:400,textTransform:"uppercase",fontSize:"initial"}}>Mileage</span>
+                       <br/> {p.milage}</h5>
                   </td>
-                </tr>
-                <tr>
                   <td>
-                    <h5>Stock : {p.stock}</h5>
+                    <h5><span style={{fontWeight:400,textTransform:"uppercase",fontSize:"initial"}}>Stock #</span> <br/> {p.stock}</h5>
                   </td>
                 </tr>
-                <h5 className="show">Engine: {p.engine} </h5>
-                <p className="showw"> {p.description}</p>
+                <h5 className="show">Engine <br/> {p.engine} </h5>
+                {/* <p className="showw"> {p.description}</p> */}
               </div>
 
               <div className="hc">
@@ -82,7 +82,8 @@ export const Cardss = (props) => {
                   Price : <br />
                   ${p.price}
                 </h5>
-                <button className="bte btn btn-primary">Details</button>
+                <button className="bte btn show-btn btn-primary">Details</button>
+                <button className="btn hide btn-success">View Details</button>
               </div>
             </div>
           );
