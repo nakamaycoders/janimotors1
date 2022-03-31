@@ -181,30 +181,27 @@ const ContactUs = () => {
           </tr>
         </thead>
         <tbody>
-          {console.log(rows)}
-          {InitialState && rows.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
+          {/* {showUnRead()} */}
+          {InitialState && UnreadRow.map((item,index) => (
+            <tr key={index}>
+              {/* <td>{item.id}</td> */}
               <td>{item.lname}</td>
               <td>{item.fname}</td>
               <td>{item.email}</td>
-              <td><Link 
-              to={{
+              <td>
+                <Link
+                to={{
                 pathname: `/contactUs/contactDetails/${item.id}`
               }}
               >
-                <Button> View</Button>
-              </Link>
-              </td>
-            </tr>
-          ))}
-          {UnreadState && UnreadRow.map((item) => (
-            <tr key={item.id}>
-              <td style={{color: `${(item.view=="unread")?"red": "blue"}`}}>{item.id}</td>
-              <td>{item.lname}</td>
-              <td>{item.fname}</td>
-              <td>{item.email}</td>
-              <td><Button> View Details</Button></td>
+                <Button>View</Button>
+                </Link>
+                </td>
+              <td>
+              <Button onClick={() => deleteContactHandler(item.id)}>
+              <DeleteIcon />
+            </Button>
+                </td>
             </tr>
           ))}
           {ReadMessages && ReadRow.map((item) => (
