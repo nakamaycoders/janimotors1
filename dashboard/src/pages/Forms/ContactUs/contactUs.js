@@ -179,13 +179,16 @@ const ContactUs = () => {
         </thead>
         <tbody>
           {/* {showUnRead()} */}
-          {InitialState && UnreadRow.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
+          {InitialState && UnreadRow.map((item,index) => (
+            <tr key={index}>
+              {/* <td>{item.id}</td> */}
               <td>{item.lname}</td>
               <td>{item.fname}</td>
               <td>{item.email}</td>
               <td><Button> View Details</Button></td>
+                <Button>View</Button>
+                </Link>
+                </td>
             </tr>
           ))}
           {ReadMessages && ReadRow.map((item) => (
