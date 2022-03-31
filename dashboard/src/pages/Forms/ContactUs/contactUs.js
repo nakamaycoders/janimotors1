@@ -185,7 +185,7 @@ const ContactUs = () => {
                 pathname: `/contactUs/contactDetails/${item.id}`
               }}
               >
-                <Button> View Details</Button>
+                <Button> View</Button>
               </Link>
               </td>
             </tr>
