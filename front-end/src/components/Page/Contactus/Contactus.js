@@ -77,7 +77,7 @@ const ContactUs = () => {
           Vegas. Our locations are highlighted on the map we have on this page.
           See exactly where we are located and come over to see us today.
         </p>
-          <Form>
+          <Form className="col-md-">
             <TextField label="First Name" name="firstName" type="text" />
             <TextField label="last Name" name="lastName" type="text" />
             <TextField label="Email" name="email" type="email" />

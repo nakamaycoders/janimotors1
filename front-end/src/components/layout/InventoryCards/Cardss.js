@@ -43,7 +43,7 @@ export const Cardss = (props) => {
 
   return (
     <>
-      <h1 className="ci">Current Inventory</h1>
+      <h1  className="ci">Current Inventory</h1>
       <Carousel
         autoPlaySpeed={3500}
         autoPlay={true}
