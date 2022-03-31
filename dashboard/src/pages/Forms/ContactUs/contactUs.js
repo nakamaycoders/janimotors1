@@ -166,7 +166,7 @@ const ContactUs = () => {
              <table className="table">
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
@@ -174,13 +174,20 @@ const ContactUs = () => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
+          {rows.map((item,index) => (
+            <tr key={index}>
+              {/* <td>{item.id}</td> */}
               <td>{item.fname}</td>
               <td>{item.lname}</td>
               <td>{item.email}</td>
-              <td><Button> View Details</Button></td>
+              <td><Link 
+              to={{
+                pathname: `/contactUs/contactDetails/${item.id}`
+              }}
+              >
+                <Button> View Details</Button>
+              </Link>
+              </td>
             </tr>
           ))}
         </tbody>
