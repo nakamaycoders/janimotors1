@@ -14,13 +14,17 @@ import { useHistory } from "react-router";
 
 const ContactUs = () => {
   const rows = [];
-  let unreadMessages =false;
-  const [newRow, setnewRow] = useState();
+
+  const [UnreadRow, setUnreadRow] = useState([]);
+  const [ReadRow, setReadRow] = useState([]);
   let [responseData, setResponseData] = useState("");
+  let [ReadMessages, setReadMessages] = useState(false);
+  let [InitialState, setInitialState] = useState(true);
   // const [MessagesNo, setMessagesNo] = useState(responseData.length)
   const history = useHistory();
   useEffect(() => {
     getContactInfo();
+    
     // deleteContactHandler()
   }, []);
 
@@ -47,34 +51,34 @@ const ContactUs = () => {
       view: item.view
     });
   });
+
+  
   // console.log(rows);
   // console.log("rows length: ", rows.length);
-  // console.log(newRow)
-  
-  const showUnRead =()=>{
-    // console.log(responseData)
-    let filteredRow = [];
-    responseData.forEach((item) => {
+  // console.log(UnreadRow)
+  const showRead = () =>{
+    let ReadFilterRow = [];
+    rows.forEach((item) => {
       // console.log(item.view);
       if(item.view == "read"){
-        filteredRow.push(item);
-        setnewRow(filteredRow);
-              // const newRows = [...rows.,
-              // {
-              // id: item._id,
-              // email: item.email,
-              // lname: item.firstName,
-              // fname: item.lastName,
-              // view: item.view
-              // }
-              // ]
-              
-                       
+        ReadFilterRow.push(item);
+        setReadRow(ReadFilterRow);
       }
     });
-    unreadMessages = true; 
-    console.log(newRow);
-    console.log(rows);
+    setReadMessages(true); 
+    setInitialState(false);
+  }
+  const showUnRead =()=>{
+    let filteredRow = [];
+    rows.forEach((item) => {
+      if(item.view == "unread"){
+        filteredRow.push(item);
+        setUnreadRow(filteredRow);
+      }
+    });
+    
+      setReadMessages(false); 
+      setInitialState(true);
   }
   
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
@@ -148,14 +152,14 @@ const ContactUs = () => {
       <div className="dashboard">
       
         <div className="productListContainer">
-{/* (unreadMessages)?console.log(newRow):console.log(rows) */}
+{/* (ReadMessages)?console.log(UnreadRow):console.log(rows) */}
           <h1 id="productListHeading">Contact Submissions</h1>
          <ButtonGroup  sx={{ mx: "auto"}} variant="contained" aria-label="outlined primary button group">
             <Button color="error" onClick={showUnRead}>Un-Read</Button>
-            <Button color="primary" >Read</Button>
+            <Button color="primary" onClick={showRead}>Read</Button>
           </ButtonGroup>
          {/* <DataGrid
-            rows={(unreadMessages)?newRow:newRow}
+            rows={(ReadMessages)?UnreadRow:UnreadRow}
             getRowId={rows => rows._id}
             columns={columns}
             pageSize={100}
@@ -174,17 +178,28 @@ const ContactUs = () => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((item) => (
+          {/* {showUnRead()} */}
+          {InitialState && UnreadRow.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td>{item.fname}</td>
               <td>{item.lname}</td>
+              <td>{item.fname}</td>
+              <td>{item.email}</td>
+              <td><Button> View Details</Button></td>
+            </tr>
+          ))}
+          {ReadMessages && ReadRow.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.lname}</td>
+              <td>{item.fname}</td>
               <td>{item.email}</td>
               <td><Button> View Details</Button></td>
             </tr>
           ))}
         </tbody>
-          {/* {console.log(responseData[0].fName)} */}
+
+          {console.log(UnreadRow, ReadRow)}
           </table>
         </div>
       </div>
