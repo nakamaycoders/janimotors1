@@ -10,21 +10,16 @@ import { useHistory } from "react-router";
 // import { spacing } from '@mui/system';
 // import { red } from "@mui/material/colors";
 // import Box from '@mui/material/Box';
-// import 'bootstrap';
 
 const ContactUs = () => {
   const rows = [];
-
-  const [UnreadRow, setUnreadRow] = useState([]);
-  const [ReadRow, setReadRow] = useState([]);
+  let unreadMessages =false;
+  const [newRow, setnewRow] = useState();
   let [responseData, setResponseData] = useState("");
-  let [ReadMessages, setReadMessages] = useState(false);
-  let [InitialState, setInitialState] = useState(true);
   // const [MessagesNo, setMessagesNo] = useState(responseData.length)
   const history = useHistory();
   useEffect(() => {
     getContactInfo();
-    
     // deleteContactHandler()
   }, []);
 
@@ -51,36 +46,36 @@ const ContactUs = () => {
       view: item.view
     });
   });
-
-  
   // console.log(rows);
   // console.log("rows length: ", rows.length);
-  // console.log(UnreadRow)
-  const showRead = () =>{
-    let ReadFilterRow = [];
-    rows.forEach((item) => {
-      // console.log(item.view);
-      if(item.view == "read"){
-        ReadFilterRow.push(item);
-        setReadRow(ReadFilterRow);
-      }
-    });
-    setReadMessages(true); 
-    setInitialState(false);
-  }
-  const showUnRead =()=>{
-    let filteredRow = [];
-    rows.forEach((item) => {
-      if(item.view == "unread"){
-        filteredRow.push(item);
-        setUnreadRow(filteredRow);
-      }
-    });
-    
-      setReadMessages(false); 
-      setInitialState(true);
-  }
+  // console.log(newRow)
   
+  const showUnRead =()=>{
+    // console.log(responseData)
+    let filteredRow = [];
+    responseData.forEach((item) => {
+      // console.log(item.view);
+      if(item.view == "unread"){
+              // const newRows = [...rows.,
+              // {
+              // id: item._id,
+              // email: item.email,
+              // lname: item.firstName,
+              // fname: item.lastName,
+              // view: item.view
+              // }
+              // ]
+              
+              filteredRow.push(item);
+              
+              setnewRow(filteredRow);
+                       
+      }
+    });
+    unreadMessages = true; 
+    console.log(newRow);
+    
+  }
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
     try {
@@ -152,62 +147,22 @@ const ContactUs = () => {
       <div className="dashboard">
       
         <div className="productListContainer">
-{/* (ReadMessages)?console.log(UnreadRow):console.log(rows) */}
+{/* (unreadMessages)?console.log(newRow):console.log(rows) */}
           <h1 id="productListHeading">Contact Submissions</h1>
          <ButtonGroup  sx={{ mx: "auto"}} variant="contained" aria-label="outlined primary button group">
             <Button color="error" onClick={showUnRead}>Un-Read</Button>
-            <Button color="primary" onClick={showRead}>Read</Button>
+            <Button color="primary" >Read</Button>
           </ButtonGroup>
-         {/* <DataGrid
-            rows={(ReadMessages)?UnreadRow:UnreadRow}
-            getRowId={rows => rows._id}
+          <DataGrid
+            rows={unreadMessages?newRow:rows}
             columns={columns}
-            pageSize={100}
+            pageSize={10}
             disableSelectionOnClick
             className={`productListTable `}
             autoHeight
-            /> */}
-             <table className="table">
-        <thead>
-          <tr>
-            {/* <th>ID</th> */}
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* {showUnRead()} */}
-          {InitialState && UnreadRow.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.lname}</td>
-              <td>{item.fname}</td>
-              <td>{item.email}</td>
-              <td><Button> View Details</Button></td>
-            </tr>
-          ))}
-          {ReadMessages && ReadRow.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.lname}</td>
-              <td>{item.fname}</td>
-              <td>{item.email}</td>
-              <td><Link 
-              to={{
-                pathname: `/contactUs/contactDetails/${item.id}`
-              }}
-              >
-                <Button> View</Button>
-              </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-
-          {console.log(UnreadRow, ReadRow)}
-          </table>
+            />
+          {/* {console.log(responseData[0].fName)} */}
+          
         </div>
       </div>
       </main>

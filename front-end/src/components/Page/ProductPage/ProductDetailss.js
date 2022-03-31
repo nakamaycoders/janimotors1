@@ -15,7 +15,7 @@ import { ImageUrl } from '../../../UrlConfig';
 import { Link } from 'react-router-dom';
 
 export default function ProductDetail(props) {
-    const product = useSelector((state) => state.product);
+    const {product,loading} = useSelector((state) => state.product);
     // console.log(product)
     const dispatch = useDispatch();
   

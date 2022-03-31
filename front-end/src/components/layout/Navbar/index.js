@@ -60,7 +60,7 @@ export const Navbar = (props) => {
           <Link to="/">
             <img
               className="img-fluid"
-              style={{ width: "168px" }}
+              style={{ width: "268px" }}
               src={logo}
               alt=""
             />
