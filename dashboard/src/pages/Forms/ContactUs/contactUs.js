@@ -20,11 +20,12 @@ const ContactUs = () => {
   let [responseData, setResponseData] = useState("");
   let [ReadMessages, setReadMessages] = useState(false);
   let [InitialState, setInitialState] = useState(true);
+  let [UnreadState, setUnreadState] = useState(false);
   // const [MessagesNo, setMessagesNo] = useState(responseData.length)
   const history = useHistory();
   useEffect(() => {
     getContactInfo();
-    
+    showUnRead();
     // deleteContactHandler()
   }, []);
 
@@ -67,6 +68,7 @@ const ContactUs = () => {
     });
     setReadMessages(true); 
     setInitialState(false);
+    setUnreadState(false);
   }
   const showUnRead =()=>{
     let filteredRow = [];
@@ -78,7 +80,8 @@ const ContactUs = () => {
     });
     
       setReadMessages(false); 
-      setInitialState(true);
+      setInitialState(false);
+      setUnreadState(true);
   }
   
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
@@ -217,6 +220,7 @@ const ContactUs = () => {
               </td>
             </tr>
           ))}
+         
         </tbody>
 
           {console.log(UnreadRow, ReadRow)}
