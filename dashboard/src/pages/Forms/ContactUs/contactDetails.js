@@ -20,9 +20,10 @@ export default function CustomizedTables(props) {
   useEffect(() => {
     getContactInfoById();
   },[]);
+  console.log("resp.........",responseData.length)
 
   if(Object.keys(responseData).length === 0){
-      return null
+      return "null"
   }
 
   return (
