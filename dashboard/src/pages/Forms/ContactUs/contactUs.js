@@ -155,6 +155,19 @@ const ContactUs = () => {
 // -------------------------------------------
   // const rows = [];
   
+  const changeView = (id) => {
+    const changeViewUrl = `http://localhost:5000/api/contact/update`;
+    try {
+      Axios.patch(`${changeViewUrl}/${id}`);
+      console.log("aasdasdasd----------------", id);
+      // console.log("Item successfully deleted.", res);
+     
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+
  
     
   return (
@@ -251,7 +264,7 @@ const ContactUs = () => {
                   params:{id:item.id},
                 }}
               >
-                <Button>View</Button>
+                <Button onClick={() => changeView(item.id)}>View</Button>
               </Link>
               </td>
               <td>

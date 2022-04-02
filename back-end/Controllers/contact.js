@@ -69,13 +69,20 @@ exports.getContactDetailsById = catchAsyncErrors(async(req,res,next) =>{
         });
 
         exports.updateDetails = catchAsyncErrors(async(req,res,next) =>{
-          const {id} = req.params
-          const result = await Contact.findOne({_id: id});
-          if (!result) {
-            return next(new ErrorHander("Not found", 404));
-          }
-          res.status(200).json({
-            success: true,
-            result,
-          });
+          const updatedPhone = await Contact.findByIdAndUpdate(req.params.id,{view: "read"},{
+            new : true,
+            runValidators : true
+          })
+          try{
+            res.status(200).json({
+                status : 'Success',
+                data : {
+                  updatedPhone
+                }
+              })
+            }catch(err){
+            console.log(err)
+            }
         });
+
+        
