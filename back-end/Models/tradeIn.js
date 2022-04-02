@@ -103,6 +103,11 @@ const TradeformSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    view:{
+        type: String,
+        default: "unread",
+        trim: true
+    }
    
 
 },{timestamps:true})

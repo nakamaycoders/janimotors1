@@ -8,6 +8,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
 const TradeIn = () => {
+  let [InitialState, setInitialState] = useState(true);
+
+  const changeView = (id) => {
+    const changeViewUrl = `http://localhost:5000/api/contact/update`;
+    try {
+      Axios.patch(`${changeViewUrl}/${id}`);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
   let [responseData, setResponseData] = useState("");
   const history = useHistory();
   useEffect(() => {
@@ -27,7 +38,7 @@ const TradeIn = () => {
     }
   };
 
-  
+
   const deleteUrl = `http://localhost:5000/api/trade-in/delete`;
   const deleteContactHandler = (id) => {
     try {
@@ -39,53 +50,7 @@ const TradeIn = () => {
     }
   };
 
-  const columns = [
-    { field: "id", headerName: "User ID", minWidth: 200, flex: 0.5 },
 
-    {
-      field: "firstName",
-      headerName: "First Name",
-      minWidth: 200,
-      flex: 1,
-    },
-    // {
-    //   field: "make",
-    //   headerName: "Make",
-    //   minWidth: 150,
-    //   flex: 0.3,
-    //   sortable: false,
-    // },
-
-    {
-      field: "email",
-      headerName: "Email",
-      minWidth: 200,
-      flex: 0.5,
-      sortable: false,
-    },
-
-    {
-      minWidth: 250,
-      renderCell: (param) => {
-        return (
-          <>
-            <Link
-              to={{
-                pathname: `/TradeIn/TradeInDetails/${param.getValue(param.id,"id")}`,
-                params: { id: param.id },
-              }}
-              >
-              <Button variant="outlined">Details</Button>
-            </Link>
-
-            <Button onClick={() => deleteContactHandler(param.id)}>
-              <DeleteIcon />
-            </Button>
-          </>
-        );
-      },
-    },
-  ];
 
   const rows = [];
   responseData &&
@@ -96,26 +61,79 @@ const TradeIn = () => {
         // make: item.make,
         firstName: item.firstName,
       });
+      
     });
-
+    console.log(rows)
 
   return (
     <>
       {/* <MetaData title={`ALL PRODUCTS - Admin`} /> */}
-    <main className="content">
-      <div className="dashboard">
-        <div className="productListContainer">
-          <h1 id="productListHeading">Trade In Submissions</h1>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
+      <main className="content">
+        <div className="dashboard">
+          <div className="productListContainer">
+            <h1 id="productListHeading">Trade In Submissions</h1>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {InitialState &&
+                  rows.map((item) => (
+                    <tr key={item.id}>
+                      {/* <td>{item.id}</td> */}
+                      
+                      <td
+                        style={{
+                          fontWeight: `${item.view == "unread" ? "bolder" : ""
+                            }`,
+                        }}
+                      >
+                        {item.firstName}
+                      </td>
+                      <td
+                        style={{
+                          fontWeight: `${item.view == "unread" ? "bolder" : ""
+                            }`,
+                        }}
+                      >
+                        {item.email}
+                      </td>
+                      
+                      <td
+                        style={{
+                          fontWeight: `${item.view == "unread" ? "bolder" : ""
+                            }`,
+                        }}
+                      >
+                        <Link
+                          to={{
+                            pathname: `/trade-in/information/${item.id}`,
+                            params: { id: item.id },
+                          }}
+                        >
+                          <Button onClick={() => changeView(item.id)}>
+                            View
+                          </Button>
+                        </Link>
+                      </td>
+                      <td>
+                        <Button onClick={() => deleteContactHandler(item.id)}>
+                          <DeleteIcon />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+
+              {/* {console.log(UnreadRow, ReadRow, rows)} */}
+            </table>
+          </div>
         </div>
-      </div>
       </main>
     </>
   );

@@ -22,7 +22,7 @@ export default function CustomizedTables(props) {
   };
   useEffect(() => {
     getContactInfoById();
-  }, );
+  }, []);
 
   // if(Object.keys(responseData).length === 0){
   //   return null

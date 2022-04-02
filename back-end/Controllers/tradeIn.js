@@ -28,6 +28,7 @@ exports.createTradeInForm = (req,res) =>{
         address,
         zip,
         phone,
+        view
       } = req.body;
       
       const trade = new Trade({
@@ -54,6 +55,7 @@ exports.createTradeInForm = (req,res) =>{
         address,
         zip,
         phone,
+        view
       });
       trade.save((err, data) => {
         if (err) {
