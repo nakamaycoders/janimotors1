@@ -5,6 +5,7 @@ import "./Cardcaro.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProduct } from "../../../actions/productAction";
 import { ImageUrl } from "../../../UrlConfig";
+import {Link} from 'react-router-dom'
 /**
  * @author
  * @function Cardss
@@ -59,7 +60,7 @@ export const Cardss = (props) => {
                 src={ImageUrl(p.productPictures[0].img)}
                 alt="heello"
                 className="img-fluid"
-                style={{minHeight:"268px"}}
+                // style={{minHeight:"268px"}}
               />
               <div className="okok ">
                 <h4 className="title">{p.name}</h4>
@@ -83,7 +84,9 @@ export const Cardss = (props) => {
                   ${p.price}
                 </h5>
                 <button className="bte btn show-btn btn-primary">Details</button>
-                <button className="btn hide btn-success">View Details</button>
+                <button className="btn hide btn-success">
+                  <Link to={`/product/${p._id}`}>View Details</Link>
+                </button>
               </div>
             </div>
           );

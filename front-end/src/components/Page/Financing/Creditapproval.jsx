@@ -251,7 +251,9 @@ export default function Creditapproval() {
                   </Button>
                 )} */}
 
-                    <Button onClick={handleNext}>
+                    <Button type="submit" form="form1"
+                    onClick={handleNext}>
+                      
                       {activeStep === steps.length - 1 ? "Finish" : "Next"}
                     </Button>
                   </Box>
