@@ -9,5 +9,4 @@ router.delete('/contact/delete/:id',deleteContactFormById);
 router.get('/contact/information/:id',getContactDetailsById);
 router.patch('/contact/update/:id',updateDetails);
 
-
 module.exports = router;

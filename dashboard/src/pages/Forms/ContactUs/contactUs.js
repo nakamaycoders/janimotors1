@@ -11,6 +11,8 @@ import { useHistory } from "react-router";
 // import { red } from "@mui/material/colors";
 // import Box from '@mui/material/Box';
 // import 'bootstrap';
+import { useParams } from "react-router-dom";
+
 
 const ContactUs = () => {
   const rows = [];
@@ -237,18 +239,19 @@ const ContactUs = () => {
             </tr>
           ))} */}
 {console.log(">>>>",UnreadRow)}
-          {InitialState && rows.map((item) => (
+          {InitialState && rows.map((item,params) => (
             <tr key={item.id} >
               {/* <td>{item.id}</td> */}
               <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>{item.lname}</td>
               <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>{item.fname}</td>
               <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>{item.email}</td>
-              <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}><Link 
-              to={{
-                pathname: `/contactUs/contactDetails/${item.id}`
-              }}
+              <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>
+                <Link to={{
+                  pathname: `/contactUs/contactDetails/${item.id}`,
+                  params:{id:item.id},
+                }}
               >
-                <Button> View</Button>
+                <Button>View</Button>
               </Link>
               </td>
               <td>
