@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Axios from "axios";
 import './contactDetails.css'
+import { useHistory } from "react-router-dom";
 
 export default function CustomizedTables(props) {
-
-  let [responseData, setResponseData] = useState("");
+let history = useHistory()
+  let [responseData, setResponseData] = useState([]);
   const url = "http://localhost:5000/api/contact/information";
+  const id = props.location.params.id;
+  console.log(id) 
   const getContactInfoById = async () => {
-    console.log("data--", props.location.params.id)
-    const id = props.location.params.id;
     try {
       const res = await Axios.get(`${url}/${id}`);
       setResponseData(res.data.result);
@@ -22,11 +23,11 @@ export default function CustomizedTables(props) {
   };
   useEffect(() => {
     getContactInfoById();
-  },);
+  },[]);
 
-  // if(Object.keys(responseData).length === 0){
-  //   return null;
-  // }
+  if(Object.keys(responseData).length === 0){
+      return null
+  }
 
   return (
     <>

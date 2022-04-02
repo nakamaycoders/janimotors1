@@ -67,3 +67,20 @@ exports.getContactDetailsById = catchAsyncErrors(async(req,res,next) =>{
             message: "Deleted Successfully",
           });
         });
+
+      
+
+
+          // exports.updateContactDetailsById = catchAsyncErrors(async(req,res,next) =>{
+          //   const {id} = req.params
+          //   const {view} = req.body
+          //   const result = await Contact.find({_id:id})
+          //   if (!result) {
+          //     return next(new ErrorHander("Not found", 404));
+          //   }
+          //   res.status(200).json({
+          //     success: true,
+          //     result,
+          //   });
+          // });
+          
