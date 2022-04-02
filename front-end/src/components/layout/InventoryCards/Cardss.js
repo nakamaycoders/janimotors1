@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom'
 
 export const Cardss = (props) => {
   const dispatch = useDispatch();
-  let { products, error, loading } = useSelector((state) => state.product);
+  let { products, error } = useSelector((state) => state.product);
   console.log("ye hai",products);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const Cardss = (props) => {
     }
 
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch,error]);
 
   const responsive = {
     desktop: {

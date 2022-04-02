@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Axios from "axios";
-// import './contactDetails.css'
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
   const url = "http://localhost:5000/api/trade-in/information";
   const getContactInfoById = async () => {
-    console.log("data--", props.location.params.id);
     const id = props.location.params.id;
     try {
       const res = await Axios.get(`${url}/${id}`);
       setResponseData(res.data.result);
-      // console.log(res.data.result)
     } catch (err) {
       console.log(err);
       alert(err);

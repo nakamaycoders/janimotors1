@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 // import MetaData from "../../components/layouts/MetaData";
@@ -8,8 +7,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
 const TradeIn = () => {
-  let [InitialState, setInitialState] = useState(true);
-
   const changeView = (id) => {
     const changeViewUrl = `http://localhost:5000/api/trade-in/update`;
     try {
@@ -78,13 +75,12 @@ const TradeIn = () => {
                 </tr>
               </thead>
               <tbody>
-                {InitialState &&
-                  rows.map((item) => (
+                {rows.map((item) => (
                     <tr key={item.id}>
                       <td
                         style={{
                           fontWeight: `${
-                            item.view == "unread" ? "bolder" : ""
+                            item.view === "unread" ? "bolder" : ""
                           }`,
                         }}
                       >
@@ -93,7 +89,7 @@ const TradeIn = () => {
                       <td
                         style={{
                           fontWeight: `${
-                            item.view == "unread" ? "bolder" : ""
+                            item.view === "unread" ? "bolder" : ""
                           }`,
                         }}
                       >
@@ -103,7 +99,7 @@ const TradeIn = () => {
                       <td
                         style={{
                           fontWeight: `${
-                            item.view == "unread" ? "bolder" : ""
+                            item.view === "unread" ? "bolder" : ""
                           }`,
                         }}
                       >
