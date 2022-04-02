@@ -11,7 +11,7 @@ const TradeIn = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/contact/update`;
+    const changeViewUrl = `http://localhost:5000/api/trade-in/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {
@@ -32,12 +32,11 @@ const TradeIn = () => {
     try {
       const res = await Axios.get(url);
       setResponseData(res.data.tradeInfo);
-      console.log(res.data.tradeInfo)
+      console.log(res.data.tradeInfo);
     } catch (err) {
       console.log(err);
     }
   };
-
 
   const deleteUrl = `http://localhost:5000/api/trade-in/delete`;
   const deleteContactHandler = (id) => {
@@ -50,20 +49,17 @@ const TradeIn = () => {
     }
   };
 
-
-
   const rows = [];
   responseData &&
     responseData.forEach((item) => {
-      rows.push({
+      rows.splice(0, 0,{
         id: item._id,
         email: item.email,
-        // make: item.make,
         firstName: item.firstName,
+        view: item.view,
       });
-      
     });
-    console.log(rows)
+  console.log(rows);
 
   return (
     <>
@@ -85,34 +81,35 @@ const TradeIn = () => {
                 {InitialState &&
                   rows.map((item) => (
                     <tr key={item.id}>
-                      {/* <td>{item.id}</td> */}
-                      
                       <td
                         style={{
-                          fontWeight: `${item.view == "unread" ? "bolder" : ""
-                            }`,
+                          fontWeight: `${
+                            item.view == "unread" ? "bolder" : ""
+                          }`,
                         }}
                       >
                         {item.firstName}
                       </td>
                       <td
                         style={{
-                          fontWeight: `${item.view == "unread" ? "bolder" : ""
-                            }`,
+                          fontWeight: `${
+                            item.view == "unread" ? "bolder" : ""
+                          }`,
                         }}
                       >
                         {item.email}
                       </td>
-                      
+
                       <td
                         style={{
-                          fontWeight: `${item.view == "unread" ? "bolder" : ""
-                            }`,
+                          fontWeight: `${
+                            item.view == "unread" ? "bolder" : ""
+                          }`,
                         }}
                       >
                         <Link
                           to={{
-                            pathname: `/trade-in/information/${item.id}`,
+                            pathname: `/TradeIn/TradeInDetails/${item.id}`,
                             params: { id: item.id },
                           }}
                         >
@@ -129,7 +126,6 @@ const TradeIn = () => {
                     </tr>
                   ))}
               </tbody>
-
               {/* {console.log(UnreadRow, ReadRow, rows)} */}
             </table>
           </div>
