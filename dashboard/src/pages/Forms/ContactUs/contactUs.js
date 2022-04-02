@@ -14,19 +14,22 @@ import { useHistory } from "react-router";
 
 const ContactUs = () => {
   const rows = [];
-
+  
+  
   const [UnreadRow, setUnreadRow] = useState([]);
   const [ReadRow, setReadRow] = useState([]);
   let [responseData, setResponseData] = useState("");
   let [ReadMessages, setReadMessages] = useState(false);
   let [InitialState, setInitialState] = useState(true);
+  let [InitialRow, setInitialRow] = useState([]);
   let [UnreadState, setUnreadState] = useState(false);
   // const [MessagesNo, setMessagesNo] = useState(responseData.length)
   const history = useHistory();
+  
   useEffect(() => {
     getContactInfo();
-    showUnRead();
     // deleteContactHandler()
+    // showUnRead();
   }, []);
 
   const url = "http://localhost:5000/api/contact/information";
@@ -41,6 +44,7 @@ const ContactUs = () => {
     } catch (err) {
       console.log(err);
     }
+    // showUnRead();
   };
   responseData &&
   responseData.forEach((item) => {
@@ -51,9 +55,9 @@ const ContactUs = () => {
       fname: item.lastName,
       view: item.view
     });
+    
   });
 
-  
   // console.log(rows);
   // console.log("rows length: ", rows.length);
   // console.log(UnreadRow)
@@ -66,10 +70,12 @@ const ContactUs = () => {
         setReadRow(ReadFilterRow);
       }
     });
+
     setReadMessages(true); 
     setInitialState(false);
     setUnreadState(false);
   }
+  
   const showUnRead =()=>{
     let filteredRow = [];
     rows.forEach((item) => {
@@ -82,7 +88,8 @@ const ContactUs = () => {
       setReadMessages(false); 
       setInitialState(false);
       setUnreadState(true);
-  }
+      
+  } 
   
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
   const deleteContactHandler = (id) => {
@@ -157,10 +164,11 @@ const ContactUs = () => {
         <div className="productListContainer">
 {/* (ReadMessages)?console.log(UnreadRow):console.log(rows) */}
           <h1 id="productListHeading">Contact Submissions</h1>
-         <ButtonGroup  sx={{ mx: "auto"}} variant="contained" aria-label="outlined primary button group">
+          
+         {/* <ButtonGroup  sx={{ mx: "auto"}} variant="contained" aria-label="outlined primary button group">
             <Button color="error" onClick={showUnRead}>Un-Read</Button>
             <Button color="primary" onClick={showRead}>Read</Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
          {/* <DataGrid
             rows={(ReadMessages)?UnreadRow:UnreadRow}
             getRowId={rows => rows._id}
@@ -178,13 +186,15 @@ const ContactUs = () => {
             <th>Last Name</th>
             <th>Email</th>
             <th>Action</th>
+            <th></th>
+
           </tr>
         </thead>
         <tbody>
           {/* {showUnRead()} */}
-          {InitialState && UnreadRow.map((item,index) => (
-            <tr key={index}>
-              {/* <td>{item.id}</td> */}
+          {/* {(UnreadState || InitialState) && UnreadRow.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
               <td>{item.lname}</td>
               <td>{item.fname}</td>
               <td>{item.email}</td>
@@ -204,7 +214,8 @@ const ContactUs = () => {
                 </td>
             </tr>
           ))}
-          {ReadMessages && ReadRow.map((item) => (
+           */}
+          {/* {ReadMessages && ReadRow.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.lname}</td>
@@ -218,12 +229,38 @@ const ContactUs = () => {
                 <Button> View</Button>
               </Link>
               </td>
+              <td>
+              <Button onClick={() => deleteContactHandler(item.id)}>
+              <DeleteIcon />
+            </Button>
+                </td>
+            </tr>
+          ))} */}
+{console.log(">>>>",UnreadRow)}
+          {InitialState && rows.map((item) => (
+            <tr key={item.id} >
+              {/* <td>{item.id}</td> */}
+              <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>{item.lname}</td>
+              <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>{item.fname}</td>
+              <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}>{item.email}</td>
+              <td style={{fontWeight: `${(item.view == "unread")?"bolder":''}`}}><Link 
+              to={{
+                pathname: `/contactUs/contactDetails/${item.id}`
+              }}
+              >
+                <Button> View</Button>
+              </Link>
+              </td>
+              <td>
+              <Button onClick={() => deleteContactHandler(item.id)}>
+              <DeleteIcon />
+            </Button>
+                </td>
             </tr>
           ))}
-         
         </tbody>
 
-          {console.log(UnreadRow, ReadRow)}
+          {console.log(UnreadRow, ReadRow, rows)}
           </table>
         </div>
       </div>
