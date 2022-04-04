@@ -7,7 +7,12 @@ import {
   Step,
   Grid,
   StepLabel,
+  OutlinedInput,
+  InputLabel,
+  MenuItem,
+  Select
 } from "@material-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
 import {
   useForm,
@@ -15,13 +20,12 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form";
-import './credit2.css'
+import "./credit2.css";
 const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
   },
 }));
-
 function getSteps() {
   return [
     "Applicant Contact Info",
@@ -29,52 +33,198 @@ function getSteps() {
     "Personal Information",
   ];
 }
+const AllSuffix = ["SR", "JR", "I", "II", "III", "IV"];
+
 const Step1 = () => {
   const { control } = useFormContext();
   return (
     <>
       <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-            <Controller
-        control={control}
-        name="fname"
-        render={({ field }) => (
-          
-           <TextField
-          id="fname"
-        label="First Name"
-      variant="outlined"
-          fullWidth
-      margin="normal"
-      {...field}
-         
-          /> 
-         
-          
-        )}
-        />
-            </Grid>
-            <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4}>
+          <Controller
+            control={control}
+            name="fname"
+            render={({ field }) => (
+              <TextField
+                id="fname"
+                label="First Name"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+         <Controller
+            control={control}
+            name="midName"
+            render={({ field }) => (
               <TextField
                 id="midName"
                 label="Middle Name"
                 variant="outlined"
-                placeholder="optional"
                 fullWidth
                 margin="normal"
-                name="midName"
+                {...field}
               />
-            </Grid>
-            <Grid item xs={12} md={4}>
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+        <Controller
+            control={control}
+            name="lName"
+            render={({ field }) => (
               <TextField
                 id="lName"
                 label="Last Name"
                 variant="outlined"
-                // placeholder="Enter Your E-mail Address"
                 fullWidth
                 margin="normal"
-                name="lName"
+                {...field}
               />
+            )}
+          />
+        </Grid>
+      </Grid>
+      <Grid container>
+            <Grid item xs={12} md={4}>
+              <InputLabel style={{paddingBottom:"20px",paddingTop:"10px"}} id="Suffix">Select Suffix (Optional)</InputLabel>
+              <Controller
+            control={control}
+            name="Suffix"
+            render={({ field }) => (
+             <Select
+             
+                labelId="Suffix"
+                id="Suffix"
+                //   multiple
+                fullWidth
+                input={<OutlinedInput label="Suffix" />}
+                name="Suffix"
+                {...field}
+              >
+                {AllSuffix.map((Suffix) => (
+                  <MenuItem key={Suffix} value={Suffix}>
+                    {Suffix}
+                  </MenuItem>
+                ))}
+              </Select>
+              
+
+            )}
+          />
+         
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
+              primary phone number
+            </Typography>
+          </Grid>
+
+
+          <Grid container>
+            <Grid item xs={6} md={4}>
+            <Controller
+            control={control}
+            name="homeNum"
+            render={({ field }) => (
+              
+               <TextField
+                id="homeNum"
+                label="Home"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                name="homeNum"
+                {...field}
+              /> 
+            )}
+          />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={6} md={4}>
+            <Controller
+            control={control}
+            name="cellNum"
+            render={({ field }) => (
+              
+               <TextField
+                id="cellNum"
+                label="Cell"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                name="cellNum"
+                {...field}
+              /> 
+               
+              
+            )}
+          />
+              
+            </Grid>
+          </Grid>
+          <Grid>
+            <Typography>
+              I consent to receive autodialed, pre-recorded and artificial voice
+              telemarketing and sales calls and text messages from or on behalf
+              of dealer (or any financing source to which dealer assigns my
+              contract) at the telephone number(s) provided in this
+              communication, including any cell phone numbers. I understand that
+              this consent is not a condition of purchase or credit.
+            </Typography>
+          </Grid>
+
+          <Grid container>
+            <Grid item xs={6} md={4}>
+            <Controller
+            control={control}
+            name="email"
+            render={({ field }) => (
+              
+              
+              <TextField
+                id="email"
+                label="Email"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                name="email"
+                {...field}
+              /> 
+              
+            )}
+          />
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={6} md={4}>
+
+            <Controller
+            control={control}
+            name="Vemail"
+            render={({ field }) => (
+              
+             
+               
+               <TextField
+                id="Vemail"
+                label="Verify Email"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                name="Vemail"
+                {...field}
+              /> 
+              
+            )}
+          />
             </Grid>
           </Grid>
     </>
@@ -189,14 +339,14 @@ const Step3 = () => {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <Step1/>;
+      return <Step1 />;
 
     case 1:
       return <Step2 />;
     case 2:
       return <Step3 />;
     case 3:
-      // return < />;
+    // return < />;
     default:
       return "unknown step";
   }
@@ -208,22 +358,15 @@ const LinearStepper = () => {
     defaultValues: {
       fName: "",
       lastName: "",
-      nickName: "",
-      emailAddress: "",
-      phoneNumber: "",
-      alternatePhone: "",
-      address1: "",
-      address2: "",
-      country: "",
-      cardNumber: "",
-      cardMonth: "",
-      cardYear: "",
+      midName:"",
+      Suffix:"",
+      homeNum:"",
+      cellNum:'',
+
     },
   });
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
-
-  
 
   const handleNext = (data) => {
     console.log(data);
@@ -243,7 +386,6 @@ const LinearStepper = () => {
     setActiveStep(activeStep - 1);
   };
 
-
   // const onSubmit = (data) => {
   //   console.log(data);
   // };
@@ -251,12 +393,9 @@ const LinearStepper = () => {
     <div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
-         
-          
-        
           return (
-            <Step  key={index}>
-              <StepLabel >{step}</StepLabel>
+            <Step key={index}>
+              <StepLabel>{step}</StepLabel>
             </Step>
           );
         })}
@@ -279,9 +418,7 @@ const LinearStepper = () => {
               >
                 back
               </Button>
-               
-                
-             
+
               <Button
                 className={classes.button}
                 variant="contained"
@@ -294,9 +431,6 @@ const LinearStepper = () => {
             </form>
           </FormProvider>
         </>
-
-
-
       )}
     </div>
   );
