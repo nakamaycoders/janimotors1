@@ -9,6 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
 const ContactUs = () => {
+  let unreadCount = 0;
   const rows = [];
 
   let [responseData, setResponseData] = useState("");
@@ -40,6 +41,9 @@ const ContactUs = () => {
         fname: item.lastName,
         view: item.view,
       });
+      if(item.view == "unread"){
+        unreadCount= unreadCount +1;
+      }
     });
 
   const deleteUrl = `http://localhost:5000/api/contact/delete`;
@@ -72,7 +76,7 @@ const ContactUs = () => {
         <div className="dashboard">
           <div className="productListContainer">
             <h1 id="productListHeading">Contact Submissions</h1>
-
+            <h6>Unread Message(s): {unreadCount}</h6>
             <table className="table">
               <thead>
                 <tr>

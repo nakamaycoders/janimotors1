@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
 const TradeIn = () => {
+  let unreadCount = 0;
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
@@ -58,6 +59,9 @@ const TradeIn = () => {
         firstName: item.firstName,
         view: item.view,
       });
+      if(item.view == "unread"){
+        unreadCount= unreadCount +1;
+      }
     });
   console.log(rows);
 
@@ -68,6 +72,7 @@ const TradeIn = () => {
         <div className="dashboard">
           <div className="productListContainer">
             <h1 id="productListHeading">Trade In Submissions</h1>
+            <h6>Unread Message(s): {unreadCount}</h6>
             <table className="table">
               <thead>
                 <tr>
