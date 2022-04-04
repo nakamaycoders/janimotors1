@@ -28,7 +28,7 @@ exports.createContactForm = (req, res) => {
 exports.getContactForm = async (req, res) => {
   const contactInfo = await Contact.find();
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     contactInfo,
   });

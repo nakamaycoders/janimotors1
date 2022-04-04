@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import Layout from "../../layout/layout/layout";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import getParams from "../../../utils/getParams";
-import { clearErrors, getProductsBySlug } from "../../../actions/productAction";
-import Card from "../../layout/Card/Card";
-import { MaterialButton } from "../../layout/MaterialUI/MaterialUI";
-import { ImageUrl } from "../../../UrlConfig";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Row, Col } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useAlert } from 'react-alert';
+import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { clearErrors, getProductsBySlug } from "../../../actions/productAction";
+import { ImageUrl } from "../../../UrlConfig";
+import getParams from "../../../utils/getParams";
+import Card from "../../layout/Card/Card";
+import Layout from "../../layout/layout/layout";
 import Loader from "../../layout/Loader/Loader";
-import {useAlert} from 'react-alert'
-
-import "./Product.css";
-import { RespSearch } from "../../layout/Resp-SearchBar";
+import { MaterialButton } from "../../layout/MaterialUI/MaterialUI";
 import MetaData from "../../layout/MetaData";
+import { RespSearch } from "../../layout/Resp-SearchBar";
+import "./Product.css";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
