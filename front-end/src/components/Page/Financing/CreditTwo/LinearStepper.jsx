@@ -35,14 +35,24 @@ const Step1 = () => {
     <>
       <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
-              <TextField
-                id="fname"
-                label="First Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                name="fname"
-              />
+            <Controller
+        control={control}
+        name="fname"
+        render={({ field }) => (
+          
+           <TextField
+          id="fname"
+        label="First Name"
+      variant="outlined"
+          fullWidth
+      margin="normal"
+      {...field}
+         
+          /> 
+         
+          
+        )}
+        />
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
@@ -196,7 +206,7 @@ const LinearStepper = () => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
-      firstName: "",
+      fName: "",
       lastName: "",
       nickName: "",
       emailAddress: "",

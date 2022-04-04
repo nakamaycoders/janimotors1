@@ -7,6 +7,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
 const TradeIn = () => {
+  let unreadCount = 0;
+  let [InitialState, setInitialState] = useState(true);
+
   const changeView = (id) => {
     const changeViewUrl = `http://localhost:5000/api/trade-in/update`;
     try {
