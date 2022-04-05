@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import { useRef } from 'react'
 import {
   Typography,
   TextField,
@@ -10,7 +14,7 @@ import {
   OutlinedInput,
   InputLabel,
   MenuItem,
-  Select
+  Select,
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -58,7 +62,7 @@ const Step1 = () => {
         </Grid>
 
         <Grid item xs={12} md={4}>
-         <Controller
+          <Controller
             control={control}
             name="midName"
             render={({ field }) => (
@@ -74,7 +78,7 @@ const Step1 = () => {
           />
         </Grid>
         <Grid item xs={12} md={4}>
-        <Controller
+          <Controller
             control={control}
             name="lName"
             render={({ field }) => (
@@ -91,14 +95,18 @@ const Step1 = () => {
         </Grid>
       </Grid>
       <Grid container>
-            <Grid item xs={12} md={4}>
-              <InputLabel style={{paddingBottom:"20px",paddingTop:"10px"}} id="Suffix">Select Suffix (Optional)</InputLabel>
-              <Controller
+        <Grid item xs={12} md={4}>
+          <InputLabel
+            style={{ paddingBottom: "20px", paddingTop: "10px" }}
+            id="Suffix"
+          >
+            Select Suffix (Optional)
+          </InputLabel>
+          <Controller
             control={control}
             name="Suffix"
             render={({ field }) => (
-             <Select
-             
+              <Select
                 labelId="Suffix"
                 id="Suffix"
                 //   multiple
@@ -113,28 +121,23 @@ const Step1 = () => {
                   </MenuItem>
                 ))}
               </Select>
-              
-
             )}
           />
-         
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
-              primary phone number
-            </Typography>
-          </Grid>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
+          primary phone number
+        </Typography>
+      </Grid>
 
-
-          <Grid container>
-            <Grid item xs={6} md={4}>
-            <Controller
+      <Grid container>
+        <Grid item xs={6} md={4}>
+          <Controller
             control={control}
             name="homeNum"
             render={({ field }) => (
-              
-               <TextField
+              <TextField
                 id="homeNum"
                 label="Home"
                 variant="outlined"
@@ -142,19 +145,18 @@ const Step1 = () => {
                 margin="normal"
                 name="homeNum"
                 {...field}
-              /> 
+              />
             )}
           />
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={6} md={4}>
-            <Controller
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs={6} md={4}>
+          <Controller
             control={control}
             name="cellNum"
             render={({ field }) => (
-              
-               <TextField
+              <TextField
                 id="cellNum"
                 label="Cell"
                 variant="outlined"
@@ -162,33 +164,28 @@ const Step1 = () => {
                 margin="normal"
                 name="cellNum"
                 {...field}
-              /> 
-               
-              
+              />
             )}
           />
-              
-            </Grid>
-          </Grid>
-          <Grid>
-            <Typography>
-              I consent to receive autodialed, pre-recorded and artificial voice
-              telemarketing and sales calls and text messages from or on behalf
-              of dealer (or any financing source to which dealer assigns my
-              contract) at the telephone number(s) provided in this
-              communication, including any cell phone numbers. I understand that
-              this consent is not a condition of purchase or credit.
-            </Typography>
-          </Grid>
+        </Grid>
+      </Grid>
+      <Grid>
+        <Typography>
+          I consent to receive autodialed, pre-recorded and artificial voice
+          telemarketing and sales calls and text messages from or on behalf of
+          dealer (or any financing source to which dealer assigns my contract)
+          at the telephone number(s) provided in this communication, including
+          any cell phone numbers. I understand that this consent is not a
+          condition of purchase or credit.
+        </Typography>
+      </Grid>
 
-          <Grid container>
-            <Grid item xs={6} md={4}>
-            <Controller
+      <Grid container>
+        <Grid item xs={6} md={4}>
+          <Controller
             control={control}
             name="email"
             render={({ field }) => (
-              
-              
               <TextField
                 id="email"
                 label="Email"
@@ -197,23 +194,18 @@ const Step1 = () => {
                 margin="normal"
                 name="email"
                 {...field}
-              /> 
-              
+              />
             )}
           />
-            </Grid>
-          </Grid>
-          <Grid container>
-            <Grid item xs={6} md={4}>
-
-            <Controller
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs={6} md={4}>
+          <Controller
             control={control}
             name="Vemail"
             render={({ field }) => (
-              
-             
-               
-               <TextField
+              <TextField
                 id="Vemail"
                 label="Verify Email"
                 variant="outlined"
@@ -221,19 +213,23 @@ const Step1 = () => {
                 margin="normal"
                 name="Vemail"
                 {...field}
-              /> 
-              
+              />
             )}
           />
-            </Grid>
-          </Grid>
+        </Grid>
+      </Grid>
     </>
   );
 };
 const Step2 = () => {
+  const [visible, setVisible]=useState(false);
   const { control } = useFormContext();
   return (
     <>
+     <FormGroup>
+      <FormControlLabel control={<Checkbox  />} value="1" onClick={ ()=>setVisible(true)} label="I have a Rural Route" />
+    </FormGroup>
+    { visible &&
       <Controller
         control={control}
         name="emailAddress"
@@ -249,7 +245,7 @@ const Step2 = () => {
           />
         )}
       />
-
+        }
       <Controller
         control={control}
         name="phoneNumber"
@@ -358,11 +354,10 @@ const LinearStepper = () => {
     defaultValues: {
       fName: "",
       lastName: "",
-      midName:"",
-      Suffix:"",
-      homeNum:"",
-      cellNum:'',
-
+      midName: "",
+      Suffix: "",
+      homeNum: "",
+      cellNum: "",
     },
   });
   const [activeStep, setActiveStep] = useState(0);
