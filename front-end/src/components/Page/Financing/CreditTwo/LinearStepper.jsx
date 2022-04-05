@@ -320,11 +320,10 @@ const Step2 = () => {
   const { control } = useFormContext();
   return (
     <>
-      <FormGroup>
+      <FormGroup style={{width: 'fit-content'}}>
         <FormControlLabel
-          control={<Checkbox />}
+          control={<Checkbox size="large"/>}
           value={checked}
-          // onChange={() => setVisible(true)}
           onChange={() => setChecked(checked => !checked)}
           label="I have a Rural Route"
         />
@@ -447,6 +446,25 @@ const Step2 = () => {
                   </MenuItem>
                 ))}
               </Select>
+            )}
+          />
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
+      <Grid item xs={12} md={2}>
+          <Controller
+            control={control}
+            name="apt"
+            render={({ field }) => (
+              <TextField
+                id="apt #"
+                label="Apt #"
+                variant="outlined"
+                // placeholder="Enter Your Phone Number"
+                halfWidth
+                margin="normal"
+                {...field}
+              />
             )}
           />
         </Grid>
@@ -677,17 +695,17 @@ const Step2 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="Month"
+            id="Mortgage"
           >
             Mortgage Payment/Rent
           </InputLabel>
           <Controller
             control={control}
-            name="Month"
+            name="Mortgage"
             render={({ field }) => (
               <TextField
                 type="number"
-                id="month"
+                id="mortgage"
                 label="$"
                 variant="outlined"
                 // placeholder="Enter Your Alternate Phone"
