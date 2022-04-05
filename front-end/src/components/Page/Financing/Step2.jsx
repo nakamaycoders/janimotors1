@@ -7,6 +7,40 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 
+{/* <Grid item xs={12} md={4}>
+          <Controller
+            control={control}
+            name="zip"
+            render={({ field }) => (
+              <TextField
+                id="zip"
+                label="ZIP"
+                variant="outlined"
+                // placeholder="Enter Your Phone Number"
+                fullWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Controller
+            control={control}
+            name="city"
+            render={({ field }) => (
+              <TextField
+                id="city"
+                label="CITY"
+                variant="outlined"
+                // placeholder="Enter Your Alternate Phone"
+                fullWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid> */}
 function Step2(props) {
   const message = "Select Housing Status";
   const arrayOfHouse = [
