@@ -13,7 +13,7 @@ import Contactus from "./components/Page/Contactus/Contactus";
 import AllProducts from "./components/Page/ProductPage/AllProducts";
 import Event from './components/Page/Event/Event'
 import Loader from "./components/layout/Loader/Loader";
-import LinearStepper from "./components/Page/Financing/CreditTwo/LinearStepper";
+import OuterCredit from "./components/Page/Financing/CreditTwo/OuterCredit";
 function App() {
   return (
     <>
@@ -25,7 +25,7 @@ function App() {
         <Route path="/view-all-inventories/:keyword"  component={AllProducts} />
         <Route exact path="/tradeincar" component={TradeInCar} />
         {/* <Route path="/view-all-inventories/:keyword" component={SearchProducts} /> */}
-        <Route exact path="/creditapproval" component={LinearStepper} />
+        <Route exact path="/creditapproval" component={OuterCredit} />
         {/* <Route path="/ourdealership" component={OurDealership} /> */}
         <Route exact path="/contactus" component={Contactus} />
         <Route exact path="/event" component={Event} />

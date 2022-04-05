@@ -1,0 +1,7 @@
+.form{
+    background: white;
+    color: black;
+}
+TextField  label{
+    color: rgb(223, 179, 179) !important;
+}
