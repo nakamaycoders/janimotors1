@@ -315,74 +315,146 @@ const Step1 = () => {
 };
 
 const Step2 = () => {
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
+  const [checked,setChecked] = useState(false); 
   const { control } = useFormContext();
   return (
     <>
       <FormGroup>
         <FormControlLabel
           control={<Checkbox />}
-          value="1"
-          onClick={() => setVisible(true)}
+          value={checked}
+          // onChange={() => setVisible(true)}
+          onChange={() => setChecked(checked => !checked)}
           label="I have a Rural Route"
         />
       </FormGroup>
-      {visible && (
+      {checked ? (
         <>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={2}>
-              <Controller
-                control={control}
-                name="rr"
-                render={({ field }) => (
-                  <TextField
-                    id="rrr"
-                    label="RR"
-                    variant="outlined"
-                    // style={{marginRight:'22px'}}
-                    // placeholder="Street #"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            {/* <p style={{display:'inline-block',margin:'24px',fontSize:'22px'}}>RR</p> */}
-
-            <Grid item xs={12} md={2}>
-              <Controller
-                control={control}
-                name="box"
-                render={({ field }) => (
-                  <TextField
-                    id="BOX"
-                    label="BOX"
-                    variant="outlined"
-                    // placeholder=""
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <span
-                style={{
-                  display: "inline-block",
-                  margin: "24px",
-                  fontSize: "18px",
-                  fontWeight: "bolder",
-                }}
-              >
-                BOX(Example: RR 2 BOX 152)
-              </span>
-            </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={2}>
+            <Controller
+              control={control}
+              name="rr"
+              render={({ field }) => (
+                <TextField
+                  id="rrr"
+                  label="RR"
+                  variant="outlined"
+                  // style={{marginRight:'22px'}}
+                  // placeholder="Street #"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
           </Grid>
+          {/* <p style={{display:'inline-block',margin:'24px',fontSize:'22px'}}>RR</p> */}
+
+          <Grid item xs={12} md={2}>
+            <Controller
+              control={control}
+              name="box"
+              render={({ field }) => (
+                <TextField
+                  id="BOX"
+                  label="BOX"
+                  variant="outlined"
+                  // placeholder=""
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <span
+              style={{
+                display: "inline-block",
+                margin: "24px",
+                fontSize: "18px",
+                fontWeight: "bolder",
+              }}
+            >
+              BOX(Example: RR 2 BOX 152)
+            </span>
+          </Grid>
+        </Grid>
+      </>
+      ) : (
+        <>
+        <Grid container spacing={2}>
+        <Grid item xs={12} md={2}>
+          <Controller
+            control={control}
+            name="street"
+            render={({ field }) => (
+              <TextField
+                id="street #"
+                label="Street #"
+                variant="outlined"
+                // placeholder="Enter Your Phone Number"
+                halfWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <Controller
+            control={control}
+            name="StreetName"
+            render={({ field }) => (
+              <TextField
+                id="Street"
+                label="Street Name"
+                variant="outlined"
+                // placeholder="Enter Your Alternate Phone"
+                halfWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <InputLabel
+            style={{ marginBottom: "10px", fontWeight: "bolder" }}
+            id="street"
+          >
+            Select Street (Optional)
+          </InputLabel>
+          <Controller
+            control={control}
+            name="Street"
+            render={({ field }) => (
+              <Select
+                labelId="Select Street"
+                id="selectStreet"
+                //   multiple
+                // label="Select State"
+                fullWidth
+                input={<OutlinedInput label="Street" />}
+                name="Street"
+                {...field}
+              >
+                {AllStreet.map((Street) => (
+                  <MenuItem key={Street} value={Street}>
+                    {Street}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+        </Grid>
+      </Grid>
         </>
       )}
-      {!visible && 
+      
+      {/* {!visible && 
       <Grid container spacing={2}>
         <Grid item xs={12} md={2}>
           <Controller
@@ -449,7 +521,7 @@ const Step2 = () => {
           />
         </Grid>
       </Grid>
-      }
+      } */}
 
       {/* -------------------SAME */}
 
