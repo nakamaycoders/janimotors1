@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { useRef } from "react";
 import {
   Typography,
   TextField,
@@ -316,7 +315,7 @@ const Step1 = () => {
 
 const Step2 = () => {
   // const [visible, setVisible] = useState(false);
-  const [checked,setChecked] = useState(false); 
+  const [checked,setChecked] = useState(false);
   const { control } = useFormContext();
   return (
     <>
