@@ -800,60 +800,63 @@ const Step2 = () => {
     </>
   );
 };
+
+
+
+
 const Step3 = () => {
-  const [SURR, setSURR] = useState(true);
-  const [EAO, setEAO] = useState(false);
-  const [Self, setSelf] = useState(false);
-  const [std, setstd] = useState(false);
-  const [HousingStatus, setHousingStatus] = useState('');
+  let URR = false;
+  let EAO = true;
+  let Self = false;
+  let std = false;
+
+  const [HousingStatus, setHousingStatus] = useState('Select');
+  console.log("The value Of housing Status is ",HousingStatus)
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
   };
   switch (HousingStatus) {
-
-    case "select" :
+    
     case "Unemployed":
     case "Retired":
     case "Retired Military":
-      // document.getElementById("empController").style.display = "none";
-      // document.getElementById("employer").style.display = "none";
+      URR = true;
+      EAO = false;
+      Self = false;
+      std = false;
+      // console.log("URR", URR)
 
-      // setSURR(true);
-      // setEAO(false);
-      // setSelf(false);
-      // setstd(false);
-    console.log("SURR");
-      //retiredMilitary is Empty
-      //unemployed is Empty
-      //retired is Empty
-      break;
-
+    break;
+    case '' :
     case "Employed": 
     case "Active Military":
     case "Other":
-      // setSURR(false);
-      // setEAO(true);
-      // setSelf(false);
-      // setstd(false);
-    console.log("EAO")
-
+      URR = false;
+      EAO = true;
+      Self = false;
+      std = false;
+      // console.log("EAO", EAO)
       break;
 
     case "Self-Employed":
-      // setSURR(false);
+      URR = false;
+      EAO = false;
+      Self = true;
+      std = false;
+      // setURR(false);
       // setEAO(false);
       // setSelf(true);
       // setstd(false);
-    console.log("self")
+    // console.log("self", Self)
 
       break;
 
     case "Student":
-      // setSURR(false);
-      // setEAO(false);
-      // setSelf(false);
-      // setstd(true);
-    console.log("std")
+      URR = false;
+      EAO = false;
+      Self = false;
+      std = true;
+    // console.log("std", std);
 
     break;
     
@@ -868,50 +871,25 @@ const Step3 = () => {
   const { control } = useFormContext();
   return (
     <>
-     
+      {/* Select-------------------------------------------------- */}
      <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          {/* <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="EmpStatus"
-          >
-            Select Housing Status
-          </InputLabel>
-          <Controller
+        <Controller
             control={control}
-            name="EmpStatus"
+            name="Select Housing Status"
+
+            id="empController"
             render={({ field }) => (
-              <Select
-              value={selectedValue.val}
-                labelId="EmpStatus"
-                id="EmpStatus"
-                fullWidth
-                input={<OutlinedInput label="EmpStatus" />}
-                name="EmpStatus"
-                onChange={SelectValueChanger}
-                {...field}
-              >
-                
-                {EmploymentStatus.map((EmpStatus) => (
-                  <MenuItem key={EmpStatus} value={EmpStatus}>
-                    {EmpStatus}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          /> */}
-           <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label" 
-          style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        >
+              <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">
           Select Housing Status</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={HousingStatus}
-          label="Age"
-          variant="outlined"
+          // label="Select Housing Status"
           onChange={handleChange}
+          {...field}
         >
           <MenuItem value={"Employed"}>Employed</MenuItem>
           <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -923,9 +901,14 @@ const Step3 = () => {
           <MenuItem value={"Other"}>Other</MenuItem>
         </Select>
       </FormControl>
-          {/* {console.log(HousingStatus, SURR)} */}
+             
+            )}
+          />
+          
+            
+          {/* {console.log(HousingStatus, URR)} */}
         </Grid>
-        {!(HousingStatus=="Unemployed" || HousingStatus=="Retired" || HousingStatus=="Retired Military") && <Grid item xs={12} md={2}>
+        {(EAO || std) &&<Grid item xs={12} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="employer"
@@ -940,7 +923,7 @@ const Step3 = () => {
               <TextField
                 type="text"
                 id="Employer"
-                label="Employer"
+                label={(std)?"School Name":"Employer"}
                 variant="outlined"
                 // placeholder="Enter Your Alternate Phone"
                 halfWidth
@@ -952,7 +935,9 @@ const Step3 = () => {
         </Grid>}
        
       </Grid>
-        {!(HousingStatus=="Unemployed" || HousingStatus=="Retired" || HousingStatus=="Retired Military") && <Grid item xs={6} md={2}>
+      {(EAO || std) && <div>
+      {/* Work Title--------------------------------------------------- */}
+        {<Grid item xs={6} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="WorkTitle"
@@ -975,7 +960,8 @@ const Step3 = () => {
             )}
           />
         </Grid>}
-        {!(HousingStatus=="Unemployed" || HousingStatus=="Retired" || HousingStatus=="Retired Military") && <Grid item xs={6} md={2}>
+      {/* Work Phone--------------------------------------------------- */}
+        {<Grid item xs={6} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="WorkPhone"
@@ -988,7 +974,7 @@ const Step3 = () => {
               <TextField
                 type="text"
                 id="WorkPhone"
-                label="Work Phone"
+                label={(std)?"School Phone":"Work Phone"}
                 variant="outlined"
                 // placeholder="Enter Your Alternate Phone"
                 halfWidth
@@ -999,13 +985,14 @@ const Step3 = () => {
           />
         </Grid>}
         <hr />
-       {!(HousingStatus=="Unemployed" || HousingStatus=="Retired" || HousingStatus=="Retired Military") && <Grid container spacing={2}>
+      {/* Time At jOb--------------------------------------------------*/}
+       {<Grid container spacing={2}>
         <Grid item xs={12} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="yearss"
           >
-            Time At Job
+            {(std)?"Time at School":"Time at Job"}
           </InputLabel>
           <Controller
             control={control}
@@ -1050,13 +1037,96 @@ const Step3 = () => {
         </Grid>
        
       </Grid>}
+      </div>}
+      {/* {2-------------------------------------------------------------------------------------------} */}
+      {Self && <div>
+  
+  {/* Work Phone--------------------------------------------------- */}
+    {<Grid item xs={6} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="WorkPhone"
+      >
+      </InputLabel>
+      <Controller
+        control={control}
+        name="WorkPhone"
+        render={({ field }) => (
+          <TextField
+            type="text"
+            id="WorkPhone"
+            label="Work Phone"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>}
+    <hr />
+  {/* Time At jOb--------------------------------------------------*/}
+   {<Grid container spacing={2}>
+    <Grid item xs={12} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="yearss"
+      >
+        Time At Job
+      </InputLabel>
+      <Controller
+        control={control}
+        name="yearss"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="yearss"
+            label="Years"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+    <Grid item xs={12} md={4}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="employer"
+      >
+      
+      </InputLabel>
+      <Controller
+        control={control}
+        name="monthss"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="monthss"
+            label="Months"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+   
+  </Grid>}
+  </div>}
       <hr />
-        {/* ----------------------------------------------- */}
-        <Grid container spacing={2}>
+      {/* Source OF income----------------------------------------------- */}
+      <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="EmpStatus"
+            value={"Select one"}
           >
             Source of Income
           </InputLabel>
@@ -1070,6 +1140,7 @@ const Step3 = () => {
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
                 name="EmpStatus"
+                value={"Select one"}
                 {...field}
               >
                 {IncomeSrc.map((incSource) => (
@@ -1105,9 +1176,7 @@ const Step3 = () => {
             )}
           />
         </Grid>
-       
       </Grid>
-      
     </>
   );
 };

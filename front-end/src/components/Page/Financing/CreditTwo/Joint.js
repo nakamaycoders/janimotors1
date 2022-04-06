@@ -105,6 +105,7 @@ const AllState = [
   "WI",
   "WY",
 ];
+
 const AllHouse = [
   "Mortgage",
   "Rent",
@@ -872,120 +873,97 @@ const Step3 = () => {
       break;
 
     case "Student":
-      // setSURR(false);
-      // setEAO(false);
-      // setSelf(false);
-      // setstd(true);
-      console.log("std");
+      URR = false;
+      EAO = false;
+      Self = false;
+      std = true;
+    // console.log("std", std);
 
-      break;
+    break;
+    
 
     default:
       // console.log("Invalid ");
-
-      break;
+      
+    break;
   }
 
+  
   const { control } = useFormContext();
   return (
     <>
-      <Grid container spacing={2}>
+      {/* Select-------------------------------------------------- */}
+     <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          {/* <InputLabel
+        <Controller
+            control={control}
+            name="Select Housing Status"
+
+            id="empController"
+            render={({ field }) => (
+              <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">
+          Select Housing Status</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={HousingStatus}
+          // label="Select Housing Status"
+          onChange={handleChange}
+          {...field}
+        >
+          <MenuItem value={"Employed"}>Employed</MenuItem>
+          <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
+          <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
+          <MenuItem value={"Student"}>Student</MenuItem>
+          <MenuItem value={"Retired"}>Retired</MenuItem>
+          <MenuItem value={"Active Military"}>Active Military</MenuItem>
+          <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
+          <MenuItem value={"Other"}>Other</MenuItem>
+        </Select>
+      </FormControl>
+             
+            )}
+          />
+          
+            
+          {/* {console.log(HousingStatus, URR)} */}
+        </Grid>
+        {(EAO || std) &&<Grid item xs={12} md={2}>
+          <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="EmpStatus"
+            id="employer"
           >
-            Select Housing Status
+          
           </InputLabel>
           <Controller
             control={control}
-            name="EmpStatus"
+            name="Employer"
+            id="empController"
             render={({ field }) => (
-              <Select
-              value={selectedValue.val}
-                labelId="EmpStatus"
-                id="EmpStatus"
-                fullWidth
-                input={<OutlinedInput label="EmpStatus" />}
-                name="EmpStatus"
-                onChange={SelectValueChanger}
+              <TextField
+                type="text"
+                id="Employer"
+                label={(std)?"School Name":"Employer"}
+                variant="outlined"
+                // placeholder="Enter Your Alternate Phone"
+                halfWidth
+                margin="normal"
                 {...field}
-              >
-                
-                {EmploymentStatus.map((EmpStatus) => (
-                  <MenuItem key={EmpStatus} value={EmpStatus}>
-                    {EmpStatus}
-                  </MenuItem>
-                ))}
-              </Select>
+              />
             )}
-          /> */}
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label"
-              style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            >
-              Select Housing Status
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={HousingStatus}
-              label="Age"
-              variant="outlined"
-              onChange={handleChange}
-            >
-              <MenuItem value={"Employed"}>Employed</MenuItem>
-              <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
-              <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
-              <MenuItem value={"Student"}>Student</MenuItem>
-              <MenuItem value={"Retired"}>Retired</MenuItem>
-              <MenuItem value={"Active Military"}>Active Military</MenuItem>
-              <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
-              <MenuItem value={"Other"}>Other</MenuItem>
-            </Select>
-          </FormControl>
-          {/* {console.log(HousingStatus, SURR)} */}
-        </Grid>
-        {!(
-          HousingStatus == "Unemployed" ||
-          HousingStatus == "Retired" ||
-          HousingStatus == "Retired Military"
-        ) && (
-          <Grid item xs={12} md={2}>
-            <InputLabel
-              style={{ marginBottom: "10px", fontWeight: "bolder" }}
-              id="employer"
-            ></InputLabel>
-            <Controller
-              control={control}
-              name="Employer"
-              id="empController"
-              render={({ field }) => (
-                <TextField
-                  type="text"
-                  id="Employer"
-                  label="Employer"
-                  variant="outlined"
-                  // placeholder="Enter Your Alternate Phone"
-                  halfWidth
-                  margin="normal"
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
-        )}
+          />
+        </Grid>}
+       
       </Grid>
-      {!(
-        HousingStatus == "Unemployed" ||
-        HousingStatus == "Retired" ||
-        HousingStatus == "Retired Military"
-      ) && (
-        <Grid item xs={6} md={2}>
+      {(EAO || std) && <div>
+      {/* Work Title--------------------------------------------------- */}
+        {<Grid item xs={6} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="WorkTitle"
-          ></InputLabel>
+          >
+          </InputLabel>
           <Controller
             control={control}
             name="WorkTitle"
@@ -1002,18 +980,14 @@ const Step3 = () => {
               />
             )}
           />
-        </Grid>
-      )}
-      {!(
-        HousingStatus == "Unemployed" ||
-        HousingStatus == "Retired" ||
-        HousingStatus == "Retired Military"
-      ) && (
-        <Grid item xs={6} md={2}>
+        </Grid>}
+      {/* Work Phone--------------------------------------------------- */}
+        {<Grid item xs={6} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="WorkPhone"
-          ></InputLabel>
+          >
+          </InputLabel>
           <Controller
             control={control}
             name="WorkPhone"
@@ -1021,7 +995,34 @@ const Step3 = () => {
               <TextField
                 type="text"
                 id="WorkPhone"
-                label="Work Phone"
+                label={(std)?"School Phone":"Work Phone"}
+                variant="outlined"
+                // placeholder="Enter Your Alternate Phone"
+                halfWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid>}
+        <hr />
+      {/* Time At jOb--------------------------------------------------*/}
+       {<Grid container spacing={2}>
+        <Grid item xs={12} md={2}>
+          <InputLabel
+            style={{ marginBottom: "10px", fontWeight: "bolder" }}
+            id="yearss"
+          >
+            {(std)?"Time at School":"Time at Job"}
+          </InputLabel>
+          <Controller
+            control={control}
+            name="yearss"
+            render={({ field }) => (
+              <TextField
+                type="number"
+                id="yearss"
+                label="Years"
                 variant="outlined"
                 // placeholder="Enter Your Alternate Phone"
                 halfWidth
@@ -1031,69 +1032,122 @@ const Step3 = () => {
             )}
           />
         </Grid>
-      )}
-      <hr />
-      {!(
-        HousingStatus == "Unemployed" ||
-        HousingStatus == "Retired" ||
-        HousingStatus == "Retired Military"
-      ) && (
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={2}>
-            <InputLabel
-              style={{ marginBottom: "10px", fontWeight: "bolder" }}
-              id="yearss"
-            >
-              Time At Job
-            </InputLabel>
-            <Controller
-              control={control}
-              name="yearss"
-              render={({ field }) => (
-                <TextField
-                  type="number"
-                  id="yearss"
-                  label="Years"
-                  variant="outlined"
-                  // placeholder="Enter Your Alternate Phone"
-                  halfWidth
-                  margin="normal"
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <InputLabel
-              style={{ marginBottom: "10px", fontWeight: "bolder" }}
-              id="employer"
-            ></InputLabel>
-            <Controller
-              control={control}
-              name="monthss"
-              render={({ field }) => (
-                <TextField
-                  type="number"
-                  id="monthss"
-                  label="Months"
-                  variant="outlined"
-                  // placeholder="Enter Your Alternate Phone"
-                  halfWidth
-                  margin="normal"
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
+        <Grid item xs={12} md={4}>
+          <InputLabel
+            style={{ marginBottom: "10px", fontWeight: "bolder" }}
+            id="employer"
+          >
+          
+          </InputLabel>
+          <Controller
+            control={control}
+            name="monthss"
+            render={({ field }) => (
+              <TextField
+                type="number"
+                id="monthss"
+                label="Months"
+                variant="outlined"
+                // placeholder="Enter Your Alternate Phone"
+                halfWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
         </Grid>
-      )}
+       
+      </Grid>}
+      </div>}
+      {/* {2-------------------------------------------------------------------------------------------} */}
+      {Self && <div>
+  
+  {/* Work Phone--------------------------------------------------- */}
+    {<Grid item xs={6} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="WorkPhone"
+      >
+      </InputLabel>
+      <Controller
+        control={control}
+        name="WorkPhone"
+        render={({ field }) => (
+          <TextField
+            type="text"
+            id="WorkPhone"
+            label="Work Phone"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>}
+    <hr />
+  {/* Time At jOb--------------------------------------------------*/}
+   {<Grid container spacing={2}>
+    <Grid item xs={12} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="yearss"
+      >
+        Time At Job
+      </InputLabel>
+      <Controller
+        control={control}
+        name="yearss"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="yearss"
+            label="Years"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+    <Grid item xs={12} md={4}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="employer"
+      >
+      
+      </InputLabel>
+      <Controller
+        control={control}
+        name="monthss"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="monthss"
+            label="Months"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+   
+  </Grid>}
+  </div>}
       <hr />
-      {/* ----------------------------------------------- */}
+      {/* Source OF income----------------------------------------------- */}
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="EmpStatus"
+            value={"Select one"}
           >
             Source of Income
           </InputLabel>
@@ -1107,6 +1161,7 @@ const Step3 = () => {
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
                 name="EmpStatus"
+                value={"Select one"}
                 {...field}
               >
                 {IncomeSrc.map((incSource) => (
@@ -1122,7 +1177,9 @@ const Step3 = () => {
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="PerYear"
-          ></InputLabel>
+          >
+          
+          </InputLabel>
           <Controller
             control={control}
             name="PerYear"
@@ -1144,6 +1201,7 @@ const Step3 = () => {
     </>
   );
 };
+
 const Step4 = () => {
   const { control } = useFormContext();
   return (
