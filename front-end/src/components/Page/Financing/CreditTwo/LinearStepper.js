@@ -131,7 +131,31 @@ const AllStreet = [
   "Trail",
   "Way",
 ];
-
+const EmploymentStatus = [
+  "Employed",
+  "Unemployed",
+  "Self-Employed",
+  "Student",
+  "Retired",
+  "Active Military",
+  "Retired Military",
+  "Other",
+];
+const IncomeSrc = [
+  "Salary/Wages",
+  "Incentive or Bonus Income",
+  "Retirement",
+  "Child Support**",
+  "Family or Spousal Support (Alimony)**",
+  "Disability",
+  "Housing Allowance",
+  "Municipal Bond Interest",
+  "Public Assistance Programs",
+  "Social Security Benefits",
+  "Workers' Compensation",
+  "Other (taxable)",
+  "Other (non-taxable)",
+];
 const Step1 = () => {
   const { control } = useFormContext();
   return (
@@ -776,33 +800,6 @@ const Step2 = () => {
     </>
   );
 };
-const EmploymentStatus = [
-  "Employed",
-  "Unemployed",
-  "Self-Employed",
-  "Student",
-  "Retired",
-  "Active Military",
-  "Retired Military",
-  "Other",
-];
-const IncomeSrc = [
-  "Salary/Wages",
-  "Incentive or Bonus Income",
-  "Retirement",
-  "Child Support**",
-  "Family or Spousal Support (Alimony)**",
-  "Disability",
-  "Housing Allowance",
-  "Municipal Bond Interest",
-  "Public Assistance Programs",
-  "Social Security Benefits",
-  "Workers' Compensation",
-  "Other (taxable)",
-  "Other (non-taxable)",
-];
-
-
 const Step3 = () => {
   const [SURR, setSURR] = useState(true);
   const [EAO, setEAO] = useState(false);
@@ -904,13 +901,16 @@ const Step3 = () => {
             )}
           /> */}
            <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">
+        <InputLabel id="demo-simple-select-label" 
+          style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        >
           Select Housing Status</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={HousingStatus}
           label="Age"
+          variant="outlined"
           onChange={handleChange}
         >
           <MenuItem value={"Employed"}>Employed</MenuItem>
@@ -1167,11 +1167,13 @@ const LinearStepper = () => {
 
   return (
     <div>
-      <div className="btn11">
-        <Link to="/joint">
-          <button>Joint</button>
+      <div className="btn11 p-5">
+        <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
+          <Button variant="contained" color="primary" >Individual</Button>
         </Link>
-        <button>Individual</button>
+        <Link to="/joint" style={{textDecoration:"none"}}>
+          <Button variant="contained" color="primary">Joint</Button>
+        </Link>
       </div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
