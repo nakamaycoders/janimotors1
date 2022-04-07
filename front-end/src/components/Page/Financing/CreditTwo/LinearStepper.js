@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -155,10 +155,10 @@ const Step1 = () => {
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
-            name="fname"
+            name="fName"
             render={({ field }) => (
               <TextField
-                // id="fname"
+                id="fname"
                 label="First Name"
                 variant="outlined"
                 fullWidth
@@ -172,10 +172,10 @@ const Step1 = () => {
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
-            name="midName"
+            name="mName"
             render={({ field }) => (
               <TextField
-                id="midName"
+                id="mName"
                 label="Middle Name"
                 variant="outlined"
                 fullWidth
@@ -217,10 +217,9 @@ const Step1 = () => {
               <Select
                 labelId="Suffix"
                 id="Suffix"
-                //   multiple
                 fullWidth
                 input={<OutlinedInput label="Suffix" />}
-                name="Suffix"
+                // name="Suffix"
                 {...field}
               >
                 {AllSuffix.map((Suffix) => (
@@ -251,7 +250,7 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="homeNum"
+                // name="homeNum"
                 {...field}
               />
             )}
@@ -270,7 +269,7 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="cellNum"
+                // name="cellNum"
                 {...field}
               />
             )}
@@ -723,7 +722,6 @@ const Step2 = () => {
   );
 };
 
-
 const Step3 = () => {
   let SURR = true;
   let EAO = false;
@@ -800,7 +798,7 @@ const Step3 = () => {
         <Grid item xs={12} md={4}>
         <Controller
             control={control}
-            name="Select Housing Status"
+            name="SelectHousingStatus"
             id="empController"
             render={({ field }) => (
               <FormControl fullWidth>
@@ -812,6 +810,7 @@ const Step3 = () => {
           value={HousingStatus}
           onChange={handleChange}
           label="selectEmpStatus"
+          {...field}
         >
           <MenuItem value={"Employed"}>Employed</MenuItem>
           <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -965,16 +964,16 @@ const Step3 = () => {
     {<Grid item xs={6} md={2}>
       <InputLabel
         style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="WorkPhone"
+        id="SelfWorkPhone"
       >
       </InputLabel>
       <Controller
         control={control}
-        name="WorkPhone"
+        name="SelfWorkPhone"
         render={({ field }) => (
           <TextField
             type="text"
-            id="WorkPhone"
+            id="SelfWorkPhone"
             label="Work Phone"
             variant="outlined"
             // placeholder="Enter Your Alternate Phone"
@@ -991,17 +990,17 @@ const Step3 = () => {
     <Grid item xs={12} md={2}>
       <InputLabel
         style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="yearss"
+        id="selfyear"
       >
         Time At Job
       </InputLabel>
       <Controller
         control={control}
-        name="yearss"
+        name="Selfyear"
         render={({ field }) => (
           <TextField
             type="number"
-            id="yearss"
+            id="selfyears"
             label="Years"
             variant="outlined"
             // placeholder="Enter Your Alternate Phone"
@@ -1015,17 +1014,17 @@ const Step3 = () => {
     <Grid item xs={12} md={4}>
       <InputLabel
         style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="employer"
+        id="Selfemployer"
       >
       
       </InputLabel>
       <Controller
         control={control}
-        name="monthss"
+        name="Selfmonths"
         render={({ field }) => (
           <TextField
             type="number"
-            id="monthss"
+            id="Selfmonthss"
             label="Months"
             variant="outlined"
             // placeholder="Enter Your Alternate Phone"
@@ -1058,7 +1057,7 @@ const Step3 = () => {
                 id="EmpStatus"
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
-                name="EmpStatus"
+                // name="EmpStatus"
                 value={"Select one"}
                 {...field}
               >
@@ -1123,8 +1122,8 @@ const LinearStepper = () => {
   const methods = useForm({
     defaultValues: {
       fName: "",
-      lastName: "",
-      midName: "",
+      lName: "",
+      mName: "",
       Suffix: "",
       homeNum: "",
       cellNum: "",
@@ -1143,13 +1142,24 @@ const LinearStepper = () => {
       Mortgage:"",
       Dob:"",
       SSN:"",
+      SelectHousingStatus: "",
+      Employer: "",
+      WorkTitle: "",
+      WorkPhone: "",
+      yearss: "",
+      monthss:"",
+      SelfWorkPhone: "",
+      Selfyear: "",
+      Selfmonths: "",
+      EmpStatus: "",
+      PerYear: "",
     },
   });
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
   const handleNext = (data) => {
-    console.log(data);
+    console.log("data>>>>>>",data);
     if (activeStep == steps.length - 1) {
       fetch("https://jsonplaceholder.typicode.com/comments")
         .then((data) => data.json())
