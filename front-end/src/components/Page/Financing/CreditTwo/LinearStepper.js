@@ -407,7 +407,7 @@ const Step2 = () => {
                 name="street"
                 render={({ field }) => (
                   <TextField
-                    id="street #"
+                    id="street"
                     label="Street #"
                     variant="outlined"
                     // placeholder="Enter Your Phone Number"
@@ -438,13 +438,13 @@ const Step2 = () => {
             <Grid item xs={12} md={2}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="street"
+                
               >
                 Select Street (Optional)
               </InputLabel>
               <Controller
                 control={control}
-                name="Street"
+                name="StreetOptional"
                 render={({ field }) => (
                   <Select
                     labelId="Select Street"
@@ -453,7 +453,7 @@ const Step2 = () => {
                     // label="Select State"
                     fullWidth
                     input={<OutlinedInput label="Street" />}
-                    name="Street"
+                    
                     {...field}
                   >
                     {AllStreet.map((Street) => (
@@ -488,76 +488,7 @@ const Step2 = () => {
         </>
       )}
 
-      {/* {!visible && 
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={2}>
-          <Controller
-            control={control}
-            name="street"
-            render={({ field }) => (
-              <TextField
-                id="street #"
-                label="Street #"
-                variant="outlined"
-                // placeholder="Enter Your Phone Number"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <Controller
-            control={control}
-            name="StreetName"
-            render={({ field }) => (
-              <TextField
-                id="Street"
-                label="Street Name"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="street"
-          >
-            Select Street (Optional)
-          </InputLabel>
-          <Controller
-            control={control}
-            name="Street"
-            render={({ field }) => (
-              <Select
-                labelId="Select Street"
-                id="selectStreet"
-                //   multiple
-                // label="Select State"
-                fullWidth
-                input={<OutlinedInput label="Street" />}
-                name="Street"
-                {...field}
-              >
-                {AllStreet.map((Street) => (
-                  <MenuItem key={Street} value={Street}>
-                    {Street}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          />
-        </Grid>
-      </Grid>
-      } */}
-
-      {/* -------------------SAME */}
+  
 
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
@@ -1197,6 +1128,21 @@ const LinearStepper = () => {
       Suffix: "",
       homeNum: "",
       cellNum: "",
+      rr:"",
+      box:"",
+      street:"",
+      StreetName:"",
+      StreetOptional:"",
+      apt:"",
+      zip:"",
+      city:"",
+      State:"",
+      House:"",
+      Year:"",
+      Month:"",
+      Mortgage:"",
+      Dob:"",
+      SSN:"",
     },
   });
   const [activeStep, setActiveStep] = useState(0);
