@@ -776,31 +776,6 @@ const Step2 = () => {
     </>
   );
 };
-const EmploymentStatus = [
-  "Employed",
-  "Unemployed",
-  "Self-Employed",
-  "Student",
-  "Retired",
-  "Active Military",
-  "Retired Military",
-  "Other",
-];
-const IncomeSrc = [
-  "Salary/Wages",
-  "Incentive or Bonus Income",
-  "Retirement",
-  "Child Support**",
-  "Family or Spousal Support (Alimony)**",
-  "Disability",
-  "Housing Allowance",
-  "Municipal Bond Interest",
-  "Public Assistance Programs",
-  "Social Security Benefits",
-  "Workers' Compensation",
-  "Other (taxable)",
-  "Other (non-taxable)",
-];
 
 
 const Step3 = () => {
@@ -827,7 +802,7 @@ const Step3 = () => {
       EAO = false;
       Self = false;
       std = false;
-      console.log("SURR", SURR)
+      // console.log("SURR", SURR)
 
     break;
     case "" :
@@ -877,8 +852,12 @@ const Step3 = () => {
      
      <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          
-           <FormControl fullWidth>
+        <Controller
+            control={control}
+            name="Select Housing Status"
+            id="empController"
+            render={({ field }) => (
+              <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">
           Select Housing Status</InputLabel>
         <Select
@@ -898,7 +877,8 @@ const Step3 = () => {
           <MenuItem value={"Other"}>Other</MenuItem>
         </Select>
       </FormControl>
-          {/* {console.log(HousingStatus, SURR)} */}
+            )}
+          />
         </Grid>
         {(EAO || std) &&<Grid item xs={12} md={2}>
           <InputLabel
@@ -1034,7 +1014,7 @@ const Step3 = () => {
 
       <hr />
       {Self && <div>
-  
+
   {/* Work Phone--------------------------------------------------- */}
     {<Grid item xs={6} md={2}>
       <InputLabel

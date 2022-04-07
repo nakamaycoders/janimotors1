@@ -807,6 +807,69 @@ const Step2 = () => {
   );
 };
 const Step3 = () => {
+  let URR = false;
+  let EAO = true;
+  let Self = false;
+  let std = false;
+  const [HousingStatus, setHousingStatus] = useState('Select');
+  const handleChange = (event) => {
+    setHousingStatus(event.target.value);
+  };
+  switch (HousingStatus) {
+    case "select":
+    case "Unemployed":
+    case "Retired":
+    case "Retired Military":
+      // document.getElementById("empController").style.display = "none";
+      // document.getElementById("employer").style.display = "none";
+
+      // setSURR(true);
+      // setEAO(false);
+      // setSelf(false);
+      // setstd(false);
+      console.log("SURR");
+      //retiredMilitary is Empty
+      //unemployed is Empty
+      //retired is Empty
+      break;
+
+    case "Employed":
+    case "Active Military":
+    case "Other":
+      // setSURR(false);
+      // setEAO(true);
+      // setSelf(false);
+      // setstd(false);
+      console.log("EAO");
+
+      break;
+
+    case "Self-Employed":
+      // setSURR(false);
+      // setEAO(false);
+      // setSelf(true);
+      // setstd(false);
+      console.log("self");
+
+      break;
+
+    case "Student":
+      URR = false;
+      EAO = false;
+      Self = false;
+      std = true;
+    // console.log("std", std);
+
+    break;
+    
+
+    default:
+      // console.log("Invalid ");
+      
+    break;
+  }
+
+  
   const { control } = useFormContext();
   return (
     <>
