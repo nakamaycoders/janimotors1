@@ -38,6 +38,21 @@ function getSteps() {
     "Personal Information",
   ];
 }
+const IncomeSrc = [
+  "Salary/Wages",
+  "Incentive or Bonus Income",
+  "Retirement",
+  "Child Support**",
+  "Family or Spousal Support (Alimony)**",
+  "Disability",
+  "Housing Allowance",
+  "Municipal Bond Interest",
+  "Public Assistance Programs",
+  "Social Security Benefits",
+  "Workers' Compensation",
+  "Other (taxable)",
+  "Other (non-taxable)",
+];
 const AllSuffix = ["SR", "JR", "I", "II", "III", "IV"];
 const AllState = [
   "AL",
