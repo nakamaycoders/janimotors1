@@ -1226,12 +1226,14 @@ const LinearStepper = () => {
 
   return (
     <div>
-      <div className="btn11">
-        <Link to="/joint">
-          <button>Joint</button>
+       <div className="btn11 p-5">
+        <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
+          <Button variant="contained" color="primary" >Individual</Button>
         </Link>
-        <button>Individual</button>
-      </div>
+        <Link to="/joint" style={{textDecoration:"none"}}>
+          <Button variant="contained" color="primary">Joint</Button>
+          </Link>
+        </div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
           return (

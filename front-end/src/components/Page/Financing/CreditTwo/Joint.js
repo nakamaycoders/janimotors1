@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import {Link} from 'react-router-dom'
 import {
   Typography,
   TextField,
@@ -1680,12 +1681,14 @@ const LinearStepper = () => {
   // };
   return (
     <div>
-      <div className="btn11">
-        <button>
-          <NavLink to="/joint">Joint</NavLink>
-        </button>
-        <button><NavLink to='/creditapproval'>Individual</NavLink></button>
-      </div>
+      <div className="btn11 p-5" style={{backgroundColor: 'white'}}>
+        <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
+          <Button variant="contained" color="primary" >Individual</Button>
+        </Link>
+        <Link to="/joint" style={{textDecoration:"none"}}>
+          <Button variant="contained" color="primary">Joint</Button>
+          </Link>
+        </div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
           return (
