@@ -234,7 +234,7 @@ const Step1 = () => {
       </Grid>
       <Grid container>
         <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
-          primary phone number
+          Primary Phone Number
         </Typography>
       </Grid>
 
@@ -299,7 +299,6 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="email"
                 {...field}
               />
             )}
@@ -318,7 +317,6 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="Vemail"
                 {...field}
               />
             )}
@@ -1127,6 +1125,8 @@ const LinearStepper = () => {
       Suffix: "",
       homeNum: "",
       cellNum: "",
+      email:"",
+      Vemail:"",
       rr:"",
       box:"",
       street:"",
