@@ -5,6 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControl from '@mui/material/FormControl';
 import './LinearStepper.css'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 import {
   Typography,
   TextField,
@@ -1161,12 +1162,22 @@ const LinearStepper = () => {
   const handleNext = (data) => {
     console.log("data>>>>>>",data);
     if (activeStep == steps.length - 1) {
-      fetch("https://jsonplaceholder.typicode.com/comments")
-        .then((data) => data.json())
-        .then((res) => {
-          console.log(res);
-          setActiveStep(activeStep + 1);
-        });
+      axios({
+        method: "post",
+        url: "http://localhost:5000/api/credit/send",
+        data: data,
+        config: { headers: { "Content-Type": "multipart/form-data" } },
+      }).then((res) => {
+            console.log(res);
+            alert(res,"successfull")
+            setActiveStep(activeStep + 1);
+          });
+      // axios.post("http://localhost:5000/api/credit/send")
+      //   .then((data) => data.json())
+      //   .then((res) => {
+      //     console.log(res);
+      //     setActiveStep(activeStep + 1);
+      //   });
     } else {
       setActiveStep(activeStep + 1);
     }

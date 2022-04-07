@@ -1,21 +1,32 @@
 const mongoose = require('mongoose')
 
 const creditSchema = new mongoose.Schema({
-    fname:{
+    fName: {
         type:String,
         required:true,
         trim:true
     },
-    mname:{
-        type:String,
-    },
-    lname:{
+    lName: {
         type:String,
         required:true,
         trim:true
     },
-    phone:{
-        type:Number,
+    mName: {
+        type:String,
+        required:true,
+        trim:true
+    },
+    Suffix: {
+        type:String,
+        trim:true
+    },
+    homeNum: {
+        type:String,
+        required:true,
+        trim:true
+    },
+    cellNum: {
+        type:String,
         required:true,
         trim:true
     },
@@ -24,21 +35,42 @@ const creditSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    streetNo:{
+    Vemail:{
         type:String,
         required:true,
         trim:true
     },
-    streetName:{
+    rr:{
+        type:String,
+        // required:true,
+        trim:true
+    },
+    box:{
+        type:String,
+        // required:true,
+        trim:true
+    },
+    street:{
         type:String,
         required:true,
+        trim:true
     },
-    Apartment:{
+    StreetName:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    StreetOptional:{
         type:String,
         trim:true
     },
-    zipCode:{
-        type:Number,
+    apt:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    zip:{
+        type:String,
         required:true,
         trim:true
     },
@@ -47,23 +79,33 @@ const creditSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    state:{
+    State:{
         type:String,
         required:true,
         trim:true
     },
-    housingStatus:{
+    House:{
         type:String,
         required:true,
         trim:true
     },
-    timeAtAddress:{
-        type:Number,
+    Year:{
+        type:String,
         required:true,
         trim:true
     },
-    mortgage:{
-        type:Number,
+    Month:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    Mortgage:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    Dob:{
+        type:String,
         required:true,
         trim:true
     },
@@ -72,27 +114,64 @@ const creditSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    employmentStatus:{
+    SelectHousingStatus: {
         type:String,
         required:true,
         trim:true
     },
-    incomeSrc:{
+    Employer: {
         type:String,
-    },
-    income:{
-        type:String,
-        required: true,
+        required:true,
         trim:true
     },
-    incomeSrc2:{
+    WorkTitle: {
         type:String,
-    },
-    income2:{
-        type:String,
+        required:true,
         trim:true
-    }
-
+    },
+    WorkPhone: {
+        type:String,
+        required:true,
+        trim:true
+    },
+    yearss: {
+        type:String,
+        required:true,
+        trim:true
+    },
+    monthss:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    SelfWorkPhone: {
+        type:String,
+        // required:true,
+        trim:true
+    },
+    Selfyear: {
+        type:String,
+        // required:true,
+        trim:true
+    },
+    Selfmonths: {
+        type:String,
+        // required:true,
+        trim:true
+    },
+    EmpStatus: {
+        type:String,
+        required:true,
+        trim:true
+    },
+    PerYear: {
+        type:String,
+        required:true,
+        trim:true
+    },
 },{timestamps:true})
 
 module.exports = mongoose.model("credit", creditSchema);
+// type:String,
+//         required: true,
+//         trim:true
