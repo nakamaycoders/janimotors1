@@ -158,7 +158,7 @@ const Step1 = () => {
             name="fname"
             render={({ field }) => (
               <TextField
-                id="fname"
+                // id="fname"
                 label="First Name"
                 variant="outlined"
                 fullWidth

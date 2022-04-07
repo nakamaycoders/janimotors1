@@ -830,10 +830,7 @@ const Step3 = () => {
   let Self = false;
   let std = false;
 
-  // const [SURR, setSURR] = useState(true);
-  // const [EAO, setEAO] = useState(false);
-  // const [Self, setSelf] = useState(false);
-  // const [std, setstd] = useState(false);
+  
   const [HousingStatus, setHousingStatus] = useState('');
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
