@@ -819,7 +819,7 @@ const Step3 = () => {
   };
   switch (HousingStatus) {
 
-    case "select" :
+    
     case "Unemployed":
     case "Retired":
     case "Retired Military":
@@ -830,7 +830,7 @@ const Step3 = () => {
       console.log("SURR", SURR)
 
     break;
-
+    case "" :
     case "Employed": 
     case "Active Military":
     case "Other":
@@ -885,8 +885,8 @@ const Step3 = () => {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={HousingStatus}
-          label="Age"
           onChange={handleChange}
+          label="selectEmpStatus"
         >
           <MenuItem value={"Employed"}>Employed</MenuItem>
           <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -967,7 +967,7 @@ const Step3 = () => {
               <TextField
                 type="text"
                 id="WorkPhone"
-                label="Work Phone"
+                label={(std)? "School Phone": "Work Phone"}
                 variant="outlined"
                 // placeholder="Enter Your Alternate Phone"
                 halfWidth
@@ -1033,6 +1033,86 @@ const Step3 = () => {
       </div>}
 
       <hr />
+      {Self && <div>
+  
+  {/* Work Phone--------------------------------------------------- */}
+    {<Grid item xs={6} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="WorkPhone"
+      >
+      </InputLabel>
+      <Controller
+        control={control}
+        name="WorkPhone"
+        render={({ field }) => (
+          <TextField
+            type="text"
+            id="WorkPhone"
+            label="Work Phone"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>}
+    <hr />
+  {/* Time At jOb--------------------------------------------------*/}
+   {<Grid container spacing={2}>
+    <Grid item xs={12} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="yearss"
+      >
+        Time At Job
+      </InputLabel>
+      <Controller
+        control={control}
+        name="yearss"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="yearss"
+            label="Years"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+    <Grid item xs={12} md={4}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="employer"
+      >
+      
+      </InputLabel>
+      <Controller
+        control={control}
+        name="monthss"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="monthss"
+            label="Months"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+   
+  </Grid>}
+  </div>}
         {/* Source OF income----------------------------------------------- */}
         <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
