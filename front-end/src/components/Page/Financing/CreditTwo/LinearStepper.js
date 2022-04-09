@@ -149,7 +149,8 @@ const AllStreet = [
 ];
 
 const Step1 = () => {
-  const { control } = useFormContext();
+  const {formState: { errors }, control } = useFormContext();
+  console.log(errors);
   return (
     <>
       <Grid container spacing={2}>
@@ -157,6 +158,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="fName"
+            rules={{ required: "this field is required." }}
             render={({ field }) => (
               <TextField
                 id="fname"
@@ -165,6 +167,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.fName)}
+                helperText={errors.fName?.message}
               />
             )}
           />
@@ -182,6 +186,7 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
               />
             )}
           />
@@ -1158,7 +1163,9 @@ const LinearStepper = () => {
   });
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
-
+  const isStepFalied = () => {
+    return Boolean(Object.keys(methods.formState.errors).length);
+  };
   const handleNext = (data) => {
     console.log("data>>>>>>",data);
     if (activeStep == steps.length - 1) {
@@ -1203,13 +1210,20 @@ const LinearStepper = () => {
         </div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
+          const labelProps = {};
+
+if (isStepFalied() && activeStep == index) {
+  labelProps.error = true;
+}
           return (
             <Step key={index}>
-              <StepLabel>{step}</StepLabel>
+              <StepLabel   {...labelProps}>{step}</StepLabel>
             </Step>
           );
         })}
+        
       </Stepper>
+      
 
       {activeStep === steps.length ? (
         <Typography
@@ -1219,8 +1233,11 @@ const LinearStepper = () => {
         >
           Thank You
         </Typography>
+        
       ) : (
+        
         <>
+
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(handleNext)}
