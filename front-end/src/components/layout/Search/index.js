@@ -57,7 +57,7 @@ export const Search = () => {
     <>
       <div className="search">
         <Container>
-          <form className="searchBox" onSubmit={handleSearch}>
+          <form className="searchBox" onSubmit={handleSearch} style={{backgroundColor:'black'}}>
             <Row>
               <Col md={3} sm={12}>
                 <select

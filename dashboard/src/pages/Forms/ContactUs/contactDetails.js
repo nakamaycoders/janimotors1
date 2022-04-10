@@ -5,11 +5,11 @@ import Axios from "axios";
 import './contactDetails.css'
 
 export default function CustomizedTables(props) {
-  
-  let [responseData, setResponseData] = useState([]);
+  let [responseData, setResponseData] = useState("");
   const url = "http://localhost:5000/api/contact/information";
-  const id = props.location.params.id;
+  
   const getContactInfoById = async () => {
+    const id = props.location.params.id;
     try {
       const res = await Axios.get(`${url}/${id}`);
       setResponseData(res.data.result);
@@ -21,11 +21,9 @@ export default function CustomizedTables(props) {
   useEffect(() => {
     getContactInfoById();
   },[]);
-  console.log("resp.........",responseData.length)
-
-  if(Object.keys(responseData).length === 0){
-      return "null"
-  }
+  // if(Object.keys(responseData).length === 0){
+  //     return localStorage.getItem(id)
+  // }
 
   return (
     <>

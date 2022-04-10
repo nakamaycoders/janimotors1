@@ -6,15 +6,12 @@ import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
 
+
 const ContactUs = () => {
   let unreadCount = 0;
   const rows = [];
   let [responseData, setResponseData] = useState("");
   const history = useHistory();
-
-  useEffect(() => {
-    getContactInfo();
-  }, []);
 
   const url = "http://localhost:5000/api/contact/information";
 
@@ -22,10 +19,16 @@ const ContactUs = () => {
     try {
       const res = await Axios.get(url);
       setResponseData(res.data.contactInfo);
+      
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    getContactInfo();
+  }, []);
+
   responseData &&
     responseData.forEach((item) => {
       rows.splice(0, 0, {

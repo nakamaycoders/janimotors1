@@ -2,53 +2,80 @@ const Credit = require('../Models/credit')
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
-
 exports.postCredit = catchAsyncErrors(async(req, res, next) => {
     const {
-      fname,
-      mname,
-      lname,
-      phone,
+      fName,
+      lName,
+      mName,
+      Suffix,
+      homeNum,
+      cellNum,
       email,
-      streetNo,
-      streetName,
-      Apartment,
-      zipCode,
+      Vemail,
+      rr,
+      box,
+      street,
+      StreetName,
+      StreetOptional,
+      apt,
+      zip,
       city,
-      state,
-      housingStatus,
-      timeAtAddress,
-      mortgage,
+      State,
+      House,
+      Year,
+      Month,
+      Mortgage,
+      Dob,
       SSN,
-      employmentStatus,
-      incomeSrc,
-      income,
-      incomeSrc2,
-      income2,
+      SelectHousingStatus,
+      Employer,
+      WorkTitle,
+      WorkPhone,
+      yearss,
+      monthss,
+      SelfWorkPhone,
+      Selfyear,
+      Selfmonths,
+      EmpStatus,
+      PerYear,
     } = req.body;
   
   
     const creditData = new Credit({
-        fname,
-        mname,
-        lname,
-        phone,
-        email,
-        streetNo,
-        streetName,
-        Apartment,
-        zipCode,
-        city,
-        state,
-        housingStatus,
-        timeAtAddress,
-        mortgage,
-        SSN,
-        employmentStatus,
-        incomeSrc,
-        income,
-        incomeSrc2,
-        income2,
+      fName,
+      lName,
+      mName,
+      Suffix,
+      homeNum,
+      cellNum,
+      email,
+      Vemail,
+      rr,
+      box,
+      street,
+      StreetName,
+      StreetOptional,
+      apt,
+      zip,
+      city,
+      State,
+      House,
+      Year,
+      Month,
+      Mortgage,
+      Dob,
+      SSN,
+      SelectHousingStatus,
+      Employer,
+      WorkTitle,
+      WorkPhone,
+      yearss,
+      monthss,
+      SelfWorkPhone,
+      Selfyear,
+      Selfmonths,
+      EmpStatus,
+      PerYear,
     });
     
     creditData.save((err, data) => {
@@ -72,4 +99,39 @@ exports.postCredit = catchAsyncErrors(async(req, res, next) => {
       success: true,
       creditInfo,
     });
+});
+
+exports.deleteCreditFormById = catchAsyncErrors(async (req, res, next) => {
+  const result = await Credit.findById(req.params.id);
+  if (!result) {
+    return next(new ErrorHander("Something Went Wrong", 400));
+  }
+
+  await result.remove();
+
+  res.status(201).json({
+    success: true,
+    message: "Deleted Successfully",
+  });
+});
+
+exports.updateCreditDetails = catchAsyncErrors(async (req, res, next) => {
+  const updatedCreditData = await Credit.findByIdAndUpdate(
+    req.params.id,
+    { view: "read" },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  try {
+    res.status(200).json({
+      status: "Success",
+      data: {
+        updatedCreditData,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
