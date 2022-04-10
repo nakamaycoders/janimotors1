@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import FormControl from '@mui/material/FormControl';
-import axios from 'axios'
+import FormControl from "@mui/material/FormControl";
+import axios from "axios";
 
-
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import {
   Typography,
   TextField,
@@ -226,7 +225,6 @@ const Step1 = () => {
                 //   multiple
                 fullWidth
                 input={<OutlinedInput label="Suffix" />}
-                
                 {...field}
               >
                 {AllSuffix.map((Suffix) => (
@@ -257,7 +255,6 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                
                 {...field}
               />
             )}
@@ -276,7 +273,6 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-              
                 {...field}
               />
             )}
@@ -306,7 +302,6 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-               
                 {...field}
               />
             )}
@@ -325,7 +320,6 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                
                 {...field}
               />
             )}
@@ -458,7 +452,6 @@ const Step2 = () => {
                     // label="Select State"
                     fullWidth
                     input={<OutlinedInput label="Street" />}
-                   
                     {...field}
                   >
                     {AllStreet.map((Street) => (
@@ -492,8 +485,6 @@ const Step2 = () => {
           </Grid>
         </>
       )}
-
-      
 
       {/* -------------------SAME */}
 
@@ -550,7 +541,6 @@ const Step2 = () => {
                 // label="Select State"
                 fullWidth
                 input={<OutlinedInput label="State" />}
-                
                 {...field}
               >
                 {AllState.map((State) => (
@@ -582,7 +572,6 @@ const Step2 = () => {
                 id="House"
                 fullWidth
                 input={<OutlinedInput label="House" />}
-               
                 {...field}
               >
                 {AllHouse.map((House) => (
@@ -743,7 +732,6 @@ const Step2 = () => {
                 id="CoApplicant"
                 fullWidth
                 input={<OutlinedInput label="CoApplicant" />}
-               
                 {...field}
               >
                 {CoApplicantRelationship.map((Rel) => (
@@ -765,14 +753,11 @@ const Step3 = () => {
   let Self = false;
   let std = false;
 
-  
-  const [HousingStatus, setHousingStatus] = useState('');
+  const [HousingStatus, setHousingStatus] = useState("");
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
   };
   switch (HousingStatus) {
-
-    
     case "Unemployed":
     case "Retired":
     case "Retired Military":
@@ -780,18 +765,18 @@ const Step3 = () => {
       EAO = false;
       Self = false;
       std = false;
-      console.log("SURR", SURR)
+      console.log("SURR", SURR);
 
-    break;
-    case "" :
-    case "Employed": 
+      break;
+    case "":
+    case "Employed":
     case "Active Military":
     case "Other":
       SURR = false;
       EAO = true;
       Self = false;
       std = false;
-      console.log("EAO", EAO)
+      console.log("EAO", EAO);
       break;
 
     case "Self-Employed":
@@ -803,7 +788,7 @@ const Step3 = () => {
       // setEAO(false);
       // setSelf(true);
       // setstd(false);
-    console.log("self", Self)
+      console.log("self", Self);
 
       break;
 
@@ -812,262 +797,262 @@ const Step3 = () => {
       EAO = false;
       Self = false;
       std = true;
-    console.log("std", std);
+      console.log("std", std);
 
-    break;
-    
+      break;
 
     default:
       // console.log("Invalid ");
-      
-    break;
+
+      break;
   }
 
-  
   const { control } = useFormContext();
   return (
     <>
-     
-     <Grid container spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          
-           <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">
-          Select Housing Status</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={HousingStatus}
-          onChange={handleChange}
-          label="selectEmpStatus"
-        >
-          <MenuItem value={"Employed"}>Employed</MenuItem>
-          <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
-          <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
-          <MenuItem value={"Student"}>Student</MenuItem>
-          <MenuItem value={"Retired"}>Retired</MenuItem>
-          <MenuItem value={"Active Military"}>Active Military</MenuItem>
-          <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
-          <MenuItem value={"Other"}>Other</MenuItem>
-        </Select>
-      </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              Select Housing Status
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={HousingStatus}
+              onChange={handleChange}
+              label="selectEmpStatus"
+            >
+              <MenuItem value={"Employed"}>Employed</MenuItem>
+              <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
+              <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
+              <MenuItem value={"Student"}>Student</MenuItem>
+              <MenuItem value={"Retired"}>Retired</MenuItem>
+              <MenuItem value={"Active Military"}>Active Military</MenuItem>
+              <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
+              <MenuItem value={"Other"}>Other</MenuItem>
+            </Select>
+          </FormControl>
           {/* {console.log(HousingStatus, SURR)} */}
         </Grid>
-        {(EAO || std) &&<Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="employer"
-          >
-          
-          </InputLabel>
-          <Controller
-            control={control}
-            name="Employer"
-            id="empController"
-            render={({ field }) => (
-              <TextField
-                type="text"
-                id="Employer"
-                // label="Employer"
-                label={(std)?"School Name":"Employer"}
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>}
-       
+        {(EAO || std) && (
+          <Grid item xs={12} md={2}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="employer"
+            ></InputLabel>
+            <Controller
+              control={control}
+              name="Employer"
+              id="empController"
+              render={({ field }) => (
+                <TextField
+                  type="text"
+                  id="Employer"
+                  // label="Employer"
+                  label={std ? "School Name" : "Employer"}
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
+          </Grid>
+        )}
       </Grid>
       {/* Work Title--------------------------------------------------- */}
-      {(EAO || std) && <div>
-        {<Grid item xs={6} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="WorkTitle"
-          >
-          </InputLabel>
-          <Controller
-            control={control}
-            name="WorkTitle"
-            render={({ field }) => (
-              <TextField
-                type="text"
+      {(EAO || std) && (
+        <div>
+          {
+            <Grid item xs={6} md={2}>
+              <InputLabel
+                style={{ marginBottom: "10px", fontWeight: "bolder" }}
                 id="WorkTitle"
-                label="Work Title"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
+              ></InputLabel>
+              <Controller
+                control={control}
+                name="WorkTitle"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    id="WorkTitle"
+                    label="Work Title"
+                    variant="outlined"
+                    // placeholder="Enter Your Alternate Phone"
+                    halfWidth
+                    margin="normal"
+                    {...field}
+                  />
+                )}
               />
-            )}
-          />
-        </Grid>}
-      {/* Work Phone--------------------------------------------------- */}
-        {<Grid item xs={6} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="WorkPhone"
-          >
-          </InputLabel>
-          <Controller
-            control={control}
-            name="WorkPhone"
-            render={({ field }) => (
-              <TextField
-                type="text"
+            </Grid>
+          }
+          {/* Work Phone--------------------------------------------------- */}
+          {
+            <Grid item xs={6} md={2}>
+              <InputLabel
+                style={{ marginBottom: "10px", fontWeight: "bolder" }}
                 id="WorkPhone"
-                label={(std)? "School Phone": "Work Phone"}
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
+              ></InputLabel>
+              <Controller
+                control={control}
+                name="WorkPhone"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    id="WorkPhone"
+                    label={std ? "School Phone" : "Work Phone"}
+                    variant="outlined"
+                    // placeholder="Enter Your Alternate Phone"
+                    halfWidth
+                    margin="normal"
+                    {...field}
+                  />
+                )}
               />
-            )}
-          />
-        </Grid>}
-        <hr />
-      {/* Time At jOb--------------------------------------------------*/}
-       {<Grid container spacing={2}>
-        <Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="yearss"
-          >
-            Time At Job
-          </InputLabel>
-          <Controller
-            control={control}
-            name="yearss"
-            render={({ field }) => (
-              <TextField
-                type="number"
-                id="yearss"
-                label="Years"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="employer"
-          >
-          
-          </InputLabel>
-          <Controller
-            control={control}
-            name="monthss"
-            render={({ field }) => (
-              <TextField
-                type="number"
-                id="monthss"
-                label="Months"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-       
-      </Grid>}
-      </div>}
+            </Grid>
+          }
+          <hr />
+          {/* Time At jOb--------------------------------------------------*/}
+          {
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="yearss"
+                >
+                  Time At Job
+                </InputLabel>
+                <Controller
+                  control={control}
+                  name="yearss"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="yearss"
+                      label="Years"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="employer"
+                ></InputLabel>
+                <Controller
+                  control={control}
+                  name="monthss"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="monthss"
+                      label="Months"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          }
+        </div>
+      )}
 
       <hr />
-      {Self && <div>
-  
-  {/* Work Phone--------------------------------------------------- */}
-    {<Grid item xs={6} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="WorkPhone"
-      >
-      </InputLabel>
-      <Controller
-        control={control}
-        name="WorkPhone"
-        render={({ field }) => (
-          <TextField
-            type="text"
-            id="WorkPhone"
-            label="Work Phone"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>}
-    <hr />
-  {/* Time At jOb--------------------------------------------------*/}
-   {<Grid container spacing={2}>
-    <Grid item xs={12} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="yearss"
-      >
-        Time At Job
-      </InputLabel>
-      <Controller
-        control={control}
-        name="yearss"
-        render={({ field }) => (
-          <TextField
-            type="number"
-            id="yearss"
-            label="Years"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>
-    <Grid item xs={12} md={4}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="employer"
-      >
-      
-      </InputLabel>
-      <Controller
-        control={control}
-        name="monthss"
-        render={({ field }) => (
-          <TextField
-            type="number"
-            id="monthss"
-            label="Months"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>
-   
-  </Grid>}
-  </div>}
-        {/* Source OF income----------------------------------------------- */}
-        <Grid container spacing={2}>
+      {Self && (
+        <div>
+          {/* Work Phone--------------------------------------------------- */}
+          {
+            <Grid item xs={6} md={2}>
+              <InputLabel
+                style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                id="WorkPhone"
+              ></InputLabel>
+              <Controller
+                control={control}
+                name="WorkPhone"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    id="WorkPhone"
+                    label="Work Phone"
+                    variant="outlined"
+                    // placeholder="Enter Your Alternate Phone"
+                    halfWidth
+                    margin="normal"
+                    {...field}
+                  />
+                )}
+              />
+            </Grid>
+          }
+          <hr />
+          {/* Time At jOb--------------------------------------------------*/}
+          {
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="yearss"
+                >
+                  Time At Job
+                </InputLabel>
+                <Controller
+                  control={control}
+                  name="yearss"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="yearss"
+                      label="Years"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="employer"
+                ></InputLabel>
+                <Controller
+                  control={control}
+                  name="monthss"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="monthss"
+                      label="Months"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          }
+        </div>
+      )}
+      {/* Source OF income----------------------------------------------- */}
+      <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
@@ -1102,9 +1087,7 @@ const Step3 = () => {
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="PerYear"
-          >
-          
-          </InputLabel>
+          ></InputLabel>
           <Controller
             control={control}
             name="PerYear"
@@ -1122,9 +1105,7 @@ const Step3 = () => {
             )}
           />
         </Grid>
-       
       </Grid>
-      
     </>
   );
 };
@@ -1185,10 +1166,7 @@ const Step4 = () => {
       </Grid>
       <Grid container>
         <Grid item xs={12} md={4}>
-          <InputLabel
-            style={{ paddingBottom: "20px", paddingTop: "10px" }}
-         
-          >
+          <InputLabel style={{ paddingBottom: "20px", paddingTop: "10px" }}>
             Select Suffix (Optional)
           </InputLabel>
           <Controller
@@ -1201,7 +1179,6 @@ const Step4 = () => {
                 //   multiple
                 fullWidth
                 input={<OutlinedInput label="Suffix" />}
-               
                 {...field}
               >
                 {AllSuffix.map((Suffix) => (
@@ -1232,7 +1209,6 @@ const Step4 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                
                 {...field}
               />
             )}
@@ -1280,7 +1256,6 @@ const Step4 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-               
                 {...field}
               />
             )}
@@ -1309,53 +1284,51 @@ const Step4 = () => {
   );
 };
 const Step5 = () => {
-  const [status, setStatus] = React.useState(0);
-  const [status2, setStatus2] = React.useState(0);
+  // const [status, setStatus] = React.useState(0);
+  // const [status2, setStatus2] = React.useState(0);
 
-  const radioHandler = (status) => {
-    setStatus(status);
-  };
+  // const radioHandler = (status) => {
+  //   setStatus(status);
+  // };
 
-  const radioHandler2 = (status2) => {
-    setStatus2(status2);
-  };
+  // const radioHandler2 = (status2) => {
+  //   setStatus2(status2);
+  // };
 
   // const [visible, setVisible] = useState(false);
   const [checked, setChecked] = useState(false);
   const { control } = useFormContext();
   return (
     <>
-      <h6>Same address as applicant?</h6>
-      <Controller 
-        control = {control}
+      {/* <h6>Same address as applicant?</h6>
+      <Controller
+        control={control}
         name="Applicant Address"
-        render={({field})=>(
-
-      <input
-        type="radio"
-        name="Corelease"
-        checked={status === 1}
-        onClick={(e) => radioHandler(1)}
-        {...field}
-      />
+        render={({ field }) => (
+          <input
+            type="radio"
+            name="Corelease"
+            checked={status === 1}
+            onClick={(e) => radioHandler(1)}
+            {...field}
+          />
         )}
       />
       No
       <Controller
-                    control={control}
-                    name="Corelease"
-                    render={({ field }) => (
-                      <input
-                      type="radio"
-                      
-                      checked={status === 2}
-                      onClick={(e) => radioHandler(2)}
-                      {...field}
-                    />
-                    )}
-                  />Yes
-   
-      {status === 1 && (
+        control={control}
+        name="Corelease"
+        render={({ field }) => (
+          <input
+            type="radio"
+            checked={status === 2}
+            onClick={(e) => radioHandler(2)}
+            {...field}
+          />
+        )}
+      />
+      Yes */}
+      {/* {status === 1 && ( */}
         <>
           <FormGroup style={{ width: "fit-content" }}>
             <FormControlLabel
@@ -1377,8 +1350,6 @@ const Step5 = () => {
                         id="Corr"
                         label="RR"
                         variant="outlined"
-                        // style={{marginRight:'22px'}}
-                        // placeholder="Street #"
                         halfWidth
                         margin="normal"
                         {...field}
@@ -1386,8 +1357,6 @@ const Step5 = () => {
                     )}
                   />
                 </Grid>
-                {/* <p style={{display:'inline-block',margin:'24px',fontSize:'22px'}}>RR</p> */}
-
                 <Grid item xs={12} md={2}>
                   <Controller
                     control={control}
@@ -1397,7 +1366,6 @@ const Step5 = () => {
                         id="Cobox"
                         label="BOX"
                         variant="outlined"
-                        // placeholder=""
                         halfWidth
                         margin="normal"
                         {...field}
@@ -1474,7 +1442,6 @@ const Step5 = () => {
                         // label="Select State"
                         fullWidth
                         input={<OutlinedInput label="Street" />}
-                        
                         {...field}
                       >
                         {AllStreet.map((Street) => (
@@ -1508,7 +1475,6 @@ const Step5 = () => {
               </Grid>
             </>
           )}
-
 
           {/* -------------------SAME */}
 
@@ -1565,7 +1531,6 @@ const Step5 = () => {
                     // label="Select State"
                     fullWidth
                     input={<OutlinedInput label="State" />}
-                   
                     {...field}
                   >
                     {AllState.map((State) => (
@@ -1579,9 +1544,9 @@ const Step5 = () => {
             </Grid>
           </Grid>
         </>
-      )}
+      {/* )} */}
       <hr />
-      <h6>Same Mortgage/Rent information as applicant?</h6>
+      {/* <h6>Same Mortgage/Rent information as applicant?</h6>
       <input
         type="radio"
         name="Corelease2"
@@ -1595,8 +1560,8 @@ const Step5 = () => {
         checked={status2 === 4}
         onClick={(e) => radioHandler2(4)}
       />
-      Yes
-      {status2 === 3 && (
+      Yes */}
+      {/* {status2 === 3 && ( */}
         <>
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
@@ -1615,7 +1580,6 @@ const Step5 = () => {
                     id="CoHouse"
                     fullWidth
                     input={<OutlinedInput label="House" />}
-                   
                     {...field}
                   >
                     {AllHouse.map((House) => (
@@ -1705,7 +1669,7 @@ const Step5 = () => {
             </Grid>
           </Grid>
         </>
-      )}
+      {/* )} */}
       <hr />
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
@@ -1759,7 +1723,6 @@ const Step5 = () => {
           />
         </Grid>
       </Grid>
-     
     </>
   );
 };
@@ -1773,13 +1736,11 @@ const Step6 = () => {
   // const [EAO, setEAO] = useState(false);
   // const [Self, setSelf] = useState(false);
   // const [std, setstd] = useState(false);
-  const [HousingStatus, setHousingStatus] = useState('');
+  const [HousingStatus, setHousingStatus] = useState("");
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
   };
   switch (HousingStatus) {
-
-    
     case "Unemployed":
     case "Retired":
     case "Retired Military":
@@ -1789,9 +1750,9 @@ const Step6 = () => {
       std = false;
       // console.log("SURR", SURR)
 
-    break;
-    case "" :
-    case "Employed": 
+      break;
+    case "":
+    case "Employed":
     case "Active Military":
     case "Other":
       SURR = false;
@@ -1810,7 +1771,7 @@ const Step6 = () => {
       // setEAO(false);
       // setSelf(true);
       // setstd(false);
-    // console.log("self", Self)
+      // console.log("self", Self)
 
       break;
 
@@ -1819,325 +1780,325 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = true;
-    // console.log("std", std);
+      // console.log("std", std);
 
-    break;
-    
+      break;
 
     default:
       // console.log("Invalid ");
-      
-    break;
+
+      break;
   }
 
-  
   const { control } = useFormContext();
   return (
     <>
-    <Grid container spacing={2}>
-    <Grid item xs={12} md={4}>
-    <Controller
-        control={control}
-        name="CoSelectHousingStatus"
-        id="empController"
-        render={({ field }) => (
-          <FormControl fullWidth>
-    <InputLabel id="demo-simple-select-label">
-      Select Housing Status</InputLabel>
-    <Select
-      labelId="demo-simple-select-label"
-      id="demo-simple-select"
-      value={HousingStatus}
-      onChange={handleChange}
-      label="selectEmpStatus"
-      {...field}
-    >
-      <MenuItem value={"Employed"}>Employed</MenuItem>
-      <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
-      <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
-      <MenuItem value={"Student"}>Student</MenuItem>
-      <MenuItem value={"Retired"}>Retired</MenuItem>
-      <MenuItem value={"Active Military"}>Active Military</MenuItem>
-      <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
-      <MenuItem value={"Other"}>Other</MenuItem>
-    </Select>
-  </FormControl>
-        )}
-      />
-    </Grid>
-    {(EAO || std) &&<Grid item xs={12} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="employer"
-      >
-      
-      </InputLabel>
-      <Controller
-        control={control}
-        name="CoEmployer"
-        id="empController"
-        render={({ field }) => (
-          <TextField
-            type="text"
-            id="Employer"
-            // label="Employer"
-            label={(std)?"School Name":"Employer"}
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={4}>
+          <Controller
+            control={control}
+            name="CoSelectHousingStatus"
+            id="empController"
+            render={({ field }) => (
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Select Housing Status
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={HousingStatus}
+                  onChange={handleChange}
+                  label="selectEmpStatus"
+                  {...field}
+                >
+                  <MenuItem value={"Employed"}>Employed</MenuItem>
+                  <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
+                  <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
+                  <MenuItem value={"Student"}>Student</MenuItem>
+                  <MenuItem value={"Retired"}>Retired</MenuItem>
+                  <MenuItem value={"Active Military"}>Active Military</MenuItem>
+                  <MenuItem value={"Retired Military"}>
+                    Retired Military
+                  </MenuItem>
+                  <MenuItem value={"Other"}>Other</MenuItem>
+                </Select>
+              </FormControl>
+            )}
           />
+        </Grid>
+        {(EAO || std) && (
+          <Grid item xs={12} md={2}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="employer"
+            ></InputLabel>
+            <Controller
+              control={control}
+              name="CoEmployer"
+              id="empController"
+              render={({ field }) => (
+                <TextField
+                  type="text"
+                  id="Employer"
+                  // label="Employer"
+                  label={std ? "School Name" : "Employer"}
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
+          </Grid>
         )}
-      />
-    </Grid>}
-   
-  </Grid>
-  {/* Work Title--------------------------------------------------- */}
-  {(EAO || std) && <div>
-    {<Grid item xs={6} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="CoWorkTitle"
-      >
-      </InputLabel>
-      <Controller
-        control={control}
-        name="CoWorkTitle"
-        render={({ field }) => (
-          <TextField
-            type="text"
-            id="WorkTitle"
-            label="Work Title"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>}
-  {/* Work Phone--------------------------------------------------- */}
-    {<Grid item xs={6} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="CoWorkPhone"
-      >
-      </InputLabel>
-      <Controller
-        control={control}
-        name="CoWorkPhone"
-        render={({ field }) => (
-          <TextField
-            type="text"
-            id="CoWorkPhone"
-            label={(std)? "School Phone": "Work Phone"}
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>}
-    <hr />
-  {/* Time At jOb--------------------------------------------------*/}
-   {<Grid container spacing={2}>
-    <Grid item xs={12} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="Coyearss"
-      >
-        Time At Job
-      </InputLabel>
-      <Controller
-        control={control}
-        name="Coyearss"
-        render={({ field }) => (
-          <TextField
-            type="number"
-            id="Coyearss"
-            label="Years"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>
-    <Grid item xs={12} md={4}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="employer"
-      >
-      
-      </InputLabel>
-      <Controller
-        control={control}
-        name="Comonthss"
-        render={({ field }) => (
-          <TextField
-            type="number"
-            id="Comonthss"
-            label="Months"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
-          />
-        )}
-      />
-    </Grid>
-   
-  </Grid>}
-  </div>}
+      </Grid>
+      {/* Work Title--------------------------------------------------- */}
+      {(EAO || std) && (
+        <div>
+          {
+            <Grid item xs={6} md={2}>
+              <InputLabel
+                style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                id="CoWorkTitle"
+              ></InputLabel>
+              <Controller
+                control={control}
+                name="CoWorkTitle"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    id="WorkTitle"
+                    label="Work Title"
+                    variant="outlined"
+                    // placeholder="Enter Your Alternate Phone"
+                    halfWidth
+                    margin="normal"
+                    {...field}
+                  />
+                )}
+              />
+            </Grid>
+          }
+          {/* Work Phone--------------------------------------------------- */}
+          {
+            <Grid item xs={6} md={2}>
+              <InputLabel
+                style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                id="CoWorkPhone"
+              ></InputLabel>
+              <Controller
+                control={control}
+                name="CoWorkPhone"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    id="CoWorkPhone"
+                    label={std ? "School Phone" : "Work Phone"}
+                    variant="outlined"
+                    // placeholder="Enter Your Alternate Phone"
+                    halfWidth
+                    margin="normal"
+                    {...field}
+                  />
+                )}
+              />
+            </Grid>
+          }
+          <hr />
+          {/* Time At jOb--------------------------------------------------*/}
+          {
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="Coyearss"
+                >
+                  Time At Job
+                </InputLabel>
+                <Controller
+                  control={control}
+                  name="Coyearss"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="Coyearss"
+                      label="Years"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="employer"
+                ></InputLabel>
+                <Controller
+                  control={control}
+                  name="Comonthss"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="Comonthss"
+                      label="Months"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          }
+        </div>
+      )}
 
-  <hr />
-  {Self && <div>
-
-{/* Work Phone--------------------------------------------------- */}
-{<Grid item xs={6} md={2}>
-  <InputLabel
-    style={{ marginBottom: "10px", fontWeight: "bolder" }}
-    id="CoSelfWorkPhone"
-  >
-  </InputLabel>
-  <Controller
-    control={control}
-    name="CoSelfWorkPhone"
-    render={({ field }) => (
-      <TextField
-        type="text"
-        id="CoSelfWorkPhone"
-        label="Work Phone"
-        variant="outlined"
-        // placeholder="Enter Your Alternate Phone"
-        halfWidth
-        margin="normal"
-        {...field}
-      />
-    )}
-  />
-</Grid>}
-<hr />
-{/* Time At jOb--------------------------------------------------*/}
-{<Grid container spacing={2}>
-<Grid item xs={12} md={2}>
-  <InputLabel
-    style={{ marginBottom: "10px", fontWeight: "bolder" }}
-    id="CoSelfyear"
-  >
-    Time At Job
-  </InputLabel>
-  <Controller
-    control={control}
-    name="CoSelfyear"
-    render={({ field }) => (
-      <TextField
-        type="number"
-        id="CoSelfyear"
-        label="Years"
-        variant="outlined"
-        // placeholder="Enter Your Alternate Phone"
-        halfWidth
-        margin="normal"
-        {...field}
-      />
-    )}
-  />
-</Grid>
-<Grid item xs={12} md={4}>
-  <InputLabel
-    style={{ marginBottom: "10px", fontWeight: "bolder" }}
-    id="CoSelfemployer"
-  >
-  
-  </InputLabel>
-  <Controller
-    control={control}
-    name="CoSelfmonths"
-    render={({ field }) => (
-      <TextField
-        type="number"
-        id="CoSelfmonths"
-        label="Months"
-        variant="outlined"
-        // placeholder="Enter Your Alternate Phone"
-        halfWidth
-        margin="normal"
-        {...field}
-      />
-    )}
-  />
-</Grid>
-
-</Grid>}
-</div>}
-    {/* Source OF income----------------------------------------------- */}
-    <Grid container spacing={2}>
-    <Grid item xs={12} md={4}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="CoEmpStatus"
-        value={"Select one"}
-      >
-        Source of Income
-      </InputLabel>
-      <Controller
-        control={control}
-        name="CoEmpStatus"
-        render={({ field }) => (
-          <Select
-            labelId="EmpStatus"
+      <hr />
+      {Self && (
+        <div>
+          {/* Work Phone--------------------------------------------------- */}
+          {
+            <Grid item xs={6} md={2}>
+              <InputLabel
+                style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                id="CoSelfWorkPhone"
+              ></InputLabel>
+              <Controller
+                control={control}
+                name="CoSelfWorkPhone"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    id="CoSelfWorkPhone"
+                    label="Work Phone"
+                    variant="outlined"
+                    // placeholder="Enter Your Alternate Phone"
+                    halfWidth
+                    margin="normal"
+                    {...field}
+                  />
+                )}
+              />
+            </Grid>
+          }
+          <hr />
+          {/* Time At jOb--------------------------------------------------*/}
+          {
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="CoSelfyear"
+                >
+                  Time At Job
+                </InputLabel>
+                <Controller
+                  control={control}
+                  name="CoSelfyear"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="CoSelfyear"
+                      label="Years"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="CoSelfemployer"
+                ></InputLabel>
+                <Controller
+                  control={control}
+                  name="CoSelfmonths"
+                  render={({ field }) => (
+                    <TextField
+                      type="number"
+                      id="CoSelfmonths"
+                      label="Months"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          }
+        </div>
+      )}
+      {/* Source OF income----------------------------------------------- */}
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={4}>
+          <InputLabel
+            style={{ marginBottom: "10px", fontWeight: "bolder" }}
             id="CoEmpStatus"
-            fullWidth
-            input={<OutlinedInput label="EmpStatus" />}
-            // name="EmpStatus"
             value={"Select one"}
-            {...field}
           >
-            {IncomeSrc.map((incSource) => (
-              <MenuItem key={incSource} value={incSource}>
-                {incSource}
-              </MenuItem>
-            ))}
-          </Select>
-        )}
-      />
-    </Grid>
-    <Grid item xs={12} md={2}>
-      <InputLabel
-        style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="CoPerYear"
-      >
-      
-      </InputLabel>
-      <Controller
-        control={control}
-        name="CoPerYear"
-        render={({ field }) => (
-          <TextField
-            type="number"
-            id="PerYear"
-            label="Per Year ($)"
-            variant="outlined"
-            // placeholder="Enter Your Alternate Phone"
-            halfWidth
-            margin="normal"
-            {...field}
+            Source of Income
+          </InputLabel>
+          <Controller
+            control={control}
+            name="CoEmpStatus"
+            render={({ field }) => (
+              <Select
+                labelId="EmpStatus"
+                id="CoEmpStatus"
+                fullWidth
+                input={<OutlinedInput label="EmpStatus" />}
+                // name="EmpStatus"
+                value={"Select one"}
+                {...field}
+              >
+                {IncomeSrc.map((incSource) => (
+                  <MenuItem key={incSource} value={incSource}>
+                    {incSource}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
           />
-        )}
-      />
-    </Grid>
-   
-  </Grid>
-  </>
-  
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <InputLabel
+            style={{ marginBottom: "10px", fontWeight: "bolder" }}
+            id="CoPerYear"
+          ></InputLabel>
+          <Controller
+            control={control}
+            name="CoPerYear"
+            render={({ field }) => (
+              <TextField
+                type="number"
+                id="PerYear"
+                label="Per Year ($)"
+                variant="outlined"
+                // placeholder="Enter Your Alternate Phone"
+                halfWidth
+                margin="normal"
+                {...field}
+              />
+            )}
+          />
+        </Grid>
+      </Grid>
+    </>
   );
 };
 
@@ -2164,92 +2125,82 @@ const LinearStepper = () => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
-      fname:"",
-      midName:"",
-      lName:"",
-      Suffix:"",
-      homeNum:"",
-      cellNum:"",
-      email:"",
-      Vemail:"",
-      rr:"",
-      box:"",
-      street:"",
-      StreetName:"",
-      StreetOptional:"",
-      apt:"",
-      zip:"",
-      city:"",
-      State:"",
-      House:"",
-      Year:"",
-      Month:"",
-      Mortgage:"",
-      Dob:"",
-      SSN:"",
-      CoApplicantRelation:"",
+      fname: "",
+      midName: "",
+      lName: "",
+      Suffix: "",
+      homeNum: "",
+      cellNum: "",
+      email: "",
+      Vemail: "",
+      rr: "",
+      box: "",
+      street: "",
+      StreetName: "",
+      StreetOptional: "",
+      apt: "",
+      zip: "",
+      city: "",
+      State: "",
+      House: "",
+      Year: "",
+      Month: "",
+      Mortgage: "",
+      Dob: "",
+      SSN: "",
+      CoApplicantRelation: "",
       SelectHousingStatus: "",
       Employer: "",
       WorkTitle: "",
       WorkPhone: "",
       yearss: "",
-      monthss:"",
+      monthss: "",
       SelfWorkPhone: "",
       Selfyear: "",
       Selfmonths: "",
       EmpStatus: "",
       PerYear: "",
       // <..................CO-applicant info.............................>
-      Cofname:"",
-      CoMidName:"",
-      ColName:"",
-      CoSuffix:"",
-      CocellNum:"",
-      CohomeNum:"",
-      Coemail:"",
-      CoVemail:"",
+      Cofname: "",
+      CoMidName: "",
+      ColName: "",
+      CoSuffix: "",
+      CocellNum: "",
+      CohomeNum: "",
+      Coemail: "",
+      CoVemail: "",
 
       // <...........step2.........>
-      Corelease:"",
-      Corr:"",
-      Cobox:"",
-      Costreet:"",
-      CoStreetName:"",
-      CoStreetOptional:"",
-      Coapt:"",
-      Cozip:"",
-      Cocity:"",
-      CoState:"",
-      Corelease2:"",
-      CoHouse:"",
-      CoYear:"",
-      CoMonth:"",
-      CoMortgage:"",
-      Codob:"",
-      CoSSN:"",
+      Corelease: "",
+      Corr: "",
+      Cobox: "",
+      Costreet: "",
+      CoStreetName: "",
+      CoStreetOptional: "",
+      Coapt: "",
+      Cozip: "",
+      Cocity: "",
+      CoState: "",
+      Corelease2: "",
+      CoHouse: "",
+      CoYear: "",
+      CoMonth: "",
+      CoMortgage: "",
+      Codob: "",
+      CoSSN: "",
 
-
-      CoSelectHousingStatus:"",
-      CoEmployer:"",
-      CoWorkTitle:"",
-      CoWorkPhone:"",
-      Coyearss:"",
-      Comonthss:"",
-      CoSelfWorkPhone:"",
-      CoSelfyear:"",
-      CoSelfemployer:"",
-      CoSelfmonths:"",
-      CoEmpStatus:"",
-      CoPerYear:"",
-
-
-
-
-
-
-
-
-
+      CoSelectHousingStatus: "",
+      CoEmployer: "",
+      CoWorkTitle: "",
+      CoWorkPhone: "",
+      Coyearss: "",
+      Comonthss: "",
+      CoSelfWorkPhone: "",
+      CoSelfyear: "",
+      CoSelfemployer: "",
+      CoSelfmonths: "",
+      CoEmpStatus: "",
+      CoPerYear: "",
     },
   });
   const [activeStep, setActiveStep] = useState(0);
@@ -2264,10 +2215,10 @@ const LinearStepper = () => {
         data: data,
         config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
-            console.log(res);
-            alert("successfull")
-            setActiveStep(activeStep + 1);
-          });
+        console.log(res);
+        alert("successfull");
+        setActiveStep(activeStep + 1);
+      });
     } else {
       setActiveStep(activeStep + 1);
     }
@@ -2281,14 +2232,21 @@ const LinearStepper = () => {
   // };
   return (
     <div>
-      <div className="btn11 p-5" style={{backgroundColor: 'white'}}>
-        <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
-          <Button variant="contained" color="primary" >Individual</Button>
+      <div className="btn11 p-5" style={{ backgroundColor: "white" }}>
+        <Link
+          to="/creditApproval"
+          style={{ textDecoration: "none", marginRight: "10px" }}
+        >
+          <Button variant="contained" color="primary">
+            Individual
+          </Button>
         </Link>
-        <Link to="/joint" style={{textDecoration:"none"}}>
-          <Button variant="contained" color="primary">Joint</Button>
-          </Link>
-        </div>
+        <Link to="/joint" style={{ textDecoration: "none" }}>
+          <Button variant="contained" color="primary">
+            Joint
+          </Button>
+        </Link>
+      </div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
           return (
