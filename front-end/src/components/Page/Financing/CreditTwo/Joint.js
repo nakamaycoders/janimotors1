@@ -1393,20 +1393,28 @@ const Step5 = () => {
   return (
     <>
       <h6>Same address as applicant?</h6>
+      <Controller 
+        control = {control}
+        name="Applicant Address"
+        render={({field})=>(
+
       <input
         type="radio"
-        name="release"
+        name="Yes"
         checked={status === 1}
         onClick={(e) => radioHandler(1)}
+        {...field}
+      />
+        )}
       />
       No
       <Controller
                     control={control}
-                    name="release"
+                    // name="release"
                     render={({ field }) => (
                       <input
                       type="radio"
-                      name="release"
+                      // name="release"
                       checked={status === 2}
                       onClick={(e) => radioHandler(2)}
                       {...field}

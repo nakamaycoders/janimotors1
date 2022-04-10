@@ -290,7 +290,15 @@ const Sidebar = (props = {}) => {
               >
                 <NavItem title="Contact Us " link="/contactUs/contactUs" />
                 <NavItem title="Trade-In" link="/trade-in-jani-motors" />
-                <NavItem title="Credit Approval" link="/CREDIT-APPROVAL" />
+                {/* <NavItem title="Credit Approval" link="/CREDIT-APPROVAL" /> */}
+                <CollapsableNavItem
+                // eventKey="tables/"
+                title="Credit Approval"
+              >
+                <NavItem title="Individual" link="/CREDIT-APPROVAL" />
+                <NavItem title="Joint" link="/joint" />
+                
+              </CollapsableNavItem>
               </CollapsableNavItem>
               
               {/* <CollapsableNavItem

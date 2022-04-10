@@ -100,3 +100,38 @@ exports.postCredit = catchAsyncErrors(async(req, res, next) => {
       creditInfo,
     });
 });
+
+exports.deleteCreditFormById = catchAsyncErrors(async (req, res, next) => {
+  const result = await Credit.findById(req.params.id);
+  if (!result) {
+    return next(new ErrorHander("Something Went Wrong", 400));
+  }
+
+  await result.remove();
+
+  res.status(201).json({
+    success: true,
+    message: "Deleted Successfully",
+  });
+});
+
+exports.updateCreditDetails = catchAsyncErrors(async (req, res, next) => {
+  const updatedCreditData = await Credit.findByIdAndUpdate(
+    req.params.id,
+    { view: "read" },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  try {
+    res.status(200).json({
+      status: "Success",
+      data: {
+        updatedCreditData,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
