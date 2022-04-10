@@ -3,6 +3,8 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from '@mui/material/FormControl';
+import axios from 'axios'
+
 
 import {Link} from 'react-router-dom'
 import {
@@ -2248,12 +2250,16 @@ const LinearStepper = () => {
   const handleNext = (data) => {
     console.log(data);
     if (activeStep == steps.length - 1) {
-      fetch("https://jsonplaceholder.typicode.com/comments")
-        .then((data) => data.json())
-        .then((res) => {
-          console.log(res);
-          setActiveStep(activeStep + 1);
-        });
+      axios({
+        method: "post",
+        url: "http://localhost:5000/api/joint/send",
+        data: data,
+        config: { headers: { "Content-Type": "multipart/form-data" } },
+      }).then((res) => {
+            console.log(res);
+            alert("successfull")
+            setActiveStep(activeStep + 1);
+          });
     } else {
       setActiveStep(activeStep + 1);
     }
