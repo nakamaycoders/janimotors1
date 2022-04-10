@@ -169,6 +169,11 @@ const creditSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    view:{
+        type: String,
+        default: "unread",
+        trim: true
+    }
 },{timestamps:true})
 
 module.exports = mongoose.model("credit", creditSchema);
