@@ -5,6 +5,7 @@ import Axios from "axios";
 import './contactDetails.css'
 
 export default function CustomizedTables(props) {
+  
   let [responseData, setResponseData] = useState([]);
   const url = "http://localhost:5000/api/contact/information";
   const id = props.location.params.id;
