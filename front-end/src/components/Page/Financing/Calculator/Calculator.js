@@ -69,14 +69,14 @@ function Calculator() {
     <Container>
       <Row>
         <h1
-          style={{ color: "white", textAlign: "center", margin: "7px 0 7px 0" }}
+          style={{ color: "red", textAlign: "center", margin: "7px 0 7px 0" }}
         >
           CALCULATOR
         </h1>
       </Row>
       <Row>
         <h3
-          style={{ color: "white", textAlign: "left", margin: "7px 0 7px 0" }}
+          style={{ color: "red", textAlign: "left", margin: "7px 0 7px 0" }}
         >
           What Will My Payments Be?
         </h3>
@@ -97,7 +97,7 @@ function Calculator() {
       </Row>
       <Row>
         <h4
-          style={{ color: "white", textAlign: "left", margin: "7px 0 7px 0" }}
+          style={{ color: "red", textAlign: "left", margin: "7px 0 7px 0" }}
         >
           <b>Finance Calculator:</b>
         </h4>

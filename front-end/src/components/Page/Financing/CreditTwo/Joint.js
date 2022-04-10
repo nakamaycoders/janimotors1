@@ -224,7 +224,7 @@ const Step1 = () => {
                 //   multiple
                 fullWidth
                 input={<OutlinedInput label="Suffix" />}
-                name="Suffix"
+                
                 {...field}
               >
                 {AllSuffix.map((Suffix) => (
@@ -255,7 +255,7 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="homeNum"
+                
                 {...field}
               />
             )}
@@ -274,7 +274,7 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="cellNum"
+              
                 {...field}
               />
             )}
@@ -304,7 +304,7 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="email"
+               
                 {...field}
               />
             )}
@@ -323,7 +323,7 @@ const Step1 = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="Vemail"
+                
                 {...field}
               />
             )}
@@ -441,13 +441,13 @@ const Step2 = () => {
             <Grid item xs={12} md={2}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="street"
+                id="streetOptional"
               >
                 Select Street (Optional)
               </InputLabel>
               <Controller
                 control={control}
-                name="Street"
+                name="StreetOptional"
                 render={({ field }) => (
                   <Select
                     labelId="Select Street"
@@ -456,7 +456,7 @@ const Step2 = () => {
                     // label="Select State"
                     fullWidth
                     input={<OutlinedInput label="Street" />}
-                    name="Street"
+                   
                     {...field}
                   >
                     {AllStreet.map((Street) => (
@@ -491,74 +491,7 @@ const Step2 = () => {
         </>
       )}
 
-      {/* {!visible && 
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={2}>
-          <Controller
-            control={control}
-            name="street"
-            render={({ field }) => (
-              <TextField
-                id="street #"
-                label="Street #"
-                variant="outlined"
-                // placeholder="Enter Your Phone Number"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <Controller
-            control={control}
-            name="StreetName"
-            render={({ field }) => (
-              <TextField
-                id="Street"
-                label="Street Name"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="street"
-          >
-            Select Street (Optional)
-          </InputLabel>
-          <Controller
-            control={control}
-            name="Street"
-            render={({ field }) => (
-              <Select
-                labelId="Select Street"
-                id="selectStreet"
-                //   multiple
-                // label="Select State"
-                fullWidth
-                input={<OutlinedInput label="Street" />}
-                name="Street"
-                {...field}
-              >
-                {AllStreet.map((Street) => (
-                  <MenuItem key={Street} value={Street}>
-                    {Street}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          />
-        </Grid>
-      </Grid>
-      } */}
+      
 
       {/* -------------------SAME */}
 
@@ -615,7 +548,7 @@ const Step2 = () => {
                 // label="Select State"
                 fullWidth
                 input={<OutlinedInput label="State" />}
-                name="State"
+                
                 {...field}
               >
                 {AllState.map((State) => (
@@ -647,7 +580,7 @@ const Step2 = () => {
                 id="House"
                 fullWidth
                 input={<OutlinedInput label="House" />}
-                name="House"
+               
                 {...field}
               >
                 {AllHouse.map((House) => (
@@ -801,14 +734,14 @@ const Step2 = () => {
           </InputLabel>
           <Controller
             control={control}
-            name="CoApplicant"
+            name="CoApplicantRelation"
             render={({ field }) => (
               <Select
                 labelId="CoApplicant"
                 id="CoApplicant"
                 fullWidth
                 input={<OutlinedInput label="CoApplicant" />}
-                name="CoApplicant"
+               
                 {...field}
               >
                 {CoApplicantRelationship.map((Rel) => (
@@ -1201,10 +1134,10 @@ const Step4 = () => {
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
-            name="fname"
+            name="Cofname"
             render={({ field }) => (
               <TextField
-                id="fname"
+                id="Cofname"
                 label="First Name"
                 variant="outlined"
                 fullWidth
@@ -1218,10 +1151,10 @@ const Step4 = () => {
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
-            name="midName"
+            name="CoMidName"
             render={({ field }) => (
               <TextField
-                id="midName"
+                id="CoMidName"
                 label="Middle Name"
                 variant="outlined"
                 fullWidth
@@ -1234,10 +1167,10 @@ const Step4 = () => {
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
-            name="lName"
+            name="ColName"
             render={({ field }) => (
               <TextField
-                id="lName"
+                id="ColName"
                 label="Last Name"
                 variant="outlined"
                 fullWidth
@@ -1252,21 +1185,21 @@ const Step4 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ paddingBottom: "20px", paddingTop: "10px" }}
-            id="Suffix"
+         
           >
             Select Suffix (Optional)
           </InputLabel>
           <Controller
             control={control}
-            name="Suffix"
+            name="CoSuffix"
             render={({ field }) => (
               <Select
-                labelId="Suffix"
-                id="Suffix"
+                labelId="CoSuffix"
+                id="CoSuffix"
                 //   multiple
                 fullWidth
                 input={<OutlinedInput label="Suffix" />}
-                name="Suffix"
+               
                 {...field}
               >
                 {AllSuffix.map((Suffix) => (
@@ -1289,15 +1222,15 @@ const Step4 = () => {
         <Grid item xs={6} md={4}>
           <Controller
             control={control}
-            name="homeNum"
+            name="CohomeNum"
             render={({ field }) => (
               <TextField
-                id="homeNum"
+                id="CohomeNum"
                 label="Home"
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="homeNum"
+                
                 {...field}
               />
             )}
@@ -1308,15 +1241,14 @@ const Step4 = () => {
         <Grid item xs={6} md={4}>
           <Controller
             control={control}
-            name="cellNum"
+            name="CocellNum"
             render={({ field }) => (
               <TextField
-                id="cellNum"
+                id="CocellNum"
                 label="Cell"
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="cellNum"
                 {...field}
               />
             )}
@@ -1338,15 +1270,15 @@ const Step4 = () => {
         <Grid item xs={6} md={4}>
           <Controller
             control={control}
-            name="email"
+            name="Coemail"
             render={({ field }) => (
               <TextField
-                id="email"
+                id="Coemail"
                 label="Email"
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="email"
+               
                 {...field}
               />
             )}
@@ -1357,15 +1289,14 @@ const Step4 = () => {
         <Grid item xs={6} md={4}>
           <Controller
             control={control}
-            name="Vemail"
+            name="CoVemail"
             render={({ field }) => (
               <TextField
-                id="Vemail"
+                id="CoVemail"
                 label="Verify Email"
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="Vemail"
                 {...field}
               />
             )}
@@ -1400,7 +1331,7 @@ const Step5 = () => {
 
       <input
         type="radio"
-        name="Yes"
+        name="Corelease"
         checked={status === 1}
         onClick={(e) => radioHandler(1)}
         {...field}
@@ -1410,25 +1341,18 @@ const Step5 = () => {
       No
       <Controller
                     control={control}
-                    // name="release"
+                    name="Corelease"
                     render={({ field }) => (
                       <input
                       type="radio"
-                      // name="release"
+                      
                       checked={status === 2}
                       onClick={(e) => radioHandler(2)}
                       {...field}
                     />
                     )}
-                  />
-      {/* <input
-        type="radio"
-        name="release"
-        checked={status === 2}
-        onClick={(e) => radioHandler(2)}
-      /> */}
-      Yes
-      {/* {status === 2 && drawNoContent()} */}
+                  />Yes
+   
       {status === 1 && (
         <>
           <FormGroup style={{ width: "fit-content" }}>
@@ -1445,10 +1369,10 @@ const Step5 = () => {
                 <Grid item xs={12} md={2}>
                   <Controller
                     control={control}
-                    name="rr"
+                    name="Corr"
                     render={({ field }) => (
                       <TextField
-                        id="rrr"
+                        id="Corr"
                         label="RR"
                         variant="outlined"
                         // style={{marginRight:'22px'}}
@@ -1465,10 +1389,10 @@ const Step5 = () => {
                 <Grid item xs={12} md={2}>
                   <Controller
                     control={control}
-                    name="box"
+                    name="Cobox"
                     render={({ field }) => (
                       <TextField
-                        id="BOX"
+                        id="Cobox"
                         label="BOX"
                         variant="outlined"
                         // placeholder=""
@@ -1499,10 +1423,10 @@ const Step5 = () => {
                 <Grid item xs={12} md={2}>
                   <Controller
                     control={control}
-                    name="street"
+                    name="Costreet"
                     render={({ field }) => (
                       <TextField
-                        id="street #"
+                        id="Costreet #"
                         label="Street #"
                         variant="outlined"
                         // placeholder="Enter Your Phone Number"
@@ -1516,10 +1440,10 @@ const Step5 = () => {
                 <Grid item xs={12} md={2}>
                   <Controller
                     control={control}
-                    name="StreetName"
+                    name="CoStreetName"
                     render={({ field }) => (
                       <TextField
-                        id="Street"
+                        id="CoStreetName"
                         label="Street Name"
                         variant="outlined"
                         // placeholder="Enter Your Alternate Phone"
@@ -1533,22 +1457,22 @@ const Step5 = () => {
                 <Grid item xs={12} md={2}>
                   <InputLabel
                     style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                    id="street"
+                    id="CoStreetOptional"
                   >
                     Select Street (Optional)
                   </InputLabel>
                   <Controller
                     control={control}
-                    name="Street"
+                    name="CoStreetOptional"
                     render={({ field }) => (
                       <Select
                         labelId="Select Street"
-                        id="selectStreet"
+                        id="CoStreetOptional"
                         //   multiple
                         // label="Select State"
                         fullWidth
                         input={<OutlinedInput label="Street" />}
-                        name="Street"
+                        
                         {...field}
                       >
                         {AllStreet.map((Street) => (
@@ -1565,10 +1489,10 @@ const Step5 = () => {
                 <Grid item xs={12} md={2}>
                   <Controller
                     control={control}
-                    name="apt"
+                    name="Coapt"
                     render={({ field }) => (
                       <TextField
-                        id="apt #"
+                        id="Coapt #"
                         label="Apt #"
                         variant="outlined"
                         // placeholder="Enter Your Phone Number"
@@ -1583,74 +1507,6 @@ const Step5 = () => {
             </>
           )}
 
-          {/* {!visible && 
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={2}>
-            <Controller
-              control={control}
-              name="street"
-              render={({ field }) => (
-                <TextField
-                  id="street #"
-                  label="Street #"
-                  variant="outlined"
-                  // placeholder="Enter Your Phone Number"
-                  halfWidth
-                  margin="normal"
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <Controller
-              control={control}
-              name="StreetName"
-              render={({ field }) => (
-                <TextField
-                  id="Street"
-                  label="Street Name"
-                  variant="outlined"
-                  // placeholder="Enter Your Alternate Phone"
-                  halfWidth
-                  margin="normal"
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <InputLabel
-              style={{ marginBottom: "10px", fontWeight: "bolder" }}
-              id="street"
-            >
-              Select Street (Optional)
-            </InputLabel>
-            <Controller
-              control={control}
-              name="Street"
-              render={({ field }) => (
-                <Select
-                  labelId="Select Street"
-                  id="selectStreet"
-                  //   multiple
-                  // label="Select State"
-                  fullWidth
-                  input={<OutlinedInput label="Street" />}
-                  name="Street"
-                  {...field}
-                >
-                  {AllStreet.map((Street) => (
-                    <MenuItem key={Street} value={Street}>
-                      {Street}
-                    </MenuItem>
-                  ))}
-                </Select>
-              )}
-            />
-          </Grid>
-        </Grid>
-        } */}
 
           {/* -------------------SAME */}
 
@@ -1658,10 +1514,10 @@ const Step5 = () => {
             <Grid item xs={12} md={4}>
               <Controller
                 control={control}
-                name="zip"
+                name="Cozip"
                 render={({ field }) => (
                   <TextField
-                    id="zip"
+                    id="Cozip"
                     label="ZIP"
                     variant="outlined"
                     // placeholder="Enter Your Phone Number"
@@ -1675,10 +1531,10 @@ const Step5 = () => {
             <Grid item xs={12} md={4}>
               <Controller
                 control={control}
-                name="city"
+                name="Cocity"
                 render={({ field }) => (
                   <TextField
-                    id="city"
+                    id="Cocity"
                     label="CITY"
                     variant="outlined"
                     // placeholder="Enter Your Alternate Phone"
@@ -1692,22 +1548,22 @@ const Step5 = () => {
             <Grid item xs={12} md={4}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="State"
+                id="CoState"
               >
                 Select State
               </InputLabel>
               <Controller
                 control={control}
-                name="State"
+                name="CoState"
                 render={({ field }) => (
                   <Select
-                    labelId="State"
-                    id="State"
+                    labelId="CoState"
+                    id="CoState"
                     //   multiple
                     // label="Select State"
                     fullWidth
                     input={<OutlinedInput label="State" />}
-                    name="State"
+                   
                     {...field}
                   >
                     {AllState.map((State) => (
@@ -1726,14 +1582,14 @@ const Step5 = () => {
       <h6>Same Mortgage/Rent information as applicant?</h6>
       <input
         type="radio"
-        name="release2"
+        name="Corelease2"
         checked={status2 === 3}
         onClick={(e) => radioHandler2(3)}
       />
       No
       <input
         type="radio"
-        name="release2"
+        name="Corelease2"
         checked={status2 === 4}
         onClick={(e) => radioHandler2(4)}
       />
@@ -1744,20 +1600,20 @@ const Step5 = () => {
             <Grid item xs={12} md={4}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="House"
+                id="CoHouse"
               >
                 Select Housing Status
               </InputLabel>
               <Controller
                 control={control}
-                name="House"
+                name="CoHouse"
                 render={({ field }) => (
                   <Select
                     labelId="House"
-                    id="House"
+                    id="CoHouse"
                     fullWidth
                     input={<OutlinedInput label="House" />}
-                    name="House"
+                   
                     {...field}
                   >
                     {AllHouse.map((House) => (
@@ -1772,17 +1628,17 @@ const Step5 = () => {
             <Grid item xs={12} md={2}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="Year"
+                id="CoYear"
               >
                 Time at Address
               </InputLabel>
               <Controller
                 control={control}
-                name="Year"
+                name="CoYear"
                 render={({ field }) => (
                   <TextField
                     type="number"
-                    id="year"
+                    id="CoYear"
                     label="Years"
                     variant="outlined"
                     // placeholder="Enter Your Alternate Phone"
@@ -1806,11 +1662,11 @@ const Step5 = () => {
               </InputLabel>
               <Controller
                 control={control}
-                name="Month"
+                name="CoMonth"
                 render={({ field }) => (
                   <TextField
                     type="number"
-                    id="month"
+                    id="CoMonth"
                     label="Months"
                     variant="outlined"
                     // placeholder="Enter Your Alternate Phone"
@@ -1824,17 +1680,17 @@ const Step5 = () => {
             <Grid item xs={12} md={4}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="Mortgage"
+                id="CoMortgage"
               >
                 Mortgage Payment/Rent
               </InputLabel>
               <Controller
                 control={control}
-                name="Mortgage"
+                name="CoMortgage"
                 render={({ field }) => (
                   <TextField
                     type="number"
-                    id="mortgage"
+                    id="CoMortgage"
                     label="$"
                     variant="outlined"
                     // placeholder="Enter Your Alternate Phone"
@@ -1853,17 +1709,17 @@ const Step5 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="dob"
+            id="Codob"
           >
             Date Of Birth
           </InputLabel>
           <Controller
             control={control}
-            name="Dob"
+            name="Codob"
             render={({ field }) => (
               <TextField
                 // type="number"
-                id="Dob"
+                id="Codob"
                 // label="DOB"
                 variant="outlined"
                 placeholder="Enter Your DOB"
@@ -1879,17 +1735,17 @@ const Step5 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="SSN"
+            id="CoSSN"
           >
             SSN / ITIN
           </InputLabel>
           <Controller
             control={control}
-            name="SSN"
+            name="CoSSN"
             render={({ field }) => (
               <TextField
                 // type="number"
-                id="SSN"
+                id="CoSSN"
                 // label="DOB"
                 variant="outlined"
                 placeholder="***/**/****"
@@ -1929,7 +1785,7 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = false;
-      console.log("SURR", SURR)
+      // console.log("SURR", SURR)
 
     break;
     case "" :
@@ -1940,7 +1796,7 @@ const Step6 = () => {
       EAO = true;
       Self = false;
       std = false;
-      console.log("EAO", EAO)
+      // console.log("EAO", EAO)
       break;
 
     case "Self-Employed":
@@ -1952,7 +1808,7 @@ const Step6 = () => {
       // setEAO(false);
       // setSelf(true);
       // setstd(false);
-    console.log("self", Self)
+    // console.log("self", Self)
 
       break;
 
@@ -1961,7 +1817,7 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = true;
-    console.log("std", std);
+    // console.log("std", std);
 
     break;
     
@@ -1976,182 +1832,105 @@ const Step6 = () => {
   const { control } = useFormContext();
   return (
     <>
-     
-     <Grid container spacing={2}>
-        <Grid item xs={12} md={4}>
-          
-           <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">
-          Select Housing Status</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={HousingStatus}
-          onChange={handleChange}
-          label="selectEmpStatus"
-        >
-          <MenuItem value={"Employed"}>Employed</MenuItem>
-          <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
-          <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
-          <MenuItem value={"Student"}>Student</MenuItem>
-          <MenuItem value={"Retired"}>Retired</MenuItem>
-          <MenuItem value={"Active Military"}>Active Military</MenuItem>
-          <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
-          <MenuItem value={"Other"}>Other</MenuItem>
-        </Select>
-      </FormControl>
-          {/* {console.log(HousingStatus, SURR)} */}
-        </Grid>
-        {(EAO || std) &&<Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="employer"
-          >
-          
-          </InputLabel>
-          <Controller
-            control={control}
-            name="Employer"
-            id="empController"
-            render={({ field }) => (
-              <TextField
-                type="text"
-                id="Employer"
-                // label="Employer"
-                label={(std)?"School Name":"Employer"}
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
+    <Grid container spacing={2}>
+    <Grid item xs={12} md={4}>
+    <Controller
+        control={control}
+        name="CoSelectHousingStatus"
+        id="empController"
+        render={({ field }) => (
+          <FormControl fullWidth>
+    <InputLabel id="demo-simple-select-label">
+      Select Housing Status</InputLabel>
+    <Select
+      labelId="demo-simple-select-label"
+      id="demo-simple-select"
+      value={HousingStatus}
+      onChange={handleChange}
+      label="selectEmpStatus"
+      {...field}
+    >
+      <MenuItem value={"Employed"}>Employed</MenuItem>
+      <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
+      <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
+      <MenuItem value={"Student"}>Student</MenuItem>
+      <MenuItem value={"Retired"}>Retired</MenuItem>
+      <MenuItem value={"Active Military"}>Active Military</MenuItem>
+      <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
+      <MenuItem value={"Other"}>Other</MenuItem>
+    </Select>
+  </FormControl>
+        )}
+      />
+    </Grid>
+    {(EAO || std) &&<Grid item xs={12} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="employer"
+      >
+      
+      </InputLabel>
+      <Controller
+        control={control}
+        name="CoEmployer"
+        id="empController"
+        render={({ field }) => (
+          <TextField
+            type="text"
+            id="Employer"
+            // label="Employer"
+            label={(std)?"School Name":"Employer"}
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
           />
-        </Grid>}
-       
-      </Grid>
-      {/* Work Title--------------------------------------------------- */}
-      {(EAO || std) && <div>
-        {<Grid item xs={6} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="WorkTitle"
-          >
-          </InputLabel>
-          <Controller
-            control={control}
-            name="WorkTitle"
-            render={({ field }) => (
-              <TextField
-                type="text"
-                id="WorkTitle"
-                label="Work Title"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>}
-      {/* Work Phone--------------------------------------------------- */}
-        {<Grid item xs={6} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="WorkPhone"
-          >
-          </InputLabel>
-          <Controller
-            control={control}
-            name="WorkPhone"
-            render={({ field }) => (
-              <TextField
-                type="text"
-                id="WorkPhone"
-                label={(std)? "School Phone": "Work Phone"}
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>}
-        <hr />
-      {/* Time At jOb--------------------------------------------------*/}
-       {<Grid container spacing={2}>
-        <Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="yearss"
-          >
-            Time At Job
-          </InputLabel>
-          <Controller
-            control={control}
-            name="yearss"
-            render={({ field }) => (
-              <TextField
-                type="number"
-                id="yearss"
-                label="Years"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="employer"
-          >
-          
-          </InputLabel>
-          <Controller
-            control={control}
-            name="monthss"
-            render={({ field }) => (
-              <TextField
-                type="number"
-                id="monthss"
-                label="Months"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-       
-      </Grid>}
-      </div>}
-
-      <hr />
-      {Self && <div>
-  
-  {/* Work Phone--------------------------------------------------- */}
+        )}
+      />
+    </Grid>}
+   
+  </Grid>
+  {/* Work Title--------------------------------------------------- */}
+  {(EAO || std) && <div>
     {<Grid item xs={6} md={2}>
       <InputLabel
         style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="WorkPhone"
+        id="CoWorkTitle"
       >
       </InputLabel>
       <Controller
         control={control}
-        name="WorkPhone"
+        name="CoWorkTitle"
         render={({ field }) => (
           <TextField
             type="text"
-            id="WorkPhone"
-            label="Work Phone"
+            id="WorkTitle"
+            label="Work Title"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>}
+  {/* Work Phone--------------------------------------------------- */}
+    {<Grid item xs={6} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="CoWorkPhone"
+      >
+      </InputLabel>
+      <Controller
+        control={control}
+        name="CoWorkPhone"
+        render={({ field }) => (
+          <TextField
+            type="text"
+            id="CoWorkPhone"
+            label={(std)? "School Phone": "Work Phone"}
             variant="outlined"
             // placeholder="Enter Your Alternate Phone"
             halfWidth
@@ -2167,17 +1946,17 @@ const Step6 = () => {
     <Grid item xs={12} md={2}>
       <InputLabel
         style={{ marginBottom: "10px", fontWeight: "bolder" }}
-        id="yearss"
+        id="Coyearss"
       >
         Time At Job
       </InputLabel>
       <Controller
         control={control}
-        name="yearss"
+        name="Coyearss"
         render={({ field }) => (
           <TextField
             type="number"
-            id="yearss"
+            id="Coyearss"
             label="Years"
             variant="outlined"
             // placeholder="Enter Your Alternate Phone"
@@ -2197,11 +1976,11 @@ const Step6 = () => {
       </InputLabel>
       <Controller
         control={control}
-        name="monthss"
+        name="Comonthss"
         render={({ field }) => (
           <TextField
             type="number"
-            id="monthss"
+            id="Comonthss"
             label="Months"
             variant="outlined"
             // placeholder="Enter Your Alternate Phone"
@@ -2215,66 +1994,148 @@ const Step6 = () => {
    
   </Grid>}
   </div>}
-        {/* Source OF income----------------------------------------------- */}
-        <Grid container spacing={2}>
-        <Grid item xs={12} md={4}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="EmpStatus"
+
+  <hr />
+  {Self && <div>
+
+{/* Work Phone--------------------------------------------------- */}
+{<Grid item xs={6} md={2}>
+  <InputLabel
+    style={{ marginBottom: "10px", fontWeight: "bolder" }}
+    id="CoSelfWorkPhone"
+  >
+  </InputLabel>
+  <Controller
+    control={control}
+    name="CoSelfWorkPhone"
+    render={({ field }) => (
+      <TextField
+        type="text"
+        id="CoSelfWorkPhone"
+        label="Work Phone"
+        variant="outlined"
+        // placeholder="Enter Your Alternate Phone"
+        halfWidth
+        margin="normal"
+        {...field}
+      />
+    )}
+  />
+</Grid>}
+<hr />
+{/* Time At jOb--------------------------------------------------*/}
+{<Grid container spacing={2}>
+<Grid item xs={12} md={2}>
+  <InputLabel
+    style={{ marginBottom: "10px", fontWeight: "bolder" }}
+    id="CoSelfyear"
+  >
+    Time At Job
+  </InputLabel>
+  <Controller
+    control={control}
+    name="CoSelfyear"
+    render={({ field }) => (
+      <TextField
+        type="number"
+        id="CoSelfyear"
+        label="Years"
+        variant="outlined"
+        // placeholder="Enter Your Alternate Phone"
+        halfWidth
+        margin="normal"
+        {...field}
+      />
+    )}
+  />
+</Grid>
+<Grid item xs={12} md={4}>
+  <InputLabel
+    style={{ marginBottom: "10px", fontWeight: "bolder" }}
+    id="CoSelfemployer"
+  >
+  
+  </InputLabel>
+  <Controller
+    control={control}
+    name="CoSelfmonths"
+    render={({ field }) => (
+      <TextField
+        type="number"
+        id="CoSelfmonths"
+        label="Months"
+        variant="outlined"
+        // placeholder="Enter Your Alternate Phone"
+        halfWidth
+        margin="normal"
+        {...field}
+      />
+    )}
+  />
+</Grid>
+
+</Grid>}
+</div>}
+    {/* Source OF income----------------------------------------------- */}
+    <Grid container spacing={2}>
+    <Grid item xs={12} md={4}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="CoEmpStatus"
+        value={"Select one"}
+      >
+        Source of Income
+      </InputLabel>
+      <Controller
+        control={control}
+        name="CoEmpStatus"
+        render={({ field }) => (
+          <Select
+            labelId="EmpStatus"
+            id="CoEmpStatus"
+            fullWidth
+            input={<OutlinedInput label="EmpStatus" />}
+            // name="EmpStatus"
             value={"Select one"}
+            {...field}
           >
-            Source of Income
-          </InputLabel>
-          <Controller
-            control={control}
-            name="EmpStatus"
-            render={({ field }) => (
-              <Select
-                labelId="EmpStatus"
-                id="EmpStatus"
-                fullWidth
-                input={<OutlinedInput label="EmpStatus" />}
-                name="EmpStatus"
-                value={"Select one"}
-                {...field}
-              >
-                {IncomeSrc.map((incSource) => (
-                  <MenuItem key={incSource} value={incSource}>
-                    {incSource}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <InputLabel
-            style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="PerYear"
-          >
-          
-          </InputLabel>
-          <Controller
-            control={control}
-            name="PerYear"
-            render={({ field }) => (
-              <TextField
-                type="number"
-                id="PerYear"
-                label="Per Year ($)"
-                variant="outlined"
-                // placeholder="Enter Your Alternate Phone"
-                halfWidth
-                margin="normal"
-                {...field}
-              />
-            )}
-          />
-        </Grid>
-       
-      </Grid>
+            {IncomeSrc.map((incSource) => (
+              <MenuItem key={incSource} value={incSource}>
+                {incSource}
+              </MenuItem>
+            ))}
+          </Select>
+        )}
+      />
+    </Grid>
+    <Grid item xs={12} md={2}>
+      <InputLabel
+        style={{ marginBottom: "10px", fontWeight: "bolder" }}
+        id="CoPerYear"
+      >
       
-    </>
+      </InputLabel>
+      <Controller
+        control={control}
+        name="CoPerYear"
+        render={({ field }) => (
+          <TextField
+            type="number"
+            id="PerYear"
+            label="Per Year ($)"
+            variant="outlined"
+            // placeholder="Enter Your Alternate Phone"
+            halfWidth
+            margin="normal"
+            {...field}
+          />
+        )}
+      />
+    </Grid>
+   
+  </Grid>
+  </>
+  
   );
 };
 
@@ -2301,12 +2162,92 @@ const LinearStepper = () => {
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
-      fName: "",
-      lastName: "",
-      midName: "",
-      Suffix: "",
-      homeNum: "",
-      cellNum: "",
+      fname:"",
+      midName:"",
+      lName:"",
+      Suffix:"",
+      homeNum:"",
+      cellNum:"",
+      email:"",
+      Vemail:"",
+      rr:"",
+      box:"",
+      street:"",
+      StreetName:"",
+      StreetOptional:"",
+      apt:"",
+      zip:"",
+      city:"",
+      State:"",
+      House:"",
+      Year:"",
+      Month:"",
+      Mortgage:"",
+      Dob:"",
+      SSN:"",
+      CoApplicantRelation:"",
+      SelectHousingStatus: "",
+      Employer: "",
+      WorkTitle: "",
+      WorkPhone: "",
+      yearss: "",
+      monthss:"",
+      SelfWorkPhone: "",
+      Selfyear: "",
+      Selfmonths: "",
+      EmpStatus: "",
+      PerYear: "",
+      // <..................CO-applicant info.............................>
+      Cofname:"",
+      CoMidName:"",
+      ColName:"",
+      CoSuffix:"",
+      CocellNum:"",
+      CohomeNum:"",
+      Coemail:"",
+      CoVemail:"",
+
+      // <...........step2.........>
+      Corelease:"",
+      Corr:"",
+      Cobox:"",
+      Costreet:"",
+      CoStreetName:"",
+      CoStreetOptional:"",
+      Coapt:"",
+      Cozip:"",
+      Cocity:"",
+      CoState:"",
+      Corelease2:"",
+      CoHouse:"",
+      CoYear:"",
+      CoMonth:"",
+      CoMortgage:"",
+      Codob:"",
+      CoSSN:"",
+
+
+      CoSelectHousingStatus:"",
+      CoEmployer:"",
+      CoWorkTitle:"",
+      CoWorkPhone:"",
+      Coyearss:"",
+      Comonthss:"",
+      CoSelfWorkPhone:"",
+      CoSelfyear:"",
+      CoSelfemployer:"",
+      CoSelfmonths:"",
+      CoEmpStatus:"",
+      CoPerYear:"",
+
+
+
+
+
+
+
+
+
     },
   });
   const [activeStep, setActiveStep] = useState(0);
