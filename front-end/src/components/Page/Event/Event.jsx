@@ -5,7 +5,7 @@ export default function Event() {
   return (
       <Layout>
     <div>
-        <h1 className='text-center pt-5' style={{ color: "blue" }}>Coming Soon</h1>
+        <h1 className='text-center pt-5' style={{ color: "red" }}>Coming Soon</h1>
     </div>
     </Layout>
   )

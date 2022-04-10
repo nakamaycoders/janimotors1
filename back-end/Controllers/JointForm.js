@@ -214,7 +214,7 @@ exports.getJointForm = async (req, res) => {
 
 
   exports.updateDetails = catchAsyncErrors(async (req, res, next) => {
-    const updatedData = await JOint.findByIdAndUpdate(
+    const updatedData = await Joint.findByIdAndUpdate(
       req.params.id,
       { view: "read" },
       {
