@@ -52,6 +52,9 @@ app.use('/api',tradeInRoutes)
 const creditRoutes = require('./Routes/credit')
 app.use('/api',creditRoutes)
 
+const JointRoutes = require('./Routes/JointForm')
+app.use('/api',JointRoutes)
+
 app.listen(process.env.PORT,()=>{
     console.log(`Server is working on port ${process.env.PORT}`)
 }); 
