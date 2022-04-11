@@ -295,8 +295,8 @@ const Sidebar = (props = {}) => {
                 // eventKey="tables/"
                 title="Credit Approval"
               >
-                <NavItem title="Individual" link="/CREDIT-APPROVAL" />
-                <NavItem title="Joint" link="/joint" />
+                <NavItem title="Individual" link="/IndividualCreditForm" />
+                <NavItem title="Joint" link="/CREDIT-APPROVAL" />
                 
               </CollapsableNavItem>
               </CollapsableNavItem>
