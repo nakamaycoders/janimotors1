@@ -877,6 +877,7 @@ const Step3 = () => {
               value={HousingStatus}
               onChange={handleChange}
               label="selectEmpStatus"
+              variant="outlined"
 
 
             >
@@ -1276,7 +1277,7 @@ const LinearStepper = () => {
         config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
         console.log(res);
-        alert(res, "successfull");
+        alert( "successfull");
         setActiveStep(activeStep + 1);
       });
       // axios.post("http://localhost:5000/api/credit/send")
