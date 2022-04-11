@@ -112,7 +112,7 @@ export const RespSearch = () => {
               placeholder="search"
               onChange={(e) => setKeyword(e.target.value)}
             />
-            <input type="submit" className="btn btn-primary" value="Search" />
+            <input type="submit" className="btn btn-primary" style={{borderRadius:'15px'}} value="Search" />
           </form>
         </div>
       </div>

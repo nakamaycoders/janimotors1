@@ -66,7 +66,7 @@ export const Navbar = (props) => {
             />
           </Link>
         </div>
-        <label for="drop" style={{ float: "right",color:'white' }} className="toggle">
+        <label for="drop" style={{ float: "right" }} className="toggle">
           <DehazeIcon></DehazeIcon>
         </label>
         <input type="checkbox" id="drop" />

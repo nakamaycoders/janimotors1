@@ -4,7 +4,9 @@ nav {
   padding: 0;
   background-color: #000;
 }
- 
+ .menu {
+   margin-top: 2rem;
+ }
 #logo {
   display: block;
   padding: 0 30px;
