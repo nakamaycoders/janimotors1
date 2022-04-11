@@ -9,7 +9,7 @@ export const getAllCategory = () => {
   return async (dispatch) => {
     dispatch({ type: GET_ALL_CATEGORIES_REQUEST });
     const res = await axios.get(`/category/getcategories`);
-    console.log(res);
+    // console.log(res);
     if (res.status === 200) {
       const { categoryList } = res.data;
 

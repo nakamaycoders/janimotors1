@@ -39,7 +39,7 @@ export const getProduct =
         type: ALL_PRODUCT_SUCCESS,
         payload: data,
       });
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       dispatch({
         type: ALL_PRODUCT_FAIL,
@@ -53,7 +53,7 @@ export const getProductsBySlug = (slug) => async (dispatch) => {
   try {
     dispatch({ type: GET_PRODUCT_BY_SLUG_REQUEST });
     const { data } = await axios.get(`/products/${slug}`);
-    console.log(data);
+    // console.log(data);
     dispatch({
       type: GET_PRODUCT_BY_SLUG_SUCCESS,
       payload: data.product,

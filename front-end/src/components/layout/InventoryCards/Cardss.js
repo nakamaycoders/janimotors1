@@ -14,7 +14,6 @@ import {Link} from 'react-router-dom'
 export const Cardss = (props) => {
   const dispatch = useDispatch();
   let { products, error } = useSelector((state) => state.product);
-  console.log("ye hai",products);
 
   useEffect(() => {
     if (error) {
@@ -53,14 +52,13 @@ export const Cardss = (props) => {
         // showDots={true}
         removeArrowOnDeviceType={["tablet", "mobile"]}
       >
-        {products && products.map((p) => {
+        {products && products.map((p,index) => {
           return (
-            <div className="card container">
+            <div key={index} className="card container">
               <img
                 src={ImageUrl(p.productPictures[0].img)}
                 alt="heello"
                 className="img-fluid"
-                // style={{minHeight:"268px"}}
               />
               <div className="okok ">
                 <h4 className="title">{p.name}</h4>
@@ -75,7 +73,6 @@ export const Cardss = (props) => {
                   </td>
                 </tr>
                 <h5 className="show">Engine <br/> {p.engine} </h5>
-                {/* <p className="showw"> {p.description}</p> */}
               </div>
 
               <div className="hc">

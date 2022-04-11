@@ -27,7 +27,6 @@ export const Search = () => {
 
     dispatch(getProduct());
   }, [dispatch, error]);
-  console.log("search", products);
   let history = useHistory();
   const [keyword, setKeyword] = useState("");
   const [make, setMake] = useState("");
