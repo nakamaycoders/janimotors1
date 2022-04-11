@@ -33,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
 }));
+
+
 function getSteps() {
   return [
     "Applicant Contact Info",

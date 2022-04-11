@@ -4,7 +4,7 @@
 .error{
   border: 2px red solid;
 }
-label , small{
+label {
     color: white !important;
     /* font-size: 14px; */
    
@@ -23,4 +23,8 @@ select {
 textarea {
   resize: vertical;
   width: 100%;
+}
+
+.TextField{
+  color:bisque;
 }
