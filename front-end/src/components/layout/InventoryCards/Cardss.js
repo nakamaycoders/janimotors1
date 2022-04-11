@@ -85,7 +85,7 @@ export const Cardss = (props) => {
                 </h5>
                 <button className="bte btn show-btn btn-primary">Details</button>
                 <button className="btn hide btn-success">
-                  <Link to={`/product/${p._id}`}>View Details</Link>
+                  <Link to={`/product/${p._id}`} className="text-decoration-none">View Details</Link>
                 </button>
               </div>
             </div>

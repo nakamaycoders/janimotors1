@@ -9,7 +9,7 @@ export const Banner = (props) => {
       {slidersImages.map((item) => {
         return (
           <div key={item.id}>
-            <img src={item.img} className={item.cName} alt="" />
+            <img src={item.img} className="img-fluid" alt={item.cName} />
           </div>
         );
       })}
