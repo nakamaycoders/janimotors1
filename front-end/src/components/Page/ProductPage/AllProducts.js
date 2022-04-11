@@ -8,33 +8,13 @@ import Loader from "../../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import { ImageUrl } from "../../../UrlConfig";
 import { RespSearch } from "../../layout/Resp-SearchBar";
-// import Pagination from "react-js-pagination";
 
 const AllProducts = ({ match }) => {
-  // const [model, setModel] = useState("");
-
   const dispatch = useDispatch();
-  let {
-    products,
-    error,
-    loading,
-    // productsCount,
-    // resultPerPage,
-    // filteredProductsCount,
-  } = useSelector((state) => state.product);
-  console.log(products);
-  // const [currentPage, setCurrentPage] = useState(1);
+  let { products, error, loading } = useSelector((state) => state.product);
+  // console.log(products);
 
   const keyword = match.params.keyword;
-  // const model = match.params.model;
-  // const setCurrentPageNo = (e) => {
-  //   setCurrentPage(e);
-  // };
-
-  // let count = filteredProductsCount;
-
-  // console.log(keyword);
-  // console.log("model",model);
 
   useEffect(() => {
     if (error) {
@@ -48,71 +28,7 @@ const AllProducts = ({ match }) => {
       <div className="container-fluid">
         <div className="row">
           <RespSearch />
-          {/* <div className="col-md-4 col-lg-3 pt-3">
-            <div className="search-div">
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Make
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div className="search-div">
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Model
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div className="search-div">
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Year
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div className="search-div">
-              <select class="form-select" aria-label="Default select example">
-                <option selected disabled>
-                  Body
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
 
-            <div
-              className="search-btn"
-              style={{ display: "flex", justifyContent: "left" }}
-            >
-              <input
-                type="search"
-                className="input-1"
-                placeholder="search"
-                style={{ margin: "2px 30px" }}
-              />
-              <Button
-                class="btn btn-lg btn-primary btn-1"
-                style={{
-                  margin: "2px 30px",
-                  borderRadius: "40px",
-                  width: "100px",
-                }}
-              >
-                Search
-              </Button>
-            </div>
-          </div> */}
-          {/* <div className="col-md-9"> */}
           <div className="col-md-9">
             {loading ? (
               <Loader />
@@ -138,9 +54,7 @@ const AllProducts = ({ match }) => {
                         className="col-md-4 col-sm-12 pt-3 detailsss"
                         style={{ color: "white" }}
                       >
-                        <span className=" " style={{ width: "200px" }}>
-                          {p.name}
-                        </span>
+                        <span style={{ width: "200px" }}>{p.name}</span>
                         <div>
                           <span className="fw-bolder">Price: </span>
                           <span>{p.price}</span>
@@ -177,28 +91,8 @@ const AllProducts = ({ match }) => {
               </>
             )}
           </div>
-
-          {/* </div> */}
         </div>
       </div>
-      {/* {resultPerPage < count && (
-            <div className="paginationBox">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
-                onChange={setCurrentPageNo}
-                nextPageText="Next"
-                prevPageText="Prev"
-                firstPageText="1st"
-                lastPageText="Last"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
-              />
-            </div>
-          )} */}
     </Layout>
   );
 };

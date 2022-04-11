@@ -40,18 +40,7 @@ function Product(props) {
     }
     const { match } = props;
     dispatch(getProductsBySlug(match.params.slug));
-    // console.log(match.params.slug);
   }, [dispatch,error,props]);
-
-  // console.log(product.products[0].condition)
-
-  // product.products.map((p)=>{
-  //   return(
-  //   <div key={p}>
-  //     <h1>{p.name}</h1>
-  //   </div>
-  //   )
-  // })
 
   return (
     <>
@@ -59,70 +48,7 @@ function Product(props) {
         <div className="container-fluid">
           <div className="row">
             <RespSearch />
-                {/* <div className="col-md-4 col-lg-3 pt-3">
-              <div className="search-div">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected disabled>
-                    Make
-                  </option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div className="search-div">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected disabled>
-                    Model
-                  </option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div className="search-div">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected disabled>
-                    Year
-                  </option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div className="search-div">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected disabled>
-                    Body
-                  </option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-
-              <div
-                className="search-btn"
-                style={{ display: "flex", justifyContent: "left" }}
-              >
-                <input
-                  type="search"
-                  className="input-1"
-                  placeholder="search"
-                  style={{ margin: "2px 30px" }}
-                />
-                <Button
-                  class="btn btn-lg btn-primary btn-1"
-                  style={{
-                    margin: "2px 30px",
-                    borderRadius: "40px",
-                    width: "100px",
-                  }}
-                >
-                  Search
-                </Button>
-              </div>
-            </div> */}
+               
             <div className="col-md-9">
             {loading ? (
                 <Loader />
@@ -135,7 +61,6 @@ function Product(props) {
                 <>
               {products &&
                 products.map((p) => {
-                  // console.log(ImageUrl(p.productPictures[0].img));
                   return (
                     <div className="row">
                       <div className="col-md-6 col-sm-12 pt-3">
@@ -148,10 +73,10 @@ function Product(props) {
                         </Link>
                       </div>
                       <div
-                        className="col-md-3 col-sm-12 pt-3 detailsss"
+                        className="col-md-4 col-sm-12 pt-3 detailsss"
                         style={{ color: "white" }}
                       >
-                        <span className=" " style={{ border:"2px red solid" , width:"200px"}} >{p.name}</span>
+                        <span style={{width:"200px"}} >{p.name}</span>
                         <div>
                           <span className="fw-bolder">Price: </span>
                           <span>{p.price}</span>
@@ -163,7 +88,7 @@ function Product(props) {
                             <span>{p.milage}</span>
                           </div>
 
-                          <div className="">
+                          <div>
                             <span className="fw-bolder ms-5">stock: </span>
                             <span>{p.stock}</span>
                           </div>
