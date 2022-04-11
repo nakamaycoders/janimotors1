@@ -2237,7 +2237,7 @@ const LinearStepper = () => {
   // };
   return (
     <Layout>
-    <div>
+    <div style={{backgroundColor:"white"}}>
        <div className="btn11 p-5" style={{backgroundColor:"white"}}>
           <Typography variant="h5" style={{marginBottom:"10px"}}>Application Type</Typography>
         <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>

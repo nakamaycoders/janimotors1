@@ -2,10 +2,29 @@
     background: white;
     color: black;
 }
-TextField  label{
-    color: rgb(223, 179, 179) !important;
-}
+  /* label{
+    color: rgb(37, 36, 36) ;
+} */
 /* .MuiSelect-selectMenu {
     height: 40px !important; 
  
 } */
+
+.MuiInputLabel-formControl {
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform: translate(0, 24px) scale(1);
+    color: black;
+    color: black !important;
+}
+
+.MuiInputLabel-root {
+    display: block;
+    transform-origin: top left;
+    color: black !important;
+}
+
+.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    color: black !important;
+}
