@@ -30,7 +30,7 @@ const AllProducts = ({ match }) => {
   // const setCurrentPageNo = (e) => {
   //   setCurrentPage(e);
   // };
-  
+
   // let count = filteredProductsCount;
 
   // console.log(keyword);
@@ -135,13 +135,10 @@ const AllProducts = ({ match }) => {
                         </Link>
                       </div>
                       <div
-                        className="col-md-3 col-sm-12 pt-3 detailsss"
+                        className="col-md-4 col-sm-12 pt-3 detailsss"
                         style={{ color: "white" }}
                       >
-                        <span
-                          className=" "
-                          style={{ border: "2px red solid", width: "200px" }}
-                        >
+                        <span className=" " style={{ width: "200px" }}>
                           {p.name}
                         </span>
                         <div>

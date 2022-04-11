@@ -92,7 +92,7 @@ exports.postCredit = catchAsyncErrors(async(req, res, next) => {
     });
   });
 
-  exports.getCredit =  catchAsyncErrors(async(req,res,next) => {
+exports.getCredit =  catchAsyncErrors(async(req,res,next) => {
     const creditInfo = await Credit.find();
   
     res.status(201).json({
@@ -112,6 +112,18 @@ exports.deleteCreditFormById = catchAsyncErrors(async (req, res, next) => {
   res.status(201).json({
     success: true,
     message: "Deleted Successfully",
+  });
+});
+
+exports.getCreditDetailsById = catchAsyncErrors(async (req, res, next) => {
+  const { id } = req.params;
+  const result = await Credit.findOne({ _id: id });
+  if (!result) {
+    return next(new ErrorHander("Not found", 404));
+  }
+  res.status(200).json({
+    success: true,
+    result,
   });
 });
 

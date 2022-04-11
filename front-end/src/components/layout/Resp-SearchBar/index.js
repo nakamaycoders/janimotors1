@@ -111,9 +111,8 @@ export const RespSearch = () => {
               className="input-1"
               placeholder="search"
               onChange={(e) => setKeyword(e.target.value)}
-              style={{ margin: "2px 10px" }}
             />
-            <input type="submit" value="Search" />
+            <input type="submit" className="btn btn-primary" value="Search" />
           </form>
         </div>
       </div>

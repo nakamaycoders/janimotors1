@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/joint/send',createJointForm);
 router.get('/joint/information',getJointForm);
 router.delete('/joint/delete/:id',deleteJointFormById);
-router.get('/joint/information/:id',getJointDetailsById);
+router.get('/joint/information/:id',getJointDetailscById);
 router.patch('/joint/update/:id',updateDetails);
 
 module.exports = router;

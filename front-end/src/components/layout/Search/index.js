@@ -120,17 +120,15 @@ export const Search = () => {
               </Col>
             </Row>
 
-            <div className="search-btn">
               <div className="searchBox">
                 <input
                   type="text"
                   className="input-1"
                   placeholder="search"
                   onChange={(e) => setKeyword(e.target.value)}
-                  style={{ margin: "2px 10px" }}
+                  style={{ margin: "10px 0px" }}
                 />
-                <input type="submit" value="Search" />
-              </div>
+                <input type="submit" className="btn btn-primary searchBtn-resp" value="Search" />
             </div>
           </form>
         </Container>
