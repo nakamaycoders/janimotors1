@@ -185,7 +185,7 @@ exports.getJointForm = async (req, res) => {
     });
   };
   
-  exports.getJointDetailsById = catchAsyncErrors(async (req, res, next) => {
+exports.getJointDetailsById = catchAsyncErrors(async (req, res, next) => {
     const { id } = req.params;
     const result = await Joint.findOne({ _id: id });
     if (!result) {
@@ -196,7 +196,6 @@ exports.getJointForm = async (req, res) => {
       result,
     });
   });
-
 
   exports.deleteJointFormById = catchAsyncErrors(async (req, res, next) => {
     const result = await Joint.findById(req.params.id);
