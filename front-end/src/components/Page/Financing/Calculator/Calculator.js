@@ -184,14 +184,15 @@ function Calculator() {
           />
         </Col>
       </Row>
-      <div style={{ textAlign: "center", margin: "7px 0 7px 0" }}>
-        <Button variant="primary" size="lg" active onClick={CalculateResult}>
+      <div style={{ textAlign: "center"}}>
+        <Button style={{ marginRight:"10px"}} variant="primary" size="lg" active onClick={CalculateResult}>
           Calculate
         </Button>{" "}
         <Button
-          style={{ margin: "7px 0 7px 15px" }}
-          variant="secondary"
+          // style={{ margin: "7px 0 7px 15px" }}
+          variant="warning"
           size="lg"
+          color="primary"
           active
           onClick={clearFields}
         >
