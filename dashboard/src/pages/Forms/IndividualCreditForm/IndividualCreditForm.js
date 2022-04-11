@@ -11,7 +11,7 @@ const CreditApproval = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/credit/update/:id`;
+    const changeViewUrl = `http://localhost:5000/api/credit/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {

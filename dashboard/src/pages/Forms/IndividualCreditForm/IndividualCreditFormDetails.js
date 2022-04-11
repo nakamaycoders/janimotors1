@@ -40,12 +40,12 @@ export default function CustomizedTables(props) {
           <tr>
             {/* <td className="boldIt">First Name</td> */}
              <td className="boldIt">First Name</td>
-             <td >{responseData.fname}</td>
+             <td >{responseData.fName}</td>
             
           </tr>
           <tr>
              <td className="boldIt">Middle Name</td>
-             <td >{responseData.midName}</td>
+             <td >{responseData.mName}</td>
           </tr>
           <tr>
              <td className="boldIt">Last Name</td>
@@ -127,14 +127,7 @@ export default function CustomizedTables(props) {
              <td className="boldIt">SSN</td>
              <td >{responseData.SSN}</td>
           </tr>
-          <tr>
-             <td className="boldIt">Co-Applicant Relation</td>
-             <td >{responseData.CoApplicantRelation}</td>
-          </tr>
-          <tr>
-             <td className="boldIt">SelectHousingStatus</td>
-             <td >{responseData.SelectHousingStatus}</td>
-          </tr>
+       
           <tr>
              <td className="boldIt">Employer</td>
              <td >{responseData.Employer}</td>
