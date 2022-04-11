@@ -69,8 +69,8 @@ function App() {
           />
           <PrivateRoute path="/Credit-Approval/CreditApprovalDetails/:id" component={CreditApprovalDetails} />
           <PrivateRoute path="/Credit-Approval" component={CreditApproval} />
+          <PrivateRoute path="/IndividualCreditForm/IndividualCreditFormDetails/:id" component={IndividualCreditFormDetails} />
           <PrivateRoute path="/IndividualCreditForm" component={IndividualCreditForm} />
-          <PrivateRoute path="/IndividualCreditForm/Details/:id" component={IndividualCreditFormDetails} />
 
           <Route path="/signin" component={SignIn} />
           {/* <Route path="**" component={PageNotFound}/> */}
