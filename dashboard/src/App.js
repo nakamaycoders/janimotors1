@@ -19,6 +19,9 @@ import contactDetails from "./pages/Forms/ContactUs/contactDetails";
 import TradeIn from "./pages/Forms/TradeIn/TradeIn";
 import TradeInDetails from "./pages/Forms/TradeIn/TradeInDetails";
 import CreditApproval from "./pages/Forms/Credit-Approval/CreditApproval";
+import CreditApprovalDetails from "./pages/Forms/Credit-Approval/CreditApprovalDetails";
+import IndividualCreditForm from "./pages/Forms/IndividualCreditForm/IndividualCreditForm";
+import IndividualCreditFormDetails from "./pages/Forms/IndividualCreditForm/IndividualCreditFormDetails";
 import { getAdminProduct } from "./actions/productAction";
 
 function App() {
@@ -64,7 +67,10 @@ function App() {
             path="/TradeIn/TradeInDetails"
             component={TradeInDetails}
           />
+          <PrivateRoute path="/Credit-Approval/CreditApprovalDetails/:id" component={CreditApprovalDetails} />
           <PrivateRoute path="/Credit-Approval" component={CreditApproval} />
+          <PrivateRoute path="/IndividualCreditForm" component={IndividualCreditForm} />
+          <PrivateRoute path="/IndividualCreditForm/Details/:id" component={IndividualCreditFormDetails} />
 
           <Route path="/signin" component={SignIn} />
           {/* <Route path="**" component={PageNotFound}/> */}

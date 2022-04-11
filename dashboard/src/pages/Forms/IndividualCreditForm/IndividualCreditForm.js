@@ -26,7 +26,7 @@ const CreditApproval = () => {
     // deleteContactHandler()
   }, []);
 
-  const url = "http://localhost:5000/api/joint/information";
+  const url = "http://localhost:5000/api/credit/information";
 
   const getJointInfo = async () => {
     try {
@@ -55,7 +55,7 @@ const CreditApproval = () => {
       rows.splice(0, 0,{
         id: item._id,
         email: item.email,
-        fname: item.fname,
+        fname: item.fName,
         view: item.view,
       });
       if(item.view == "unread"){
