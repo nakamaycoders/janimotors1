@@ -375,12 +375,15 @@ const Step2 = () => {
   return (
     <>
       <FormGroup style={{ width: "fit-content" }}>
+        
         <FormControlLabel
+       
           control={<Checkbox size="large" />}
           value={checked}
           onChange={() => setChecked((checked) => !checked)}
           label="I have a Rural Route"
         />
+       
       </FormGroup>
       {checked ? (
         <>
@@ -392,7 +395,7 @@ const Step2 = () => {
                 rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
-                    id="rrr"
+                    id="rr"
                     label="RR"
                     variant="outlined"
                     // style={{marginRight:'22px'}}
@@ -415,7 +418,7 @@ const Step2 = () => {
                 rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
-                    id="BOX"
+                    id="box"
                     label="BOX"
                     variant="outlined"
                     // placeholder=""
@@ -1234,10 +1237,10 @@ const LinearStepper = () => {
       cellNum: "",
       email: "",
       Vemail: "",
-      rr: "",
-      box: "",
-      street: "",
-      StreetName: "",
+      rr:"",
+      box:"",
+      street:"",
+      StreetName:"",
       StreetOptional: "",
       apt: "",
       zip: "",
@@ -1348,7 +1351,7 @@ const LinearStepper = () => {
           align="center"
           style={{ backgroundColor: "white", color: "black" }}
         >
-          Thank You
+          Thank You For Submitting 
         </Typography>
       ) : (
         <>
