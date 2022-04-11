@@ -2,11 +2,10 @@ const Joint = require("../models/JointForm");
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
-exports.createJointForm = (req, res) => {
+exports.createJointForm = catchAsyncErrors(async(req, res, next) => {
   const {
        fname ,
        midName ,
-       
   lName ,
   Suffix ,
   homeNum ,
@@ -166,7 +165,8 @@ exports.createJointForm = (req, res) => {
   });
   joint.save((err, data) => {
     if (err) {
-      return res.status(400).json({ err });
+      // return res.status(400).json({ err });
+      return next(new ErrorHander("Not found", 404));
     }
     if (data) {
       return res.status(201).json({
@@ -174,16 +174,16 @@ exports.createJointForm = (req, res) => {
       });
     }
   });
-};
+});
 
-exports.getJointForm = async (req, res) => {
+exports.getJointForm = catchAsyncErrors(async(req, res, next) => {
     const JointInfo = await Joint.find();
-  
+
     res.status(201).json({
       success: true,
       JointInfo,
     });
-  };
+  });
   
 exports.getJointDetailsById = catchAsyncErrors(async (req, res, next) => {
     const { id } = req.params;
@@ -197,7 +197,7 @@ exports.getJointDetailsById = catchAsyncErrors(async (req, res, next) => {
     });
   });
 
-  exports.deleteJointFormById = catchAsyncErrors(async (req, res, next) => {
+exports.deleteJointFormById = catchAsyncErrors(async (req, res, next) => {
     const result = await Joint.findById(req.params.id);
     if (!result) {
       return next(new ErrorHander("Something Went Wrong", 400));
@@ -211,8 +211,7 @@ exports.getJointDetailsById = catchAsyncErrors(async (req, res, next) => {
     });
   });
 
-
-  exports.updateDetails = catchAsyncErrors(async (req, res, next) => {
+exports.updateDetails = catchAsyncErrors(async (req, res, next) => {
     const updatedData = await Joint.findByIdAndUpdate(
       req.params.id,
       { view: "read" },
@@ -230,5 +229,7 @@ exports.getJointDetailsById = catchAsyncErrors(async (req, res, next) => {
       });
     } catch (err) {
       console.log(err);
+      return next(new ErrorHander("Something Went Wrong", 400));
+
     }
   });
