@@ -179,7 +179,7 @@ function Step1(props) {
                 {...register("email", {
                   required: "Email is Required",
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    value: /\S+@\S+\.\S+/,
                     message: "Invalid email address",
                   },
                 })}

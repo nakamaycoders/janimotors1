@@ -4,6 +4,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import axios from "axios";
+import Layout from '../../../layout/layout/layout'
+
 
 import { Link } from "react-router-dom";
 import {
@@ -236,6 +238,8 @@ const Step1 = () => {
             )}
           />
         </Grid>
+         
+         <hr />
       </Grid>
       <Grid container>
         <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
@@ -2122,6 +2126,7 @@ function getStepContent(step) {
 }
 
 const LinearStepper = () => {
+  
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -2231,22 +2236,18 @@ const LinearStepper = () => {
   //   console.log(data);
   // };
   return (
+    <Layout>
     <div>
-      <div className="btn11 p-5" style={{ backgroundColor: "white" }}>
-        <Link
-          to="/creditApproval"
-          style={{ textDecoration: "none", marginRight: "10px" }}
-        >
-          <Button variant="contained" color="primary">
-            Individual
-          </Button>
+       <div className="btn11 p-5" style={{backgroundColor:"white"}}>
+          <Typography variant="h5" style={{marginBottom:"10px"}}>Application Type</Typography>
+        <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
+          <Button variant="contained" color="primary" >Individual</Button>
         </Link>
-        <Link to="/joint" style={{ textDecoration: "none" }}>
-          <Button variant="contained" color="primary">
-            Joint
-          </Button>
-        </Link>
-      </div>
+        <Link to="/joint" style={{textDecoration:"none"}}>
+          <Button variant="contained" color="primary">Joint</Button>
+          </Link>
+          <Typography style={{marginTop:"10px"}}>Please be aware that by selecting "Joint" the applicant and the co-applicant agree they intend to apply for joint credit. The co-applicant must be present and must indicate his or her acceptance of the Terms and Conditions at the end of this application before it is submitted.</Typography>
+        </div>
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
           return (
@@ -2263,7 +2264,7 @@ const LinearStepper = () => {
           align="center"
           style={{ backgroundColor: "white", color: "black" }}
         >
-          Thank You
+          Thank You For Submitting
         </Typography>
       ) : (
         <>
@@ -2298,6 +2299,7 @@ const LinearStepper = () => {
         </>
       )}
     </div>
+  </Layout>
   );
 };
 

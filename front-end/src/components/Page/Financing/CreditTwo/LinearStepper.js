@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import './LinearStepper.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+
 import {
   Typography,
   TextField,
@@ -158,7 +159,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="fName"
-            rules={{ required: "this field is required." }}
+            rules={{ required: "First name is required." }}
             render={({ field }) => (
               <TextField
                 id="fname"
@@ -195,6 +196,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="lName"
+            rules={{ required: "Last name is required." }}
             render={({ field }) => (
               <TextField
                 id="lName"
@@ -203,6 +205,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.lName)}
+                helperText={errors.lName?.message}
               />
             )}
           />
@@ -238,17 +242,20 @@ const Step1 = () => {
           />
         </Grid>
       </Grid>
+        <hr />
       <Grid container>
-        <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
+        <Typography md={3} xs={12} style={{ paddingTop: "20px" }} variant="h5">
           Primary Phone Number
         </Typography>
       </Grid>
 
       <Grid container>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <Controller
             control={control}
             name="homeNum"
+            rules={{ required: "This field is required." }}
+
             render={({ field }) => (
               <TextField
                 id="homeNum"
@@ -258,16 +265,20 @@ const Step1 = () => {
                 margin="normal"
                 // name="homeNum"
                 {...field}
+                error={Boolean(errors?.homeNum)}
+                helperText={errors.homeNum?.message}
               />
             )}
           />
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <Controller
             control={control}
             name="cellNum"
+            rules={{ required: "This field is required." }}
+
             render={({ field }) => (
               <TextField
                 id="cellNum"
@@ -277,6 +288,8 @@ const Step1 = () => {
                 margin="normal"
                 // name="cellNum"
                 {...field}
+                error={Boolean(errors?.cellNum)}
+                helperText={errors.cellNum?.message}
               />
             )}
           />
@@ -294,10 +307,17 @@ const Step1 = () => {
       </Grid>
 
       <Grid container>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <Controller
             control={control}
             name="email"
+            rules={{ required: "This field is required." ,
+            pattern: {
+              value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              message: "please enter a valid e-mail address."
+            }}}
+            
+
             render={({ field }) => (
               <TextField
                 id="email"
@@ -306,16 +326,23 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.email)}
+                helperText={errors.email?.message}
               />
             )}
           />
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <Controller
             control={control}
             name="Vemail"
+            rules={{ required: "Verify Email is Required." ,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address."
+            }}}
             render={({ field }) => (
               <TextField
                 id="Vemail"
@@ -324,6 +351,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.Vemail)}
+                helperText={errors.Vemail?.message}
               />
             )}
           />
@@ -1199,15 +1228,19 @@ const LinearStepper = () => {
   // };
 
   return (
+    
     <div>
        <div className="btn11 p-5">
+          <Typography variant="h5" style={{marginBottom:"10px"}}>Application Type</Typography>
         <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
           <Button variant="contained" color="primary" >Individual</Button>
         </Link>
         <Link to="/joint" style={{textDecoration:"none"}}>
           <Button variant="contained" color="primary">Joint</Button>
           </Link>
+          <Typography style={{marginTop:"10px"}}>Please be aware that by selecting "Joint" the applicant and the co-applicant agree they intend to apply for joint credit. The co-applicant must be present and must indicate his or her acceptance of the Terms and Conditions at the end of this application before it is submitted.</Typography>
         </div>
+
       <Stepper alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
           const labelProps = {};
@@ -1269,6 +1302,7 @@ if (isStepFalied() && activeStep == index) {
         </>
       )}
     </div>
+   
   );
 };
 
