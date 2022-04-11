@@ -11,7 +11,7 @@ const CreditApproval = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/trade-in/update`;
+    const changeViewUrl = `http://localhost:5000/api/credit/update/:id`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {
@@ -31,14 +31,14 @@ const CreditApproval = () => {
   const getJointInfo = async () => {
     try {
       const res = await Axios.get(url);
-      setResponseData(res.data.JointInfo);
-      console.log(res.data.JointInfo);
+      setResponseData(res.data.creditInfo);
+      console.log(res.data.creditInfo);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const deleteUrl = `http://localhost:5000/api/joint/delete`;
+  const deleteUrl = `http://localhost:5000/api/credit/delete/:id`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
@@ -112,7 +112,7 @@ const CreditApproval = () => {
                       >
                         <Link
                           to={{
-                            pathname: `/Credit-Approval/CreditApprovalDetails/${item.id}`,
+                            pathname: `/IndividualCreditForm/IndividualCreditFormDetails/${item.id}`,
                             params: { id: item.id },
                           }}
                         >
