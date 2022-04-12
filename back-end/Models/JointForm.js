@@ -3,343 +3,343 @@ const mongoose = require('mongoose')
 const JointFormSchema = new mongoose.Schema({
     fname:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     midName:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     lName:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     Suffix:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     homeNum:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     cellNum:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     email:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     Vemail:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     rr:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     box:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     street:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     StreetName:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     StreetOptional:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     apt:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     zip:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     city:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     State:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     House:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     Year:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     Month:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     Mortgage:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     Dob:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     SSN:{
           type:String,
-        unique:true,
+        //unique:true,
     },
     CoApplicantRelation:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     SelectHousingStatus: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Employer: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     WorkTitle: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     WorkPhone: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     yearss: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     monthss:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     SelfWorkPhone: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Selfyear: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Selfmonths: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     EmpStatus: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     PerYear: {
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Cofname:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoMidName:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     ColName:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoSuffix:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CocellNum:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CohomeNum:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Coemail:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoVemail:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
 
     Corelease:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Corr:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Cobox:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Costreet:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoStreetName:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoStreetOptional:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Coapt:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Cozip:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Cocity:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoState:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Corelease2:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoHouse:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoYear:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoMonth:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoMortgage:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Codob:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoSSN:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
 
 
     CoSelectHousingStatus:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoEmployer:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoWorkTitle:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoWorkPhone:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Coyearss:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     Comonthss:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoSelfWorkPhone:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoSelfyear:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoSelfemployer:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoSelfmonths:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoEmpStatus:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
     CoPerYear:{
           type:String,
           
-        unique:true,
+        //unique:true,
     },
 
     view:{

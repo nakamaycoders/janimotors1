@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function getSteps() {
   return [
     "Applicant Contact Info",
@@ -371,15 +370,15 @@ const Step1 = () => {
 };
 
 const Step2 = () => {
-  // const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [visible, setVisible] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const {
     formState: { errors },
     control,
   } = useFormContext();
   return (
     <>
-      <FormGroup style={{ width: "fit-content" }}>
+      {/* <FormGroup style={{ width: "fit-content" }}>
         
         <FormControlLabel
        
@@ -389,8 +388,32 @@ const Step2 = () => {
           label="I have a Rural Route"
         />
        
-      </FormGroup>
-      {checked ? (
+      </FormGroup> */}
+
+      <div className="d-flex">
+        <p style={{fontWeight:'bold', fontSize:'19px'}}>Rular Route</p>
+        <div style={{marginLeft: '30px'}}>
+          Yes{" "}
+          <input
+            type="radio"
+            className="mx-2"
+            name="isyes"
+            value="1"
+            onClick={() => setVisible(true)}
+          />
+        </div>
+        <div>
+          No{" "}
+          <input
+            type="radio"
+            className="mx-2 mt-1"
+            name="isyes"
+            value="0"
+            onClick={() => setVisible(false)}
+          />
+        </div>
+      </div>
+      {visible && (
         <>
           <Grid container spacing={2}>
             <Grid item xs={12} md={2}>
@@ -450,7 +473,9 @@ const Step2 = () => {
             </Grid>
           </Grid>
         </>
-      ) : (
+      )}
+
+      {!visible && (
         <>
           <Grid container spacing={2}>
             <Grid item xs={12} md={2}>
@@ -487,7 +512,6 @@ const Step2 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
-
                     error={Boolean(errors?.StreetName)}
                     helperText={errors.StreetName?.message}
                   />
@@ -560,7 +584,6 @@ const Step2 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
-
                 error={Boolean(errors?.zip)}
                 helperText={errors.zip?.message}
               />
@@ -581,7 +604,6 @@ const Step2 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
-
                 error={Boolean(errors?.city)}
                 helperText={errors.city?.message}
               />
@@ -609,7 +631,6 @@ const Step2 = () => {
                 input={<OutlinedInput label="State" />}
                 name="State"
                 {...field}
-
                 error={Boolean(errors?.State)}
                 helperText={errors.State?.message}
               >
@@ -645,7 +666,6 @@ const Step2 = () => {
                 input={<OutlinedInput label="House" />}
                 name="House"
                 {...field}
-
                 error={Boolean(errors?.House)}
                 helperText={errors.House?.message}
               >
@@ -707,7 +727,6 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
-
                 error={Boolean(errors?.Month)}
                 helperText={errors.Month?.message}
               />
@@ -735,7 +754,6 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
-
                 error={Boolean(errors?.Mortgage)}
                 helperText={errors.Mortgage?.message}
               />
@@ -767,9 +785,8 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
-
-                    error={Boolean(errors?.Dob)}
-                    helperText={errors.Dob?.message}
+                error={Boolean(errors?.Dob)}
+                helperText={errors.Dob?.message}
               />
             )}
           />
@@ -798,7 +815,6 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
-
                 error={Boolean(errors?.SSN)}
                 helperText={errors.SSN?.message}
               />
@@ -870,7 +886,10 @@ const Step3 = () => {
       break;
   }
 
-  const { formState: { errors },control } = useFormContext();
+  const {
+    formState: { errors },
+    control,
+  } = useFormContext();
   return (
     <>
       <Grid container spacing={2}>
@@ -886,8 +905,6 @@ const Step3 = () => {
               onChange={handleChange}
               label="selectEmpStatus"
               variant="outlined"
-
-
             >
               <MenuItem value={"Employed"}>Employed</MenuItem>
               <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -923,10 +940,8 @@ const Step3 = () => {
                   halfWidth
                   margin="normal"
                   {...field}
-                  
-            
-            error={Boolean(errors?.Employer)}
-            helperText={errors.Employer?.message}
+                  error={Boolean(errors?.Employer)}
+                  helperText={errors.Employer?.message}
                 />
               )}
             />
@@ -956,10 +971,8 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
-                      
-    
-                      error={Boolean(errors?.WorkTitle)}
-                      helperText={errors.WorkTitle?.message}
+                    error={Boolean(errors?.WorkTitle)}
+                    helperText={errors.WorkTitle?.message}
                   />
                 )}
               />
@@ -986,9 +999,8 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
-    
-                      error={Boolean(errors?.WorkPhone)}
-                      helperText={errors.WorkPhone?.message}
+                    error={Boolean(errors?.WorkPhone)}
+                    helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -1019,7 +1031,6 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
-    
                       error={Boolean(errors?.yearss)}
                       helperText={errors.yearss?.message}
                     />
@@ -1045,7 +1056,6 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
-    
                       error={Boolean(errors?.monthss)}
                       helperText={errors.monthss?.message}
                     />
@@ -1081,9 +1091,8 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
-    
-                      error={Boolean(errors?.WorkPhone)}
-                      helperText={errors.WorkPhone?.message}
+                    error={Boolean(errors?.WorkPhone)}
+                    helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -1114,7 +1123,6 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
-    
                       error={Boolean(errors?.yearss)}
                       helperText={errors.yearss?.message}
                     />
@@ -1140,7 +1148,6 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
-    
                       error={Boolean(errors?.monthss)}
                       helperText={errors.monthss?.message}
                     />
@@ -1174,9 +1181,8 @@ const Step3 = () => {
                 name="EmpStatus"
                 value={"Select one"}
                 {...field}
-    
-                      error={Boolean(errors?.EmpStatus)}
-                      helperText={errors.EmpStatus?.message}
+                error={Boolean(errors?.EmpStatus)}
+                helperText={errors.EmpStatus?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -1242,10 +1248,10 @@ const LinearStepper = () => {
       cellNum: "",
       email: "",
       Vemail: "",
-      rr:"",
-      box:"",
-      street:"",
-      StreetName:"",
+      rr: "",
+      box: "",
+      street: "",
+      StreetName: "",
       StreetOptional: "",
       apt: "",
       zip: "",
@@ -1285,7 +1291,7 @@ const LinearStepper = () => {
         config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
         console.log(res);
-        alert( "successfull");
+        alert("successfull");
         setActiveStep(activeStep + 1);
       });
      
@@ -1351,7 +1357,7 @@ const LinearStepper = () => {
           align="center"
           style={{ backgroundColor: "white", color: "black" }}
         >
-          Thank You For Submitting 
+          Thank You For Submitting
         </Typography>
       ) : (
         <>
