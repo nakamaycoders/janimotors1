@@ -1288,12 +1288,7 @@ const LinearStepper = () => {
         alert( "successfull");
         setActiveStep(activeStep + 1);
       });
-      // axios.post("http://localhost:5000/api/credit/send")
-      //   .then((data) => data.json())
-      //   .then((res) => {
-      //     console.log(res);
-      //     setActiveStep(activeStep + 1);
-      //   });
+     
     } else {
       setActiveStep(activeStep + 1);
     }
