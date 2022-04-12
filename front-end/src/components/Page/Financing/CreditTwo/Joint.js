@@ -4,8 +4,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import axios from "axios";
-import Layout from '../../../layout/layout/layout'
-
+import Layout from "../../../layout/layout/layout";
 
 import { Link } from "react-router-dom";
 import {
@@ -153,9 +152,14 @@ const AllStreet = [
   "Trail",
   "Way",
 ];
+
 const CoApplicantRelationship = ["Spouse", "Relative", "Other"];
+
 const Step1 = () => {
-  const { control } = useFormContext();
+  const {
+    formState: { errors },
+    control,
+  } = useFormContext();
   return (
     <>
       <Grid container spacing={2}>
@@ -163,6 +167,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="fname"
+            rules={{ required: "First name is required." }}
             render={({ field }) => (
               <TextField
                 id="fname"
@@ -171,6 +176,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.fistname)}
+                helperText={errors.fistname?.message}
               />
             )}
           />
@@ -196,6 +203,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="lName"
+            rules={{ required: "Last name is required." }}
             render={({ field }) => (
               <TextField
                 id="lName"
@@ -204,6 +212,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.lName)}
+                helperText={errors.lName?.message}
               />
             )}
           />
@@ -238,8 +248,8 @@ const Step1 = () => {
             )}
           />
         </Grid>
-         
-         <hr />
+
+        <hr />
       </Grid>
       <Grid container>
         <Typography md={3} style={{ paddingTop: "20px" }} variant="h5">
@@ -252,6 +262,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="homeNum"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="homeNum"
@@ -260,6 +271,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.homeNum)}
+                helperText={errors.homeNum?.message}
               />
             )}
           />
@@ -270,6 +283,7 @@ const Step1 = () => {
           <Controller
             control={control}
             name="cellNum"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="cellNum"
@@ -278,6 +292,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.cellNum)}
+                helperText={errors.cellNum?.message}
               />
             )}
           />
@@ -299,6 +315,14 @@ const Step1 = () => {
           <Controller
             control={control}
             name="email"
+            rules={{
+              required: "This field is required.",
+              pattern: {
+                value:
+                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                message: "please enter a valid e-mail address.",
+              },
+            }}
             render={({ field }) => (
               <TextField
                 id="email"
@@ -307,6 +331,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.email)}
+                helperText={errors.email?.message}
               />
             )}
           />
@@ -317,6 +343,14 @@ const Step1 = () => {
           <Controller
             control={control}
             name="Vemail"
+            rules={{
+              required: "This field is required.",
+              pattern: {
+                value:
+                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                message: "please enter a valid e-mail address.",
+              },
+            }}
             render={({ field }) => (
               <TextField
                 id="Vemail"
@@ -325,6 +359,8 @@ const Step1 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.Vemail)}
+                helperText={errors.Vemail?.message}
               />
             )}
           />
@@ -336,7 +372,7 @@ const Step1 = () => {
 const Step2 = () => {
   // const [visible, setVisible] = useState(false);
   const [checked, setChecked] = useState(false);
-  const { control } = useFormContext();
+  const {   formState: { errors },control } = useFormContext();
   return (
     <>
       <FormGroup style={{ width: "fit-content" }}>
@@ -354,6 +390,7 @@ const Step2 = () => {
               <Controller
                 control={control}
                 name="rr"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     id="rrr"
@@ -364,6 +401,8 @@ const Step2 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.rr)}
+                    helperText={errors.rr?.message}
                   />
                 )}
               />
@@ -374,6 +413,7 @@ const Step2 = () => {
               <Controller
                 control={control}
                 name="box"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     id="BOX"
@@ -383,6 +423,10 @@ const Step2 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.box)}
+helperText={errors.box?.message}
+
                   />
                 )}
               />
@@ -417,6 +461,10 @@ const Step2 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.street)}
+helperText={errors.street?.message}
+rules={{ required: "This field is required." }}
                   />
                 )}
               />
@@ -425,6 +473,7 @@ const Step2 = () => {
               <Controller
                 control={control}
                 name="StreetName"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     id="Street"
@@ -434,6 +483,9 @@ const Step2 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.StreetName)}
+helperText={errors.StreetName?.message}
                   />
                 )}
               />
@@ -497,6 +549,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="zip"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="zip"
@@ -506,6 +559,9 @@ const Step2 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.zip)}
+helperText={errors.zip?.message}
               />
             )}
           />
@@ -514,6 +570,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="city"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="city"
@@ -523,6 +580,9 @@ const Step2 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.city)}
+helperText={errors.city?.message}
               />
             )}
           />
@@ -537,6 +597,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="State"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <Select
                 labelId="State"
@@ -546,6 +607,9 @@ const Step2 = () => {
                 fullWidth
                 input={<OutlinedInput label="State" />}
                 {...field}
+                
+error={Boolean(errors?.State)}
+helperText={errors.State?.message}
               >
                 {AllState.map((State) => (
                   <MenuItem key={State} value={State}>
@@ -570,6 +634,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="House"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <Select
                 labelId="House"
@@ -577,6 +642,9 @@ const Step2 = () => {
                 fullWidth
                 input={<OutlinedInput label="House" />}
                 {...field}
+                
+error={Boolean(errors?.House)}
+helperText={errors.House?.message}
               >
                 {AllHouse.map((House) => (
                   <MenuItem key={House} value={House}>
@@ -625,6 +693,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="Month"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 type="number"
@@ -635,6 +704,9 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.Month)}
+helperText={errors.Month?.message}
               />
             )}
           />
@@ -649,6 +721,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="Mortgage"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 type="number"
@@ -659,6 +732,9 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.Mortgage)}
+helperText={errors.Mortgage?.message}
               />
             )}
           />
@@ -677,6 +753,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="Dob"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 // type="number"
@@ -687,6 +764,9 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.Dob)}
+helperText={errors.Dob?.message}
               />
             )}
           />
@@ -714,6 +794,10 @@ const Step2 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.SSN)}
+helperText={errors.SSN?.message}
+rules={{ required: "This field is required." }}
               />
             )}
           />
@@ -730,6 +814,7 @@ const Step2 = () => {
           <Controller
             control={control}
             name="CoApplicantRelation"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <Select
                 labelId="CoApplicant"
@@ -737,6 +822,9 @@ const Step2 = () => {
                 fullWidth
                 input={<OutlinedInput label="CoApplicant" />}
                 {...field}
+                
+error={Boolean(errors?.CoApplicantRelation)}
+helperText={errors.CoApplicantRelation?.message}
               >
                 {CoApplicantRelationship.map((Rel) => (
                   <MenuItem key={Rel} value={Rel}>
@@ -811,7 +899,7 @@ const Step3 = () => {
       break;
   }
 
-  const { control } = useFormContext();
+  const {  formState: { errors }, control } = useFormContext();
   return (
     <>
       <Grid container spacing={2}>
@@ -826,6 +914,7 @@ const Step3 = () => {
               value={HousingStatus}
               onChange={handleChange}
               label="selectEmpStatus"
+              variant="outlined"
             >
               <MenuItem value={"Employed"}>Employed</MenuItem>
               <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -848,6 +937,7 @@ const Step3 = () => {
             <Controller
               control={control}
               name="Employer"
+              rules={{ required: "This field is required." }}
               id="empController"
               render={({ field }) => (
                 <TextField
@@ -860,6 +950,9 @@ const Step3 = () => {
                   halfWidth
                   margin="normal"
                   {...field}
+                  
+error={Boolean(errors?.Employer)}
+helperText={errors.Employer?.message}
                 />
               )}
             />
@@ -878,6 +971,7 @@ const Step3 = () => {
               <Controller
                 control={control}
                 name="WorkTitle"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -888,6 +982,9 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.WorkTitle)}
+helperText={errors.WorkTitle?.message}
                   />
                 )}
               />
@@ -913,6 +1010,10 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.WorkPhone)}
+helperText={errors.WorkPhone?.message}
+rules={{ required: "This field is required." }}
                   />
                 )}
               />
@@ -932,6 +1033,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="yearss"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -942,6 +1044,9 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.yearss)}
+helperText={errors.yearss?.message}
                     />
                   )}
                 />
@@ -954,6 +1059,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="monthss"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -964,6 +1070,9 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.monthss)}
+helperText={errors.monthss?.message}
                     />
                   )}
                 />
@@ -986,6 +1095,7 @@ const Step3 = () => {
               <Controller
                 control={control}
                 name="WorkPhone"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -996,6 +1106,9 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.WorkPhone)}
+helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -1015,6 +1128,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="yearss"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -1025,6 +1139,9 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.yearss)}
+helperText={errors.yearss?.message}
                     />
                   )}
                 />
@@ -1037,6 +1154,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="monthss"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -1047,6 +1165,9 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.monthss)}
+helperText={errors.monthss?.message}
                     />
                   )}
                 />
@@ -1068,6 +1189,7 @@ const Step3 = () => {
           <Controller
             control={control}
             name="EmpStatus"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <Select
                 labelId="EmpStatus"
@@ -1077,6 +1199,9 @@ const Step3 = () => {
                 name="EmpStatus"
                 value={"Select one"}
                 {...field}
+                
+error={Boolean(errors?.EmpStatus)}
+helperText={errors.EmpStatus?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -1095,6 +1220,7 @@ const Step3 = () => {
           <Controller
             control={control}
             name="PerYear"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 type="number"
@@ -1105,6 +1231,9 @@ const Step3 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.PerYear)}
+helperText={errors.PerYear?.message}
               />
             )}
           />
@@ -1114,7 +1243,7 @@ const Step3 = () => {
   );
 };
 const Step4 = () => {
-  const { control } = useFormContext();
+  const { control , formState:{errors} } = useFormContext();
   return (
     <>
       <Grid container spacing={2}>
@@ -1122,6 +1251,7 @@ const Step4 = () => {
           <Controller
             control={control}
             name="Cofname"
+ules={{ required: "First Name is required." }}
             render={({ field }) => (
               <TextField
                 id="Cofname"
@@ -1130,6 +1260,9 @@ const Step4 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.Cofname)}
+helperText={errors.Cofname?.message}
               />
             )}
           />
@@ -1155,6 +1288,7 @@ const Step4 = () => {
           <Controller
             control={control}
             name="ColName"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="ColName"
@@ -1163,6 +1297,9 @@ const Step4 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.ColName)}
+helperText={errors.ColName?.message}
               />
             )}
           />
@@ -1206,6 +1343,7 @@ const Step4 = () => {
           <Controller
             control={control}
             name="CohomeNum"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="CohomeNum"
@@ -1214,6 +1352,9 @@ const Step4 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.CohomeNum)}
+helperText={errors.CohomeNum?.message}
               />
             )}
           />
@@ -1224,6 +1365,7 @@ const Step4 = () => {
           <Controller
             control={control}
             name="CocellNum"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 id="CocellNum"
@@ -1232,6 +1374,9 @@ const Step4 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.CocellNum)}
+helperText={errors.CocellNum?.message}
               />
             )}
           />
@@ -1253,6 +1398,14 @@ const Step4 = () => {
           <Controller
             control={control}
             name="Coemail"
+            rules={{
+              required: "This field is required.",
+              pattern: {
+                value:
+                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                message: "please enter a valid e-mail address.",
+              },
+            }}
             render={({ field }) => (
               <TextField
                 id="Coemail"
@@ -1261,6 +1414,8 @@ const Step4 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.Coemail)}
+                helperText={errors.Coemail?.message}
               />
             )}
           />
@@ -1271,6 +1426,14 @@ const Step4 = () => {
           <Controller
             control={control}
             name="CoVemail"
+            rules={{
+              required: "Verify Email is Required.",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address.",
+              },
+            }}
+            ren
             render={({ field }) => (
               <TextField
                 id="CoVemail"
@@ -1279,6 +1442,8 @@ const Step4 = () => {
                 fullWidth
                 margin="normal"
                 {...field}
+                error={Boolean(errors?.CoVemail)}
+                helperText={errors.CoVemail?.message}
               />
             )}
           />
@@ -1301,7 +1466,7 @@ const Step5 = () => {
 
   // const [visible, setVisible] = useState(false);
   const [checked, setChecked] = useState(false);
-  const { control } = useFormContext();
+  const { control , formState:{errors} } = useFormContext();
   return (
     <>
       {/* <h6>Same address as applicant?</h6>
@@ -1333,221 +1498,249 @@ const Step5 = () => {
       />
       Yes */}
       {/* {status === 1 && ( */}
-        <>
-          <FormGroup style={{ width: "fit-content" }}>
-            <FormControlLabel
-              control={<Checkbox size="large" />}
-              value={checked}
-              onChange={() => setChecked((checked) => !checked)}
-              label="I have a Rural Route"
+      <>
+        <FormGroup style={{ width: "fit-content" }}>
+          <FormControlLabel
+            control={<Checkbox size="large" />}
+            value={checked}
+            onChange={() => setChecked((checked) => !checked)}
+            label="I have a Rural Route"
+          />
+        </FormGroup>
+        {checked ? (
+          <>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <Controller
+                  control={control}
+                  name="Corr"
+                  rules={{ required: "This field is required." }}
+                  render={({ field }) => (
+                    <TextField
+                      id="Corr"
+                      label="RR"
+                      variant="outlined"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                      
+error={Boolean(errors?.Corr)}
+helperText={errors.Corr?.message}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={2}>
+                <Controller
+                  control={control}
+                  name="Cobox"
+                  rules={{ required: "This field is required." }}
+                  render={({ field }) => (
+                    <TextField
+                      id="Cobox"
+                      label="BOX"
+                      variant="outlined"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                      
+error={Boolean(errors?.Cobox)}
+helperText={errors.Cobox?.message}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <span
+                  style={{
+                    display: "inline-block",
+                    margin: "24px",
+                    fontSize: "18px",
+                    fontWeight: "bolder",
+                  }}
+                >
+                  BOX(Example: RR 2 BOX 152)
+                </span>
+              </Grid>
+            </Grid>
+          </>
+        ) : (
+          <>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <Controller
+                  control={control}
+                  name="Costreet"
+                  rules={{ required: "This field is required." }}
+                  render={({ field }) => (
+                    <TextField
+                      id="Costreet #"
+                      label="Street #"
+                      variant="outlined"
+                      // placeholder="Enter Your Phone Number"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                      
+error={Boolean(errors?.Costreet)}
+helperText={errors.Costreet?.message}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={2}>
+                <Controller
+                  control={control}
+                  name="CoStreetName"
+                  rules={{ required: "This field is required." }}
+                  render={({ field }) => (
+                    <TextField
+                      id="CoStreetName"
+                      label="Street Name"
+                      variant="outlined"
+                      // placeholder="Enter Your Alternate Phone"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                      
+error={Boolean(errors?.CoStreetName)}
+helperText={errors.CoStreetName?.message}
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={2}>
+                <InputLabel
+                  style={{ marginBottom: "10px", fontWeight: "bolder" }}
+                  id="CoStreetOptional"
+                >
+                  Select Street (Optional)
+                </InputLabel>
+                <Controller
+                  control={control}
+                  name="CoStreetOptional"
+                  render={({ field }) => (
+                    <Select
+                      labelId="Select Street"
+                      id="CoStreetOptional"
+                      //   multiple
+                      // label="Select State"
+                      fullWidth
+                      input={<OutlinedInput label="Street" />}
+                      {...field}
+                    >
+                      {AllStreet.map((Street) => (
+                        <MenuItem key={Street} value={Street}>
+                          {Street}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  )}
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <Controller
+                  control={control}
+                  name="Coapt"
+                  render={({ field }) => (
+                    <TextField
+                      id="Coapt #"
+                      label="Apt #"
+                      variant="outlined"
+                      // placeholder="Enter Your Phone Number"
+                      halfWidth
+                      margin="normal"
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          </>
+        )}
+
+        {/* -------------------SAME */}
+
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4}>
+            <Controller
+              control={control}
+              name="Cozip"
+              rules={{ required: "This field is required." }}
+              render={({ field }) => (
+                <TextField
+                  id="Cozip"
+                  label="ZIP"
+                  variant="outlined"
+                  // placeholder="Enter Your Phone Number"
+                  fullWidth
+                  margin="normal"
+                  {...field}
+                  
+error={Boolean(errors?.Cozip)}
+helperText={errors.Cozip?.message}
+                />
+              )}
             />
-          </FormGroup>
-          {checked ? (
-            <>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={2}>
-                  <Controller
-                    control={control}
-                    name="Corr"
-                    render={({ field }) => (
-                      <TextField
-                        id="Corr"
-                        label="RR"
-                        variant="outlined"
-                        halfWidth
-                        margin="normal"
-                        {...field}
-                      />
-                    )}
-                  />
-                </Grid>
-                <Grid item xs={12} md={2}>
-                  <Controller
-                    control={control}
-                    name="Cobox"
-                    render={({ field }) => (
-                      <TextField
-                        id="Cobox"
-                        label="BOX"
-                        variant="outlined"
-                        halfWidth
-                        margin="normal"
-                        {...field}
-                      />
-                    )}
-                  />
-                </Grid>
-                <Grid item xs={12} md={3}>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      margin: "24px",
-                      fontSize: "18px",
-                      fontWeight: "bolder",
-                    }}
-                  >
-                    BOX(Example: RR 2 BOX 152)
-                  </span>
-                </Grid>
-              </Grid>
-            </>
-          ) : (
-            <>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={2}>
-                  <Controller
-                    control={control}
-                    name="Costreet"
-                    render={({ field }) => (
-                      <TextField
-                        id="Costreet #"
-                        label="Street #"
-                        variant="outlined"
-                        // placeholder="Enter Your Phone Number"
-                        halfWidth
-                        margin="normal"
-                        {...field}
-                      />
-                    )}
-                  />
-                </Grid>
-                <Grid item xs={12} md={2}>
-                  <Controller
-                    control={control}
-                    name="CoStreetName"
-                    render={({ field }) => (
-                      <TextField
-                        id="CoStreetName"
-                        label="Street Name"
-                        variant="outlined"
-                        // placeholder="Enter Your Alternate Phone"
-                        halfWidth
-                        margin="normal"
-                        {...field}
-                      />
-                    )}
-                  />
-                </Grid>
-                <Grid item xs={12} md={2}>
-                  <InputLabel
-                    style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                    id="CoStreetOptional"
-                  >
-                    Select Street (Optional)
-                  </InputLabel>
-                  <Controller
-                    control={control}
-                    name="CoStreetOptional"
-                    render={({ field }) => (
-                      <Select
-                        labelId="Select Street"
-                        id="CoStreetOptional"
-                        //   multiple
-                        // label="Select State"
-                        fullWidth
-                        input={<OutlinedInput label="Street" />}
-                        {...field}
-                      >
-                        {AllStreet.map((Street) => (
-                          <MenuItem key={Street} value={Street}>
-                            {Street}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    )}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={2}>
-                  <Controller
-                    control={control}
-                    name="Coapt"
-                    render={({ field }) => (
-                      <TextField
-                        id="Coapt #"
-                        label="Apt #"
-                        variant="outlined"
-                        // placeholder="Enter Your Phone Number"
-                        halfWidth
-                        margin="normal"
-                        {...field}
-                      />
-                    )}
-                  />
-                </Grid>
-              </Grid>
-            </>
-          )}
-
-          {/* -------------------SAME */}
-
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <Controller
-                control={control}
-                name="Cozip"
-                render={({ field }) => (
-                  <TextField
-                    id="Cozip"
-                    label="ZIP"
-                    variant="outlined"
-                    // placeholder="Enter Your Phone Number"
-                    fullWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Controller
-                control={control}
-                name="Cocity"
-                render={({ field }) => (
-                  <TextField
-                    id="Cocity"
-                    label="CITY"
-                    variant="outlined"
-                    // placeholder="Enter Your Alternate Phone"
-                    fullWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <InputLabel
-                style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoState"
-              >
-                Select State
-              </InputLabel>
-              <Controller
-                control={control}
-                name="CoState"
-                render={({ field }) => (
-                  <Select
-                    labelId="CoState"
-                    id="CoState"
-                    //   multiple
-                    // label="Select State"
-                    fullWidth
-                    input={<OutlinedInput label="State" />}
-                    {...field}
-                  >
-                    {AllState.map((State) => (
-                      <MenuItem key={State} value={State}>
-                        {State}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                )}
-              />
-            </Grid>
           </Grid>
-        </>
+          <Grid item xs={12} md={4}>
+            <Controller
+              control={control}
+              name="Cocity"
+              rules={{ required: "This field is required." }}
+              render={({ field }) => (
+                <TextField
+                  id="Cocity"
+                  label="CITY"
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  fullWidth
+                  margin="normal"
+                  {...field}
+                  
+error={Boolean(errors?.Cocity)}
+helperText={errors.Cocity?.message}
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="CoState"
+            >
+              Select State
+            </InputLabel>
+            <Controller
+              control={control}
+              name="CoState"
+              rules={{ required: "This field is required." }}
+              render={({ field }) => (
+                <Select
+                  labelId="CoState"
+                  id="CoState"
+                  //   multiple
+                  // label="Select State"
+                  fullWidth
+                  input={<OutlinedInput label="State" />}
+                  {...field}
+                  
+error={Boolean(errors?.CoState)}
+helperText={errors.CoState?.message}
+                >
+                  {AllState.map((State) => (
+                    <MenuItem key={State} value={State}>
+                      {State}
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            />
+          </Grid>
+        </Grid>
+      </>
       {/* )} */}
       <hr />
       {/* <h6>Same Mortgage/Rent information as applicant?</h6>
@@ -1566,113 +1759,125 @@ const Step5 = () => {
       />
       Yes */}
       {/* {status2 === 3 && ( */}
-        <>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <InputLabel
-                style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoHouse"
-              >
-                Select Housing Status
-              </InputLabel>
-              <Controller
-                control={control}
-                name="CoHouse"
-                render={({ field }) => (
-                  <Select
-                    labelId="House"
-                    id="CoHouse"
-                    fullWidth
-                    input={<OutlinedInput label="House" />}
-                    {...field}
-                  >
-                    {AllHouse.map((House) => (
-                      <MenuItem key={House} value={House}>
-                        {House}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={2}>
-              <InputLabel
-                style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoYear"
-              >
-                Time at Address
-              </InputLabel>
-              <Controller
-                control={control}
-                name="CoYear"
-                render={({ field }) => (
-                  <TextField
-                    type="number"
-                    id="CoYear"
-                    label="Years"
-                    variant="outlined"
-                    // placeholder="Enter Your Alternate Phone"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={2}>
-              <InputLabel
-                style={{
-                  marginBottom: "10px",
-                  visibility: "hidden",
-                  fontWeight: "bolder",
-                }}
-                id="Month"
-              >
-                Time at Address
-              </InputLabel>
-              <Controller
-                control={control}
-                name="CoMonth"
-                render={({ field }) => (
-                  <TextField
-                    type="number"
-                    id="CoMonth"
-                    label="Months"
-                    variant="outlined"
-                    // placeholder="Enter Your Alternate Phone"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <InputLabel
-                style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoMortgage"
-              >
-                Mortgage Payment/Rent
-              </InputLabel>
-              <Controller
-                control={control}
-                name="CoMortgage"
-                render={({ field }) => (
-                  <TextField
-                    type="number"
-                    id="CoMortgage"
-                    label="$"
-                    variant="outlined"
-                    // placeholder="Enter Your Alternate Phone"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
+      <>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="CoHouse"
+            >
+              Select Housing Status
+            </InputLabel>
+            <Controller
+              control={control}
+              name="CoHouse"
+              rules={{ required: "This field is required." }}
+              render={({ field }) => (
+                <Select
+                  labelId="House"
+                  id="CoHouse"
+                  fullWidth
+                  input={<OutlinedInput label="House" />}
+                  {...field}
+                  
+error={Boolean(errors?.CoHouse)}
+helperText={errors.CoHouse?.message}
+                >
+                  {AllHouse.map((House) => (
+                    <MenuItem key={House} value={House}>
+                      {House}
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            />
           </Grid>
-        </>
+          <Grid item xs={12} md={2}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="CoYear"
+            >
+              Time at Address
+            </InputLabel>
+            <Controller
+              control={control}
+              name="CoYear"
+              render={({ field }) => (
+                <TextField
+                  type="number"
+                  id="CoYear"
+                  label="Years"
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <InputLabel
+              style={{
+                marginBottom: "10px",
+                visibility: "hidden",
+                fontWeight: "bolder",
+              }}
+              id="Month"
+            >
+              Time at Address
+            </InputLabel>
+            <Controller
+              control={control}
+              name="CoMonth"
+              rules={{ required: "This field is required." }}
+              render={({ field }) => (
+                <TextField
+                  type="number"
+                  id="CoMonth"
+                  label="Months"
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                  
+error={Boolean(errors?.CoMonth)}
+helperText={errors.CoMonth?.message}
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="CoMortgage"
+            >
+              Mortgage Payment/Rent
+            </InputLabel>
+            <Controller
+              control={control}
+              name="CoMortgage"
+              rules={{ required: "This field is required." }}
+              render={({ field }) => (
+                <TextField
+                  type="number"
+                  id="CoMortgage"
+                  label="$"
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                  
+error={Boolean(errors?.CoMortgage)}
+helperText={errors.CoMortgage?.message}
+                />
+              )}
+            />
+          </Grid>
+        </Grid>
+      </>
       {/* )} */}
       <hr />
       <Grid container spacing={2}>
@@ -1686,6 +1891,7 @@ const Step5 = () => {
           <Controller
             control={control}
             name="Codob"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 // type="number"
@@ -1696,6 +1902,9 @@ const Step5 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.Codob)}
+helperText={errors.Codob?.message}
               />
             )}
           />
@@ -1712,6 +1921,7 @@ const Step5 = () => {
           <Controller
             control={control}
             name="CoSSN"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 // type="number"
@@ -1722,6 +1932,9 @@ const Step5 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.CoSSN)}
+helperText={errors.CoSSN?.message}
               />
             )}
           />
@@ -1752,7 +1965,7 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = false;
-      // console.log("SURR", SURR)
+      console.log("SURR", SURR)
 
       break;
     case "":
@@ -1763,7 +1976,7 @@ const Step6 = () => {
       EAO = true;
       Self = false;
       std = false;
-      // console.log("EAO", EAO)
+      console.log("EAO", EAO)
       break;
 
     case "Self-Employed":
@@ -1775,7 +1988,7 @@ const Step6 = () => {
       // setEAO(false);
       // setSelf(true);
       // setstd(false);
-      // console.log("self", Self)
+      console.log("self", Self)
 
       break;
 
@@ -1784,7 +1997,7 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = true;
-      // console.log("std", std);
+      console.log("std", std);
 
       break;
 
@@ -1794,15 +2007,16 @@ const Step6 = () => {
       break;
   }
 
-  const { control } = useFormContext();
+  const { control ,  formState:{errors} } = useFormContext();
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
-            name="CoSelectHousingStatus"
+            name="selectEmpStatus"
             id="empController"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">
@@ -1812,9 +2026,10 @@ const Step6 = () => {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={HousingStatus}
-                  onChange={handleChange}
                   label="selectEmpStatus"
-                  {...field}
+                  onChange={handleChange}
+                  variant="outlined"
+
                 >
                   <MenuItem value={"Employed"}>Employed</MenuItem>
                   <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -1840,6 +2055,7 @@ const Step6 = () => {
             <Controller
               control={control}
               name="CoEmployer"
+              rules={{ required: "This field is required." }}
               id="empController"
               render={({ field }) => (
                 <TextField
@@ -1852,6 +2068,9 @@ const Step6 = () => {
                   halfWidth
                   margin="normal"
                   {...field}
+                  
+error={Boolean(errors?.CoEmployer)}
+helperText={errors.CoEmployer?.message}
                 />
               )}
             />
@@ -1870,6 +2089,7 @@ const Step6 = () => {
               <Controller
                 control={control}
                 name="CoWorkTitle"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -1880,6 +2100,9 @@ const Step6 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.CoWorkTitle)}
+helperText={errors.CoWorkTitle?.message}
                   />
                 )}
               />
@@ -1895,6 +2118,7 @@ const Step6 = () => {
               <Controller
                 control={control}
                 name="CoWorkPhone"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -1905,6 +2129,9 @@ const Step6 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.CoWorkPhone)}
+helperText={errors.CoWorkPhone?.message}
                   />
                 )}
               />
@@ -1924,6 +2151,7 @@ const Step6 = () => {
                 <Controller
                   control={control}
                   name="Coyearss"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -1934,6 +2162,9 @@ const Step6 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.Coyearss)}
+helperText={errors.Coyearss?.message}
                     />
                   )}
                 />
@@ -1946,6 +2177,7 @@ const Step6 = () => {
                 <Controller
                   control={control}
                   name="Comonthss"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -1956,6 +2188,9 @@ const Step6 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.Comonthss)}
+helperText={errors.Comonthss?.message}
                     />
                   )}
                 />
@@ -1978,6 +2213,7 @@ const Step6 = () => {
               <Controller
                 control={control}
                 name="CoSelfWorkPhone"
+                rules={{ required: "This field is required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -1988,6 +2224,9 @@ const Step6 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    
+error={Boolean(errors?.CoSelfWorkPhone)}
+helperText={errors.CoSelfWorkPhone?.message}
                   />
                 )}
               />
@@ -2007,6 +2246,7 @@ const Step6 = () => {
                 <Controller
                   control={control}
                   name="CoSelfyear"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -2017,6 +2257,9 @@ const Step6 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.CoSelfyear)}
+helperText={errors.CoSelfyear?.message}
                     />
                   )}
                 />
@@ -2029,6 +2272,7 @@ const Step6 = () => {
                 <Controller
                   control={control}
                   name="CoSelfmonths"
+                  rules={{ required: "This field is required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -2039,6 +2283,9 @@ const Step6 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      
+error={Boolean(errors?.CoSelfmonths)}
+helperText={errors.CoSelfmonths?.message}
                     />
                   )}
                 />
@@ -2060,6 +2307,7 @@ const Step6 = () => {
           <Controller
             control={control}
             name="CoEmpStatus"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <Select
                 labelId="EmpStatus"
@@ -2069,6 +2317,9 @@ const Step6 = () => {
                 // name="EmpStatus"
                 value={"Select one"}
                 {...field}
+                
+error={Boolean(errors?.CoEmpStatus)}
+helperText={errors.CoEmpStatus?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -2087,6 +2338,7 @@ const Step6 = () => {
           <Controller
             control={control}
             name="CoPerYear"
+            rules={{ required: "This field is required." }}
             render={({ field }) => (
               <TextField
                 type="number"
@@ -2097,6 +2349,9 @@ const Step6 = () => {
                 halfWidth
                 margin="normal"
                 {...field}
+                
+error={Boolean(errors?.CoPerYear)}
+helperText={errors.CoPerYear?.message}
               />
             )}
           />
@@ -2126,7 +2381,6 @@ function getStepContent(step) {
 }
 
 const LinearStepper = () => {
-  
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -2237,69 +2491,84 @@ const LinearStepper = () => {
   // };
   return (
     <Layout>
-    <div style={{backgroundColor:"white"}}>
-       <div className="btn11 p-5" style={{backgroundColor:"white"}}>
-          <Typography variant="h5" style={{marginBottom:"10px"}}>Application Type</Typography>
-        <Link to="/creditApproval" style={{textDecoration:"none", marginRight:'10px'}}>
-          <Button variant="contained" color="primary" >Individual</Button>
-        </Link>
-        <Link to="/joint" style={{textDecoration:"none"}}>
-          <Button variant="contained" color="primary">Joint</Button>
+      <div style={{ backgroundColor: "white" }}>
+        <div className="btn11 p-5" style={{ backgroundColor: "white" }}>
+          <Typography variant="h5" style={{ marginBottom: "10px" }}>
+            Application Type
+          </Typography>
+          <Link
+            to="/creditApproval"
+            style={{ textDecoration: "none", marginRight: "10px" }}
+          >
+            <Button variant="contained" color="primary">
+              Individual
+            </Button>
           </Link>
-          <Typography style={{marginTop:"10px"}}>Please be aware that by selecting "Joint" the applicant and the co-applicant agree they intend to apply for joint credit. The co-applicant must be present and must indicate his or her acceptance of the Terms and Conditions at the end of this application before it is submitted.</Typography>
+          <Link to="/joint" style={{ textDecoration: "none" }}>
+            <Button variant="contained" color="primary">
+              Joint
+            </Button>
+          </Link>
+          <Typography style={{ marginTop: "10px" }}>
+            Please be aware that by selecting "Joint" the applicant and the
+            co-applicant agree they intend to apply for joint credit. The
+            co-applicant must be present and must indicate his or her acceptance
+            of the Terms and Conditions at the end of this application before it
+            is submitted.
+          </Typography>
         </div>
-      <Stepper alternativeLabel activeStep={activeStep}>
-        {steps.map((step, index) => {
-          return (
-            <Step key={index}>
-              <StepLabel>{step}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
+        <Stepper alternativeLabel activeStep={activeStep}>
+          {steps.map((step, index) => {
+            return (
+              <Step key={index}>
+                <StepLabel>{step}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
 
-      {activeStep === steps.length ? (
-        <Typography
-          variant="h3"
-          align="center"
-          style={{ backgroundColor: "white", color: "black" }}
-        >
-          Thank You For Submitting
-        </Typography>
-      ) : (
-        <>
-          <FormProvider {...methods}>
-            <form
-              onSubmit={methods.handleSubmit(handleNext)}
-              style={{ padding: "2px 39px" }}
-            >
-              {getStepContent(activeStep)}
+        {activeStep === steps.length ? (
+          <Typography
+            variant="h3"
+            align="center"
+            style={{ backgroundColor: "white", color: "black" }}
+          >
+            Thank You For Submitting
+          </Typography>
+        ) : (
+          <>
+            <FormProvider {...methods}>
+              <form
+                onSubmit={methods.handleSubmit(handleNext)}
+                style={{ padding: "2px 39px" }}
+              >
+                {getStepContent(activeStep)}
 
-              <div style={{ textAlign: "center", padding: "10px 0px" }}>
-                <Button
-                  className={classes.button}
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                >
-                  back
-                </Button>
+                <div style={{ textAlign: "center", padding: "10px 0px" }}>
+                  <Button
+                    className={classes.button}
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                  >
+                    back
+                  </Button>
 
-                <Button
-                  className={classes.button}
-                  variant="contained"
-                  color="primary"
-                  // onClick={handleNext}
-                  type="submit"
-                >
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
-              </div>
-            </form>
-          </FormProvider>
-        </>
-      )}
-    </div>
-  </Layout>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                    // onClick={handleNext}
+                    type="submit"
+                  >
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                  </Button>
+                </div>
+              </form>
+            </FormProvider>
+          </>
+        )}
+      </div>
+    </Layout>
   );
 };
 

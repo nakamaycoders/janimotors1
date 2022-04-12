@@ -2,7 +2,7 @@ const Joint = require("../models/JointForm");
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
-exports.createJointForm = catchAsyncErrors(async (req, res, next) => {
+exports.createJointForm =  (req, res) => {
   const {
     fname,
     midName,
@@ -164,8 +164,9 @@ exports.createJointForm = catchAsyncErrors(async (req, res, next) => {
   });
   joint.save((err, data) => {
     if (err) {
-      // return res.status(400).json({ err });
-      return next(new ErrorHander("Not found", 404));
+      return res.status(400).json({
+        err,
+      });
     }
     if (data) {
       return res.status(201).json({
@@ -173,7 +174,7 @@ exports.createJointForm = catchAsyncErrors(async (req, res, next) => {
       });
     }
   });
-});
+};
 
 exports.getJointForm = catchAsyncErrors(async (req, res, next) => {
   const JointInfo = await Joint.find();
