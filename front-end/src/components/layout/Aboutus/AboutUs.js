@@ -26,7 +26,9 @@ function AboutUs() {
           </p>
 
           <button type="button" className="btn btn-pri">
+            <Link style={{textDecoration:"none"}} to="/contactus">
             Read More
+            </Link>
           </button>
         </div>
       </div>

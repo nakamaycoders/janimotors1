@@ -139,9 +139,9 @@ export default function CustomizedTables(props) {
              <td >{responseData.CoState}</td>
           </tr>
           <tr>
-             <td className="boldIt2">House</td>
+             <td className="boldIt2">Housing status</td>
              <td >{responseData.House}</td>
-             <td className="boldIt2">House</td>
+             <td className="boldIt2">Housing status</td>
              <td >{responseData.CoHouse}</td>
           </tr>
           <tr>

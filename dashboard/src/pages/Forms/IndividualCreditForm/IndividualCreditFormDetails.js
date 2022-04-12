@@ -104,7 +104,7 @@ export default function CustomizedTables(props) {
              <td >{responseData.State}</td>
           </tr>
           <tr>
-             <td className="boldIt">House</td>
+             <td className="boldIt">House status</td>
              <td >{responseData.House}</td>
           </tr>
           <tr>
