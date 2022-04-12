@@ -339,14 +339,7 @@ const Step2 = () => {
   const { control } = useFormContext();
   return (
     <>
-      {/* <FormGroup style={{ width: "fit-content" }}>
-        <FormControlLabel
-          control={<Checkbox size="large" />}
-          value={checked}
-          onChange={() => setChecked((checked) => !checked)}
-          label="I have a Rural Route"
-        />
-      </FormGroup> */}
+     
       <div className="d-flex">
         <p style={{fontWeight:'bold', fontSize:'19px'}}>Rular Route</p>
         <div style={{marginLeft: '30px'}}>
