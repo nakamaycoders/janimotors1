@@ -3,6 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import "./style.css";
 import {ImLocation} from 'react-icons/im';
 
+const date = new Date();
 
 function Footer() {
   return (
@@ -24,8 +25,9 @@ function Footer() {
       </div>
       <hr></hr>
       <div className="bottom">
-        © 2022 Chicago Motor Cars | Privacy Policy | Terms {'&'} Conditions |
-        Contact Us | Sitemap
+      ©{date.getFullYear()} Jani Motors | Privacy Policy | Terms {'&'} Conditions |
+        Contact Us 
+      
       </div>
     </div>
   );

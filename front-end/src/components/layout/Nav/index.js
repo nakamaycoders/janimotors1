@@ -19,7 +19,7 @@ export const Nav = (props) => {
           })}
           <li>
             <a href="tel:+630-221-1800" className="nav-menues">
-              630-221-1800
+              815-219-1969
             </a>
           </li>
         </ul>
