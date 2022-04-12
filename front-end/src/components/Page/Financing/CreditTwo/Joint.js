@@ -1352,7 +1352,7 @@ const Step5 = () => {
                     render={({ field }) => (
                       <TextField
                         id="Corr"
-                        label="RR"
+                        label="CoRR"
                         variant="outlined"
                         halfWidth
                         margin="normal"
@@ -1368,7 +1368,7 @@ const Step5 = () => {
                     render={({ field }) => (
                       <TextField
                         id="Cobox"
-                        label="BOX"
+                        label="CoBOX"
                         variant="outlined"
                         halfWidth
                         margin="normal"
