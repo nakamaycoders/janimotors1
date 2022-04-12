@@ -151,12 +151,15 @@ const AllStreet = [
   "Way",
 ];
 
+
 const Step1 = () => {
   const {
     formState: { errors },
     control,
   } = useFormContext();
   console.log(errors);
+
+ 
   return (
     <>
       <Grid container spacing={2}>

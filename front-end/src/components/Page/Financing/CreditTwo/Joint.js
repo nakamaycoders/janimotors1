@@ -334,20 +334,43 @@ const Step1 = () => {
   );
 };
 const Step2 = () => {
-  // const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [visible, setVisible] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const { control } = useFormContext();
   return (
     <>
-      <FormGroup style={{ width: "fit-content" }}>
+      {/* <FormGroup style={{ width: "fit-content" }}>
         <FormControlLabel
           control={<Checkbox size="large" />}
           value={checked}
           onChange={() => setChecked((checked) => !checked)}
           label="I have a Rural Route"
         />
-      </FormGroup>
-      {checked ? (
+      </FormGroup> */}
+      <div className="d-flex">
+        <p style={{fontWeight:'bold', fontSize:'19px'}}>Rular Route</p>
+        <div style={{marginLeft: '30px'}}>
+          Yes{" "}
+          <input
+            type="radio"
+            className="mx-2"
+            name="isyes"
+            value="1"
+            onClick={() => setVisible(true)}
+          />
+        </div>
+        <div>
+          No{" "}
+          <input
+            type="radio"
+            className="mx-2 mt-1"
+            name="isyes"
+            value="0"
+            onClick={() => setVisible(false)}
+          />
+        </div>
+      </div>
+      {visible && (
         <>
           <Grid container spacing={2}>
             <Grid item xs={12} md={2}>
@@ -401,93 +424,95 @@ const Step2 = () => {
             </Grid>
           </Grid>
         </>
-      ) : (
+      )}
+
+      {!visible && (
         <>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={2}>
-              <Controller
-                control={control}
-                name="street"
-                render={({ field }) => (
-                  <TextField
-                    id="street #"
-                    label="Street #"
-                    variant="outlined"
-                    // placeholder="Enter Your Phone Number"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={2}>
-              <Controller
-                control={control}
-                name="StreetName"
-                render={({ field }) => (
-                  <TextField
-                    id="Street"
-                    label="Street Name"
-                    variant="outlined"
-                    // placeholder="Enter Your Alternate Phone"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={2}>
-              <InputLabel
-                style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="streetOptional"
-              >
-                Select Street (Optional)
-              </InputLabel>
-              <Controller
-                control={control}
-                name="StreetOptional"
-                render={({ field }) => (
-                  <Select
-                    labelId="Select Street"
-                    id="selectStreet"
-                    //   multiple
-                    // label="Select State"
-                    fullWidth
-                    input={<OutlinedInput label="Street" />}
-                    {...field}
-                  >
-                    {AllStreet.map((Street) => (
-                      <MenuItem key={Street} value={Street}>
-                        {Street}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                )}
-              />
-            </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={2}>
+            <Controller
+              control={control}
+              name="street"
+              render={({ field }) => (
+                <TextField
+                  id="street #"
+                  label="Street #"
+                  variant="outlined"
+                  // placeholder="Enter Your Phone Number"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
           </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={2}>
-              <Controller
-                control={control}
-                name="apt"
-                render={({ field }) => (
-                  <TextField
-                    id="apt #"
-                    label="Apt #"
-                    variant="outlined"
-                    // placeholder="Enter Your Phone Number"
-                    halfWidth
-                    margin="normal"
-                    {...field}
-                  />
-                )}
-              />
-            </Grid>
+          <Grid item xs={12} md={2}>
+            <Controller
+              control={control}
+              name="StreetName"
+              render={({ field }) => (
+                <TextField
+                  id="Street"
+                  label="Street Name"
+                  variant="outlined"
+                  // placeholder="Enter Your Alternate Phone"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
           </Grid>
-        </>
+          <Grid item xs={12} md={2}>
+            <InputLabel
+              style={{ marginBottom: "10px", fontWeight: "bolder" }}
+              id="streetOptional"
+            >
+              Select Street (Optional)
+            </InputLabel>
+            <Controller
+              control={control}
+              name="StreetOptional"
+              render={({ field }) => (
+                <Select
+                  labelId="Select Street"
+                  id="selectStreet"
+                  //   multiple
+                  // label="Select State"
+                  fullWidth
+                  input={<OutlinedInput label="Street" />}
+                  {...field}
+                >
+                  {AllStreet.map((Street) => (
+                    <MenuItem key={Street} value={Street}>
+                      {Street}
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={2}>
+            <Controller
+              control={control}
+              name="apt"
+              render={({ field }) => (
+                <TextField
+                  id="apt #"
+                  label="Apt #"
+                  variant="outlined"
+                  // placeholder="Enter Your Phone Number"
+                  halfWidth
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
+          </Grid>
+        </Grid>
+      </>
       )}
 
       {/* -------------------SAME */}
@@ -1288,19 +1313,9 @@ const Step4 = () => {
   );
 };
 const Step5 = () => {
-  // const [status, setStatus] = React.useState(0);
-  // const [status2, setStatus2] = React.useState(0);
-
-  // const radioHandler = (status) => {
-  //   setStatus(status);
-  // };
-
-  // const radioHandler2 = (status2) => {
-  //   setStatus2(status2);
-  // };
-
-  // const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(false);
+  
+  const [visible, setVisible] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const { control } = useFormContext();
   return (
     <>
@@ -1333,16 +1348,30 @@ const Step5 = () => {
       />
       Yes */}
       {/* {status === 1 && ( */}
-        <>
-          <FormGroup style={{ width: "fit-content" }}>
-            <FormControlLabel
-              control={<Checkbox size="large" />}
-              value={checked}
-              onChange={() => setChecked((checked) => !checked)}
-              label="I have a Rural Route"
-            />
-          </FormGroup>
-          {checked ? (
+      <div className="d-flex">
+        <p style={{fontWeight:'bold', fontSize:'19px'}}>Rular Route</p>
+        <div style={{marginLeft: '30px'}}>
+          Yes{" "}
+          <input
+            type="radio"
+            className="mx-2"
+            name="isyes"
+            value="1"
+            onClick={() => setVisible(true)}
+          />
+        </div>
+        <div>
+          No{" "}
+          <input
+            type="radio"
+            className="mx-2 mt-1"
+            name="isyes"
+            value="0"
+            onClick={() => setVisible(false)}
+          />
+        </div>
+      </div> 
+          {visible && (
             <>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={2}>
@@ -1391,7 +1420,8 @@ const Step5 = () => {
                 </Grid>
               </Grid>
             </>
-          ) : (
+          )}
+          {!visible && (
             <>
               <Grid container spacing={2}>
                 <Grid item xs={12} md={2}>
@@ -1479,6 +1509,7 @@ const Step5 = () => {
               </Grid>
             </>
           )}
+            
 
           {/* -------------------SAME */}
 
@@ -1547,8 +1578,6 @@ const Step5 = () => {
               />
             </Grid>
           </Grid>
-        </>
-      {/* )} */}
       <hr />
       {/* <h6>Same Mortgage/Rent information as applicant?</h6>
       <input

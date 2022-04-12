@@ -2,7 +2,7 @@ const Joint = require("../models/JointForm");
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
-exports.createJointForm = catchAsyncErrors(async (req, res, next) => {
+exports.createJointForm =  (req, res) => {
   const {
     fname,
     midName,
@@ -174,7 +174,7 @@ exports.createJointForm = catchAsyncErrors(async (req, res, next) => {
       });
     }
   });
-});
+};
 
 exports.getJointForm = catchAsyncErrors(async (req, res, next) => {
   const JointInfo = await Joint.find();
