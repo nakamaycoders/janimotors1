@@ -834,6 +834,10 @@ const Step3 = () => {
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
+          <Controller 
+          control={control}
+          name="SelectHousingStatus"
+          render={({field}) =>(
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
               Select Housing Status
@@ -844,6 +848,7 @@ const Step3 = () => {
               value={HousingStatus}
               onChange={handleChange}
               label="selectEmpStatus"
+              {...field}
             >
               <MenuItem value={"Employed"}>Employed</MenuItem>
               <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
@@ -855,7 +860,8 @@ const Step3 = () => {
               <MenuItem value={"Other"}>Other</MenuItem>
             </Select>
           </FormControl>
-          {/* {console.log(HousingStatus, SURR)} */}
+           )}
+           />
         </Grid>
         {(EAO || std) && (
           <Grid item xs={12} md={2}>
