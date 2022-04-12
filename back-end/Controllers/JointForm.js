@@ -164,8 +164,9 @@ exports.createJointForm = catchAsyncErrors(async (req, res, next) => {
   });
   joint.save((err, data) => {
     if (err) {
-      // return res.status(400).json({ err });
-      return next(new ErrorHander("Not found", 404));
+      return res.status(400).json({
+        err,
+      });
     }
     if (data) {
       return res.status(201).json({
