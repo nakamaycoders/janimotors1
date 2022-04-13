@@ -1825,7 +1825,7 @@ const Step6 = () => {
             control={control}
             name="CoSelectHousingStatus"
             id="empController"
-            render={({ field }) => (
+            render={() => (
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">
                   Select Housing Status
@@ -1836,8 +1836,7 @@ const Step6 = () => {
                   value={HousingStatus}
                   onChange={handleChange}
                   label="selectEmpStatus"
-                  {...field}
-                >
+                  >
                   <MenuItem value={"Employed"}>Employed</MenuItem>
                   <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
                   <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
@@ -1850,6 +1849,7 @@ const Step6 = () => {
                   <MenuItem value={"Other"}>Other</MenuItem>
                 </Select>
               </FormControl>
+                    
             )}
           />
         </Grid>
