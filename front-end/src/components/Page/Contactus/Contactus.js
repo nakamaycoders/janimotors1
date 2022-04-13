@@ -82,7 +82,7 @@ const ContactUs = () => {
             <TextField label="last Name" name="lastName" type="text" />
             <TextField label="Email" name="email" type="email" />
             <TextField label="Phone" name="phone" type="number" />
-            <TextField label="Message" name="message" type="text" />
+            <TextField row={4} col={4} label="Message" name="message" type="text" />
             <button
               className="btn btn-primary mt-3"
               type="submit"

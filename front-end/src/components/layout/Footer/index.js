@@ -16,8 +16,8 @@ function Footer() {
         <Container>
           <Row>
             <Col>
-              Chicago Motor Cars East 27W110 North Avenue West Chicago, IL 60185
-              630-221-1800
+              Jani Motors, 512 Saint Charles Road Carol Stream , IL 60188
+              
             </Col>
             
           </Row>
