@@ -254,7 +254,7 @@ export const slidersImages = [
     {
         id:1,
         path:'/used-car-in-janni-motors-chicago',
-        img:First,
+        img:'https://images.unsplash.com/photo-1622058232222-2700277d1a56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
         cName:'banner-image',
     },
     {

@@ -896,7 +896,7 @@ const Step3 = () => {
         <Grid item xs={12} md={4}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
-              Select Housing Status
+              Select Employee Status
             </InputLabel>
             <Select
               labelId="demo-simple-select-label"
