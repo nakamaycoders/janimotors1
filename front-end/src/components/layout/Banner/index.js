@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import './style.css'
 export const Banner = (props) => {
   return (
-    <Carousel autoPlay={true} infiniteLoop={true} autoFocus={true}>
+    <Carousel  infiniteLoop={true} autoFocus={true}>
       {slidersImages.map((item) => {
         return (
           <div key={item.id}>

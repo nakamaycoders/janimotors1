@@ -338,7 +338,7 @@ const Step1 = () => {
           />
         </Grid>
       </Grid>
-      <Grid container>
+      {/* <Grid container>
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
@@ -364,7 +364,7 @@ const Step1 = () => {
             )}
           />
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   );
 };
