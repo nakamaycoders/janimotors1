@@ -1,4 +1,5 @@
-import First from '../../../assets/1.jpg'
+import First from '../../../assets/1.png'
+import sec from '../../../assets/2.png'
 export const navItems = [
     {
         id:1,
@@ -260,7 +261,7 @@ export const slidersImages = [
     {
         id:2,
         path:'/used-car-in-janni-motors-chicago',
-        img:'https://www.chicagomotorcars.com/wp-content/uploads/2021/09/slidekarma_d.jpg',
+        img:sec,
         cName:'banner-image',
 
     },
