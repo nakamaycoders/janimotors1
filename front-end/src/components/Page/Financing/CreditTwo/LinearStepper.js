@@ -895,17 +895,21 @@ const Step3 = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
+            {/* <InputLabel id="demo-simple-select-label">
               Select Employee Status
-            </InputLabel>
+            </InputLabel> */}
+            <h6>Select Employee Status</h6>
             <Select
+
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={HousingStatus}
+              displayEmpty
               onChange={handleChange}
               label="selectEmpStatus"
               variant="outlined"
             >
+              <MenuItem value=""><em>select one value</em></MenuItem>
               <MenuItem value={"Employed"}>Employed</MenuItem>
               <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
               <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
