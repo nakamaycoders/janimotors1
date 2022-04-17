@@ -832,9 +832,10 @@ const Step3 = () => {
   let Self = false;
   let std = false;
 
-  const [HousingStatus, setHousingStatus] = useState("");
+  const [HousingStatus, setHousingStatus] = useState("Employed");
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
+    console.log("changed", HousingStatus)
   };
   switch (HousingStatus) {
     case "Unemployed":
@@ -890,8 +891,15 @@ const Step3 = () => {
     formState: { errors },
     control,
   } = useFormContext();
+  
+  const handleClose = e => {
+    // console.log(e.target.innerText) // => This logs menu item text.
+    setHousingStatus(e.target.innerText);
+    console.log("changed", HousingStatus)
+}
   return (
     <>
+   
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <FormControl fullWidth>
@@ -899,8 +907,38 @@ const Step3 = () => {
               Select Employee Status
             </InputLabel> */}
             <h6>Select Employee Status</h6>
-
-            <Select
+ {/* select New--------------------------------------------- */}
+ <Controller
+            control={control}
+            name="EmploymentStatus"
+            rules={{ required: "Invalid Employment Status" }}
+            render={({ field }) => (
+              <Select
+               
+                labelId="EmploymentStatus"
+                id="EmploymentStatus"
+                fullWidth
+                input={<OutlinedInput label="EmploymentStatus" />}
+                name="EmploymentStatus"
+                value={HousingStatus}
+                {...field}
+                error={Boolean(errors?.House)}
+                helperText={errors.House?.message}
+              >
+              {/* <MenuItem value=""><em>select one value</em></MenuItem> */}
+              <MenuItem onClick={handleClose} value={"Employed"}>Employed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Unemployed"}>Unemployed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Self-Employed"}>Self-Employed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Student"}>Student</MenuItem>
+              <MenuItem onClick={handleClose} value={"Retired"}>Retired</MenuItem>
+              <MenuItem onClick={handleClose} value={"Active Military"}>Active Military</MenuItem>
+              <MenuItem onClick={handleClose} value={"Retired Military"}>Retired Military</MenuItem>
+              <MenuItem onClick={handleClose} value={"Other"}>Other</MenuItem>
+              </Select>
+            )}
+          />
+    {/* Select 1 --------------------------------------------*/}
+            {/* <Select
 
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -919,7 +957,7 @@ const Step3 = () => {
               <MenuItem value={"Active Military"}>Active Military</MenuItem>
               <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
               <MenuItem value={"Other"}>Other</MenuItem>
-            </Select>
+            </Select> */}
           </FormControl>
           {/* {console.log(HousingStatus, SURR)} */}
         </Grid>
@@ -1221,6 +1259,8 @@ const Step3 = () => {
           />
         </Grid>
       </Grid>
+
+      
     </>
   );
 };
