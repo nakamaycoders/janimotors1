@@ -17,8 +17,7 @@ function AboutUs() {
         <div className="col-md-8 pt-4 " style={{ color: "white" }}>
           <p>
            
-            We proudly serve the Chicagoland area and surrounding suburbs. We
-            offer a large selection of pre-owned vehicles at affordable prices
+            We proudly serve our customers. We offer a large selection of pre-owned vehicles at affordable prices
             for everyone. We are committed to providing our customers with the
             best service, to get you a step closer to your vehicle that
             satisfies your needs. Our dealership is always ready to assist you
