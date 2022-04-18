@@ -4,7 +4,14 @@ import React,{useState} from "react";
 // import { Carousel } from "react-responsive-carousel";
 import './style.css'
 import Carousel from 'react-bootstrap/Carousel'
-import First from '../../../assets/1.jpg'
+import First from '../../../assets/1.png'
+import sec from '../../../assets/2.png'
+import third from '../../../assets/3.jpg'
+import four from '../../../assets/4.jpg'
+import five from '../../../assets/5.jpg'
+import six from '../../../assets/6.jpg'
+import seven from '../../../assets/7.jpg'
+import eigth from '../../../assets/8.jpg'
 
 export const Banner = (props) => {
   const [index, setIndex] = useState(0);
@@ -17,13 +24,10 @@ export const Banner = (props) => {
       <Carousel.Item>
         <img
           className="d-block w-100 img-fluid"
-          src='https://cdn.pixabay.com/photo/2016/12/03/18/57/car-1880381_960_720.jpg'
+          src={sec}
           alt="First slide"
         />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
+       
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -31,10 +35,55 @@ export const Banner = (props) => {
           src={First}
           alt="First slide"
         />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={third}
+          alt="First slide"
+        />
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={four}
+          alt="First slide"
+        />
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={eigth}
+          alt="First slide"
+        />
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={five}
+          alt="First slide"
+        />
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={six}
+          alt="First slide"
+        />
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={seven}
+          alt="First slide"
+        />
+        
       </Carousel.Item>
     </Carousel>
 

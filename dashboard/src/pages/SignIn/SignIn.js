@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions";
 // import Header from "../layouts/Header";
-import logo from '../../assets/img/logo .png'
+import logo from '../../assets/img/logo.png'
 
 
 const SignIn = (props) => {
