@@ -656,18 +656,18 @@ const Step2 = () => {
           </InputLabel>
           <Controller
             control={control}
-            name="House"
+            name="SelectHousingStatus"
             rules={{ required: "Invalid housing status " }}
             render={({ field }) => (
               <Select
                 labelId="House"
-                id="House"
+                id="SelectHousingStatus"
                 fullWidth
-                input={<OutlinedInput label="House" />}
-                name="House"
+                input={<OutlinedInput label="SelectHousingStatus" />}
+                
                 {...field}
-                error={Boolean(errors?.House)}
-                helperText={errors.House?.message}
+                error={Boolean(errors?.SelectHousingStatus)}
+                helperText={errors.SelectHousingStatus?.message}
               >
                 {AllHouse.map((House) => (
                   <MenuItem key={House} value={House}>
@@ -919,7 +919,7 @@ const Step3 = () => {
                 id="EmploymentStatus"
                 fullWidth
                 input={<OutlinedInput label="EmploymentStatus" />}
-                name="EmploymentStatus"
+                
                 value={HousingStatus}
                 {...field}
                 error={Boolean(errors?.House)}
@@ -1302,12 +1302,13 @@ const LinearStepper = () => {
       zip: "",
       city: "",
       State: "",
-      House: "",
+    
       Year: "",
       Month: "",
       Mortgage: "",
       Dob: "",
       SSN: "",
+      EmploymentStatus:"",
       SelectHousingStatus: "",
       Employer: "",
       WorkTitle: "",

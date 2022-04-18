@@ -64,6 +64,10 @@ const creditSchema = new mongoose.Schema({
         type:String,
         trim:true
     },
+    EmploymentStatus:{
+        type:String,
+        trim:true
+    },
     apt:{
         type:String,
         // 

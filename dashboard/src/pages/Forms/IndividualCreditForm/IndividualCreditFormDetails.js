@@ -130,7 +130,7 @@ export default function CustomizedTables(props) {
        
           <tr>
              <td className="boldIt">Employer</td>
-             <td >{responseData.Employer}</td>
+             <td >{responseData.EmploymentStatus}</td>
           </tr>
           <tr>
              <td className="boldIt">WorkTitle</td>
