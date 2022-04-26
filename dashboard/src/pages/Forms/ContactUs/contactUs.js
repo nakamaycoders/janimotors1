@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
+import {api} from "../../../UrlConfig"
 
 
 const ContactUs = () => {
@@ -13,7 +14,7 @@ const ContactUs = () => {
   let [responseData, setResponseData] = useState("");
   const history = useHistory();
 
-  const url = "http://localhost:5000/api/contact/information";
+  const url = `${api}/contact/information`;
 
   const getContactInfo = async () => {
     try {
@@ -43,8 +44,8 @@ const ContactUs = () => {
       }
     });
 
-  const deleteUrl = `http://localhost:5000/api/contact/delete`;
-  const deleteContactHandler = (id) => {
+    const deleteContactHandler = (id) => {
+    const deleteUrl = `https://jmserver.herokuapp.com/api/contact/delete`;
     try {
       Axios.delete(`${deleteUrl}/${id}`);
       history.go(0);
@@ -54,7 +55,7 @@ const ContactUs = () => {
   };
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/contact/update`;
+    const changeViewUrl = `https://jmserver.herokuapp.com/api/contact/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {

@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Axios from "axios";
 import './contactDetails.css'
+import {api} from "../../../UrlConfig"
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
-  const url = "http://localhost:5000/api/contact/information";
+  const url = `${api}/contact/information`;
   
   const getContactInfoById = async () => {
     const id = props.location.params.id;
