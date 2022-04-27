@@ -11,7 +11,7 @@ const TradeIn = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/trade-in/update`;
+    const changeViewUrl = `https://jmserver.herokuapp.com/api/trade-in/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {
@@ -26,7 +26,7 @@ const TradeIn = () => {
     // deleteContactHandler()
   }, []);
 
-  const url = "http://localhost:5000/api/trade-in/information";
+  const url = "https://jmserver.herokuapp.com/api/trade-in/information";
 
   const getContactInfo = async () => {
     try {
@@ -38,7 +38,7 @@ const TradeIn = () => {
     }
   };
 
-  const deleteUrl = `http://localhost:5000/api/trade-in/delete`;
+  const deleteUrl = `https://jmserver.herokuapp.com/api/trade-in/delete`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);

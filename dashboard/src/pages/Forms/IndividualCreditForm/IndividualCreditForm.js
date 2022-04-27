@@ -11,7 +11,7 @@ const CreditApproval = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/credit/update`;
+    const changeViewUrl = `https://jmserver.herokuapp.com/api/credit/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {
@@ -26,7 +26,7 @@ const CreditApproval = () => {
     // deleteContactHandler()
   }, []);
 
-  const url = "http://localhost:5000/api/credit/information";
+  const url = "https://jmserver.herokuapp.com/api/credit/information";
 
   const getJointInfo = async () => {
     try {
@@ -38,7 +38,7 @@ const CreditApproval = () => {
     }
   };
 
-  const deleteUrl = `http://localhost:5000/api/credit/delete/:id`;
+  const deleteUrl = `https://jmserver.herokuapp.com/api/credit/delete/:id`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);

@@ -11,7 +11,7 @@ const CreditApproval = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `http://localhost:5000/api/trade-in/update`;
+    const changeViewUrl = `https://jmserver.herokuapp.com/api/trade-in/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {
@@ -26,7 +26,7 @@ const CreditApproval = () => {
     // deleteContactHandler()
   }, []);
 
-  const url = "http://localhost:5000/api/joint/information";
+  const url = "https://jmserver.herokuapp.com/api/joint/information";
 
   const getJointInfo = async () => {
     try {
@@ -38,7 +38,7 @@ const CreditApproval = () => {
     }
   };
 
-  const deleteUrl = `http://localhost:5000/api/joint/delete`;
+  const deleteUrl = `https://jmserver.herokuapp.com/api/joint/delete`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
@@ -70,7 +70,7 @@ const CreditApproval = () => {
       <main className="content">
         <div className="dashboard">
           <div className="productListContainer">
-            <h1 id="productListHeading">Trade In Submissions</h1>
+            <h1 id="productListHeading">Credit Approval Submissions</h1>
             <h6>Unread Message(s): {unreadCount}</h6>
             <table className="table">
               <thead>
