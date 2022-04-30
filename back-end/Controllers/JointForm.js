@@ -1,4 +1,4 @@
-const Joint = require("../models/JointForm");
+const Joint = require("../Models/JointForm");
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 

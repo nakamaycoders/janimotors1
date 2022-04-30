@@ -6,7 +6,7 @@ import Axios from "axios";
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
-  const url = "http://localhost:5000/api/joint/information";
+  const url = "https://jmserver.herokuapp.com/api/joint/information";
   
   const getContactInfoById = async () => {
     const id = props.location.params.id;

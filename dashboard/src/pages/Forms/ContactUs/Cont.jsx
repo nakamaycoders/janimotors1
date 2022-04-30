@@ -23,7 +23,7 @@ const ContactUs = () => {
     // deleteContactHandler()
   }, []);
 
-  const url = "http://localhost:5000/api/contact/information";
+  const url = "https://jmserver.herokuapp.com/api/contact/information";
 
 
   const getContactInfo = async () => {
@@ -76,7 +76,7 @@ const ContactUs = () => {
     console.log(newRow);
     
   }
-  const deleteUrl = `http://localhost:5000/api/contact/delete`;
+  const deleteUrl = `https://jmserver.herokuapp.com/api/contact/delete`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);

@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Axios from "axios";
 import './ICFD.css'
+import {api} from "../../../UrlConfig"
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
-  const url = "http://localhost:5000/api/credit/information";
+//   const url = "https://jmserver.herokuapp.com/api/credit/information";
+const url = `${api}/credit/information`;
   
   const getContactInfoById = async () => {
     const id = props.location.params.id;
