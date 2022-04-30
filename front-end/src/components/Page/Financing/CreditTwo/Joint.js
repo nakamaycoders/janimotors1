@@ -775,9 +775,10 @@ const Step3 = () => {
   let Self = false;
   let std = false;
 
-  const [HousingStatus, setHousingStatus] = useState("");
+  const [HousingStatus, setHousingStatus] = useState("Employed");
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
+    console.log("changed", HousingStatus)
   };
   switch (HousingStatus) {
     case "Unemployed":
@@ -829,27 +830,68 @@ const Step3 = () => {
       break;
   }
 
-  const { control } = useFormContext();
+  const {
+    formState: { errors },
+    control,
+  } = useFormContext();
+  
+  const handleClose = e => {
+    // console.log(e.target.innerText) // => This logs menu item text.
+    setHousingStatus(e.target.innerText);
+    console.log("changed", HousingStatus)
+}
   return (
     <>
+   
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          <Controller 
-          control={control}
-          name="SelectHousingStatus"
-          render={({field}) =>(
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
-              Select Housing Status
-            </InputLabel>
-            <Select
+            {/* <InputLabel id="demo-simple-select-label">
+              Select Employee Status
+            </InputLabel> */}
+            <h6>Select Employee Status</h6>
+ {/* select New--------------------------------------------- */}
+ <Controller
+            control={control}
+            name="EmploymentStatus"
+            rules={{ required: "Invalid Employment Status" }}
+            render={({ field }) => (
+              <Select
+               
+                labelId="EmploymentStatus"
+                id="EmploymentStatus"
+                fullWidth
+                input={<OutlinedInput label="EmploymentStatus" />}
+                
+                value={HousingStatus}
+                {...field}
+                error={Boolean(errors?.House)}
+                helperText={errors.House?.message}
+              >
+              {/* <MenuItem value=""><em>select one value</em></MenuItem> */}
+              <MenuItem onClick={handleClose} value={"Employed"}>Employed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Unemployed"}>Unemployed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Self-Employed"}>Self-Employed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Student"}>Student</MenuItem>
+              <MenuItem onClick={handleClose} value={"Retired"}>Retired</MenuItem>
+              <MenuItem onClick={handleClose} value={"Active Military"}>Active Military</MenuItem>
+              <MenuItem onClick={handleClose} value={"Retired Military"}>Retired Military</MenuItem>
+              <MenuItem onClick={handleClose} value={"Other"}>Other</MenuItem>
+              </Select>
+            )}
+          />
+    {/* Select 1 --------------------------------------------*/}
+            {/* <Select
+
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={HousingStatus}
+              displayEmpty
               onChange={handleChange}
               label="selectEmpStatus"
-              {...field}
+              variant="outlined"
             >
+              <MenuItem value=""><em>select one value</em></MenuItem>
               <MenuItem value={"Employed"}>Employed</MenuItem>
               <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
               <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
@@ -858,10 +900,9 @@ const Step3 = () => {
               <MenuItem value={"Active Military"}>Active Military</MenuItem>
               <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
               <MenuItem value={"Other"}>Other</MenuItem>
-            </Select>
+            </Select> */}
           </FormControl>
-           )}
-           />
+          {/* {console.log(HousingStatus, SURR)} */}
         </Grid>
         {(EAO || std) && (
           <Grid item xs={12} md={2}>
@@ -873,6 +914,7 @@ const Step3 = () => {
               control={control}
               name="Employer"
               id="empController"
+              rules={{ required: "This field is Required." }}
               render={({ field }) => (
                 <TextField
                   type="text"
@@ -884,6 +926,8 @@ const Step3 = () => {
                   halfWidth
                   margin="normal"
                   {...field}
+                  error={Boolean(errors?.Employer)}
+                  helperText={errors.Employer?.message}
                 />
               )}
             />
@@ -902,6 +946,7 @@ const Step3 = () => {
               <Controller
                 control={control}
                 name="WorkTitle"
+                rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -912,6 +957,8 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.WorkTitle)}
+                    helperText={errors.WorkTitle?.message}
                   />
                 )}
               />
@@ -927,6 +974,7 @@ const Step3 = () => {
               <Controller
                 control={control}
                 name="WorkPhone"
+                rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -937,6 +985,8 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.WorkPhone)}
+                    helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -956,6 +1006,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="yearss"
+                  rules={{ required: "This field is Required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -966,6 +1017,8 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.yearss)}
+                      helperText={errors.yearss?.message}
                     />
                   )}
                 />
@@ -978,6 +1031,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="monthss"
+                  rules={{ required: "This field is Required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -988,6 +1042,8 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.monthss)}
+                      helperText={errors.monthss?.message}
                     />
                   )}
                 />
@@ -1010,6 +1066,7 @@ const Step3 = () => {
               <Controller
                 control={control}
                 name="WorkPhone"
+                rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -1020,6 +1077,8 @@ const Step3 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.WorkPhone)}
+                    helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -1038,6 +1097,7 @@ const Step3 = () => {
                 </InputLabel>
                 <Controller
                   control={control}
+                  rules={{ required: "This field is Required." }}
                   name="yearss"
                   render={({ field }) => (
                     <TextField
@@ -1049,6 +1109,8 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.yearss)}
+                      helperText={errors.yearss?.message}
                     />
                   )}
                 />
@@ -1061,6 +1123,7 @@ const Step3 = () => {
                 <Controller
                   control={control}
                   name="monthss"
+                  rules={{ required: "This field is Required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
@@ -1071,6 +1134,8 @@ const Step3 = () => {
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.monthss)}
+                      helperText={errors.monthss?.message}
                     />
                   )}
                 />
@@ -1092,6 +1157,7 @@ const Step3 = () => {
           <Controller
             control={control}
             name="EmpStatus"
+            rules={{ required: "This field is Required." }}
             render={({ field }) => (
               <Select
                 labelId="EmpStatus"
@@ -1101,6 +1167,8 @@ const Step3 = () => {
                 name="EmpStatus"
                 value={"Select one"}
                 {...field}
+                error={Boolean(errors?.EmpStatus)}
+                helperText={errors.EmpStatus?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -1134,9 +1202,12 @@ const Step3 = () => {
           />
         </Grid>
       </Grid>
+
+      
     </>
   );
 };
+
 const Step4 = () => {
   const { control } = useFormContext();
   return (
@@ -1764,13 +1835,10 @@ const Step6 = () => {
   let Self = false;
   let std = false;
 
-  // const [SURR, setSURR] = useState(true);
-  // const [EAO, setEAO] = useState(false);
-  // const [Self, setSelf] = useState(false);
-  // const [std, setstd] = useState(false);
-  const [HousingStatus, setHousingStatus] = useState("");
+  const [HousingStatus, setHousingStatus] = useState("Employed");
   const handleChange = (event) => {
     setHousingStatus(event.target.value);
+    console.log("changed", HousingStatus)
   };
   switch (HousingStatus) {
     case "Unemployed":
@@ -1780,7 +1848,7 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = false;
-      // console.log("SURR", SURR)
+      console.log("SURR", SURR);
 
       break;
     case "":
@@ -1791,7 +1859,7 @@ const Step6 = () => {
       EAO = true;
       Self = false;
       std = false;
-      // console.log("EAO", EAO)
+      console.log("EAO", EAO);
       break;
 
     case "Self-Employed":
@@ -1803,7 +1871,7 @@ const Step6 = () => {
       // setEAO(false);
       // setSelf(true);
       // setstd(false);
-      // console.log("self", Self)
+      console.log("self", Self);
 
       break;
 
@@ -1812,7 +1880,7 @@ const Step6 = () => {
       EAO = false;
       Self = false;
       std = true;
-      // console.log("std", std);
+      console.log("std", std);
 
       break;
 
@@ -1822,42 +1890,79 @@ const Step6 = () => {
       break;
   }
 
-  const { control } = useFormContext();
+  const {
+    formState: { errors },
+    control,
+  } = useFormContext();
+  
+  const handleClose = e => {
+    // console.log(e.target.innerText) // => This logs menu item text.
+    setHousingStatus(e.target.innerText);
+    console.log("changed", HousingStatus)
+}
   return (
     <>
+   
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          <Controller
+          <FormControl fullWidth>
+            {/* <InputLabel id="demo-simple-select-label">
+              Select Employee Status
+            </InputLabel> */}
+            <h6>Select Employee Status</h6>
+ {/* select New--------------------------------------------- */}
+ <Controller
             control={control}
-            name="CoSelectHousingStatus"
-            id="empController"
-            render={() => (
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">
-                  Select Housing Status
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={HousingStatus}
-                  onChange={handleChange}
-                  label="selectEmpStatus"
-                  >
-                  <MenuItem value={"Employed"}>Employed</MenuItem>
-                  <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
-                  <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
-                  <MenuItem value={"Student"}>Student</MenuItem>
-                  <MenuItem value={"Retired"}>Retired</MenuItem>
-                  <MenuItem value={"Active Military"}>Active Military</MenuItem>
-                  <MenuItem value={"Retired Military"}>
-                    Retired Military
-                  </MenuItem>
-                  <MenuItem value={"Other"}>Other</MenuItem>
-                </Select>
-              </FormControl>
-                    
+            name="CoEmploymentStatus"
+            rules={{ required: "Invalid Employment Status" }}
+            render={({ field }) => (
+              <Select
+               
+                labelId="EmploymentStatus"
+                id="CoEmploymentStatus"
+                fullWidth
+                input={<OutlinedInput label="EmploymentStatus" />}
+                
+                value={HousingStatus}
+                {...field}
+                error={Boolean(errors?.House)}
+                helperText={errors.House?.message}
+              >
+              {/* <MenuItem value=""><em>select one value</em></MenuItem> */}
+              <MenuItem onClick={handleClose} value={"Employed"}>Employed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Unemployed"}>Unemployed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Self-Employed"}>Self-Employed</MenuItem>
+              <MenuItem onClick={handleClose} value={"Student"}>Student</MenuItem>
+              <MenuItem onClick={handleClose} value={"Retired"}>Retired</MenuItem>
+              <MenuItem onClick={handleClose} value={"Active Military"}>Active Military</MenuItem>
+              <MenuItem onClick={handleClose} value={"Retired Military"}>Retired Military</MenuItem>
+              <MenuItem onClick={handleClose} value={"Other"}>Other</MenuItem>
+              </Select>
             )}
           />
+    {/* Select 1 --------------------------------------------*/}
+            {/* <Select
+
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={HousingStatus}
+              displayEmpty
+              onChange={handleChange}
+              label="selectEmpStatus"
+              variant="outlined"
+            >
+              <MenuItem value=""><em>select one value</em></MenuItem>
+              <MenuItem value={"Employed"}>Employed</MenuItem>
+              <MenuItem value={"Unemployed"}>Unemployed</MenuItem>
+              <MenuItem value={"Self-Employed"}>Self-Employed</MenuItem>
+              <MenuItem value={"Student"}>Student</MenuItem>
+              <MenuItem value={"Retired"}>Retired</MenuItem>
+              <MenuItem value={"Active Military"}>Active Military</MenuItem>
+              <MenuItem value={"Retired Military"}>Retired Military</MenuItem>
+              <MenuItem value={"Other"}>Other</MenuItem>
+            </Select> */}
+          </FormControl>
+          {/* {console.log(HousingStatus, SURR)} */}
         </Grid>
         {(EAO || std) && (
           <Grid item xs={12} md={2}>
@@ -1867,8 +1972,9 @@ const Step6 = () => {
             ></InputLabel>
             <Controller
               control={control}
-              name="CoEmployer"
+              name="coEmployer"
               id="empController"
+              rules={{ required: "This field is Required." }}
               render={({ field }) => (
                 <TextField
                   type="text"
@@ -1880,6 +1986,8 @@ const Step6 = () => {
                   halfWidth
                   margin="normal"
                   {...field}
+                  error={Boolean(errors?.Employer)}
+                  helperText={errors.Employer?.message}
                 />
               )}
             />
@@ -1893,11 +2001,12 @@ const Step6 = () => {
             <Grid item xs={6} md={2}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoWorkTitle"
+                id="WorkTitle"
               ></InputLabel>
               <Controller
                 control={control}
-                name="CoWorkTitle"
+                name="coWorkTitle"
+                rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
@@ -1908,6 +2017,8 @@ const Step6 = () => {
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.WorkTitle)}
+                    helperText={errors.WorkTitle?.message}
                   />
                 )}
               />
@@ -1918,21 +2029,24 @@ const Step6 = () => {
             <Grid item xs={6} md={2}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoWorkPhone"
+                id="WorkPhone"
               ></InputLabel>
               <Controller
                 control={control}
-                name="CoWorkPhone"
+                name="coWorkPhone"
+                rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
-                    id="CoWorkPhone"
+                    id="WorkPhone"
                     label={std ? "School Phone" : "Work Phone"}
                     variant="outlined"
                     // placeholder="Enter Your Alternate Phone"
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.WorkPhone)}
+                    helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -1945,23 +2059,26 @@ const Step6 = () => {
               <Grid item xs={12} md={2}>
                 <InputLabel
                   style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                  id="Coyearss"
+                  id="yearss"
                 >
                   Time At Job
                 </InputLabel>
                 <Controller
                   control={control}
-                  name="Coyearss"
+                  name="coyearss"
+                  rules={{ required: "This field is Required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
-                      id="Coyearss"
+                      id="yearss"
                       label="Years"
                       variant="outlined"
                       // placeholder="Enter Your Alternate Phone"
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.yearss)}
+                      helperText={errors.yearss?.message}
                     />
                   )}
                 />
@@ -1973,17 +2090,20 @@ const Step6 = () => {
                 ></InputLabel>
                 <Controller
                   control={control}
-                  name="Comonthss"
+                  name="comonthss"
+                  rules={{ required: "This field is Required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
-                      id="Comonthss"
+                      id="monthss"
                       label="Months"
                       variant="outlined"
                       // placeholder="Enter Your Alternate Phone"
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.monthss)}
+                      helperText={errors.monthss?.message}
                     />
                   )}
                 />
@@ -2001,21 +2121,24 @@ const Step6 = () => {
             <Grid item xs={6} md={2}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoSelfWorkPhone"
+                id="WorkPhone"
               ></InputLabel>
               <Controller
                 control={control}
-                name="CoSelfWorkPhone"
+                name="coWorkPhone"
+                rules={{ required: "This field is Required." }}
                 render={({ field }) => (
                   <TextField
                     type="text"
-                    id="CoSelfWorkPhone"
+                    id="WorkPhone"
                     label="Work Phone"
                     variant="outlined"
                     // placeholder="Enter Your Alternate Phone"
                     halfWidth
                     margin="normal"
                     {...field}
+                    error={Boolean(errors?.WorkPhone)}
+                    helperText={errors.WorkPhone?.message}
                   />
                 )}
               />
@@ -2028,23 +2151,26 @@ const Step6 = () => {
               <Grid item xs={12} md={2}>
                 <InputLabel
                   style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                  id="CoSelfyear"
+                  id="yearss"
                 >
                   Time At Job
                 </InputLabel>
                 <Controller
                   control={control}
-                  name="CoSelfyear"
+                  rules={{ required: "This field is Required." }}
+                  name="yearss"
                   render={({ field }) => (
                     <TextField
                       type="number"
-                      id="CoSelfyear"
+                      id="yearss"
                       label="Years"
                       variant="outlined"
                       // placeholder="Enter Your Alternate Phone"
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.yearss)}
+                      helperText={errors.yearss?.message}
                     />
                   )}
                 />
@@ -2052,21 +2178,24 @@ const Step6 = () => {
               <Grid item xs={12} md={4}>
                 <InputLabel
                   style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                  id="CoSelfemployer"
+                  id="employer"
                 ></InputLabel>
                 <Controller
                   control={control}
-                  name="CoSelfmonths"
+                  name="monthss"
+                  rules={{ required: "This field is Required." }}
                   render={({ field }) => (
                     <TextField
                       type="number"
-                      id="CoSelfmonths"
+                      id="monthss"
                       label="Months"
                       variant="outlined"
                       // placeholder="Enter Your Alternate Phone"
                       halfWidth
                       margin="normal"
                       {...field}
+                      error={Boolean(errors?.monthss)}
+                      helperText={errors.monthss?.message}
                     />
                   )}
                 />
@@ -2080,23 +2209,26 @@ const Step6 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="CoEmpStatus"
+            id="EmpStatus"
             value={"Select one"}
           >
             Source of Income
           </InputLabel>
           <Controller
             control={control}
-            name="CoEmpStatus"
+            name="EmpStatus"
+            rules={{ required: "This field is Required." }}
             render={({ field }) => (
               <Select
                 labelId="EmpStatus"
-                id="CoEmpStatus"
+                id="EmpStatus"
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
-                // name="EmpStatus"
+                name="EmpStatus"
                 value={"Select one"}
                 {...field}
+                error={Boolean(errors?.EmpStatus)}
+                helperText={errors.EmpStatus?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -2110,11 +2242,11 @@ const Step6 = () => {
         <Grid item xs={12} md={2}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="CoPerYear"
+            id="PerYear"
           ></InputLabel>
           <Controller
             control={control}
-            name="CoPerYear"
+            name="PerYear"
             render={({ field }) => (
               <TextField
                 type="number"
@@ -2130,6 +2262,8 @@ const Step6 = () => {
           />
         </Grid>
       </Grid>
+
+      
     </>
   );
 };
