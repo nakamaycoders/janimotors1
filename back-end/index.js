@@ -59,6 +59,12 @@ app.listen(process.env.PORT,()=>{
     console.log(`Server is working on port ${process.env.PORT}`)
 }); 
 
+// app.use(express.static(path.join(__dirname,"dashboard/build")));
+
+// app.get("*",(req,res)=>{
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
+// })
+
 // Unhandled Promise Rejection
 process.on("unhandledRejection", (err) => {
     console.log(`Error: ${err.message}`);
