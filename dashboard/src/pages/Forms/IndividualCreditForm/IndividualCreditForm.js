@@ -43,7 +43,7 @@ const CreditApproval = () => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
       // console.log("Item successfully deleted.", res);
-      history.go(0);
+      // history.go(0);
     } catch (err) {
       alert(err);
     }
@@ -70,7 +70,7 @@ const CreditApproval = () => {
       <main className="content">
         <div className="dashboard">
           <div className="productListContainer">
-            <h1 id="productListHeading">Trade In Submissions</h1>
+            <h1 id="productListHeading">Individual Credit Form</h1>
             <h6>Unread Message(s): {unreadCount}</h6>
             <table className="table">
               <thead>

@@ -51,7 +51,7 @@ const ContactUs = () => {
     } catch (err) {
       alert(err);
     }
-    history.go(0);
+    // history.go(0);
   };
 
   const changeView = (id) => {

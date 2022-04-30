@@ -7,13 +7,13 @@ import {api} from "../../../UrlConfig"
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
-//   const url = "https://jmserver.herokuapp.com/api/credit/information";
-const url = `${api}/credit/information`;
+  const URL = "https://jmserver.herokuapp.com/api/credit/information";
+// const url = `${api}/credit/information`;
   
   const getContactInfoById = async () => {
     const id = props.location.params.id;
     try {
-      const res = await Axios.get(`${url}/${id}`);
+      const res = await Axios.get(`${URL}/${id}`);
       setResponseData(res.data.result);
     } catch (err) {
       console.log(err);
