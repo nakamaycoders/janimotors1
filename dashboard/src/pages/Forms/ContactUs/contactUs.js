@@ -70,6 +70,7 @@ const ContactUs = () => {
         <div className="dashboard">
           <div className="productListContainer">
             <h1 id="productListHeading">Contact Submissions</h1>
+            <h6>Unread Message(s): {unreadCount}</h6>
             <table className="table">
               <thead>
                 <tr>

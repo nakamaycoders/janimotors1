@@ -88,11 +88,11 @@ const creditSchema = new mongoose.Schema({
         
         trim:true
     },
-    House:{
-        type:String,
+    // House:{
+    //     type:String,
         
-        trim:true
-    },
+    //     trim:true
+    // },
     Year:{
         type:String,
         // 

@@ -1925,8 +1925,8 @@ const Step6 = () => {
                 
                 value={HousingStatus}
                 {...field}
-                error={Boolean(errors?.House)}
-                helperText={errors.House?.message}
+                error={Boolean(errors?.CoEmploymentStatus)}
+                helperText={errors.CoEmploymentStatus?.message}
               >
               {/* <MenuItem value=""><em>select one value</em></MenuItem> */}
               <MenuItem onClick={handleClose} value={"Employed"}>Employed</MenuItem>
@@ -1968,7 +1968,7 @@ const Step6 = () => {
           <Grid item xs={12} md={2}>
             <InputLabel
               style={{ marginBottom: "10px", fontWeight: "bolder" }}
-              id="employer"
+              id="Coemployer"
             ></InputLabel>
             <Controller
               control={control}
@@ -2209,14 +2209,14 @@ const Step6 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="EmpStatus"
+            id="Source of income"
             value={"Select one"}
           >
             Source of Income
           </InputLabel>
           <Controller
             control={control}
-            name="EmpStatus"
+            name="SourceOfIncome"
             rules={{ required: "This field is Required." }}
             render={({ field }) => (
               <Select
@@ -2224,11 +2224,11 @@ const Step6 = () => {
                 id="EmpStatus"
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
-                name="EmpStatus"
+                name="SourceOfIncome"
                 value={"Select one"}
                 {...field}
-                error={Boolean(errors?.EmpStatus)}
-                helperText={errors.EmpStatus?.message}
+                error={Boolean(errors?.SourceOfIncome)}
+                helperText={errors.SourceOfIncome?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -2357,6 +2357,8 @@ const LinearStepper = () => {
       CoSSN: "",
 
       CoSelectHousingStatus: "",
+      SourceOfIncome:"",
+      CoEmploymentStatus:"",
       CoEmployer: "",
       CoWorkTitle: "",
       CoWorkPhone: "",
@@ -2374,13 +2376,13 @@ const LinearStepper = () => {
   const steps = getSteps();
 
   const handleNext = (data) => {
-    console.log(data);
+    console.log("DATA ===========> " , data);
     if (activeStep == steps.length - 1) {
       axios({
         method: "post",
-        url: "http://localhost:5000/api/joint/send",
+        url: "https://jmserver.herokuapp.com/api/joint/send",
         data: data,
-        config: { headers: { "Content-Type": "multipart/form-data" } },
+        // config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
         console.log(res);
         alert("successfull");

@@ -286,7 +286,7 @@ const TradeINcar = () => {
                       options={optionItems}
                     />
 
-                    <TextField style={{color:"red"}} label="Model" name="model" type="text" />
+                    <TextField  label="Model" name="model" type="text" />
                     <TextField label="Vin" name="vin" type="text" />
                     <FormikControl
                       control="select"

@@ -338,7 +338,7 @@ const Step1 = () => {
           />
         </Grid>
       </Grid>
-      {/* <Grid container>
+      <Grid container>
         <Grid item xs={12} md={4}>
           <Controller
             control={control}
@@ -364,7 +364,7 @@ const Step1 = () => {
             )}
           />
         </Grid>
-      </Grid> */}
+      </Grid>
     </>
   );
 };
@@ -922,8 +922,8 @@ const Step3 = () => {
                 
                 value={HousingStatus}
                 {...field}
-                error={Boolean(errors?.House)}
-                helperText={errors.House?.message}
+                error={Boolean(errors?.EmploymentStatus)}
+                helperText={errors.EmploymentStatus?.message}
               >
               {/* <MenuItem value=""><em>select one value</em></MenuItem> */}
               <MenuItem onClick={handleClose} value={"Employed"}>Employed</MenuItem>
@@ -1332,7 +1332,7 @@ const LinearStepper = () => {
     if (activeStep == steps.length - 1) {
       axios({
         method: "post",
-        url: "http://localhost:5000/api/credit/send",
+        url: "https://jmserver.herokuapp.com/api/credit/send",
         data: data,
         config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
