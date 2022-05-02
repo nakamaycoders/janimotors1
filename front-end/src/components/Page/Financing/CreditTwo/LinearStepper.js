@@ -154,7 +154,9 @@ const AllStreet = [
 
 
 const Step1 = () => {
+
   const {
+
     formState: { errors },
     control,
   } = useFormContext();
@@ -321,7 +323,7 @@ const Step1 = () => {
               required: "This field is required.",
               pattern: {
                 value:
-                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                /\S+@\S+\.\S+/,
                 message: "please enter a valid e-mail address.",
               },
             }}
