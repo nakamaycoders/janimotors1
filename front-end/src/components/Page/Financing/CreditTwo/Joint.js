@@ -425,7 +425,7 @@ const Step2 = () => {
           <Grid item xs={12} md={2}>
             <Controller
               control={control}
-              name="street"
+              name="street num"
               render={({ field }) => (
                 <TextField
                   id="street #"
@@ -587,7 +587,7 @@ const Step2 = () => {
           </InputLabel>
           <Controller
             control={control}
-            name="House"
+            name="SelectHousingStatus"
             render={({ field }) => (
               <Select
                 labelId="House"
@@ -865,8 +865,8 @@ const Step3 = () => {
                 
                 value={HousingStatus}
                 {...field}
-                error={Boolean(errors?.House)}
-                helperText={errors.House?.message}
+                error={Boolean(errors?.EmploymentStatus)}
+                helperText={errors.EmploymentStatus?.message}
               >
               {/* <MenuItem value=""><em>select one value</em></MenuItem> */}
               <MenuItem onClick={handleClose} value={"Employed"}>Employed</MenuItem>
@@ -1149,26 +1149,26 @@ const Step3 = () => {
         <Grid item xs={12} md={4}>
           <InputLabel
             style={{ marginBottom: "10px", fontWeight: "bolder" }}
-            id="EmpStatus"
+            id="Source of Income"
             value={"Select one"}
           >
             Source of Income
           </InputLabel>
           <Controller
             control={control}
-            name="EmpStatus"
+            name="SourceofIncome"
             rules={{ required: "This field is Required." }}
             render={({ field }) => (
               <Select
-                labelId="EmpStatus"
-                id="EmpStatus"
+                labelId="SourceofIncome"
+                id="SourceofIncome"
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
-                name="EmpStatus"
+                name="SourceofIncome"
                 value={"Select one"}
                 {...field}
-                error={Boolean(errors?.EmpStatus)}
-                helperText={errors.EmpStatus?.message}
+                error={Boolean(errors?.SourceofIncome)}
+                helperText={errors.SourceofIncome?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -1670,19 +1670,19 @@ const Step5 = () => {
             <Grid item xs={12} md={4}>
               <InputLabel
                 style={{ marginBottom: "10px", fontWeight: "bolder" }}
-                id="CoHouse"
+                id="CoSelectHousingStatus"
               >
                 Select Housing Status
               </InputLabel>
               <Controller
                 control={control}
-                name="CoHouse"
+                name="CoSelectHousingStatus"
                 render={({ field }) => (
                   <Select
                     labelId="House"
-                    id="CoHouse"
+                    id="CoSelectHousingStatus"
                     fullWidth
-                    input={<OutlinedInput label="House" />}
+                    input={<OutlinedInput label="CoSelectHousingStatus" />}
                     {...field}
                   >
                     {AllHouse.map((House) => (
@@ -2216,19 +2216,19 @@ const Step6 = () => {
           </InputLabel>
           <Controller
             control={control}
-            name="SourceOfIncome"
+            name="coSourceOfIncome"
             rules={{ required: "This field is Required." }}
             render={({ field }) => (
               <Select
-                labelId="EmpStatus"
-                id="EmpStatus"
+                labelId="coSourceOfIncome"
+                id="coSourceOfIncome"
                 fullWidth
                 input={<OutlinedInput label="EmpStatus" />}
-                name="SourceOfIncome"
+                name="coSourceOfIncome"
                 value={"Select one"}
                 {...field}
-                error={Boolean(errors?.SourceOfIncome)}
-                helperText={errors.SourceOfIncome?.message}
+                error={Boolean(errors?.coSourceOfIncome)}
+                helperText={errors.coSourceOfIncome?.message}
               >
                 {IncomeSrc.map((incSource) => (
                   <MenuItem key={incSource} value={incSource}>
@@ -2302,14 +2302,14 @@ const LinearStepper = () => {
       Vemail: "",
       rr: "",
       box: "",
-      street: "",
+      streetnum: "",
       StreetName: "",
       StreetOptional: "",
       apt: "",
       zip: "",
       city: "",
       State: "",
-      House: "",
+      
       Year: "",
       Month: "",
       Mortgage: "",
@@ -2317,7 +2317,7 @@ const LinearStepper = () => {
       SSN: "",
       CoApplicantRelation: "",
       SelectHousingStatus: "",
-      Employer: "",
+      EmploymentStatus: "",
       WorkTitle: "",
       WorkPhone: "",
       yearss: "",
@@ -2327,7 +2327,7 @@ const LinearStepper = () => {
       Selfmonths: "",
       EmpStatus: "",
       PerYear: "",
-      // <..................CO-applicant info.............................>
+      // // <..................CO-applicant info.............................>
       Cofname: "",
       CoMidName: "",
       ColName: "",
@@ -2337,7 +2337,7 @@ const LinearStepper = () => {
       Coemail: "",
       CoVemail: "",
 
-      // <...........step2.........>
+      // // <...........step2.........>
       Corelease: "",
       Corr: "",
       Cobox: "",
@@ -2349,15 +2349,16 @@ const LinearStepper = () => {
       Cocity: "",
       CoState: "",
       Corelease2: "",
-      CoHouse: "",
+      
       CoYear: "",
       CoMonth: "",
       CoMortgage: "",
       Codob: "",
       CoSSN: "",
+      SourceofIncome:"",
 
       CoSelectHousingStatus: "",
-      SourceOfIncome:"",
+      coSourceOfIncome:"",
       CoEmploymentStatus:"",
       CoEmployer: "",
       CoWorkTitle: "",
@@ -2382,7 +2383,7 @@ const LinearStepper = () => {
         method: "post",
         url: "https://jmserver.herokuapp.com/api/joint/send",
         data: data,
-        // config: { headers: { "Content-Type": "multipart/form-data" } },
+        config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
         console.log(res);
         alert("successfull");
@@ -2414,7 +2415,7 @@ const LinearStepper = () => {
           </Link>
           <Typography style={{marginTop:"10px"}}>Please be aware that by selecting "Joint" the applicant and the co-applicant agree they intend to apply for joint credit. The co-applicant must be present and must indicate his or her acceptance of the Terms and Conditions at the end of this application before it is submitted.</Typography>
         </div>
-      <Stepper alternativeLabel activeStep={activeStep}>
+      <Stepper style={{overflowX:"scroll"}} alternativeLabel activeStep={activeStep}>
         {steps.map((step, index) => {
           return (
             <Step key={index}>

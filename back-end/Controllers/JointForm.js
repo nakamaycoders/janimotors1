@@ -39,7 +39,7 @@ exports.createJointForm =  (req, res) => {
     Selfmonths,
     EmpStatus,
     PerYear,
-    //   <..................CO-applicant info.............................>
+    // //   <..................CO-applicant info.............................>
     Cofname,
     CoMidName,
     ColName,
@@ -49,7 +49,7 @@ exports.createJointForm =  (req, res) => {
     Coemail,
     CoVemail,
 
-    //   <...........step2.........>
+    // //   <...........step2.........>
     Corelease,
     Corr,
     Cobox,
@@ -119,7 +119,7 @@ exports.createJointForm =  (req, res) => {
     Selfmonths,
     EmpStatus,
     PerYear,
-    // <..................CO-applicant info.............................>
+    // // <..................CO-applicant info.............................>
     Cofname,
     CoMidName,
     ColName,
@@ -129,7 +129,7 @@ exports.createJointForm =  (req, res) => {
     Coemail,
     CoVemail,
 
-    // <...........step2.........>
+    // // <...........step2.........>
     Corelease,
     Corr,
     Cobox,

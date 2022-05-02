@@ -187,10 +187,10 @@ export default function CustomizedTables(props) {
              <td >{responseData.CoSelectHousingStatus}</td>
           </tr>
           <tr>
-             <td className="boldIt2">Employer</td>
-             <td >{responseData.Employer}</td>
-             <td className="boldIt2">Employer</td>
-             <td >{responseData.CoEmployer}</td>
+             <td className="boldIt2">Employee Status</td>
+             <td >{responseData.EmploymentStatus}</td>
+             <td className="boldIt2"> Employee Status</td>
+             <td >{responseData.CoEmploymentStatus}</td>
           </tr>
           <tr>
              <td className="boldIt2">WorkTitle</td>
@@ -235,10 +235,10 @@ export default function CustomizedTables(props) {
              <td >{responseData.CoSelfmonths}</td>
           </tr>
           <tr>
-             <td className="boldIt2">Emp Status</td>
-             <td >{responseData.EmpStatus}</td>
-             <td className="boldIt2">Emp Status</td>
-             <td >{responseData.CoEmpStatus}</td>
+             <td className="boldIt2">source of income</td>
+             <td >{responseData.SourceofIncome}</td>
+             <td className="boldIt2">source of income</td>
+             <td >{responseData.coSourceOfIncome}</td>
           </tr>
           <tr>
              <td className="boldIt2">Per Year</td>

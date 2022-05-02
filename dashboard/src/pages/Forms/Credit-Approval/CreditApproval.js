@@ -11,7 +11,7 @@ const CreditApproval = () => {
   let [InitialState, setInitialState] = useState(true);
 
   const changeView = (id) => {
-    const changeViewUrl = `https://jmserver.herokuapp.com/api/trade-in/update`;
+    const changeViewUrl = `https://jmserver.herokuapp.com/api/joint/update`;
     try {
       Axios.patch(`${changeViewUrl}/${id}`);
     } catch (err) {
@@ -43,7 +43,7 @@ const CreditApproval = () => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
       // console.log("Item successfully deleted.", res);
-      history.go(0);
+      // history.go(0);
     } catch (err) {
       alert(err);
     }
