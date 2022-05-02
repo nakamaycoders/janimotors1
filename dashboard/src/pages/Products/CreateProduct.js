@@ -151,7 +151,7 @@ const CreateProduct = () => {
 
   return (
     <>
-      <MetaData title="Create Product" />
+      <MetaData title="Add New Product - Admin Dashboard" />
       <main className="content">
         <div className="dashboard">
           <div className="newProductContainer">

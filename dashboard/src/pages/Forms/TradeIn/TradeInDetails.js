@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Axios from "axios";
+import MetaData from "../../../components/layouts/MetaData";
+
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
@@ -26,6 +28,7 @@ export default function CustomizedTables(props) {
 
   return (
     <>
+      <MetaData title={`View Trade In Details - Admin Dashboard`} />
       <main className="content">
         <table className="table-resptable-dark">
           <thead>

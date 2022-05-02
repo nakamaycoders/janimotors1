@@ -126,7 +126,7 @@ const AllProducts = ({ history }) => {
 
   return (
     <>
-      <MetaData title={`ALL PRODUCTS - Admin`} />
+      <MetaData title={`All Products - Admin Dashboard`} />
     <main className="content">
       <div className="dashboard">
         <div className="productListContainer">

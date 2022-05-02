@@ -21,6 +21,8 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import MetaData from "../../components/layouts/MetaData";
+
 
 const Category = (props) => {
   const [categoryName, setCategoryName] = useState("");
@@ -214,6 +216,8 @@ const Category = (props) => {
   const categoryList = createCategoryList(category.categories);
 
   return (
+    <>
+      <MetaData title={`Create New Category - Admin Dashboard`} />
     <main className="content">
     <div>
         <Grid container>
@@ -293,6 +297,7 @@ const Category = (props) => {
         {displayDeleteCategoryModal()}
     </div>
     </main>
+    </>
   );
 };
 

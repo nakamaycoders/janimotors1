@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Axios from "axios";
 import './ICFD.css'
 import {api} from "../../../UrlConfig"
+import MetaData from "../../../components/layouts/MetaData";
 
 export default function CustomizedTables(props) {
   let [responseData, setResponseData] = useState("");
@@ -29,6 +30,7 @@ export default function CustomizedTables(props) {
 
   return (
     <>
+      <MetaData title={`View Credit Details - Admin Dashboard`} />
     <main className="content">
       <table className="table-resptable-dark">
         <thead>

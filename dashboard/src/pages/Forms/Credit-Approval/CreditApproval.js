@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-// import MetaData from "../../components/layouts/MetaData";
+import MetaData from "../../../components/layouts/MetaData";
 import Axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useHistory } from "react-router";
@@ -66,7 +66,7 @@ const CreditApproval = () => {
 
   return (
     <>
-      {/* <MetaData title={`ALL PRODUCTS - Admin`} /> */}
+      <MetaData title={`Credit Approval - Admin Dashboard`} />
       <main className="content">
         <div className="dashboard">
           <div className="productListContainer">
