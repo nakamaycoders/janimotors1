@@ -5,6 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import axios from "axios";
 import Layout from '../../../layout/layout/layout'
+import MetaData from "../../../layout/MetaData";
 
 
 import { Link } from "react-router-dom";
@@ -339,7 +340,6 @@ const Step2 = () => {
   const { control } = useFormContext();
   return (
     <>
-     
       <div className="d-flex">
         <p style={{fontWeight:'bold', fontSize:'19px'}}>Rular Route</p>
         <div style={{marginLeft: '30px'}}>
@@ -2403,6 +2403,8 @@ const LinearStepper = () => {
   //   console.log(data);
   // };
   return (
+<>
+<MetaData title={`Online Credit Approval---JANI MOTORS`}/>
     <Layout>
     <div style={{backgroundColor:"white"}}>
        <div className="btn11 p-5" style={{backgroundColor:"white"}}>
@@ -2467,6 +2469,7 @@ const LinearStepper = () => {
       )}
     </div>
   </Layout>
+</>
   );
 };
 

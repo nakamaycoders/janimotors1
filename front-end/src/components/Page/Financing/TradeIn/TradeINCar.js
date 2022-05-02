@@ -7,6 +7,7 @@ import Layout from "../../../layout/layout/layout";
 import FormikControl from "./FormikControl";
 import "./TradeInCar.css";
 import { useHistory } from "react-router-dom";
+import MetaData from "../../../layout/MetaData";
 
 const TradeINcar = () => {
 
@@ -250,6 +251,8 @@ const TradeINcar = () => {
       }}
     >
       {(formik) => (
+        <>
+    <MetaData title={`Calculate Your Trade---JANI MOTORS`}/>
         <Layout>
           <div>
             <div className="container text-center">
@@ -376,6 +379,7 @@ const TradeINcar = () => {
           </div>
           
         </Layout>
+        </>
       )}
     </Formik>
   );

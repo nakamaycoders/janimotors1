@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Layout from "../../../layout/layout/layout";
+import MetaData from "../../../layout/MetaData";
 
 function Calculator() {
   const interest = 4;
@@ -64,7 +65,8 @@ function Calculator() {
   const [DPstyle, setDPstyle] = useState({});
   const [MonthsStyle, setMonthsStyle] = useState({});
 
-  return (
+  return (<>
+    <MetaData title={`Finance Calculator---JANI MOTORS`}/>
     <Layout>
     <Container>
       <Row>
@@ -201,6 +203,7 @@ function Calculator() {
       </div>
     </Container>
     </Layout>
+  </>
   );
 }
 

@@ -6,6 +6,7 @@ import axios from "axios";
 import Layout from "../../layout/layout/layout";
 import '../Contactus/Contactus.css';
 import { useHistory } from "react-router-dom";
+import MetaData from "../../layout/MetaData";
 
 
 const ContactUs = () => {
@@ -62,6 +63,8 @@ const ContactUs = () => {
       }}
     >
       {(formik) => (
+        <>
+    <MetaData title={`Contact Us---JANI MOTORS`}/>
          <Layout>
         <div className="container text-center pt-2">
         <h1 className="pt-2" style={{ color: "red " }}>
@@ -97,6 +100,8 @@ const ContactUs = () => {
           
         </div>
         </Layout>
+        </>
+
       )}
     </Formik>
   );

@@ -6,7 +6,6 @@ const ApiFeatures = require("../utils/apifeatures");
 const slugify = require('slugify');
 const path = require("path");
 const fs = require('fs');
-const { dir } = require("console");
 
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async(req, res, next) => {
@@ -214,9 +213,10 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Delete Product
 
-exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
+exports.deleteProduct = catchAsyncErrors(async(req, res, next) => {
   const product = await Product.findById(req.params.id);
-
+  // console.log(">>>>>",product)
+  
   // let del = fs.unlinkSync(path)
   // console.log(del)
 
@@ -225,16 +225,16 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
  
 // MAIN_URL = http://localhost:5000
 // console.log("ppp>>",product.productPictures)
-product.productPictures.forEach(item => {
-  // console.log("item>>>>",item)
 
-  const path = `C:/Users/zubai/OneDrive/Documents/GitHub/janimotors1/back-end/uploads/${item.img}`
-      fs.unlinkSync(path,(err)=>{
-        if(err){
-          console.log(err)
-        }
-      })
-});
+// console.log("item>>>>",item)
+// product.productPictures.forEach(item => {
+//   const path = `C:/Users/zubai/OneDrive/Documents/GitHub/janimotors1/back-end/uploads/${item.img}`
+//       fs.unlinkSync(path,(err)=>{
+//         if(err){
+//           console.log(err)
+//         }
+//       })
+// });
 
 
   // ,(err)=>{
@@ -259,9 +259,9 @@ product.productPictures.forEach(item => {
   //   }
   // })
 
-  if (!product) {
-    return next(new ErrorHander("Product not found", 404));
-  }
+  // if (!product) {
+  //   return next(new ErrorHander("Product not found", 400));
+  // }
   // console.log("fileNAME>>>>>>>",req.files[0].path)
   // console.log(product)
   
@@ -269,10 +269,8 @@ product.productPictures.forEach(item => {
   // fs.unlinkSync(path)
   await product.remove();
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     message: "Product Delete Successfully",
   });
 });
-
-

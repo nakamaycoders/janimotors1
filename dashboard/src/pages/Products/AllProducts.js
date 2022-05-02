@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./AllProduct.css";
+import axios from "../../helpers/axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
   getAdminProduct,
   deleteProduct,
 } from "../../actions/productAction";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import {useAlert} from 'react-alert';
 import Button from "@mui/material/Button";
 import MetaData from "../../components/layouts/MetaData";
@@ -22,14 +23,24 @@ const AllProducts = ({ history }) => {
   const dispatch = useDispatch();
 
   const { error, products } = useSelector((state) => state.product);
-  console.log('All prodyucts wali productss',products)
+  console.log('All products',products)
 
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.products
   );
 
+  // const deleteProductHandler = (id) => {
+  //   dispatch(deleteProduct(id));
+  // };
   const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
+    const deleteUrl = `https://jmserver.herokuapp.com/api/admin/product`;
+    try {
+      axios.delete(`${deleteUrl}/${id}`);
+    } catch (err) {
+      console.log(err)
+      alert(err);
+    }
+    // history.go(0);
   };
 
   useEffect(() => {
@@ -88,11 +99,13 @@ const AllProducts = ({ history }) => {
 
             <Button
               onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
+                deleteProductHandler(params.id)
               }
-            >
+              >
+              {/* <Link to={`/admin/product/${params.id}`}>delete</Link> */}
               <DeleteIcon />
             </Button>
+              {console.log("ye wali>>>>>>>>>>>>>>>>>",params.id)}
           </>
         );
       },

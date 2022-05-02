@@ -6,6 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import "./LinearStepper.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MetaData from "../../../layout/MetaData";
+
 
 import {
   Typography,
@@ -1356,6 +1358,8 @@ const LinearStepper = () => {
 
   return (
     <div>
+    <MetaData title={`Online Credit Approval---JANI MOTORS`}/>
+
       <div className="btn11 p-5">
         <Typography variant="h5" style={{ marginBottom: "10px" }}>
           Application Type

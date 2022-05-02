@@ -43,11 +43,12 @@ router
 
 router.get("/products/:slug", getProductsBySlug);
 
-router
-  .route("/admin/product/:id")
-  .put(updateProduct)
-  .delete(deleteProduct);
+// router
+//   .route("/admin/product/:id")
+//   .put(updateProduct)
+//   .delete(deleteProduct);
 
+router.route('/admin/product/:id').delete(deleteProduct);
 router.route("/product/:productId").get(getProductDetails);
 
 
