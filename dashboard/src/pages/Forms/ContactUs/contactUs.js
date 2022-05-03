@@ -48,10 +48,10 @@ const ContactUs = () => {
     const deleteUrl = `https://jmserver.herokuapp.com/api/contact/delete`;
     try {
       Axios.delete(`${deleteUrl}/${id}`);
+      history.go(0);
     } catch (err) {
       alert(err);
     }
-    // history.go(0);
   };
 
   const changeView = (id) => {

@@ -228,9 +228,9 @@ const TradeINcar = () => {
         city:"",
         state:"",
       }}
-      validationSchema={validate}
+      idationSchema={validate}
       onSubmit={(data) => {
-        console.log(data);
+        // console.log(data);
 
         axios({
           method: "post",
@@ -252,7 +252,7 @@ const TradeINcar = () => {
     >
       {(formik) => (
         <>
-    <MetaData title={`Calculate Your Trade---JANI MOTORS`}/>
+    <MetaData title={`Calculate Your Trade || JANI MOTORS`}/>
         <Layout>
           <div>
             <div className="container text-center">
@@ -275,7 +275,7 @@ const TradeINcar = () => {
                 <div className="   col-md-6">
                   <h2 style={{ color: "red" }}>Vehicle Information</h2>
                   {/* ---------------------------------------------------------------------------------------- */}
-                  <Form >
+                  <Form  >
                     <FormikControl
                       control="select"
                       label="Year"

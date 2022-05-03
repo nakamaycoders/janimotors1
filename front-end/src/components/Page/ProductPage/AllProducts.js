@@ -24,7 +24,7 @@ const AllProducts = ({ match }) => {
   }, [dispatch, error, keyword]);
   return (
     <Layout>
-      <MetaData title={`View All Inventories ---JANI MOTORS`} />
+      <MetaData title={`View All Inventories||JANI MOTORS`} />
       <div className="container-fluid">
         <div className="row">
           <RespSearch />
@@ -57,7 +57,7 @@ const AllProducts = ({ match }) => {
                         <span style={{ width: "200px" }}>{p.name}</span>
                         <div>
                           <span className="fw-bolder">Price: </span>
-                          <span>{p.price}</span>
+                          <span>${p.price}</span>
                         </div>
 
                         <div className="d-flex pt-2">

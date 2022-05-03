@@ -1340,8 +1340,8 @@ const LinearStepper = () => {
         data: data,
         config: { headers: { "Content-Type": "multipart/form-data" } },
       }).then((res) => {
-        console.log(res);
-        alert("successfull");
+        // console.log(res);
+        // alert("successfull");
         setActiveStep(activeStep + 1);
       });
      

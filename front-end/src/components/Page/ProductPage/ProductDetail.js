@@ -63,7 +63,7 @@ const ProductDetail = (props) => {
                       height: "476px",
                       width: "1000px",
                       borderRadius: "10px",
-                      marginLeft:"7px"
+                      // marginLeft:"7px"
                     }}
                     alt="car"
                     className=" image img-fluid"

@@ -38,12 +38,12 @@ const CreditApproval = () => {
     }
   };
 
-  const deleteUrl = `https://jmserver.herokuapp.com/api/credit/delete/:id`;
+  const deleteUrl = `https://jmserver.herokuapp.com/api/credit/delete`;
   const deleteContactHandler = (id) => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
       // console.log("Item successfully deleted.", res);
-      // history.go(0);
+      history.go(0);
     } catch (err) {
       alert(err);
     }

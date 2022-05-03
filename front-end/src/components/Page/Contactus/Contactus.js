@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form , Field ,  useField} from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
 import axios from "axios";
@@ -10,6 +10,22 @@ import MetaData from "../../layout/MetaData";
 
 
 const ContactUs = () => {
+
+  const MyTextArea = ({label, ...props}) => {
+    // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+    // which we can spread on <input> and alse replace ErrorMessage entirely.
+    const [field, meta] = useField(props);
+    return (
+        <>
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <textarea className="text-area" {...field} {...props} />
+            {meta.touched && meta.error ? (
+                <div className="error">{meta.error}</div>
+            ) : null}
+        </>
+    );
+  };
+  
   let history= useHistory();
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -85,7 +101,24 @@ const ContactUs = () => {
             <TextField label="last Name" name="lastName" type="text" />
             <TextField label="Email" name="email" type="email" />
             <TextField label="Phone" name="phone" type="number" />
-            <TextField row={4} col={4} label="Message" name="message" type="text" />
+            {/* <TextField   className="form-control"
+      component="textarea" row={40} col={40} label="Message" name="message" type="text" /> */}
+
+<MyTextArea
+            label="Message"
+            name="message"
+            rows="4"
+            // placeholder="Once upon a time there was a princess who lived at the top of a glass hill."
+          />
+
+            {/* <span style={{ color: "white" }}>Message</span> */}
+
+            {/* <Field
+                      as="textarea"
+                      label=" Message"
+                      id="Message"
+                      name="message"
+                    ></Field> */}
             <button
               className="btn btn-primary mt-3"
               type="submit"

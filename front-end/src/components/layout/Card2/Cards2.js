@@ -21,7 +21,7 @@ function Cards2() {
     return (
         <>
 
-            <div className={`container ${!(useViewport().width>800)?"d-flex flex-column":`d-flex flex-row`}`} style={{ marginLeft: "0", width: "100%" }}>
+            <div className={`container ${!(useViewport().width>800)?"d-flex flex-column":`d-flex flex-row`}`} style={{ marginLeft: "-9px", width: "100%" }}>
                 <div className="sellCar col-md-4 text-center container_foto part1" >
 <Link to='/tradeincar'>
                     <article className="text-left">

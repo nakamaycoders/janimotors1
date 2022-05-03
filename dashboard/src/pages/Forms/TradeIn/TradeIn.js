@@ -43,7 +43,7 @@ const TradeIn = () => {
     try {
       Axios.delete(`${deleteUrl}/${id}`);
       // console.log("Item successfully deleted.", res);
-      // history.go(0);
+      history.go(0);
     } catch (err) {
       alert(err);
     }
