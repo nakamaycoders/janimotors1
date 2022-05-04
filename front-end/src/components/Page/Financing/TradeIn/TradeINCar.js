@@ -228,13 +228,13 @@ const TradeINcar = () => {
         city:"",
         state:"",
       }}
-      idationSchema={validate}
+      validationSchema={validate}
       onSubmit={(data) => {
         // console.log(data);
 
         axios({
           method: "post",
-          url: "http://localhost:5000/api/trade-in",
+          url: "https://jmserver.herokuapp.com/api/trade-in",
           data: data,
           config: { headers: { "Content-Type": "multipart/form-data" } },
         })
@@ -252,7 +252,7 @@ const TradeINcar = () => {
     >
       {(formik) => (
         <>
-    <MetaData title={`Calculate Your Trade || JANI MOTORS`}/>
+        <MetaData title={`Calculate Your Trade || JANI MOTORS`}/>
         <Layout>
           <div>
             <div className="container text-center">
