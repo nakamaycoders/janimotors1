@@ -43,8 +43,9 @@ const CreateProduct = () => {
   const [exteriorColor, setExteriorColor] = useState("");
   const [description, setDescription] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [productPictures, setProductPictures] = useState([]);
-  // const [imagesPreview, setImagesPreview] = useState([]);
+  // const [productPictures, setProductPictures] = useState([]);
+  const [images, setImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
   const category = useSelector((state) => state.category);
 
   const createCategoryList = (categories, options = []) => {
@@ -104,34 +105,18 @@ const CreateProduct = () => {
     myForm.set("category", categoryId);
     console.log(categoryId);
 
-    for (let pic of productPictures) {
-      myForm.append("productPicture", pic);
-      console.log(pic);
-    }
+    images.forEach((image) => {
+      myForm.append("images", image);
+    });
     dispatch(createProduct(myForm));
-    console.log(createProduct(myForm));
+    // console.log(createProduct(myForm));
   };
 
   // const createProductImagesChange = (e) => {
   const createProductImagesChange = (e) => {
-    setProductPictures([...productPictures, e.target.files[0]]);
-  };
-  // const files = Array.from(e.target.files);
-  // setImages([]);
-  // setImagesPreview([]);
-
-  // files.forEach((file) => {
-  //   const reader = new FileReader();
-
-  //   reader.onload = () => {
-  //     if (reader.readyState === 2) {
-  //       setImagesPreview((old) => [...old, reader.result]);
-  //       setImages((old)=>[...old,reader.result]);
-  //     }
-  //   };
-  //   reader.readAsDataURL(file);
-  // });
-
+  //   setProductPictures([...productPictures, e.target.files[0]]);
+  // };
+  const files = Array.from(e.target.files);
   // setProductPictures([]);
   // setImagesPreview([]);
 
@@ -141,13 +126,30 @@ const CreateProduct = () => {
   //   reader.onload = () => {
   //     if (reader.readyState === 2) {
   //       setImagesPreview((old) => [...old, reader.result]);
-  //       setProductPictures((old) => [...old, reader.result]);
+  //       setProductPictures((old)=>[...old,reader.result]);
   //     }
   //   };
-
   //   reader.readAsDataURL(file);
   // });
-  // };
+
+  // setProductPictures([]);
+  setImages([]);
+  setImagesPreview([]);
+
+  files.forEach((file) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImagesPreview((old) => [...old, reader.result]);
+        // setProductPictures((old) => [...old, reader.result]);
+        setImages((old) => [...old, reader.result]);
+      }
+    };
+
+    reader.readAsDataURL(file);
+  });
+  };
 
   return (
     <>
@@ -479,28 +481,28 @@ const CreateProduct = () => {
               
              
 
-              {/* {console.log(productPictures)} */}
-              {productPictures.length > 0
+              {/* {productPictures.length > 0
                 ? productPictures.map((pic, item) => (
                     <div key={item}>{pic.name}</div>
                   ))
-                : null}
+                : null} */}
 
               <div id="createProductFormFile">
                 <input
                   type="file"
-                  name="productPictures"
+                  // name="productPictures"
                   // name="products"
                   // accept="image/*"
+                  accept="image/*"
                   onChange={createProductImagesChange}
                   multiple
                 />
               </div>
-              {/* <div id="createProductFormImage">
+              <div id="createProductFormImage">
               {imagesPreview.map((image, index) => (
                 <img key={index} src={image} alt="Product Preview" />
               ))}
-            </div> */}
+            </div>
 
               <Button
                 id="createProductBtn"
