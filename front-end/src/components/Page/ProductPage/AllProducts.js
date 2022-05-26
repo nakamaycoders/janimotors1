@@ -8,6 +8,8 @@ import Loader from "../../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import { ImageUrl } from "../../../UrlConfig";
 import { RespSearch } from "../../layout/Resp-SearchBar";
+import { Helmet } from 'react-helmet-async';
+
 
 const AllProducts = ({ match }) => {
   const dispatch = useDispatch();
@@ -24,7 +26,12 @@ const AllProducts = ({ match }) => {
   }, [dispatch, error, keyword]);
   return (
     <Layout>
-      <MetaData title={`View All Inventories||JANI MOTORS`} />
+      <Helmet>
+       <title>Inventory || JANI MOTORS</title>
+<meta name="Inventory" content="JANI MOTORS"/>
+<meta name="description" content="Here you may see all of the top automobiles that Jani Motors has to offer."/>
+        <link rel="canonical" href="/view-all-inventories" />
+      </Helmet>
       <div className="container-fluid">
         <div className="row">
           <RespSearch />
@@ -46,7 +53,7 @@ const AllProducts = ({ match }) => {
                           <img
                             className="img-fluid"
                             src={ImageUrl(p.productPictures[0].img)}
-                            alt=""
+                            alt="JANI MOTORS CARS "
                           ></img>
                         </Link>
                       </div>

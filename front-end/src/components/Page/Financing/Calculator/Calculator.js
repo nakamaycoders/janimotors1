@@ -3,7 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Layout from "../../../layout/layout/layout";
-import MetaData from "../../../layout/MetaData";
+// import MetaData from "../../../layout/MetaData";
+import { Helmet } from "react-helmet-async";
 
 function Calculator() {
   const interest = 4;
@@ -66,7 +67,20 @@ function Calculator() {
   const [MonthsStyle, setMonthsStyle] = useState({});
 
   return (<>
-    <MetaData title={`Finance Calculator---JANI MOTORS`}/>
+  <Helmet>
+        <title>Calculator || JANI MOTORS</title>
+        <meta name="description" content=" Do you need assistance finding out how to pay for your next car? Allow
+          Jani Motor Cars' finance team to assist you. We work with some of the
+          most reputable lenders in the industry, so we can get you the
+          financing you need at the prices and conditions you deserve. You can
+          use the form below to help you plan ahead. It will calculate a monthly
+          loan payment estimate for you based on a number of parameters. Simply
+          fill out the form with all of your pertinent data and best
+          predictions, push calculate, and the form will take care of the rest.
+          This is one another tool provided by Jani Motor Cars to make things
+          simpler." />
+        <link rel="canonical" href="/calculator" />
+      </Helmet>
     <Layout>
     <Container>
       <Row>

@@ -7,6 +7,8 @@ import "./LinearStepper.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import MetaData from "../../../layout/MetaData";
+import { Helmet } from 'react-helmet-async';
+
 
 
 import {
@@ -1360,7 +1362,17 @@ const LinearStepper = () => {
 
   return (
     <div>
-    <MetaData title={`Online Credit Approval---JANI MOTORS`}/>
+    {/* <MetaData title={`Online Credit Approval---JANI MOTORS`}/> */}
+    <Helmet>
+       <title>Online Credit Approval</title>
+<meta name="Online Credit Approval" content="JANI MOTORS"/>
+{/* <meta name="description" content="We proudly serve our customers. We offer a large selection of pre-owned vehicles at affordable prices
+      for everyone. We are committed to providing our customers with the
+      best service, to get you a step closer to your vehicle that
+      satisfies your needs. Our dealership is always ready to assist you
+      in the car buying process!"/> */}
+        <link rel="canonical" href="/creditapproval" />
+      </Helmet>
 
       <div className="btn11 p-5">
         <Typography variant="h5" style={{ marginBottom: "10px" }}>

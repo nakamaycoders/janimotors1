@@ -7,9 +7,12 @@ import Layout from "../../layout/layout/layout";
 import '../Contactus/Contactus.css';
 import { useHistory } from "react-router-dom";
 import MetaData from "../../layout/MetaData";
+import { Helmet } from "react-helmet-async";
+
 
 
 const ContactUs = () => {
+  
 
   const MyTextArea = ({label, ...props}) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -17,6 +20,7 @@ const ContactUs = () => {
     const [field, meta] = useField(props);
     return (
         <>
+
             <label htmlFor={props.id || props.name}>{label}</label>
             <textarea className="text-area" {...field} {...props} />
             {meta.touched && meta.error ? (
@@ -80,7 +84,13 @@ const ContactUs = () => {
     >
       {(formik) => (
         <>
-    <MetaData title={`Contact Us---JANI MOTORS`}/>
+    {/* <MetaData title={`Contact Us---JANI MOTORS`}/> */}
+    <Helmet>
+    <title>Contact Us || JANI MOTORS</title>
+    <meta name="Contact Us" content="JANI MOTORS"/>
+    <meta name="description" content=" If you don't want to pick up the phone, then send us an email using the provided form below." />
+    <link rel="canonical" href="/contactus" />
+  </Helmet>
          <Layout>
         <div className="container text-center pt-2">
         <h1 className="pt-2" style={{ color: "red " }}>
@@ -92,9 +102,7 @@ const ContactUs = () => {
           buying process, or any aspect of our business. If you don’t want to
           pick up the phone, then just use your keyboard and send us an email
           using the provided form below. You can always stop by and see us in
-          person too. We have two locations in Chicago and one more out in Las
-          Vegas. Our locations are highlighted on the map we have on this page.
-          See exactly where we are located and come over to see us today.
+          person too.
         </p>
           <Form className="col-md-">
             <TextField label="First Name" name="firstName" type="text" />

@@ -91,13 +91,13 @@ const ProductDetail = (props) => {
 
           <table class="table">
             <tbody style={{ color: "white" }}>
+            <tr>
+                <th scope="row">STOCK:</th>
+                <td>{product.stock}</td>
+              </tr>
               <tr>
                 <th scope="row">TYPE:</th>
                 <td>{product.condition}</td>
-              </tr>
-              <tr>
-                <th scope="row">YEAR:</th>
-                <td>{product.year}</td>
               </tr>
               <tr>
                 <th scope="row">MAKE:</th>
@@ -114,9 +114,10 @@ const ProductDetail = (props) => {
                 </td>
               </tr>
               <tr>
-                <th scope="row">STOCK:</th>
-                <td>{product.stock}</td>
+                <th scope="row">YEAR:</th>
+                <td>{product.year}</td>
               </tr>
+              
               <tr>
                 <th scope="row">MILAGE:</th>
                 <td>{product.milage}</td>

@@ -267,27 +267,26 @@ const CreateProduct = () => {
                 onChange={(e) => setStock(e.target.value)}
               /> */}
               </div>
-
               <div>
                 {/* <StorageIcon /> */}
                 <TextField
-                  // type="number"
                   autoComplete="off"
                   fullWidth
                   required
                   id="outlined-required"
-                  label="Milage"
-                  value={milage}
-                  onChange={(e) => setMilage(e.target.value)}
+                  label="Type"
+                  value={condition}
+                  onChange={(e) => setCondition(e.target.value)}
                 />
                 {/* <input
                 type="text"
-                placeholder="Milage"
+                placeholder="Condition"
                 required
-                value={milage}
-                onChange={(e) => setMilage(e.target.value)}
+                value={condition}
+                onChange={(e) => setCondition(e.target.value)}
               /> */}
               </div>
+
 
               <div>
                 {/* <StorageIcon /> */}
@@ -313,6 +312,45 @@ const CreateProduct = () => {
               <div>
                 {/* <StorageIcon /> */}
                 <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Model"
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
+                />
+                {/* <input
+                type="text"
+                placeholder="Model"
+                required
+                value={model}
+                onChange={(e) => setModel(e.target.value)}
+              /> */}
+              </div>
+
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Trim"
+                  value={trim}
+                  onChange={(e) => setTrim(e.target.value)}
+                />
+                {/* <input
+                type="text"
+                placeholder="Trim"
+                required
+                value={trim}
+                onChange={(e) => setTrim(e.target.value)}
+              /> */}
+              </div>
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
                   // type="number"
                   autoComplete="off"
                   fullWidth
@@ -329,6 +367,37 @@ const CreateProduct = () => {
               /> */}
               </div>
 
+
+
+
+
+
+
+
+              <div>
+                {/* <StorageIcon /> */}
+                <TextField
+                  // type="number"
+                  autoComplete="off"
+                  fullWidth
+                  required
+                  id="outlined-required"
+                  label="Milage"
+                  value={milage}
+                  onChange={(e) => setMilage(e.target.value)}
+                />
+                {/* <input
+                type="text"
+                placeholder="Milage"
+                required
+                value={milage}
+                onChange={(e) => setMilage(e.target.value)}
+              /> */}
+              </div>
+
+          
+
+            
               <div>
                 {/* <StorageIcon /> */}
                 <TextField
@@ -387,25 +456,7 @@ const CreateProduct = () => {
               /> */}
               </div>
 
-              <div>
-                {/* <StorageIcon /> */}
-                <TextField
-                  autoComplete="off"
-                  fullWidth
-                  required
-                  id="outlined-required"
-                  label="Model"
-                  value={model}
-                  onChange={(e) => setModel(e.target.value)}
-                />
-                {/* <input
-                type="text"
-                placeholder="Model"
-                required
-                value={model}
-                onChange={(e) => setModel(e.target.value)}
-              /> */}
-              </div>
+              
               <div>
                 {/* <StorageIcon /> */}
                 <TextField
@@ -425,44 +476,8 @@ const CreateProduct = () => {
                 onChange={(e) => setEngine(e.target.value)}
               /> */}
               </div>
-              <div>
-                {/* <StorageIcon /> */}
-                <TextField
-                  autoComplete="off"
-                  fullWidth
-                  required
-                  id="outlined-required"
-                  label="Condition"
-                  value={condition}
-                  onChange={(e) => setCondition(e.target.value)}
-                />
-                {/* <input
-                type="text"
-                placeholder="Condition"
-                required
-                value={condition}
-                onChange={(e) => setCondition(e.target.value)}
-              /> */}
-              </div>
-              <div>
-                {/* <StorageIcon /> */}
-                <TextField
-                  autoComplete="off"
-                  fullWidth
-                  required
-                  id="outlined-required"
-                  label="Trim"
-                  value={trim}
-                  onChange={(e) => setTrim(e.target.value)}
-                />
-                {/* <input
-                type="text"
-                placeholder="Trim"
-                required
-                value={trim}
-                onChange={(e) => setTrim(e.target.value)}
-              /> */}
-              </div>
+              
+             
 
               {/* {console.log(productPictures)} */}
               {productPictures.length > 0

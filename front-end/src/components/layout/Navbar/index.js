@@ -62,7 +62,7 @@ export const Navbar = (props) => {
               className="img-fluid"
               style={{ width: "400px" }}
               src={logo}
-              alt=""
+              alt="JANI MOTORS CARS"
             />
           </Link>
         </div>

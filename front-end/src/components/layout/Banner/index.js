@@ -25,7 +25,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={sec}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
        
       </Carousel.Item>
@@ -33,7 +33,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={First}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>
@@ -41,7 +41,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={third}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>
@@ -49,7 +49,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={four}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>
@@ -57,7 +57,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={eigth}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>
@@ -65,7 +65,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={five}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>
@@ -73,7 +73,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={six}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>
@@ -81,7 +81,7 @@ export const Banner = (props) => {
         <img
           className="d-block w-100 img-fluid"
           src={seven}
-          alt="First slide"
+          alt="JANI MOTORS"
         />
         
       </Carousel.Item>

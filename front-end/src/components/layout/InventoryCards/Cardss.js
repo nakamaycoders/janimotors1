@@ -57,7 +57,7 @@ export const Cardss = (props) => {
             <div key={index} className="card container">
               <img
                 src={ImageUrl(p.productPictures[0].img)}
-                alt="heello"
+                alt="JANI MOTORS CARS"
                 className="img-fluid"
               />
               <div className="okok ">

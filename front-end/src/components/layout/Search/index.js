@@ -58,19 +58,18 @@ export const Search = () => {
         <Container>
           <form className="searchBox" onSubmit={handleSearch} style={{backgroundColor:'black'}}>
             <Row>
-              <Col md={3} sm={12}>
+            <Col md={3} sm={12}>
                 <select
                   className="form-select"
-                  onChange={(e) => setModel(e.target.value)}
+                  onChange={(e) => setYear(e.target.value)}
                   aria-label="Default select example"
                 >
                   <option selected disabled>
-                    Model
+                    Year
                   </option>
-                  {products &&
-                    products.map((p, index) => (
-                      <option key={index}>{p.model}</option>
-                    ))}
+                  {products.map((p, index) => (
+                    <option key={index}>{p.year}</option>
+                  ))}
                 </select>
               </Col>
               <Col md={3} sm={12}>
@@ -90,17 +89,20 @@ export const Search = () => {
               <Col md={3} sm={12}>
                 <select
                   className="form-select"
-                  onChange={(e) => setYear(e.target.value)}
+                  onChange={(e) => setModel(e.target.value)}
                   aria-label="Default select example"
                 >
                   <option selected disabled>
-                    Year
+                    Model
                   </option>
-                  {products.map((p, index) => (
-                    <option key={index}>{p.year}</option>
-                  ))}
+                  {products &&
+                    products.map((p, index) => (
+                      <option key={index}>{p.model}</option>
+                    ))}
                 </select>
               </Col>
+              
+             
               <Col md={3} sm={12}>
                 <select
                   className="form-select"

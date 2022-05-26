@@ -11,7 +11,7 @@ function AboutUs() {
         
         <div className="col-md-4 ">
         <Link to='/'>
-          <img className="img-fluid" src={banner} alt="" />
+          <img className="img-fluid" src={banner} alt="JANI MOTORS CARS" />
         </Link>
         </div>
         <div className="col-md-8 pt-4 " style={{ color: "white" }}>

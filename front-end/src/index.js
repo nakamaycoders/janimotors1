@@ -9,6 +9,8 @@ import store from "./store";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import ScrollToTop from './components/layout/ScrollToTop'
+import { HelmetProvider } from 'react-helmet-async';
+// import { hydrate, render } from "react-dom";
 
 
 const options = {
@@ -18,13 +20,20 @@ const options = {
 };
 
 window.store = store;
-
+// const rootElement = document.getElementById("root");
+// if (rootElement.hasChildNodes()) {
+//   hydrate(<App />, rootElement);
+// } else {
+//   render(<App />, rootElement);
+// }
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
     <AlertProvider template={AlertTemplate} {...options}>
        <ScrollToTop> 
+         <HelmetProvider>
         <App />
+        </HelmetProvider>
       </ScrollToTop>
     </AlertProvider>
     </BrowserRouter>

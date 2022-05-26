@@ -8,6 +8,7 @@ import FormikControl from "./FormikControl";
 import "./TradeInCar.css";
 import { useHistory } from "react-router-dom";
 import MetaData from "../../../layout/MetaData";
+import { Helmet } from "react-helmet-async";
 
 const TradeINcar = () => {
 
@@ -202,6 +203,24 @@ const TradeINcar = () => {
     zip: Yup.string().required("Zip is required"),
   });
   return (
+<>
+    <Helmet>
+    <title>Calculate Your Trade || JANI MOTORS</title>
+    <meta name="JANI MOTORS" content="JANI MOTORS"/>
+    <meta name="description" content=" Bring your old car to us, and we can help you trade it in to get
+            something newer and better. We love finding ways to help our
+            customers get the vehicles that they really want. A trade-in
+            will give your budget a boost. Before you know it, you will be
+            able to afford vehicles that were previously out of your reach.
+            This is a great way to get rid of that old car too. This way you
+            can avoid going through the tedious private sale process. You
+            don’t have to drive down here yet. You can get an appraisal for
+            your old vehicle by simply filling out the form below. We want
+            you to have the information that you need to make the right
+            decision without any strings attached.." />
+    <link rel="canonical" href="/tradeincar" />
+  </Helmet>
+
     <Formik
       initialValues={{
         firstName: "",
@@ -252,7 +271,8 @@ const TradeINcar = () => {
     >
       {(formik) => (
         <>
-        <MetaData title={`Calculate Your Trade || JANI MOTORS`}/>
+        {/* <MetaData title={`Calculate Your Trade || JANI MOTORS`}/> */}
+       
         <Layout>
           <div>
             <div className="container text-center">
@@ -382,6 +402,7 @@ const TradeINcar = () => {
         </>
       )}
     </Formik>
+    </>
   );
 };
 
