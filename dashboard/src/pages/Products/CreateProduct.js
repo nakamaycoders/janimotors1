@@ -75,38 +75,39 @@ const CreateProduct = () => {
     const myForm = new FormData();
 
     myForm.set("name", name);
-    console.log(name);
+    // console.log(name);
     myForm.set("stock", stock);
-    console.log(stock);
+    // console.log(stock);
     myForm.set("price", price);
-    console.log(price);
+    // console.log(price);
     myForm.set("engine", engine);
-    console.log(engine);
+    // console.log(engine);
     myForm.set("trim", trim);
-    console.log(trim);
+    // console.log(trim);
     myForm.set("model", model);
-    console.log(model);
+    // console.log(model);
     myForm.set("milage", milage);
-    console.log(milage);
+    // console.log(milage);
     myForm.set("make", make);
-    console.log(make);
+    // console.log(make);
     myForm.set("year", year);
-    console.log(year);
+    // console.log(year);
     myForm.set("interiorColor", interiorColor);
-    console.log(interiorColor);
+    // console.log(interiorColor);
     myForm.set("extexteriorColor", exteriorColor);
-    console.log(exteriorColor);
+    // console.log(exteriorColor);
     myForm.set("condition", condition);
-    console.log(condition);
+    // console.log(condition);
     myForm.set("vin", vin);
-    console.log(vin);
+    // console.log(vin);
     myForm.set("description", description);
-    console.log(description);
+    // console.log(description);
     myForm.set("category", categoryId);
-    console.log(categoryId);
+    // console.log(categoryId);
 
     images.forEach((image) => {
       myForm.append("images", image);
+      console.log("images>>>",image)
     });
     dispatch(createProduct(myForm));
     // console.log(createProduct(myForm));
